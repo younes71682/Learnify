@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        YekanBakhRegular:["YekanBakh-Regular",'sans-serif'],
+        YekanBakhMedium:["YekanBakh-Medium",'sans-serif'],
+        YekanBakhLight:["YekanBakh-Light",'sans-serif'],
+        YekanBakhHeavy:["YekanBakh-Heavy",'sans-serif'],
+        YekanBakhHairline:["YekanBakh-Hairline",'sans-serif'],
+        YekanBakhBold:["YekanBakh-Bold",'sans-serif'],
+        YekanBakhFat:["YekanBakh-Fat",'sans-serif'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
