@@ -1,5 +1,8 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
+
+
 @font-face {
   font-family: "YekanBakh-Regular";
   src: url('../public/fonts/YekanBakh-Regular.ttf');
@@ -28,7 +31,6 @@
   font-family: "YekanBakh-Fat";
   src: url('../public/fonts/YekanBakh-Fat.ttf');
 }
-@tailwind utilities;
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -46,11 +48,12 @@
 
 body {
   direction: rtl;
-  /*   color: rgb(var(--foreground-rgb));
+  
+    /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
