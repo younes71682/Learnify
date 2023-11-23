@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Dropdown from "./Dropdown";
 
 
 const Navbar = () => {
@@ -12,7 +13,7 @@ const Navbar = () => {
         
         <div className="flex items-center pt-3">
           <ul className="flex gap-8 ">
-            <li>دوره ها</li>
+            <li><Dropdown/></li>
             <li>تدریس کنید</li>
             <li>وبلاگ</li>
           </ul>
@@ -38,7 +39,7 @@ const Navbar = () => {
             />
             </div>
             
-          <div className="text-[#008000] border-solid border-2 border-[#008000] rounded-[12px] m-2"><Link className="flex py-1.5 px-3 " href="/">ورود | ثبت نام</Link></div>
+          <div className="text-[#008000] border-solid border-2 border-[#008000] rounded-[12px] m-2"><Link className="flex py-1.5 px-3 no-underline text-[#008000] " href="/">ورود | ثبت نام</Link></div>
         </div>
       </div>
     </div>

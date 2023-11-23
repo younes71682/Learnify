@@ -67,7 +67,7 @@ const Footer = () => {
                 <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>شماره تماس:</p></li>
               </ul>
             </div>
-
+            
             <div>
               <ul className='flex flex-col items-end gap-y-[1.5rem] mt-[3rem]'>
                 <li><Link className='font-normal text-[14px] ' href="/">LEARNIFY_IR@</Link></li>
