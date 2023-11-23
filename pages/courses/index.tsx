@@ -12,7 +12,7 @@ export default function courses() {
             </div>
             {/* left section */}
             <div>
-
+                test
             </div>
         </div>
     )
