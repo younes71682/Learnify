@@ -1,8 +1,10 @@
-import React,{ useState } from "react";
+import Link from "next/link";
+import React, { useState } from "react";
 
 const Dropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    
+    const [isclickitem, setIsclickitem] = useState('black')
+
     const handleMouseEnter = () => {
         setIsDropdownOpen(true);
     };
@@ -10,9 +12,19 @@ const Dropdown = () => {
     const handleMouseLeave = () => {
         setIsDropdownOpen(false);
     };
+    
+    const handleMouseitem = () => {
+    
+            setIsclickitem('green')
+        
+    }
+
+    const handleMouseitemLeave = () => {
+        setIsclickitem('black')
+    }
 
     return (
-        <div 
+        <div
             className="dropdown"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -25,16 +37,16 @@ const Dropdown = () => {
             >
                 دوره ها
             </button>
-            <ul className={`dropdown-menu w-[17.5rem] ${isDropdownOpen ? " show" : ""}`}>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/graphic_design.png" alt="Graphic_Design"/><a className="dropdown-item text-[1.125rem] font-medium text-righ flex" href="#">فیلم و انیمیشن</a></li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/browser.png" alt="Browser.png"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">برنامه نویسی</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/cyber_security.png" alt="Cyber_Security"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">امنیت شبکه</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/monitor.png" alt="Monitor.png"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">نرم‌افزارهای کاربردی</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/mobile_coding.png" alt="Mobile_Coding"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">توسعه موبایل</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/custom_coding.png" alt="Custom_Coding"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">نرم افزارهای مهندسی</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/menu.png" alt="Menu"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">توسعه وب</a> </li>
-                <li className="flex items-center text-right p-3"><img src="/images/dropdown/movie.png" alt="Movie"/><a className="dropdown-item text-[1.125rem] font-medium" href="#">طراحی</a> </li>
-             </ul>
+            <ul className={`dropdown-menu w-[17.5rem] text-right ${isDropdownOpen ? " show" : ""}`}>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/graphic_design.png" alt="Graphic_Design"/><Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">فیلم و انیمیشن</Link></li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/browser.png" alt="Browser.png"/>          <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">برنامه نویسی</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/cyber_security.png" alt="Cyber_Security"/><Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">امنیت شبکه</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/monitor.png" alt="Monitor.png"/>          <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">نرم‌افزارهای کاربردی</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/mobile_coding.png" alt="Mobile_Coding"/>  <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">توسعه موبایل</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/custom_coding.png" alt="Custom_Coding"/>  <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">نرم افزارهای مهندسی</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/menu.png" alt="Menu"/>                    <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">توسعه وب</Link> </li>
+                <li className="flex items-center text-right m-3 hover:border-solid hover:border-[#008000] hover:border-2 rounded-[10px] hover:text-[#008000]"><img src="/images/dropdown/movie.png" alt="Movie"/>                  <Link className="text-[1.125rem] font-medium flex no-underline hover:text-[#008000] m-2	" href="#">طراحی</Link> </li>
+            </ul>
         </div>
     );
 }
@@ -44,3 +56,23 @@ const Dropdown = () => {
 
 
 export default Dropdown
+
+
+// import React, { useState } from 'react';
+
+// const ColorChangingText = () => {
+//   const [color, setColor] = useState('black');
+
+//   const changeColor = () => {
+//     setColor('red');
+//   };
+
+//   return (
+//     <div style={{ color: color, cursor: 'pointer' }} onClick={changeColor}>
+//       این یک متن است. کلیک کنید تا رنگ آن تغییر کند.
+//     </div>
+//   );
+// };
+
+// export default ColorChangingText;
+
