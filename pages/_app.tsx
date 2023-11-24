@@ -1,4 +1,4 @@
-import Layout from '@/component/navbar/Layout'
+import Layout from '@/components/navbar/Layout'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
