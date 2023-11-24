@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import Layout from '@/component/navbar/Layout'
+import Layout from '@/components/Layout'
 import type { AppProps } from 'next/app'
   
 
