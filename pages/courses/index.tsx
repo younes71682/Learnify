@@ -1,4 +1,3 @@
-import Course from '@/components/navbar/courses/course'
 import React from 'react'
 
 export default function courses() {
@@ -12,7 +11,6 @@ export default function courses() {
                 </div>
             </div>
             {/* left section */}
-            <Course />
             <div>
 
             </div>
