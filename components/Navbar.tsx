@@ -5,42 +5,48 @@ import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   return (
-    <div className="rounded-b-[40px] shadow-lg">
-      <div className="flex items-center justify-between px-[116px] pt-1 ">
-        <header className="flex gap-6 items-center">
+    <div className="rounded-b-[40px] shadow-lg h-[92px]">
 
-          <img className="w-[186px]" src='/images/Rectangle.png' />
-        
-        <div className="flex items-center pt-3">
-          <ul className="flex gap-8 ">
-            <li><Dropdown/></li>
-            <li>تدریس کنید</li>
-            <li>وبلاگ</li>
-          </ul>
+      <div className="flex flex-1 items-center justify-between px-[130px]">
+
+        <div className="flex gap-8">
+
+          <img className="w-[186px] h-[86px] mt-[5px]" src='/images/Rectangle.png' />
+
+          <div>
+            <ul className="flex gap-8 mt-[42px]">
+              <li><Dropdown /></li>
+              <li>تدریس کنید</li>
+              <li>وبلاگ</li>
+            </ul>
+          </div>
+
         </div>
-        </header>
-        <div className="flex items-center gap-6">
-          
-          <div className="flex gap-3">
-          <Image
-            src="/icon/navbar/search.svg"
-            alt="Search Logo"
-            width={24}
-            height={24}
-            priority
+
+        <div className="flex gap-8 mt-3">
+
+          <div className="flex gap-4">
+            <Image
+              src="/icon/navbar/search.svg"
+              alt="Search Logo"
+              width={24}
+              height={24}
             />
-  
-          <Image
-            src="/icon/navbar/shopping_cart.svg"
-            alt="Sopping_cart Logo"
-            width={24}
-            height={24}
-            priority
+
+            <Image
+              src="/icon/navbar/shopping_cart.svg"
+              alt="Sopping_cart Logo"
+              width={24}
+              height={24}
             />
-            </div>
-            
-          <div className="text-[#008000] border-solid border-2 border-[#008000] rounded-[12px] m-2"><Link className="flex py-1.5 px-3 no-underline text-[#008000] " href="/">ورود | ثبت نام</Link></div>
+          </div>
+
+          <div className="border-solid border-[1px] border-[#008000] rounded-[12px]">
+            <Link className="text-[#008000] flex py-2 px-[14px]" href="/">ورود | ثبت نام</Link>
+          </div>
+
         </div>
+
       </div>
     </div>
   );
