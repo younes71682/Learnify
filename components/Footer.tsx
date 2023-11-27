@@ -4,24 +4,25 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='flex flex-col gap-y-[51px]'>
+    <div className='flex flex-col gap-[51px]'>
 
-      <div>
+      <div className='flex mx-auto'>
         <Image
           src="/icon/footer/linear_gradient.svg"
           alt='Linear_Gradient'
           width={1440}
           height={2}
-          className='flex mx-auto'
+          className=''
         />
       </div>
 
-      <div className='flex flex-col mx-[11.5rem]'>
+      <div className='flex flex-col justify-center px-[200px] '>
 
         <div className='flex justify-between'>
 
-          <div><img src='/images/Rectangle.png' className='w-[13rem] h-[7rem]' /></div>
-          <div className='flex justify-between gap-10'>
+          <img src='/images/Rectangle.png' className='w-[206px] h-[110px]' />
+
+          <div className='flex gap-10'>
             <Image
               src="/icon/footer/instagram.svg"
               alt='Instagram'
@@ -43,35 +44,36 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='flex justify-between text-[#484848]'>
+        <div className='flex justify-between items-start text-[#484848] '>
 
-          <div className='flex flex-col gap-y-[1.5rem]'>
-            <h3 className='text-[1.125rem] font-bold leading-6'>درباره لرنیفای</h3>
-            <p className='w-[19.3rem] font-normal leading-6'>ما در لرنیفای‌به ایجاد محیطی‌اشتیاق‌آور برای یادگیری اعتقاد داریم.  هدف ما توانمندی شما در یادگیری و تسلط بر مهارت‌های جدید است. </p>
+          <div className='flex flex-col gap-[1.5rem] pr-6'>
+            <h3 className='text-[1.125rem] font-bold'>درباره لرنیفای</h3>
+            <p className='w-[19.3rem] font-normal'>ما در لرنیفای‌به ایجاد محیطی‌اشتیاق‌آور برای یادگیری اعتقاد داریم.  هدف ما توانمندی شما در یادگیری و تسلط بر مهارت‌های جدید است. </p>
           </div>
 
           <div>
-            <ul className='flex flex-col gap-y-[1.5rem]'>
+            <ul className='flex flex-col gap-[1.5rem]'>
               <h3 className='text-[1.125rem] font-bold'>بخش های سایت</h3>
-              <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">تدریس کنید</Link></li>
-              <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">درباره ماه</Link></li>
-              <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">بلاگ</Link></li>
+              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">تدریس کنید</Link></li>
+              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">درباره ماه</Link></li>
+              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">بلاگ</Link></li>
             </ul>
           </div>
 
-          <div className='flex justify-between gap-24'>
+          <div className='flex items-end gap-48'>
+
             <div>
-              <ul className='flex flex-col gap-y-[1.5rem]'>
+              <ul className='flex flex-col gap-[1.5rem]'>
                 <h3 className='text-[1.125rem] font-bold'>ارتباط با ما </h3>
-                <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>آیدی تلگرام:</p></li>
-                <li className='flex gap-2 font-medium'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>شماره تماس:</p></li>
+                <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>آیدی تلگرام:</p></li>
+                <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>شماره تماس:</p></li>
               </ul>
             </div>
             
             <div>
-              <ul className='flex flex-col items-end gap-y-[1.5rem] mt-[3rem]'>
-                <li><Link className='font-normal text-[14px] ' href="/">LEARNIFY_IR@</Link></li>
-                <li><Link className='font-normal text-[14px]' href="/">learnify@gmail.com</Link></li>
+              <ul className='flex flex-col items-end gap-[1.5rem] text-[14px]'>
+                <li><Link href="/">LEARNIFY_IR@</Link></li>
+                <li><Link href="/">learnify@gmail.com</Link></li>
               </ul>
             </div>
 

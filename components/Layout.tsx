@@ -1,5 +1,5 @@
-import Navbar from "./Navbar";
-// import Footer from "./Footer";
+// import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 type ContainerProps = AppProps & {
     children: React.ReactNode;
@@ -8,9 +8,9 @@ type ContainerProps = AppProps & {
 const Layout = (props: ContainerProps) => {
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             {props.children}
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };
