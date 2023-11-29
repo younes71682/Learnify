@@ -5,7 +5,7 @@ const Section_2 = () => {
 
     const informatin = [
         { id: 1, name: 'طراحی', number: '12 دوره', logo: <img src='/images/dropdown/graphic_design.png' className='w-[48px]' /> },
-        { id: 2, name: 'امنیت شبکه', number: '12 دوره', logo: <img src='/images/dropdown/cyber_security.png' className='w-[48px]' /> },
+        { id: 2, name: 'امنیت شبکه', number: '12 دوره', logo: <img src='/images/dropdown/cyber_security.png' className='w-[48px] rounded-full   ' /> },
         { id: 3, name: 'برنامه نویسی', number: '12 دوره', logo: <img src='/images/dropdown/custom_coding.png' className='w-[48px]' /> },
         { id: 4, name: 'فیلم وانیمیشن', number: '12 دوره', logo: <img src='/images/dropdown/movie.png' className='w-[48px]' /> },
         { id: 5, name: 'توسع وب', number: '12 دوره', logo: <img src='/images/dropdown/browser.png' className='w-[48px]' /> },
