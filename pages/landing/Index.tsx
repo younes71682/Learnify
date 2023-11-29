@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from "framer-motion"
 import Section_1 from '@/components/Section_1'
 import Section_2 from '@/components/Section_2'
+import LogoMotion from '@/components/LogoMotion'
 
 
 
@@ -14,30 +15,7 @@ const index = () => {
       <div className='flex'>
 
         <div className='flex flex-col items-end justify-center mx-auto gap-[70px] text-[#484848]'>
-
-          <div className='flex relative right-36'>
-            <motion.div
-              animate={{ x: 100 }}
-              transition={{ type: "spring", stiffness: 100 }}
-            >
-              <div className='flex gap-36 font-[1000] text-5xl z-10 top-0 right-0'>
-                <h1>لحظه‌ای برای </h1>
-                <h1>تاثیری برای</h1>
-              </div>
-            </motion.div>
-            {/* <div className='flex w-full gap-36 font-[1000] text-5xl text-[#484848] absolute z-10 top-0 right-0'> */}
-
-            {/* <motion.div
-            animate={true}
-            transition={{ ease: "easeOut", duration: 2 }}
-          >
-            <div className='flex gap-56 font-[1000] text-5xl text-[#339933]'>
-              <h1>یادگیری،</h1>
-              <h1>همیشه!</h1>
-            </div>
-          </motion.div> */}
-          </div>
-
+          <LogoMotion />
           <div className='flex text-2xl w-[482px]'>
             <p>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید</p>
           </div>
@@ -59,7 +37,7 @@ const index = () => {
 
       </div>
 
-      
+
       <Section_1 />
 
 
