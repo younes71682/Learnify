@@ -16,7 +16,7 @@ const Footer = () => {
         />
       </div>
 
-      <div className='flex flex-col justify-center px-[200px] '>
+      <div className='flex flex-col justify-center px-[190px] '>
 
         <div className='flex justify-between'>
 

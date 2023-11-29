@@ -1,4 +1,4 @@
-// import Navbar from "./Navbar";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 type ContainerProps = AppProps & {
@@ -8,7 +8,7 @@ type ContainerProps = AppProps & {
 const Layout = (props: ContainerProps) => {
     return (
         <div>
-            {/* <Navbar /> */}
+            <Navbar />
             {props.children}
             <Footer />
         </div>
