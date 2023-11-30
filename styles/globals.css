@@ -58,7 +58,7 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-*{
+body{
   direction: rtl;
-  font-family: "YekanBakh-Regular";
+  font-family: "YekanBakh-Medium";
 }

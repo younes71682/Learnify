@@ -41,9 +41,25 @@ const index = () => {
       <Section_1 />
 
 
-      <div className='flex justify-center mx-auto pb-11 pt-28'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
+      <div className='flex justify-center mx-auto pb-11 pt-28 font-[500] tracking-widest	'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
       <Section_2 />
 
+      <div className='w-[1168] h-[289] bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl mx-16  '>
+
+        <div className='flex justify-between py-16 relative z-10 p-14'>
+
+          <div className='flex flex-col items-start'>
+            <h2 className='font-YekanBakhBold text-[40px]'>از تدریس به درآمد</h2>
+            <p className='font-YekanBakhBold text-[24px]'> با اشتراک‌گذاری دانشتان در لرنیفای پاداش ببرید.</p>
+            <div className='bg-[#CCAB6C] text-2xl py-3 px-4 rounded-xl'>مشاهده شرایط</div>
+          </div>
+
+           <img className='absolute left-[115px] bottom-[100px] z-20 w-[243px] h-[229]' src='/images/home_page/elementary_school_teacher_teaching.png' alt='Elementary_School_Teacher_Teaching' />
+          <img className='absolute left-[76px] top-[135px] z-30 w-[202px] h-[205px]' src='/images/home_page/man_with_headset_having_video_call.png' alt='Man_With_Headset_Having_Video_Call' />
+          <img className='absolute left-[236px] top-[120px] z-10 w-[225px] h-[220px]' src='/images/home_page/medium_shot_woman_presenting.png' alt='Medium_Shot_Woman_Presenting' />
+ 
+        </div>
+      </div>
     </div>
 
   )
