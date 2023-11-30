@@ -19,7 +19,6 @@ const Section_2 = () => {
         <div className='flex flex-wrap justify-center mx-auto'>
             {informatin.map((item) => {
                 return (
-
                     <div className='mx-16 my-8 border-solid border-2 border-[#008000] rounded-[15px] w-44 h-[108px] hover:bg-[#008000] hover:text-white'>
                         <div className='flex flex-col justify-between items-center relative bottom-8 gap-3'>
                             <div className=' bg-white rounded-full p-2'>{item.logo}</div>

@@ -12,7 +12,7 @@ const LogoMotion = () => {
 
 
     return (
-        <div   className='flex relative right-[-460px]' >
+        <div className='flex relative right-[-460px]' >
             <div data-aos='fade-right' className='flex gap-24 font-[900] text-5xl absolute z-10 top-0 right-0'>
                 <div className='w-72 '>لحظه‌ای برای </div>
                 <h1 className='w-72'>تاثیری برای</h1>
