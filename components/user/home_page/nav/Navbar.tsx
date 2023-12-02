@@ -11,7 +11,7 @@ const Navbar = () => {
 
         <div className="flex gap-8">
 
-          <img className="w-[186px] h-[86px] mt-[5px]" src='/images/Rectangle.png' />
+          <img className="w-[186px] h-[86px] mt-[5px]" src='/images/global/Rectangle.png' />
 
           <div>
             <ul className="flex gap-8 mt-[42px]">
@@ -27,14 +27,14 @@ const Navbar = () => {
 
           <div className="flex gap-4">
             <Image
-              src="/icon/navbar/search.svg"
+              src="/icon/user/home_page/navbar/search.svg"
               alt="Search Logo"
               width={24}
               height={24}
             />
 
             <Image
-              src="/icon/navbar/shopping_cart.svg"
+              src="/icon/user/home_page/navbar/shopping_cart.svg"
               alt="Sopping_cart Logo"
               width={24}
               height={24}
