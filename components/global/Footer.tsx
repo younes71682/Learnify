@@ -4,7 +4,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='flex flex-col gap-[51px]'>
+    <div className='flex flex-col gap-[51px] mb-[101px]'>
 
       <div className='flex mx-auto'>
         <Image
@@ -12,7 +12,6 @@ const Footer = () => {
           alt='Linear_Gradient'
           width={1440}
           height={2}
-          className=''
         />
       </div>
 
@@ -20,7 +19,7 @@ const Footer = () => {
 
         <div className='flex justify-between'>
 
-          <img src='/images/Rectangle.png' className='w-[206px] h-[110px]' />
+          <img src='/images/global/Rectangle.png' className='w-[206px] h-[110px]' />
 
           <div className='flex gap-10'>
             <Image

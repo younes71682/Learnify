@@ -1,15 +1,15 @@
 import '@/styles/globals.css'
- import 'flowbite';
-import Layout from '@/components/Layout'
- import type { AppProps } from 'next/app'
+import 'flowbite';
+import type { AppProps } from 'next/app'
+import Layout from '@/components/Layout';
  
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-   )
+   const showSidbar = false
+   return (
+          <Layout>
+            <Component {...pageProps} />
+         </Layout>
+    )
 }
 
