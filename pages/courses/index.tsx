@@ -1,4 +1,4 @@
-import CourseComponent from '@/components/courseDetail'
+import CourseDetail from '@/components/courseDetail'
 import React from 'react'
 
 export default function courses() {
@@ -7,11 +7,11 @@ export default function courses() {
 
     return (
         <div className='bg-[#FBFBFB] '>
-            <div className=' font-YekanBakhRegular px-[136px] mt-[160px]'>
+            <div className='bg-[#FBFBFB] font-YekanBakhRegular px-[136px] mt-[15px] pt-[145px]'>
                 <div className='text-[#484848] text-[24px] font-bold leading-[27.5px] mb-[2px]'>دوره های آموزشی برنامه نویسی</div>
                 <div className='text-[#858585] text-[16px] font-medium leading-[27.5px]'>دوره ببین، تمرین کن، پیشرفت کن</div>
             </div>
-            <div className='px-[136px] pb-[4rem] mt-[24px]  flex justify-between '>
+            <div className='px-[136px] bg-[#FBFBFB] pb-[4rem] mt-[24px]  flex justify-between '>
                 {/* right section */}
                 <div className=' '>
                     {/* نوع دوره */}
@@ -19,14 +19,14 @@ export default function courses() {
                         <p className='text-16 font-bold leading-16 tracking-tight text-right text-[#484848]'>نوع دوره </p>
                         <div className='mb-[14px] justify-between mt-[24px] border flex items-center'>
                             <div className='flex'>
-                                <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
+                                <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="radio" name='free1' />
                                 <p className='mx-[7px] text-[#4F4F4F] font-medium'>رایگان</p>
                             </div>
                             <p className='text-[#858585]'>17</p>
                         </div>
                         <div className='flex justify-between mb-[23px] border'>
                             <div className='flex'>
-                                <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
+                                <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="radio" name='free1' />
                                 <p className='mx-[7px] text-[#4F4F4F] font-medium'>پولی</p>
                             </div>
                             <p className='text-[#858585]'>87</p>
@@ -88,8 +88,7 @@ export default function courses() {
                         </div>
                     </div>
                 </div>
-                {/* left section */}
-                <CourseComponent />
+                <CourseDetail />
             </div>
         </div>
     )
