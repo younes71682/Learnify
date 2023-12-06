@@ -29,7 +29,7 @@ const Sidbar = () => {
         return (
           <div key={item.id} >
             <ul className='flex'>
-              <li className='flex items-center gap-6 py-3'>{item.icon}<Link href={`/profile/${item.id}`}>{item.title}</Link></li>
+              <li className='flex items-center gap-6 py-3'>{item.icon}<Link href={`/profile/${item.pathname}`}>{item.title}</Link></li>
              </ul>
           </div>
         )

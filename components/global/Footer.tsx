@@ -7,11 +7,9 @@ const Footer = () => {
     <div className='flex flex-col gap-[51px] mb-[101px]'>
 
       <div className='flex mx-auto'>
-        <Image
+        <img
           src="/icon/footer/linear_gradient.svg"
           alt='Linear_Gradient'
-          width={1440}
-          height={2}
         />
       </div>
 
@@ -22,23 +20,17 @@ const Footer = () => {
           <img src='/images/global/Rectangle.png' className='w-[206px] h-[110px]' />
 
           <div className='flex gap-10'>
-            <Image
+            <img
               src="/icon/footer/instagram.svg"
               alt='Instagram'
-              width={24}
-              height={24}
             />
-            <Image
+            <img
               src="/icon/footer/twitter.svg"
               alt='Twitter'
-              width={24}
-              height={24}
             />
-            <Image
+            <img
               src="/icon/footer/linkedin.svg"
               alt='Linkedin'
-              width={24}
-              height={24}
             />
           </div>
         </div>
@@ -53,9 +45,9 @@ const Footer = () => {
           <div>
             <ul className='flex flex-col gap-[1.5rem]'>
               <h3 className='text-[1.125rem] font-bold'>بخش های سایت</h3>
-              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">تدریس کنید</Link></li>
-              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">درباره ماه</Link></li>
-              <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><Link href="/">بلاگ</Link></li>
+              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">تدریس کنید</Link></li>
+              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">درباره ماه</Link></li>
+              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">بلاگ</Link></li>
             </ul>
           </div>
 
@@ -64,11 +56,11 @@ const Footer = () => {
             <div>
               <ul className='flex flex-col gap-[1.5rem]'>
                 <h3 className='text-[1.125rem] font-bold'>ارتباط با ما </h3>
-                <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>آیدی تلگرام:</p></li>
-                <li className='flex gap-2'><Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} /><p>شماره تماس:</p></li>
+                <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>آیدی تلگرام:</p></li>
+                <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>شماره تماس:</p></li>
               </ul>
             </div>
-            
+
             <div>
               <ul className='flex flex-col items-end gap-[1.5rem] text-[14px]'>
                 <li><Link href="/">LEARNIFY_IR@</Link></li>
@@ -86,21 +78,3 @@ const Footer = () => {
 
 export default Footer
 
-
-{/* <ul className='flex flex-col gap-y-[1.5rem]'>
-<h3 className='text-[1.125rem] font-bold'>ارتباط با ما </h3>
-<li className='flex'>
-  <Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} />
-  <div className='flex justify-between m-a'>
-  <p className='font-medium'>آیدی تلگرام:</p>
-  <Link className='font-normal' href="/">@LEARNIFY_IR</Link>
-  </div>
-</li>
-<li className='flex'>
-  <Image src='/icon/footer/point.svg' alt='Point' width={4} height={4} />
-  <div className='flex justify-between'>
-  <p className='font-medium'>شماره تماس:</p>
-  <Link className='font-normal' href="/">learnify@gmail.com</Link>
-  </div>
-</li>
-</ul> */}

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+ import Link from "next/link";
 import Dropdown from "./Dropdown";
 
 
@@ -26,18 +25,14 @@ const Navbar = () => {
         <div className="flex gap-8 mt-3">
 
           <div className="flex gap-4">
-            <Image
+            <img
               src="/icon/user/home_page/navbar/search.svg"
-              alt="Search Logo"
-              width={24}
-              height={24}
+              alt="Search"
             />
 
-            <Image
+            <img
               src="/icon/user/home_page/navbar/shopping_cart.svg"
               alt="Sopping_cart Logo"
-              width={24}
-              height={24}
             />
           </div>
 
