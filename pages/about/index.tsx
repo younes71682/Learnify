@@ -9,11 +9,6 @@ const index = () => {
             <Header />
 
 
-
-
-
-
-
             <div className='flex flex-col items-center mb-[177px] gap-[55px]'>
                 <div>
                     <h2 className='text-[#87B9D5] text-5xl font-YekanBakhFat'>چرا لرنیفای؟</h2>

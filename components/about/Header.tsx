@@ -5,8 +5,8 @@ const Header = () => {
         <div>
 
             <div className='flex mb-[177px]'>
-                <div className='flex flex-col justify-between flex-1 my-[102px] pr-[110px]'>
-                    <div className='flex flex-col gap-10 w-[89%]'>
+                <div className='flex flex-col justify-between flex-1 my-[102px] pr-[112px]'>
+                    <div className='flex flex-col gap-10 w-[90%]'>
                         <div className='flex relative left-7'>
                             <div className='flex'>
                                 <div className='bg-[#135794] rounded-full opacity-[0.2] w-[21px] h-[21px]' />
@@ -21,7 +21,7 @@ const Header = () => {
                         </p>
                     </div>
 
-                    <div className='flex flex-col gap-10 w-[89%]'>
+                    <div className='flex flex-col gap-10 w-[90%]'>
                         <div className='flex relative left-7'>
                             <div className='flex'>
                                 <div className='bg-[#D58787] rounded-full opacity-[0.2] w-[21px] h-[21px]' />
@@ -38,7 +38,7 @@ const Header = () => {
                 </div>
 
 
-                <div className='flex flex-1 justify-center relative'>
+                <div className='flex flex-1 justify-center relative pl-6'>
                     <div className='bg-gradient-to-r from-[#BB27FF] to-[#FFFA7E] opacity-[0.2] blur-2xl  w-full h-full absolute -z-10 left-0 top-0'/>
                     <div className='flex items-center gap-10 mt-6'>
                         <div className='flex flex-col gap-[30px]'>
