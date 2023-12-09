@@ -2,7 +2,11 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import courseData from '../api/course/courseData.json'
 
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const CourseDetail = () => {
 
@@ -57,7 +61,7 @@ export const CourseDetail = () => {
                             <p className='mr-1 text-lg font-bold text-[#484848]'>درباره استاد</p>
                         </div>
                         <div className='flex mb-4 pt-6'>
-                            <img className='' src="/images/mentor.png" alt="" />
+                            <img src="/images/mentor.png" alt="" />
                             <div className='mr-2'>
                                 <p className='font-bold text-base'>سمیه مهاجری نسب پاریزی</p>
                                 <p className='font-normal text-sm mt-[5px]'>مدرس طراحی گرافیکی</p>
@@ -75,23 +79,38 @@ export const CourseDetail = () => {
                             </svg>
                             <p className='font-bold text-xl text-[#484848] mr-1 '>سر فصل های دوره</p>
                         </div>
-                        {courseData.course.chapters.map((item) => {
+                        {courseData.course.chapters.map((item, i) => {
                             return (
-                                <div className='border'>
-                                    {item.title}
-                                    {item.lessons.map((item)=>{
-                                        return(
-                                            <div>
-                                                {item.title}
+                                <Accordion className='my-4 border-0 rounded-lg p-2 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] '>
+
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography className='font-YekanBakhRegular font-bold text-lg' >
+                                            <div className='flex'>
+                                                <div className='ml-6'>{i + 1}</div>
+                                                <div>{item.title}</div>
                                             </div>
-                                        )
-                                    })}
-                                </div>
+                                        </Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        {item.lessons.map((item, i) => {
+                                            return (
+                                                <Typography className='my-2 font-YekanBakhRegular shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  font-bold text-sm w-[92%] flex items-center h-[50px] mx-auto'>
+                                                    <div className='flex '>
+                                                        <div className='mx-6'>{i + 1}</div>
+                                                        <div>{item.title}</div>
+                                                    </div>
+                                                </Typography>
+                                            )
+                                        })}
+                                    </AccordionDetails>
+                                </Accordion>
                             )
                         })}
-                        <div className='border'>
-                            chapter
-                        </div>
+
                     </div>
                 </div>
                 {/* left section div */}

@@ -16,14 +16,14 @@
             {
                 "id": 1,
                 "course_id": 1,
-                "title": "chapter1",
+                "title": "قالب ورد پرس",
                 "created_at": "2023-12-07T23:13:26.000000Z",
                 "updated_at": "2023-12-07T23:13:26.000000Z",
                 "lessons": [
                     {
                         "id": 1,
                         "chapter_id": 1,
-                        "title": "nkl",
+                        "title": "معرفی دوره",
                         "time": 12,
                         "visibility": "true",
                         "video_id": 1,
@@ -33,7 +33,7 @@
                     {
                         "id": 2,
                         "chapter_id": 1,
-                        "title": "sdvv",
+                        "title": "انواع روش های نصب قالب چیست",
                         "time": 5,
                         "visibility": "true",
                         "video_id": 2,
