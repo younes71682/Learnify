@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import Header_id from '@/components/blog/Header_id'
-import Sidebar_id from '@/components/blog/Sidebar_id'
 import { title } from 'process'
 
 const a = () => {
@@ -15,7 +14,7 @@ const a = () => {
 
   const refid = useRef(null)
  
-  const handleTarget = (ref) => {
+  const handleTarget = (ref:any) => {
     ref.current.scrollIntoView({ behavior: 'smooth' })
   }
   console.log(refid)

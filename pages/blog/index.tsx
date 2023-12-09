@@ -1,8 +1,7 @@
 import Header from '@/components/blog/Header'
 import Link from 'next/link'
 import React from 'react'
-import A from './A'
-
+ 
 const index = () => {
 
   const blog = [
@@ -49,8 +48,7 @@ const index = () => {
         })}
       </div>
 
-      <A/>
-
+ 
     </div >
   )
 }
