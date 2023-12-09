@@ -31,10 +31,13 @@ const CourseComponent = (props: any) => {
                         </div>
                     </div>
                 </div>
-                <div className='border-t'>
+                <div className='border-t group  '>
                     <div className=' mt-0 h-[56px] flex gap-1 justify-center items-center hover:scale-[1.15] hover:text-[#4e914e] transition duration-150 ease-in-out hover:cursor-pointer text-[#484848] text-sm font-bold'>
                         <p>مشاهده اطلاعات دوره</p>
-                        <img src="/icon/user/home_page/course/leftArrow.svg" alt="left arrow" />
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='group-hover:stroke-[#4e914e]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M19.9999 12H5.66992" stroke="#000" strokeWidth="1.5" strokeMiterlimit="10" className='group-hover:stroke-[#4e914e]' strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                     </div>
                 </div>
             </div>

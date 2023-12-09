@@ -1,0 +1,50 @@
+{
+    "Course": {
+        "id": 1,
+        "title": "laravel sail",
+        "description": "در دوره پیشرفته می‌خواهیم نیرو های حرفه ای وردپرس کاری آماده کنیم که بتوانند هر سایت وردپرسی با هر چالشی را طراحی کنند.دوره آموزش پیشرفته وردپرس قدم دوم از مسیریادگیری آموزش وردپرس  است که اگر شما قصد یادگیری وردپرس را دارید نیاز است که این قدم را ، به شکل کامل و دقیق مشاهده کنید",
+        "image": "url",
+        "teaser": "url",
+        "chapters": [
+            {
+                "chapter_id": 1,
+                "lessons": [
+                    {
+                        "description": "...",
+                        "time": 60,
+                        "See": "true",
+                        "url": "url"
+                    },
+                    {
+                        "description": "...",
+                        "time": 60,
+                        "See": "true",
+                        "url": "url"
+                    }
+                ]
+            },
+            {
+                "chapter_id": 2,
+                "lessons": [
+                    {
+                        "description": "...",
+                        "time": 60,
+                        "See": "true",
+                        "url": "url"
+                    },
+                    {
+                        "description": "...",
+                        "time": 60,
+                        "See": "true",
+                        "url": "url"
+                    }
+                ]
+            }
+        ],
+        "category": "laravel",
+        "Price": 1500000,
+        "status": "inactive",
+        "created_at": "2023-10-07T10:54:07.000000Z",
+        "updated_at": "2023-10-07T12:49:25.000000Z"
+    }
+}
