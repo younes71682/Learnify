@@ -20,7 +20,7 @@ const Categories = () => {
             {informatin.map((item) => {
                 return (
 
-                    <div className='mx-12 my-8 border-solid border-[#008000] border-2 rounded-[15px] w-44 h-[108px] hover:text-white hover:shadow-[inset_0_-10rem] hover:shadow-[#008000] duration-[400ms,900ms] transition-[color,box-shadow]'>
+                    <div className='mx-12 my-8 border-solid border-[#008000] border-2 rounded-[15px] w-44 h-[108px] hover:text-white hover:shadow-[inset_0_-10rem] hover:shadow-[#008000] duration-[700ms,700ms] transition-[color,box-shadow]'>
                         <div className='flex flex-col items-center'>
 
                             <div className='bg-white rounded-full p-2 relative bottom-8'>{item.logo}</div>

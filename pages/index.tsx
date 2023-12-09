@@ -23,7 +23,6 @@ export default function Home() {
             </div>
           </div>
 
-
           <div className='relative'>
             <img className='mt-8' src='/images/user/home_page/header/header.png' alt='Header' />
             <div className='absolute -z-10 top-[100px] left-0'>
@@ -32,16 +31,12 @@ export default function Home() {
             </div>
           </div>
 
-
         </div>
-
 
         <Services />
 
-
         <div className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
         <Categories />
-
 
         <div className='bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl mx-[136px] mt-24  '>
 
@@ -65,6 +60,5 @@ export default function Home() {
         <Accordion />
       </div>
  
-
   )
 }
