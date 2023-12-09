@@ -9,7 +9,7 @@ const Accordion = () => {
     ]
     const [selected, setSelected] = useState(null)
 
-    const handleclick = (index) => {
+    const handleclick = (index:any) => {
         setSelected(selected === index ? null : index)
     }
 

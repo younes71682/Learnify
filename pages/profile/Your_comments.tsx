@@ -4,9 +4,7 @@ import React from 'react'
 const Your_comments = () => {
   return (
     <div>
-      <Layout Sidbar={true}>
-
-      </Layout>
+ 
     </div>
   )
 }

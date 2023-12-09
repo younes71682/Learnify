@@ -3,7 +3,7 @@ import Sidebar from "./user/Account/Sidbar";
 import Navbar from "./user/home_page/nav/Navbar";
 
 
-type ContainerProps = AppProps & {
+type ContainerProps = {
     children: React.ReactNode;
 };
   
