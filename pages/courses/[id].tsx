@@ -7,6 +7,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { flushAllTraces } from 'next/dist/trace';
 
 export const CourseDetail = () => {
 
@@ -98,7 +99,7 @@ export const CourseDetail = () => {
                                     <AccordionDetails>
                                         {item.lessons.map((item, i) => {
                                             return (
-                                                <Typography className='my-2 font-YekanBakhRegular shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  font-bold text-sm w-[92%] flex items-center h-[50px] mx-auto'>
+                                                <Typography className='my-2  font-YekanBakhRegular shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  font-bold text-sm w-[92%] flex items-center h-[65px] mx-auto'>
                                                     <div className='flex '>
                                                         <div className='mx-6'>{i + 1}</div>
                                                         <div>{item.title}</div>
@@ -112,10 +113,82 @@ export const CourseDetail = () => {
                         })}
 
                     </div>
+                    <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div className='flex justify-between'>
+                            <div className='flex'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17.98 10.79V14.79C17.98 15.05 17.97 15.3 17.94 15.54C17.71 18.24 16.12 19.58 13.19 19.58H12.79C12.54 19.58 12.3 19.7 12.15 19.9L10.95 21.5C10.42 22.21 9.56 22.21 9.03 21.5L7.82999 19.9C7.69999 19.73 7.41 19.58 7.19 19.58H6.79001C3.60001 19.58 2 18.79 2 14.79V10.79C2 7.86001 3.35001 6.27001 6.04001 6.04001C6.28001 6.01001 6.53001 6 6.79001 6H13.19C16.38 6 17.98 7.60001 17.98 10.79Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.98 6.79001V10.79C21.98 13.73 20.63 15.31 17.94 15.54C17.97 15.3 17.98 15.05 17.98 14.79V10.79C17.98 7.60001 16.38 6 13.19 6H6.79004C6.53004 6 6.28004 6.01001 6.04004 6.04001C6.27004 3.35001 7.86004 2 10.79 2H17.19C20.38 2 21.98 3.60001 21.98 6.79001Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M13.4955 13.25H13.5045" stroke="#339933" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M9.9955 13.25H10.0045" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M6.4955 13.25H6.5045" stroke="#339933" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p className='text-xl font-bold text-[#484848] mr-1'>نظرات</p>
+                                <p className='text-[#484848] mr-1'>(120)</p>
+                            </div>
+                        </div>
+                        <div className='bg-[#F8F8F8] rounded-2xl mt-4 px-4 py-2'>
+                            <div className='flex items-center  justify-between'>
+                                <div className='text-[#545454] text-sm  '>
+                                    <div>مرتضی</div>
+                                    <div>1403/7/2</div>
+                                </div>
+                                <div className='flex rounded-md border-2 px-1 h-[18px] border-[#158212]'>
+                                    <span className='text-[#158212] text-xs relative top-[2px]'>4.7</span>
+                                    <span className='flex items-center'>
+                                        <svg className='flex items-center' xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                                            <path d="M6.86447 1.4701L7.74447 2.94441C7.86447 3.14964 8.18447 3.3465 8.45447 3.38419L10.0495 3.60618C11.0695 3.74858 11.3095 4.36846 10.5745 4.97996L9.33447 6.01868C9.12447 6.19459 9.00947 6.53385 9.07447 6.77678L9.42947 8.06261C9.70947 9.08039 9.06447 9.4741 7.98947 8.94217L6.49447 8.20083C6.22447 8.0668 5.77947 8.0668 5.50447 8.20083L4.00947 8.94217C2.93947 9.4741 2.28947 9.0762 2.56947 8.06261L2.92447 6.77678C2.98947 6.53385 2.87447 6.19459 2.66447 6.01868L1.42447 4.97996C0.694466 4.36846 0.929466 3.74858 1.94947 3.60618L3.54447 3.38419C3.80947 3.3465 4.12947 3.14964 4.24947 2.94441L5.12947 1.4701C5.60947 0.670122 6.38947 0.670122 6.86447 1.4701Z" fill="#008000" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p className='mt-4'>
+                                خیلی راضی بودم از کار ایشون، بسیار از پایه می گفتن و بیان شیوایی هم داشتن.
+                            </p>
+                            <div className='mt-7 p-4 mr-12 w-fit border rounded-lg text-sm border-black '>
+                                همراه عزیز؛ از اینکه نظر خود را با ما در میان گذاشتید صمیمانه سپاسگزاریم.
+                            </div>
+                        </div>
+                    </div>
+                    <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div className='flex '>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M14.9 2H9.10001C8.42001 2 7.46 2.4 6.98 2.88L2.88 6.98001C2.4 7.46001 2 8.42001 2 9.10001V14.9C2 15.58 2.4 16.54 2.88 17.02L6.98 21.12C7.46 21.6 8.42001 22 9.10001 22H14.9C15.58 22 16.54 21.6 17.02 21.12L21.12 17.02C21.6 16.54 22 15.58 22 14.9V9.10001C22 8.42001 21.6 7.46001 21.12 6.98001L17.02 2.88C16.54 2.4 15.58 2 14.9 2Z" stroke="#D10000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4.94043 19.0804L19.0804 4.94043" stroke="#D10000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <p className='text-xl font-bold text-[#D10000] mr-1'>گزارش</p>
+                        </div>
+                        <input type="text" className='mt-3' style={{ width: '60%', borderRadius: "6px" }} placeholder='لطفاً هر مشکل، نظر یا پیشنهادی که دارید را با ما به اشتراک بگذارید' />
+                    </div>
                 </div>
                 {/* left section div */}
-                <div className='w-[374px] border border-red-500'>
-                    left sec
+                <div className='w-[374px] '>
+                    <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] border-blue-500'>
+                        <div>
+                            <img src="/images/videoSample.png" alt="" />
+                        </div>
+                        <div className='px-4 font-bold text-sm'>
+                            <p className='pt-[2rem]  pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</p>
+                            <div className='flex my-4  justify-between'>
+                                <div>تعداد فصل</div>
+                                <div className='font-normal text-[#494949]'>5</div>
+                            </div>
+                            <div className='flex my-4 justify-between'>
+                                <div>تعداد درس</div>
+                                <div className='font-normal text-[#494949]'>3</div>
+                            </div>
+                            <div className='flex my-4 justify-between'>
+                                <div>مدت زمان ویدیو آموزشی</div>
+                                <div className='font-normal text-[#494949]'>5 ساعت و 30 دقیقه</div>
+                            </div>
+
+                            <div className='flex mt-8 justify-between'>
+                                <div className='text-base'>هزینه آموزش</div>
+                                <div className='font-bold text-xl text-[#393] '>2,690,000 تومان</div>
+                            </div>
+                        </div>
+                        <div className='border text-center text-[#393] text-xl font-bold py-3 mt-5'>افزودن به سبد خرید</div>
+                    </div>
                 </div>
             </div>
             {/* other courses from this mentor div */}
