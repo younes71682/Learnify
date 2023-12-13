@@ -1,50 +1,148 @@
 {
-    "Course": {
+    "course": {
         "id": 1,
-        "title": "laravel sail",
-        "description": "در دوره پیشرفته می‌خواهیم نیرو های حرفه ای وردپرس کاری آماده کنیم که بتوانند هر سایت وردپرسی با هر چالشی را طراحی کنند.دوره آموزش پیشرفته وردپرس قدم دوم از مسیریادگیری آموزش وردپرس  است که اگر شما قصد یادگیری وردپرس را دارید نیاز است که این قدم را ، به شکل کامل و دقیق مشاهده کنید",
-        "image": "url",
-        "teaser": "url",
+        "user_id": 1,
+        "title": "Node js",
+        "description": "larawceswsedcvel is vfsw",
+        "image_id": 1,
+        "teaser_id": 1,
+        "category": "programming",
+        "price": 15600000,
+        "status": "Pending",
+        "step": 4,
+        "created_at": "2023-12-07T23:13:17.000000Z",
+        "updated_at": "2023-12-07T23:13:28.000000Z",
         "chapters": [
             {
-                "chapter_id": 1,
+                "id": 1,
+                "course_id": 1,
+                "title": "قالب ورد پرس",
+                "created_at": "2023-12-07T23:13:26.000000Z",
+                "updated_at": "2023-12-07T23:13:26.000000Z",
                 "lessons": [
                     {
-                        "description": "...",
-                        "time": 60,
-                        "See": "true",
-                        "url": "url"
+                        "id": 1,
+                        "chapter_id": 1,
+                        "title": "معرفی دوره",
+                        "time": 12,
+                        "visibility": "true",
+                        "video_id": 1,
+                        "created_at": "2023-12-07T23:13:26.000000Z",
+                        "updated_at": "2023-12-07T23:13:26.000000Z"
                     },
                     {
-                        "description": "...",
-                        "time": 60,
-                        "See": "true",
-                        "url": "url"
+                        "id": 2,
+                        "chapter_id": 1,
+                        "title": "انواع روش های نصب قالب چیست",
+                        "time": 5,
+                        "visibility": "true",
+                        "video_id": 2,
+                        "created_at": "2023-12-07T23:13:26.000000Z",
+                        "updated_at": "2023-12-07T23:15:24.000000Z"
                     }
                 ]
             },
             {
-                "chapter_id": 2,
+                "id": 2,
+                "course_id": 1,
+                "title": "chapter2",
+                "created_at": "2023-12-07T23:13:26.000000Z",
+                "updated_at": "2023-12-07T23:13:26.000000Z",
                 "lessons": [
                     {
-                        "description": "...",
-                        "time": 60,
-                        "See": "true",
-                        "url": "url"
+                        "id": 3,
+                        "chapter_id": 2,
+                        "title": "wrver",
+                        "time": 5,
+                        "visibility": "true",
+                        "video_id": 3,
+                        "created_at": "2023-12-07T23:13:26.000000Z",
+                        "updated_at": "2023-12-07T23:15:24.000000Z"
                     },
                     {
-                        "description": "...",
-                        "time": 60,
-                        "See": "true",
-                        "url": "url"
+                        "id": 4,
+                        "chapter_id": 2,
+                        "title": "ervre",
+                        "time": 5,
+                        "visibility": "true",
+                        "video_id": 4,
+                        "created_at": "2023-12-07T23:13:26.000000Z",
+                        "updated_at": "2023-12-07T23:15:24.000000Z"
                     }
                 ]
             }
-        ],
-        "category": "laravel",
-        "Price": 1500000,
-        "status": "inactive",
-        "created_at": "2023-10-07T10:54:07.000000Z",
-        "updated_at": "2023-10-07T12:49:25.000000Z"
+        ]
+    },
+    "data": {
+        "mentor": {
+            "id": 1,
+            "name": "ali",
+            "family": "rezazade",
+            "email": "AliAhmmadi@gmail.com",
+            "email_verified_at": null,
+            "phone_number": "09398542288",
+            "age": 23,
+            "gender": "Male",
+            "university": "Tokyo",
+            "field_of_study": "Power Engine",
+            "educational_stage": "Diploma",
+            "country": "Iran",
+            "state": "Tehran",
+            "created_at": "2023-12-07T22:44:45.000000Z",
+            "updated_at": "2023-12-07T23:02:52.000000Z",
+            "resume": {
+                "id": 1,
+                "user_id": 1,
+                "description": "سلام،من در حال درس دادن هستم.",
+                "created_at": "2023-12-07T22:52:21.000000Z",
+                "updated_at": "2023-12-07T22:52:21.000000Z"
+            }
+        },
+        "mentor_resume": "سلام،من در حال درس دادن هستم.",
+        "chapter_count": 2,
+        "lesson_count": 4,
+        "Course_image": {
+            "0659bfec-83a7-4b9f-b56a-84f5116beed8": {
+                "name": "20231114_183924",
+                "file_name": "20231114_183924.jpg",
+                "uuid": "0659bfec-83a7-4b9f-b56a-84f5116beed8",
+                "preview_url": "",
+                "original_url": "http://localhost/storage/media/6/20231114_183924.jpg",
+                "order": 1,
+                "custom_properties": [],
+                "extension": "jpg",
+                "size": 101637
+            }
+        },
+        "Course_teaser": {
+            "918c7a6c-b488-414c-b1ff-7893315d9b5e": {
+                "name": "messi",
+                "file_name": "messi.mp4",
+                "uuid": "918c7a6c-b488-414c-b1ff-7893315d9b5e",
+                "preview_url": "",
+                "original_url": "http://localhost/storage/media/1/messi.mp4",
+                "order": 1,
+                "custom_properties": [],
+                "extension": "mp4",
+                "size": 833945
+            }
+        },
+        "Lesson_media": {
+            "lesson_id": 4,
+            "media": {
+                "918c7a6c-b488-414c-b1ff-7893315d9b5e": {
+                    "name": "messi",
+                    "file_name": "messi.mp4",
+                    "uuid": "918c7a6c-b488-414c-b1ff-7893315d9b5e",
+                    "preview_url": "",
+                    "original_url": "http://localhost/storage/media/1/messi.mp4",
+                    "order": 1,
+                    "custom_properties": [],
+                    "extension": "mp4",
+                    "size": 833945
+                }
+            },
+            "visibility": "true"
+        }
     }
 }

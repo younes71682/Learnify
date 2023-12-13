@@ -1,11 +1,12 @@
 import Layout from '@/components/Layout'
+import Sidbar from '@/components/user/Account/Sidbar'
 import React from 'react'
 
 const Notification = () => {
   return (
-<div>
-  
-</div>
+    <div>
+      <Sidbar/>
+    </div>
   )
 }
 

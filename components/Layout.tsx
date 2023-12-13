@@ -10,9 +10,9 @@ type ContainerProps = {
 const Layout = (props: ContainerProps) => {
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             {props.children}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };
