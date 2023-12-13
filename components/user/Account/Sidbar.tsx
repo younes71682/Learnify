@@ -17,10 +17,12 @@ const Sidbar = () => {
 
 
   return (
-    <div className='flex flex-col w-[19%] rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] pr-4 pt-8'>
+    <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] pr-4 pl-8 pt-8 mr-3'>
 
       <div className='flex items-center gap-5'>
-        <div className='w-[113px] h-[101px] rounded-[11px] mb-11'><img src='/images/sidebar/prof.png' alt='Prof' /></div>
+        <div className='w-[113px] h-[101px] rounded-[11px] mb-11'>
+          <img src='/images/sidebar/prof.png' alt='Prof' />
+        </div>
         <div className='mb-10'>
           <p className='font-bold'>محمد نصیری</p>
           <p className='text-sm font-normal'>09374143663</p>
