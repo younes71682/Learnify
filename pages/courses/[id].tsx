@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useRouter } from 'next/router'
 import courseData from '../api/course/courseData.json'
 
@@ -7,22 +7,29 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { flushAllTraces } from 'next/dist/trace';
+import CourseComponent from '@/components/CourseComponent';
 
 export const CourseDetail = () => {
 
+    const Courses = [
+        { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 2, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 3, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 4, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+    ];
 
+    
 
     console.log(courseData)
 
     const route = useRouter()
     const routeID = route.query.id
     return (
-        <div className='pr-[134px] pl-[136px] pb-9 '>
+        <div className='pr-[134px] max-[1048px]:px-4 pl-[136px] pb-9 '>
             <h1 className='pt-[4rem] pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</h1>
 
             {/* CourseDetail div */}
-            <div className='flex justify-between '>
+            <div className='flex justify-between flex-wrap gap-1 max-[1418px]:justify-center'>
                 {/* right section div */}
                 <div className='w-[770px]  '>
                     <div className='flex rounded-lg border-[3px] border-[#008000] bg-white p-4 justify-around py-[35px] text-black text-opacity-80 text-center text-lg font-bold leading-4'>
@@ -61,7 +68,7 @@ export const CourseDetail = () => {
                             </svg>
                             <p className='mr-1 text-lg font-bold text-[#484848]'>درباره استاد</p>
                         </div>
-                        <div className='flex mb-4 pt-6'>
+                        <div className=' sm:flex mb-4 pt-6'>
                             <img src="/images/mentor.png" alt="" />
                             <div className='mr-2'>
                                 <p className='font-bold text-base'>سمیه مهاجری نسب پاریزی</p>
@@ -165,7 +172,7 @@ export const CourseDetail = () => {
                 <div className='w-[374px] '>
                     <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] border-blue-500'>
                         <div>
-                            <img src="/images/videoSample.png" alt="" />
+                            <img className='w-[fit]' src="/images/videoSample.png" alt="" />
                         </div>
                         <div className='px-4 font-bold text-sm'>
                             <p className='pt-[2rem]  pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</p>
@@ -190,10 +197,19 @@ export const CourseDetail = () => {
                         <div className='border text-center text-[#393] text-xl font-bold py-3 mt-5'>افزودن به سبد خرید</div>
                     </div>
                 </div>
-            </div>
-            {/* other courses from this mentor div */}
-            <div>
-
+                {/* other courses from this mentor div */}
+            </div >
+            <div className='mt-12'>
+                <p className='text-xl mb-6 font-bold'>دوره های دیگر مدرس</p>
+                <div className='flex flex-wrap  bg-[#FBFBFB]  justify-start gap-6'>
+                    {Courses.map((item) => (
+                        <div key={item.id}>
+                            <CourseComponent
+                                {...item}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
