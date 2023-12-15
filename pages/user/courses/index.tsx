@@ -1,4 +1,4 @@
-import CourseDetail from '@/components/courseDetail'
+ import CourseDetail from '@/components/user/course/courseDetail'
 import React from 'react'
 
 export default function courses() {

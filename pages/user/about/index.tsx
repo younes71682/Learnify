@@ -1,4 +1,4 @@
-import Header from '@/components/about/Header'
+ import Header from '@/components/user/about/Header'
 import Image from 'next/image'
 import React from 'react'
 

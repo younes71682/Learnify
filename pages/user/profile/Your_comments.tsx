@@ -1,5 +1,4 @@
-import Layout from '@/components/Layout'
-import Sidbar from '@/components/user/Account/Sidbar'
+ import Sidbar from '@/components/user/Account/Sidbar'
 import React from 'react'
 
 const Your_comments = () => {

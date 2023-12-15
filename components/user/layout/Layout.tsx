@@ -1,6 +1,7 @@
-import Footer from "./global/Footer";
-import Sidebar from "./user/Account/Sidbar";
-import Navbar from "./user/home_page/nav/Navbar";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+
+ 
 
 
 type ContainerProps = {

@@ -1,8 +1,7 @@
 import React from 'react'
-import CartItems from '@/components/CartItems'
-import Link from 'next/link'
-import Cart_empty from '@/components/Cart_empty'
-
+ import Link from 'next/link'
+import CartItems from '@/components/user/cart/CartItems'
+ 
 
 const index = () => {
 

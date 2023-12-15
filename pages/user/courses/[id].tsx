@@ -7,8 +7,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CourseComponent from '@/components/CourseComponent';
-
+import CourseComponent from '@/components/user/course/CourseComponent';
+ 
 export const CourseDetail = () => {
 
     const Courses = [

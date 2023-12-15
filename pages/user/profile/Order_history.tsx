@@ -1,6 +1,5 @@
-import Date1 from '@/components/global/Date'
-import Date from '@/components/global/Date'
 import Sidbar from '@/components/user/Account/Sidbar'
+import Date from '@/components/user/date/Date'
 
 const order_history = () => {
 

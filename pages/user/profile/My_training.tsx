@@ -1,5 +1,4 @@
-import Layout from '@/components/Layout'
-import Sidbar from '@/components/user/Account/Sidbar'
+ import Sidbar from '@/components/user/Account/Sidbar'
 import React from 'react'
 import { Progress } from 'flowbite-react';
 import ProgressBar from "@ramonak/react-progress-bar";
