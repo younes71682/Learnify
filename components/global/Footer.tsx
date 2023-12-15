@@ -51,7 +51,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className='flex items-end gap-48'>
 
             <div>
               <ul className='flex flex-col gap-[1.5rem]'>
@@ -62,7 +61,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <ul className='flex flex-col items-end gap-[1.5rem] text-[14px]'>
+              <ul className='flex flex-col items-end justify-end gap-[1.5rem] text-[14px] mt-14'>
                 <li><Link href="/">LEARNIFY_IR@</Link></li>
                 <li><Link href="/">learnify@gmail.com</Link></li>
               </ul>
@@ -72,7 +71,6 @@ const Footer = () => {
 
         </div>
       </div>
-    </div>
   )
 }
 

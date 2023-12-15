@@ -17,7 +17,7 @@ const Sidbar = () => {
 
 
   return (
-    <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] pr-4 pl-8 pt-8 mr-3'>
+    <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] pr-4 pl-8 pt-8 mr-3'>
 
       <div className='flex items-center gap-5'>
         <div className='w-[113px] h-[101px] rounded-[11px] mb-11'>
