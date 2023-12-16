@@ -1,6 +1,7 @@
 import React from 'react'
-import Select_province from '@/components/Select_province';
-import Select_city from '@/components/Select_city';
+import Select_province from '../select/Select_province'
+import Select_city from '../select/Select_city'
+ 
 
 const Location = () => {
 

@@ -1,14 +1,14 @@
-import { Inter } from 'next/font/google'
 import React from 'react'
+import { Inter } from 'next/font/google'
+import LogoMotion from '@/components/user/home_page/LogoMotion';
+import Services from '@/components/user/home_page/Services';
+import Categories from '@/components/user/home_page/Categories';
+import CourseComponent from '@/components/user/course/CourseComponent';
+import Accordion from '@/components/user/home_page/Accordion';
+import Best_sellers from '@/components/user/home_page/Best_sellers';
+import Image from 'next/image';
 
-import LogoMotion from '@/components/user/home_page/body/LogoMotion'
-import Services from '@/components/user/home_page/body/Services'
-import Categories from '@/components/user/home_page/body/Categories'
-import Accordion from '@/components/user/home_page/body/Accordion'
-import Layout from '@/components/Layout'
-import Image from 'next/image'
-import CourseComponent from '@/components/CourseComponent'
-import Best_sellers from '@/components/user/home_page/body/Best_sellers'
+
 import { url } from 'inspector'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -52,7 +52,7 @@ export default function Home() {
       <div className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
       <Categories />
 
-       <div className='flex flex-col gap-8 mb-24 mt-8'>
+      <div className='flex flex-col gap-8 mb-24 mt-8'>
         <div className='flex justify-between mx-[175px]'>
           <div className='flex items-center gap-1'>
             <Image src="/icon/user/home_page/course/thoundar.svg" alt='Thoundar' width={24} height={24} />
@@ -124,6 +124,7 @@ export default function Home() {
         </div>
 
         <Best_sellers />
+
       </div>
 
       <div className='mt-16 mb-8 flex justify-center'><h2 className='text-2xl font-bold'>پاسخ به پرسش‌های متداول</h2></div>

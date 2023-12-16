@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { DevTool } from "@hookform/devTools"
 import { useForm } from 'react-hook-form';
-import Select_gender from '@/components/Select_gender';
 
 import Education from './Education';
 import Location from './Location';
 import Favorites from './Favorites';
+import Select_gender from '../select/Select_gender';
 
 
 
@@ -23,7 +23,8 @@ const Info_user = () => {
         defaultValues: {
             username: "یونس",
             phoneNumber: "0993666",
-            email: ""
+            email: "",
+            datebirth: ""
         }
     })
 
@@ -50,7 +51,7 @@ const Info_user = () => {
                         <p className='text-red-500 font-normal text-xs'>{errors.username?.message}</p>
                     </div>
                     <div className='flex flex-col'>
-                        <input {...register("phoneNumber", { required: { value: true, message: "شماره تلفن خود را وارد کنید " }, validate: (fieldValue) => { return (fieldValue === `$[0-9]` || "شماره تلفن معتبر نیست") } })} placeholder='*شماره موبایل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2 ' required />
+                        <input {...register("phoneNumber", { required: { value: true, message: "شماره تلفن خود را وارد کنید " }, })} placeholder='*شماره موبایل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2 ' required />
                         <p className='text-red-500 font-normal text-xs'>{errors.phoneNumber?.message}</p>
                     </div>
                     <div className='flex flex-col'>
@@ -61,9 +62,11 @@ const Info_user = () => {
                         <p className='text-red-500 font-normal text-xs'>{errors.email?.message}</p>
                     </div>
                     <Select_gender />
-                    <input {...register("datebirth")} placeholder='تاریخ تولد' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2' required />
-                    <button>onsubmit</button>
-                    <DevTool control={control} />
+                    <div className='flex flex-col'>
+                        <input {...register("datebirth", { pattern: { value: /^[0-9]+[/]+[0-9]+[/]+[0-9]*$/, message: "تاریخ را صحیح وارد کنید" } })} placeholder='تاریخ تولد' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2' required />
+                        <p className='text-red-500 font-normal text-xs'>{errors.datebirth?.message}</p>
+                    </div>
+                     <DevTool control={control} />
                 </form>
             </div>
 
