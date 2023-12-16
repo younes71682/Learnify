@@ -126,7 +126,6 @@ export default function Home() {
         <Best_sellers />
 
       </div>
-<div>test</div>
       <div className='mt-16 mb-8 flex justify-center'><h2 className='text-2xl font-bold'>پاسخ به پرسش‌های متداول</h2></div>
       <Accordion />
     </div>
