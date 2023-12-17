@@ -18,7 +18,7 @@ const Navbar = () => {
   const handleCheckPhoneNumber = () => {
     setLoginModalOpen(false)
     setCheckPhoneNumber(true)
-    setSeconds(120)
+    setSeconds(5)
   }
 
   const [seconds, setSeconds] = useState(0);
@@ -34,8 +34,17 @@ const Navbar = () => {
   const formatTime = (time: any) => {
     const minutes = Math.floor(time / 60);
     const remainingSeconds = time % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    return (`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`)
   };
+
+  const handleChangePhoneNumber = () => {
+    setLoginModalOpen(true)
+    setCheckPhoneNumber(false)
+  }
+
+  const handleResendCode = () => {
+    setSeconds(10)
+  }
 
   console.log("phoneNumber", phoneNumber)
 
@@ -91,9 +100,10 @@ const Navbar = () => {
             </p>
             <input className="rounded-lg w-[179px] h-[48px] text-sm text-center mt-3" type="text" />
             <div><button className="bg-[#008000] text-white mt-3 rounded-lg h-[40px] w-[179px]" >تایید</button></div>
-            <p className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
-            <div className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>
-            <div>{formatTime(seconds)}</div>
+            <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
+            {seconds != 0 ? (null
+            ) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}
+            <div>{seconds != 0 ? ( formatTime(seconds) ) : (null)} </div>
             <div> <button onClick={handleCloseModule} className="">x</button></div>
           </div>
         </div>

@@ -9,6 +9,7 @@ const Best_sellers = () => {
         { id: 2, title: "next.js", name: "سلمان طاهری", detail: "در طول دوره آموزش redux سعی می‌کنیم به شکل کامل و کاربردی روش استفاده از کتابخانه redux برای حل مشکل مدیریت stateها را به شما آموزش دهیم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/best_seller/redux.png' alt='' /> },
         { id: 3, title: "next.js", name: "سلمان طاهری", detail: "در طول دوره آموزش redux سعی می‌کنیم به شکل کامل و کاربردی روش استفاده از کتابخانه redux برای حل مشکل مدیریت stateها را به شما آموزش دهیم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/best_seller/w.png' alt='' /> },
         { id: 4, title: "next.js", name: "سلمان طاهری", detail: "در طول دوره آموزش redux سعی می‌کنیم به شکل کامل و کاربردی روش استفاده از کتابخانه redux برای حل مشکل مدیریت stateها را به شما آموزش دهیم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/best_seller/veu.png' alt='' /> },
+        { id: 4, title: "next.js", name: "سلمان طاهری", detail: "در طول دوره آموزش redux سعی می‌کنیم به شکل کامل و کاربردی روش استفاده از کتابخانه redux برای حل مشکل مدیریت stateها را به شما آموزش دهیم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/best_seller/veu.png' alt='' /> },
     ];
 
 
