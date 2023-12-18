@@ -4,18 +4,19 @@ const Favorites = () => {
 
     const favorites = [
         { id: 1, title: "توسعه وب", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "توسعه وب", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "امنیت و شبکه", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "طراحی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "فیلم و انیمیشن", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "نرم افزارهای کاربردی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "نرم افزارهای مهندسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 1, title: "برنامه نویسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 2, title: "توسعه وب", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 3, title: "امنیت و شبکه", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 4, title: "طراحی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 5, title: "فیلم و انیمیشن", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 6, title: "نرم افزارهای کاربردی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 7, title: "نرم افزارهای مهندسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
+        { id: 8, title: "برنامه نویسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
     ]
 
     const [add, setAdd] = useState(null)
-    const handleAdd = (i: any) => {
-        setAdd(add === i ? null : i)
+
+    const handleAdd = (id: any) => {
+        setAdd(add === id ? null : id)
     }
 
 
@@ -30,8 +31,8 @@ const Favorites = () => {
             <div className='flex flex-wrap gap-6 w-[90%]'>
                 {favorites.map((item, i) => {
                     return (
-                        <div onClick={() => handleAdd(i)} >
-                            {add === i ?
+                        <div onClick={() => handleAdd(item.id)} >
+                            {add === item.id ?
                                 (<div className='flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
                                     <div>{item.title}</div>
                                     <div className=''><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 52 40" fill="none">
