@@ -1,7 +1,8 @@
- import Header from '@/components/user/blog/Header'
+import Header from '@/components/user/blog/Header'
+import Layout_User from '@/components/user/layout_user/Layout_User'
 import Link from 'next/link'
 import React from 'react'
- 
+
 const index = () => {
 
   const blog = [
@@ -18,38 +19,43 @@ const index = () => {
   ]
 
   return (
-    <div>
-      <Header /> 
-    
-      <div className='flex flex-wrap justify-center gap-6 mx-[136px]'>
-        {blog.map((item, index) => {
-          if (index === 4 || index === 5) {
-            return (
-              <div className='flex items-center w-[572px] h-[212px] rounded-[0px_15px_15px_20px] shadow-[0_0_20px_rgba(0,0,0,0.5)]'>
-                <div className='flex rounded-[15px] w-[274px] h-full'>{item.img} </div>
-                <div className='flex flex-col items-start flex-1 px-6 '>
-                  <h3 className='text-base font-bold'>{item.title}</h3>
-                  <p className='text-xs font-normal leading-6 pt-[5px]'>{item.detail}</p>
-                  <div className='flex items-center gap-[3px] pt-4 text-[#008000] text-xs font-bold'>
-                    <Link href="/">{item.link}</Link>
-                    <img src='/icon/blog/left.svg' alt='Left' />
+
+    <Layout_User showFooter>
+
+      <div>
+        <Header />
+
+        <div className='flex flex-wrap justify-center gap-6 mx-[136px]'>
+          {blog.map((item, index) => {
+            if (index === 4 || index === 5) {
+              return (
+                <div className='flex items-center w-[572px] h-[212px] rounded-[0px_15px_15px_20px] shadow-[0_0_20px_rgba(0,0,0,0.5)]'>
+                  <div className='flex rounded-[15px] w-[274px] h-full'>{item.img} </div>
+                  <div className='flex flex-col items-start flex-1 px-6 '>
+                    <h3 className='text-base font-bold'>{item.title}</h3>
+                    <p className='text-xs font-normal leading-6 pt-[5px]'>{item.detail}</p>
+                    <div className='flex items-center gap-[3px] pt-4 text-[#008000] text-xs font-bold'>
+                      <Link href="/">{item.link}</Link>
+                      <img src='/icon/blog/left.svg' alt='Left' />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          } else {
-            return (
-              <div className='flex flex-col items-center rounded-[15px_15px_20px_20px] shadow-[0_0_20px_rgba(0,0,0,0.5)] w-[274px] h-[266px]'>
-                <div className='flex rounded-[15px_15px_0_0] w-full h-[181px]'>{item.img} </div>
-                <Link href="/" className='flex items-center flex-1'>{item.title}</Link>
-              </div>
-            )
-          }
-        })}
-      </div>
+              )
+            } else {
+              return (
+                <div className='flex flex-col items-center rounded-[15px_15px_20px_20px] shadow-[0_0_20px_rgba(0,0,0,0.5)] w-[274px] h-[266px]'>
+                  <div className='flex rounded-[15px_15px_0_0] w-full h-[181px]'>{item.img} </div>
+                  <Link href="/" className='flex items-center flex-1'>{item.title}</Link>
+                </div>
+              )
+            }
+          })}
+        </div>
 
- 
-    </div >
+      </div >
+
+    </Layout_User>
+
   )
 }
 

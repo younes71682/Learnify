@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Dropdown from "./Dropdown";
 
 
-const Navbar = () => {
+const Navbar_Main = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   const [checkPhoneNumber, setCheckPhoneNumber] = useState(false)
@@ -103,4 +103,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar_Main;

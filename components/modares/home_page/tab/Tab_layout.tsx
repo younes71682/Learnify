@@ -7,6 +7,8 @@ import TabPanel from '@mui/lab/TabPanel';
 import Condition from './Condition';
 import Training_recording from './Training_recording';
 import Release_period from './Release_period';
+import Tabs from '@mui/material/Tabs';
+
 
 const Tab_layout = () => {
 
@@ -19,14 +21,19 @@ const Tab_layout = () => {
 
     return (
         <div className='flex justify-center w-full'>
-            <Box sx={{typography: 'body1',   }}>
+            <Box sx={{ typography: 'body1', width: "50%", }}>
                 <TabContext value={value}>
-                    <Box sx={{ borderBottom: 2, borderColor: '#D3D3D3', display:'flex', gap:'300px' }}>
-                        <TabList  onChange={handleChange} aria-label="lab API tabs example" indicatorColor='#800800'>
-                            <Tab  className='text-xl font-bold text-[#000]' label="شرایط لرنیفای" value="1" />
-                            <Tab className='text-xl font-bold text-[#000]' label="ظبط آموزش" value="2" />
-                            <Tab className='text-xl font-bold text-[#000]' label="انتشاره دوره" value="3" />
-                        </TabList>
+                    <Box sx={{ borderBottom: 2, borderColor: '#D3D3D3'}}>
+                        <Tabs
+                            value={value}
+                            onChange={handleChange}
+                            flexContainerVertical
+                     
+                        >
+                            <Tab className='text-xl font-bold text-black mx-20' value="1" label="شرایط لرنیفای" />
+                            <Tab className='text-xl font-bold text-black mx-20' value="2" label="ظبط آموزش" />
+                            <Tab className='text-xl font-bold text-black mx-20' value="3" label="انتشار دوره" />  
+                        </Tabs>
                     </Box>
                     <TabPanel value="1"><Condition /></TabPanel>
                     <TabPanel value="2"><Training_recording /></TabPanel>
