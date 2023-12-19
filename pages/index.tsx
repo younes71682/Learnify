@@ -1,4 +1,5 @@
 import React from 'react'
+import Layout_Main from '@/components/layout_main/Layout_Main';
 import { Inter } from 'next/font/google'
 import LogoMotion from '@/components/user/home_page/LogoMotion';
 import Services from '@/components/user/home_page/Services';
@@ -25,6 +26,8 @@ export default function Home() {
 
 
   return (
+    <Layout_Main showFooter>
+
     <div className='flex flex-col'>
 
       <div className='flex justify-between'>
@@ -129,6 +132,9 @@ export default function Home() {
       <div className='mt-16 mb-8 flex justify-center'><h2 className='text-2xl font-bold'>پاسخ به پرسش‌های متداول</h2></div>
       <Accordion />
     </div>
+
+
+    </Layout_Main>
 
   )
 }
