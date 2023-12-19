@@ -13,10 +13,9 @@ const Sidbar = () => {
     { id: 3, title: "نظرات شما", pathname: "/Your_comments", icon: "/icon/user/account/sidebar/comments.svg" },
     { id: 4, title: "تاریخچه سفارش‌ها", pathname: "/Order_history", icon: "/icon/user/account/sidebar/history.svg" },
     { id: 5, title: "اعلان ها", pathname: "/Notification", icon: "/icon/user/account/sidebar/notification.svg" },
-    { id: 6, title: "خروج از حساب کاربری", pathname: "", icon: "/icon/user/account/sidebar/exit.svg" }
-  ]
+   ]
 
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState(1)
 
   const showStyle = (id: any) => {
     setSelected(!selected === id ? null : id)
@@ -24,7 +23,7 @@ const Sidbar = () => {
 
   return (
     
-    <div className='flex flex-col flex-1 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] w-[20%] pl-8 pt-8 '>
+    <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] w-[18%] pt-8 '>
 
       <div className='flex items-center gap-5 pr-4'>
         <div className='w-[113px] h-[101px] rounded-[11px] mb-11'>
@@ -73,6 +72,7 @@ const Sidbar = () => {
             <div className='text-[#C93636]'>خروج از حساب کاربری</div>
           </div>
         </div>
+        
       </div>
 
     </div>

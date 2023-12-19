@@ -18,10 +18,10 @@ const order_history = () => {
 
     <Layout_User showFooter={false}>
 
-      <div className='flex gap-6 mt-[71px] mr-[136px]'>
+      <div className='flex gap-6 justify-center h-[140vh] pt-20'>
         <Sidbar />
 
-        <div className='flex flex-col gap-2 w-[70%] rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
+        <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[65%] h-[100vh] overflow-y-auto'>
 
           <div className='flex justify-between pl-8 pr-4 py-5'>
             <div className='flex items-center gap-2'>
@@ -36,24 +36,22 @@ const order_history = () => {
 
           <div className='flex flex-col px-8 gap-3'>
 
-            <div className='flex rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-5 px-[53px]'>
-              <div className='flex flex-1 justify-between'>
-                <p className='text-sm font-bold'>#</p>
-                <p className='text-sm font-bold'>نام دوره</p>
-                <p className='text-sm font-bold'>تاریخ</p>
-                <p className='text-sm font-bold'>مبلغ</p>
-                <p className='text-sm font-bold'>وضعیت</p>
-              </div>
+            <div className='flex flex-1 justify-around rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-5'>
+              <p className='text-sm font-bold flex justify-center w-[10%]'>#</p>
+              <p className='text-sm font-bold flex justify-center w-[10%]'>نام دوره</p>
+              <p className='text-sm font-bold flex justify-center w-[10%]'>تاریخ</p>
+              <p className='text-sm font-bold flex justify-center w-[10%]'>مبلغ</p>
+              <p className='text-sm font-bold flex justify-center w-[10%]'>وضعیت</p>
             </div>
 
             {his.map((item, i) => {
               return (
-                <div className='flex justify-between rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-5 px-[53px] '>
-                  <p className='text-sm'>{i + 1}</p>
-                  <p className='text-sm'>{item.name}</p>
-                  <p className='text-sm'>{item.date}</p>
-                  <p className='text-sm'>{item.price}</p>
-                  <p className='text-sm'>{item.status}</p>
+                <div className='flex justify-around rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-5'>
+                  <p className='text-sm flex justify-center w-[12%]'>{i + 1}</p>
+                  <p className='text-sm flex justify-center w-[12%]'>{item.name}</p>
+                  <p className='text-sm flex justify-center w-[12%]'>{item.date}</p>
+                  <p className='text-sm flex justify-center w-[12%]'>{item.price}</p>
+                  <p className='text-sm flex justify-center w-[12%]'>{item.status}</p>
                 </div>
               )
             })}

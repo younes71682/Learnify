@@ -24,7 +24,7 @@ const Date = () => {
                 calendar={persian}
                 weekDays={weekDays}
                 className="green"
-                render={<Button style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.1)" }} />}
+                render={<Button style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.05)" }} />}
             />
 
         </div>

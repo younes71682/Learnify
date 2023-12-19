@@ -8,11 +8,10 @@ const Your_comments = () => {
 
     <Layout_User showFooter={false}>
 
-      <div className='bg-[#FBFBFB]'>
-        <div className='py-[71px]  mx-[139px] flex gap-2 justify-between'>
+         <div className='flex gap-6 justify-center h-[140vh] pt-20'>
           <Sidbar />
-          <div className='w-[870px]  p-4 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px]'>
-            <div className='flex'>
+          <div className='shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
+            <div className='flex p-4'>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <g id="vuesax/linear/messages-2">
                   <g id="messages-2">
@@ -81,8 +80,7 @@ const Your_comments = () => {
           </div>
         </div>
 
-      </div>
-
+ 
     </Layout_User>
   )
 }
