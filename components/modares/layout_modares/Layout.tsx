@@ -7,7 +7,7 @@ type ContainerProps = {
     showFooter: boolean
 };
 
-const Layout = ({ children, showFooter=true }: ContainerProps) => {
+const   Layout = ({ children, showFooter=true }: ContainerProps) => {
 
     return (
         <div>

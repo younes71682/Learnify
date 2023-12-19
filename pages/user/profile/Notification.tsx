@@ -8,9 +8,9 @@ const Notification = () => {
 
     <Layout_User showFooter={false}>
 
-      <div className='flex mt-[71px]'>
+      <div className='flex gap-6 justify-center h-[140vh] pt-20'>
         <Sidbar />
-        <div className='w-[870px]  p-4 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px]'>
+        <div className=' p-4 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
           <div className='flex'>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <g id="vuesax/linear/messages-2">

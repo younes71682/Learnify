@@ -21,7 +21,7 @@ const Favorites = () => {
 
 
     return (
-        <div className='flex flex-col gap-6 pr-4 pt-5 pb-9 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
+        <div className='flex flex-col gap-6 pr-4 pt-5 pb-8 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
 
             <div className='flex items-center gap-1 text-lg'>
                 <img src='/icon/user/account/info_user/like.svg' alt='Education' />
