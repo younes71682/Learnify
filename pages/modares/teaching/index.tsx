@@ -3,7 +3,10 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Step1 from '@/components/modares/tab/teachingSteps/step1';
+import Step1 from '@/components/modares/teachingSteps/step1';
+import Step2 from '@/components/modares/teachingSteps/step2';
+import Step3 from '@/components/modares/teachingSteps/step3';
+
 
 
 
@@ -35,24 +38,30 @@ export const Teaching = () => {
                 </Box>
             </div>
             {activeStep === 0 ? (
-            <div >
                 <div >
-                    <input type="text" className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 ' placeholder='*عنوان دوره' />
+                    <div >
+                        <input type="text" className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 ' placeholder='*عنوان دوره' />
+                    </div>
+                    <div className='mt-4'>
+                        <textarea className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[216px] pl-4 py-5 ' placeholder='*معرفی دوره' />
+                    </div>
                 </div>
-                <div className='mt-4'>
-                    <textarea className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[216px] pl-4 py-5 ' placeholder='*معرفی دوره' />
-                </div>
-            </div>
             ) : (null)}
 
             <div className='mt-32'>
                 {activeStep === 1 ? (<Step1 />) : (null)}
+                {activeStep === 2 ? (<Step2 />) : (null)}
+                {activeStep === 3 ? (<Step3 />) : (null)}
 
             </div>
-            <div className='text-center mt-16 mb-16'>
+            <div className='text-center mt-16 mb-10'>
                 <button onClick={e => activeStep === 0 ? 0 : setActiveStep(activeStep - 1)} className='mx-2 w-[180px] h-[56px] border-2 rounded-xl text-lg border-[#C93636] text-[#C93636]'>بازگشت</button>
                 <button onClick={e => activeStep === 4 ? 4 : setActiveStep(activeStep + 1)} className='mx-2 w-[180px] h-[56px]  rounded-xl bg-[#008000] text-lg  text-white'>مرحله بعد</button>
             </div>
+            {activeStep === 3 ? (<div className=' justify-center flex'>
+                <p className='w-[380px] text-sm '>پرداخت و ثبت سفارش، به منزله مطالعه و پذیرفتن قوانین و مقررات استفاده از خدمات لرنیفای است .</p>
+            </div>) : (null)}
+
         </div >
     )
 }
