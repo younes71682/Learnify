@@ -9,11 +9,11 @@ import { useState } from 'react'
 const Sidbar = () => {
 
   const prof = [
-    { id: 1, title: "اطلاعات کاربری", pathname: "/Info_user", icon: "/icon/user/account/info_user/user.svg" },
-    { id: 2, title: "آموزش‌های من", pathname: "/My_training", icon: "/icon/user/account/info_user/education.svg" },
-    { id: 3, title: "نظرات شما", pathname: "/Your_comments", icon: "/icon/user/account/sidebar/comments.svg" },
-    { id: 4, title: "تاریخچه سفارش‌ها", pathname: "/Order_history", icon: "/icon/user/account/sidebar/history.svg" },
-    { id: 5, title: "اعلان ها", pathname: "/Notification", icon: "/icon/user/account/sidebar/notification.svg" },
+    { id: 1, title: "اطلاعات کاربری", pathname: "Info_user", icon: "/icon/user/account/info_user/user.svg" },
+    { id: 2, title: "آموزش‌های من", pathname: "My_training", icon: "/icon/user/account/info_user/education.svg" },
+    { id: 3, title: "نظرات شما", pathname: "Your_comments", icon: "/icon/user/account/sidebar/comments.svg" },
+    { id: 4, title: "تاریخچه سفارش‌ها", pathname: "Order_history", icon: "/icon/user/account/sidebar/history.svg" },
+    { id: 5, title: "اعلان ها", pathname: "Notification", icon: "/icon/user/account/sidebar/notification.svg" },
   ]
 
   const [selected, setSelected] = useState(1)
@@ -46,7 +46,7 @@ const Sidbar = () => {
                   {selected === item.id ?
                     <div className='flex items-center gap-4 '>
                       <div className='border-solid border-2 border-[#008000] rounded-full h-10' />
-                      <Link href={`profile/${item.pathname}`} className='flex items-center gap-2'>
+                      <Link href={`${item.pathname}`} className='flex items-center gap-2'>
                         <div><Image src={`${item.icon}`} alt='icon' width={24} height={24} className="green-icon" /></div>
                         <div className='text-[#008000]'>{item.title}</div>
                       </Link>
@@ -54,7 +54,7 @@ const Sidbar = () => {
                     :
                     <div className='flex items-center gap-4  '>
                       <div className='border-solid border-2 border-[#FBFBFB] rounded-full h-10' />
-                      <Link href={`profile/${item.pathname}`} className='flex items-center gap-2'>
+                      <Link href={`${item.pathname}`} className='flex items-center gap-2'>
                         <div><Image src={`${item.icon}`} alt='icon' width={24} height={24} /></div>
                         <div>{item.title}</div>
                       </Link>
