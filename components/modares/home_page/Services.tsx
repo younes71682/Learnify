@@ -3,7 +3,7 @@ import React from 'react'
 
 const Services = () => {
     return (
-        <div className='flex justify-center mt-16'>
+        <div className='flex justify-center mt-28'>
             <div className='flex items-center justify-between  w-[32%]'>
                 <div className='flex flex-col items-center w-[27%] gap-5'>
                     <Image src="/icon/modares/home_page/discount.svg" alt='discount' width={64} height={64} />

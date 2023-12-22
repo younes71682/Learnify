@@ -1,5 +1,5 @@
 import React from 'react'
- import Link from 'next/link';
+import Link from 'next/link';
 import Dropdown from '@/components/layout_main/Dropdown';
 
 
@@ -12,7 +12,7 @@ const Navbar = () => {
                     <img className="w-[186px] h-[86px] mt-[5px]" src='/images/global/Rectangle.png' />
                     <div>
                         <ul className="flex gap-8 mt-[42px]">
-                            <li><Dropdown/></li>
+                            <li><Dropdown /></li>
                             <li><Link href="/">تدریس کنید</Link></li>
                             <li><Link href="/">وبلاگ</Link></li>
                         </ul>
@@ -29,8 +29,13 @@ const Navbar = () => {
                             alt="Shopping_cart Logo"
                         />
                     </div>
-                    <div className="border-solid border-[1px] border-[#008000] rounded-[12px] flex justify-center items-center w-[80%] h-[40px]" >
-                        <p className="text-[#008000] flex  cursor-pointer">ورود | ثبت نام</p>
+                    <div className='flex items-center gap-3 justify-center w-[218px]'>
+                        <div className="border-solid border-[1px] border-[#008000] rounded-[12px] flex justify-center items-center w-[50%] h-[40px]" >
+                            <p className="text-[#008000] flex cursor-pointer">ورود مدرس</p>
+                        </div>
+                        <div className=" bg-[#393] rounded-[12px] flex justify-center items-center w-[50%] h-[40px]" >
+                            <p className="text-[#FFF] flex cursor-pointer">ورود کاربر</p>
+                        </div>
                     </div>
                 </div>
             </div>

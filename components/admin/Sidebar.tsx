@@ -2,19 +2,20 @@ import { color } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import Wallet from './Wallet'
-import Button_exit from '@/components/button/Button_exit'
+import Button_exit from '../button/Button_exit'
 
 
 
 const Sidebar = () => {
 
     const prof = [
-        { id: 1, title: "دوره ها", pathname: "/Info_user", icon: "/icon/modares/sidbar/courses.svg" },
-        { id: 2, title: "ویرایش دوره", pathname: "/My_training", icon: "/icon/modares/sidbar/edit.svg" },
-        { id: 3, title: "اطلاعات استاد", pathname: "/Your_comments", icon: "/icon/user/account/info_user/user.svg" },
-        { id: 4, title: "امور مالی", pathname: "/Order_history", icon: "/icon/modares/sidbar/financial.svg" },
-        { id: 5, title: "نظرات", pathname: "/Notification", icon: "/icon/modares/sidbar/comments.svg" },
+        { id: 1, title: "نمای کلی", pathname: "/Info_user", icon: "/icon/admin/sidbar/overwiew.svg" },
+        { id: 2, title: "آمار", pathname: "/My_training", icon: "/icon/admin/sidbar/statistics.svg" },
+        { id: 3, title: "پشتیبانی", pathname: "/Your_comments", icon: "/icon/admin/sidbar/Support.svg" },
+        { id: 4, title: "تراکنش مالی", pathname: "/Order_history", icon: "/icon/admin/sidbar/Financial_transactions.svg" },
+        { id: 5, title: "وضعیت دوره ها", pathname: "/Notification", icon: "/icon/admin/sidbar/Status_courses.svg" },
+        { id: 6, title: "وضعیت واریز ها", pathname: "/Notification", icon: "/icon/admin/sidbar/Status_deposits.svg" },
+        { id: 7, title: "وبلاگ", pathname: "/Notification", icon: "/icon/admin/sidbar/weblog.svg" },
     ]
 
     const [selected, setSelected] = useState(1)
@@ -71,12 +72,11 @@ const Sidebar = () => {
 
                 })}
 
-<Button_exit/>
+                <Button_exit />
 
 
             </div>
 
-            <Wallet />
 
         </div>
     )

@@ -10,6 +10,8 @@ import Select_gender from '@/components/user/select/Select_gender';
 import Education from '@/components/user/Account/Education';
 import Favorites from '@/components/user/Account/Favorites';
 import Location from '@/components/user/Account/Location';
+import Button_info_operation from '@/components/button/Button_info_operation';
+import Image from 'next/image';
 
 
 type FormeValue = {
@@ -57,7 +59,7 @@ const index = () => {
 
           <div className='flex flex-col items-start gap-6 pr-4 pt-5 pb-10 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] '>
             <div className='flex items-center gap-1 text-lg'>
-              <img src='/icon/user/account/info_user/user.svg' />
+              <Image src='/icon/user/account/info_user/user.svg' alt='icon' width={24} height={24} />
               <h2>اطلاعات کاربری</h2>
             </div>
             <form className='flex flex-wrap gap-4 w-[90%]' onSubmit={handleSubmit(submit)} noValidate>
@@ -86,18 +88,14 @@ const index = () => {
           </div>
 
 
-
           <div className='flex gap-6'>
             <Location />
             <Education />
           </div>
 
           <Favorites />
+          <Button_info_operation />
 
-          <div className='flex justify-end gap-2'>
-            <div className='text-[#C93636] bg-white border-solid border-[1px] border-[#C93636] rounded-[10px] w-[14%] py-2 flex justify-center items-center'>انصراف</div>
-            <div className='text-white bg-[#008000] rounded-[10px] w-[14%] py-2 flex justify-center items-center'>اعمال تغییرات</div>
-          </div>
 
         </div>
 

@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.19",
     "@mui/lab": "^5.0.0-alpha.156",
+    "@mui/x-charts": "^6.18.3",
     "@ramonak/react-progress-bar": "^5.1.1",
     "aos": "^2.3.4",
     "flowbite": "^2.2.0",

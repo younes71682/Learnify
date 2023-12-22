@@ -1,3 +1,4 @@
+import Button_exit from '@/components/button/Button_exit'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -13,7 +14,7 @@ const Sidbar = () => {
     { id: 3, title: "نظرات شما", pathname: "/Your_comments", icon: "/icon/user/account/sidebar/comments.svg" },
     { id: 4, title: "تاریخچه سفارش‌ها", pathname: "/Order_history", icon: "/icon/user/account/sidebar/history.svg" },
     { id: 5, title: "اعلان ها", pathname: "/Notification", icon: "/icon/user/account/sidebar/notification.svg" },
-   ]
+  ]
 
   const [selected, setSelected] = useState(1)
 
@@ -22,7 +23,7 @@ const Sidbar = () => {
   }
 
   return (
-    
+
     <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] w-[18%] pt-8 '>
 
       <div className='flex items-center gap-5 pr-4'>
@@ -65,14 +66,8 @@ const Sidbar = () => {
           )
         })}
 
-        <div className='flex items-center gap-4 '>
-          <div className='border-solid border-2 border-[#FBFBFB] rounded-full h-10' />
-          <div className='flex items-center gap-2'>
-            <div><Image src='/icon/user/account/sidebar/exit.svg' alt='exit' width={24} height={24} className="green-icon" /></div>
-            <div className='text-[#C93636]'>خروج از حساب کاربری</div>
-          </div>
-        </div>
-        
+        <Button_exit />
+
       </div>
 
     </div>

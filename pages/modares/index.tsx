@@ -3,7 +3,7 @@ import Layout from '@/components/modares/layout_modares/Layout'
 import Tab_layout from '@/components/modares/home_page/tab/Tab_layout'
 import React from 'react'
 import Services from '@/components/modares/home_page/Services'
-import Start_teaching from './link/Start_teaching'
+import Start_teaching from '../../components/modares/link/Start_teaching'
  
 const index = () => {
   return (

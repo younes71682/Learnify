@@ -1,6 +1,7 @@
 import Sidbar from '@/components/user/Account/Sidbar'
 import Date from '@/components/user/date/Date'
 import Layout_User from '@/components/user/layout_user/Layout_User'
+import Image from 'next/image'
 
 const order_history = () => {
 
@@ -25,7 +26,7 @@ const order_history = () => {
 
           <div className='flex justify-between pl-8 pr-4 py-5'>
             <div className='flex items-center gap-2'>
-              <img src='/icon/user/account/sidebar/history.svg' alt='History' />
+              <Image src='/icon/user/account/sidebar/history.svg' alt='icon' width={24} height={24} />
               <h2 className='text-lg'>تاریخچه سفارش‌ها</h2>
             </div>
             <div className='flex gap-4'>
