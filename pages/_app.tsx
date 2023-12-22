@@ -1,6 +1,7 @@
  import '@/styles/globals.css'
 import 'flowbite';
-
+// import 'smart-webcomponents-react/source/styles/smart.default.css';
+  
 import type { AppProps } from 'next/app'
   
 

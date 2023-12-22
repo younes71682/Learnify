@@ -8,7 +8,7 @@ const financial = () => {
     const his = [
         { id: 1, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
         { id: 2, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "در انتظار پرداخت..." },
-        { id: 2, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
+        { id: 3, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
 
     ]
  
