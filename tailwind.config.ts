@@ -1,6 +1,11 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  type: 'bar',
+  // data: data,
+ 
+ 
+
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,14 +16,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        YekanBakhRegular:["YekanBakh-Regular",'sans-serif'],
-        YekanBakhMedium:["YekanBakh-Medium",'sans-serif'],
-        YekanBakhLight:["YekanBakh-Light",'sans-serif'],
-        YekanBakhHeavy:["YekanBakh-Heavy",'sans-serif'],
-        YekanBakhHairline:["YekanBakh-Hairline",'sans-serif'],
-        YekanBakhBold:["YekanBakh-Bold",'sans-serif'],
-        YekanBakhFat:["YekanBakh-Fat",'sans-serif'],
+      fontFamily: {
+        YekanBakhRegular: ["YekanBakh-Regular", 'sans-serif'],
+        YekanBakhMedium: ["YekanBakh-Medium", 'sans-serif'],
+        YekanBakhLight: ["YekanBakh-Light", 'sans-serif'],
+        YekanBakhHeavy: ["YekanBakh-Heavy", 'sans-serif'],
+        YekanBakhHairline: ["YekanBakh-Hairline", 'sans-serif'],
+        YekanBakhBold: ["YekanBakh-Bold", 'sans-serif'],
+        YekanBakhFat: ["YekanBakh-Fat", 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

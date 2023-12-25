@@ -9,17 +9,18 @@ const Full_list_courses = () => {
     { id: 3, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "فعال" },
     { id: 4, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "غیرفعال" },
     { id: 5, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "فعال" },
-
+    { id: 5, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "فعال" },
+    { id: 5, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "فعال" },
+    { id: 5, name: "اموزش nnode js", date: " 16 مهر1402", number: "12", price: "1,267,000", status: "فعال" },
   ]
 
   return (
-    <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[55vh] overflow-y-auto'>
+    <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[56vh] overflow-y-auto'>
 
 
+      <div className='flex flex-col  '>
 
-      <div className='flex flex-col '>
-
-        <div className='flex flex-1 justify-around rounded-[5px_5px_0_0] bg-[#F5F5F5] py-5 '>
+        <div className='flex flex-1 justify-around rounded-[5px_5px_0_0] bg-[#F5F5F5] py-5 sticky top-0'>
           <p className='text-sm font-bold flex justify-center w-[10%]'>نام دوره</p>
           <p className='text-sm font-bold flex justify-center w-[10%]'>تاریخ شروع دوره</p>
           <p className='text-sm font-bold flex justify-center w-[10%]'>تعداد دانشجو</p>

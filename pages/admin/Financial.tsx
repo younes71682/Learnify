@@ -1,4 +1,5 @@
 import Sidebar from '@/components/admin/Sidebar'
+import Pagination from '@/components/admin/financial/Pagination'
 import Date from '@/components/user/date/Date'
 import React from 'react'
 
@@ -38,21 +39,23 @@ const Financial = () => {
                         <p className='text-sm font-bold flex justify-center translate-x-3 w-[10%]'>مبلغ</p>
                         <p className='text-sm font-bold flex justify-center translate-x-3 w-[10%]'>وضعیت</p>
                     </div>
+                    <div>
 
-                    {his.map((item, i) => {
-                        return (
-                            <div>
-                                <div className='flex justify-around mb-1 py-3'>
-                                    <p className='text-sm flex justify-center w-[12%]'>{i + 1}</p>
-                                    <p className='text-sm flex justify-center w-[12%]'>{item.name}</p>
-                                    <p className='text-sm flex justify-center w-[12%]'>{item.date}</p>
-                                    <p className='text-sm flex justify-center w-[12%]'>{item.price}</p>
-                                    <p className='text-sm text-[#393] flex justify-center w-[12%]'>{item.status}</p>
+                        {his.map((item, i) => {
+                            return (
+                                <div>
+                                    <div className='flex justify-around mb-1 py-3'>
+                                        <p className='text-sm flex justify-center w-[12%]'>{i + 1}</p>
+                                        <p className='text-sm flex justify-center w-[12%]'>{item.name}</p>
+                                        <p className='text-sm flex justify-center w-[12%]'>{item.date}</p>
+                                        <p className='text-sm flex justify-center w-[12%]'>{item.price}</p>
+                                        <p className='text-sm text-[#393] flex justify-center w-[12%]'>{item.status}</p>
+                                    </div>
                                 </div>
-
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                        <Pagination />
+                    </div>
                 </div>
             </div>
         </div>
