@@ -9,8 +9,8 @@ const Financial = () => {
                 <h2>حساب مالی</h2>
             </div>
             <div className='flex flex-col gap-4'>
-                <input className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2 ' />
-                <input className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2 ' />
+                <input className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 mb-2 outline-[#008000]  ' />
+                <input className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 mb-2 outline-[#008000]  ' />
             </div>
         </div>
     )

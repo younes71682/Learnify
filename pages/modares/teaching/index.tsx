@@ -46,10 +46,10 @@ export const Teaching = () => {
             {activeStep === 0 ? (
                 <div >
                     <div >
-                        <input type="text" className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 ' placeholder='*عنوان دوره' />
+                        <input type="text" className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px]  shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 outline-[#008000] ' placeholder='*عنوان دوره' />
                     </div>
                     <div className='mt-4'>
-                        <textarea className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[216px] pl-4 py-5 ' placeholder='*معرفی دوره' />
+                        <textarea className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[216px] pl-4 py-5 resize-none' placeholder='*معرفی دوره' />
                     </div>
                 </div>
             ) : (null)}

@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
 import Dropdown from "./Dropdown";
+import { useForm } from 'react-hook-form';
+import { useFormState } from 'react-dom';
+import _ from 'lodash';
 
+
+type FormeValue = {
+  phoneNumber: string,
+  login: string
+}
 
 const Navbar_Main = () => {
+
+
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   const [checkPhoneNumber, setCheckPhoneNumber] = useState(false)
@@ -19,6 +29,7 @@ const Navbar_Main = () => {
     setLoginModalOpen(false)
     setCheckPhoneNumber(true)
     setSeconds(5)
+
   }
 
   const [seconds, setSeconds] = useState(0);
@@ -46,7 +57,25 @@ const Navbar_Main = () => {
     setSeconds(10)
   }
 
-  console.log("phoneNumber", phoneNumber)
+  // console.log("phoneNumber", phoneNumber)
+
+
+  //register input
+
+
+  const form = useForm<FormeValue>({
+    defaultValues: {
+      phoneNumber: "",
+      login: ""
+    }
+  })
+
+  const { register, formState, handleSubmit, control } = form
+  const { errors } = formState
+  const submit = (data: FormeValue) => {
+    alert(JSON.stringify(data));
+  }
+
 
   return (
     <div className="rounded-b-[40px] shadow-lg h-[92px]">
@@ -78,34 +107,47 @@ const Navbar_Main = () => {
         </div>
       </div>
       {isLoginModalOpen && (
-        < div className="fixed  inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white text-center w-[436px] h-[333px] pt-20 rounded shadow-lg">
-            <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
-            <p className="text-sm font-normal mt-2">به لرنیفای خوش اومدی!
-              برای عضویت شماره موبایل خودت را وارد کن</p>
-            <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="rounded-lg w-[179px] h-[48px] text-sm text-center mt-3" placeholder="شماره موبایل خود را وارد کنید" />
-            <div><button onClick={handleCheckPhoneNumber} className="bg-[#008000] text-white mt-3 rounded-lg h-[40px] w-[179px]" >ادامه</button></div>
+        < div className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
+          <form className="bg-white flex flex-col items-center w-[30%] h-[45vh] justify-center gap-2  rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
+            <div className='flex flex-col gap-3 items-center'>
+              <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
+              <p className="text-sm font-normal ">به لرنیفای خوش اومدی!
+                برای عضویت شماره موبایل خودت را وارد کن</p>
+            </div>
+            <div className='flex flex-col items-center justify-between gap-'>
+              <input type="text" maxLength={11} {...register("phoneNumber", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="rounded-lg flex h-[7vh] text-sm text-center outline-[#008000] " placeholder="شماره موبایل خود را وارد کنید" />
+              <div>
+                <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
+              </div>
+            </div>
+            <div><button className="bg-[#008000] text-white mt-3 rounded-lg h-[40px] w-[179px]" >ادامه</button></div>
             <button onClick={handleCloseModule} className="">x</button>
-          </div>
+          </form>
         </div>
       )
       }
       {checkPhoneNumber && (
         < div className="fixed  inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white text-center w-[436px] h-[333px] pt-12 rounded shadow-lg">
+          <form className="bg-white flex flex-col items-center w-[30%] h-[45vh] justify-center gap-2  rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
             <p className=" mx-auto text-sm text-[#545454] ">
               کد ارسال شده به شماره موبایل<br />
               <span className="mx-1"> {phoneNumber}</span>
               را وارد کنید
             </p>
-            <input className="rounded-lg w-[179px] h-[48px] text-sm text-center mt-3" type="text" />
+            <div>
+              <input maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex h-[7vh] text-sm text-center outline-[#008000] " type="text" />
+              <div>
+                <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
+                {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
+              </div>
+            </div>
             <div><button className="bg-[#008000] text-white mt-3 rounded-lg h-[40px] w-[179px]" >تایید</button></div>
             <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
             {seconds != 0 ? (null
             ) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}
-            <div>{seconds != 0 ? ( formatTime(seconds) ) : (null)} </div>
+            <div>{seconds != 0 ? (formatTime(seconds)) : (null)} </div>
             <div> <button onClick={handleCloseModule} className="">x</button></div>
-          </div>
+          </form>
         </div>
       )
       }
