@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-
+type Add = {
+    id : number
+}
 const Favorites = () => {
 
     const favorites = [
@@ -13,12 +15,35 @@ const Favorites = () => {
         { id: 8, title: "برنامه نویسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
     ]
 
-    const [add, setAdd] = useState(null)
+    const [add, setAdd] = useState<Add[]>([])
 
-    const handleAdd = (id: any) => {
-        setAdd(add === id ? null : id)
+     const [selectedItems, setSelectedItems] = useState([]);
+
+    const handleAdd = (id: number) => {
+        const existingItem = add.find(item=>item.id === id)
+        if(!existingItem){
+            setAdd(prev=>[...prev,{id:id}])
+
+        }else{
+            const newItems = add.filter(item=>item.id !== id)
+            setAdd(newItems)
+        }
+        
     }
 
+    // const handleAdd = (id) => {
+    //     setAdd((prevAdd) => {
+    //         if (prevAdd.includes(id)) {
+    //             // If item is already selected, remove it
+    //             return prevAdd.filter((item) => item !== id);
+    //         } else {
+    //             // If item is not selected, add it
+    //             return [...prevAdd, id];
+    //         }
+    //     });
+    // };
+
+    console.log("list",add)
 
     return (
         <div className='flex flex-col gap-6 pr-4 pt-5 pb-8 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
@@ -32,7 +57,8 @@ const Favorites = () => {
                 {favorites.map((item, i) => {
                     return (
                         <div onClick={() => handleAdd(item.id)} >
-                            {add === item.id ?
+                            
+                            {add.find(i=>i.id === item.id) ?
                                 (<div className='flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
                                     <div>{item.title}</div>
                                     <div className=''><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 52 40" fill="none">
