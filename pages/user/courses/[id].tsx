@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import courseData from '../api/course/courseData.json'
+ 
+import courseData from "/components/courseData.json"
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -21,7 +22,7 @@ export const CourseDetail = () => {
 
 
 
-    console.log(courseData)
+    // console.log(courseData)
 
     const route = useRouter()
     const routeID = route.query.id

@@ -27,7 +27,7 @@ const index = () => {
 
           <div className='flex items-center gap-2  pl-8 pr-4 py-5'>
             <img src='/icon/modares/sidbar/courses.svg' alt='History' />
-            <h2 className='text-lg'>تاریخچه سفارش‌ها</h2>
+            <h2 className='text-lg'>دوره ها</h2>
           </div>
 
 
