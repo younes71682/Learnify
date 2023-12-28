@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown";
 import { useForm } from 'react-hook-form';
 import { useFormState } from 'react-dom';
 import _ from 'lodash';
+import Link from 'next/link';
 
 
 type FormeValue = {
@@ -78,15 +79,15 @@ const Navbar_Main = () => {
 
 
   return (
-    <div className="rounded-b-[40px] shadow-lg h-[92px]">
-      <div className="flex flex-1 items-center justify-between px-[130px]">
+    <div className=" flex justify-center  rounded-b-[40px] shadow-lg h-[92px]">
+      <div className="flex  items-center justify-between  w-[85%] ">
         <div className="flex gap-8">
           <img className="w-[186px] h-[86px] mt-[5px]" src='/images/global/Rectangle.png' />
           <div>
             <ul className="flex gap-8 mt-[42px]">
               <li><Dropdown /></li>
-              <li>تدریس کنید</li>
-              <li>وبلاگ</li>
+              <li><Link href="/modares">تدریس کنید</Link></li>
+              <li><Link href="/user/blog">وبلاگ</Link></li>
             </ul>
           </div>
         </div>

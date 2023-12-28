@@ -66,7 +66,7 @@ export default function Home() {
             <Image src="/icon/user/home_page/course/left.svg" alt='Left' width={24} height={24} />
           </div>
         </div>
-
+{/* 
         <div className='flex justify-center gap-6'>
           {latest_courses.map((item) => {
             return (
@@ -75,7 +75,7 @@ export default function Home() {
               </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
 
 
@@ -108,7 +108,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='flex justify-center gap-6'>
+        {/* <div className='flex justify-center gap-6'>
           {latest_courses.map((item) => {
             return (
               <div className=''>
@@ -116,7 +116,7 @@ export default function Home() {
               </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
 
 

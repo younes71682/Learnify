@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { set, useFormContext } from 'react-hook-form'
 type Add = {
-    id : number
+    id: number
 }
 const Favorites = () => {
 
@@ -17,33 +18,22 @@ const Favorites = () => {
 
     const [add, setAdd] = useState<Add[]>([])
 
-     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAdd = (id: number) => {
-        const existingItem = add.find(item=>item.id === id)
-        if(!existingItem){
-            setAdd(prev=>[...prev,{id:id}])
+        const existingItem = !add.find((item) => item.id === id)
+        if (existingItem) {
+            setAdd(prev => [...prev, { id: id }])
 
-        }else{
-            const newItems = add.filter(item=>item.id !== id)
+        } else {
+            const newItems = add.filter(item => item.id !== id)
             setAdd(newItems)
         }
-        
+
     }
 
-    // const handleAdd = (id) => {
-    //     setAdd((prevAdd) => {
-    //         if (prevAdd.includes(id)) {
-    //             // If item is already selected, remove it
-    //             return prevAdd.filter((item) => item !== id);
-    //         } else {
-    //             // If item is not selected, add it
-    //             return [...prevAdd, id];
-    //         }
-    //     });
-    // };
+    const { register } = useFormContext()
 
-    console.log("list",add)
+
 
     return (
         <div className='flex flex-col gap-6 pr-4 pt-5 pb-8 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
@@ -56,9 +46,9 @@ const Favorites = () => {
             <div className='flex flex-wrap gap-6 w-[90%]'>
                 {favorites.map((item, i) => {
                     return (
-                        <div onClick={() => handleAdd(item.id)} >
-                            
-                            {add.find(i=>i.id === item.id) ?
+                        <div className='cursor-pointer' onClick={() => handleAdd(item.id)} >
+
+                            {add.find(i => i.id === item.id) ?
                                 (<div className='flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
                                     <div>{item.title}</div>
                                     <div className=''><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 52 40" fill="none">
@@ -70,7 +60,6 @@ const Favorites = () => {
                                     <div>{item.title}</div>
                                     <div>{item.icon}</div>
                                 </div>)}
-
                         </div>
                     )
                 })}
