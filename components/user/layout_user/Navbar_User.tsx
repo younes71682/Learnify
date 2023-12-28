@@ -1,4 +1,5 @@
 import Dropdown from '@/components/layout_main/Dropdown';
+import Link from 'next/link';
   
 
 const Navbar_User = () => {
@@ -28,7 +29,7 @@ const Navbar_User = () => {
             />
           </div>
           <div className="border-solid border-[1px] border-[#008000] rounded-[12px]">
-            <p className="text-[#008000] flex py-2 px-[14px] cursor-pointer">حساب کاربری</p>
+            <Link href="/user/profile" className="text-[#008000] flex py-2 px-[14px] cursor-pointer">حساب کاربری</Link>
           </div>
         </div>
       </div>

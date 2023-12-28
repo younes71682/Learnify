@@ -46,7 +46,7 @@ const My_sales = () => {
         >
           <XAxis dataKey="name" angle={-45} tickMargin={20} padding={{ left: 20, right: 20 }} />
           <Tooltip />
-          <Line type="monotone" dataKey="pv" stroke="#FFD66B" strokeWidth={2} fill='#AE8FF7' activeDot={{ r: 8 }} />
+          <Line type="monotone"  dataKey="pv" stroke="#FFD66B" strokeWidth={2} fill='#AE8FF7' activeDot={{ r: 8 }} />
         </LineChart>
 
       </ResponsiveContainer>

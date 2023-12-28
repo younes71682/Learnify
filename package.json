@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^40.2.0",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
     "@ckeditor/ckeditor5-ui": "^40.2.0",
     "@coreui/coreui-pro": "^5.0.0-rc.1",
     "@coreui/react-chartjs": "^2.1.3",

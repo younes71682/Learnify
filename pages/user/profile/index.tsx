@@ -64,11 +64,11 @@ const index = () => {
             </div>
             <form className='flex flex-wrap gap-4 w-[90%]' onSubmit={handleSubmit(submit)} noValidate>
               <div className='flex flex-col'>
-                <input {...register("username", { required: { value: true, message: "نام خود را وارد کنید" } })} placeholder='* نام و نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px]  outline-[#008000] placeholder:pr-2 ' required />
+                <input {...register("username", { required: { value: true, message: "نام خود را وارد کنید" } })} placeholder='* نام و نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 mb-2  outline-[#008000]  ' required />
                 <p className='text-red-500 font-normal text-xs'>{errors.username?.message}</p>
               </div>
               <div className='flex flex-col'>
-                <input {...register("phoneNumber", { required: { value: true, message: "شماره تلفن خود را وارد کنید " }, })} placeholder='*شماره موبایل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2 ' required />
+                <input {...register("phoneNumber", { required: { value: true, message: "شماره تلفن خود را وارد کنید " }, })} placeholder='*شماره موبایل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 mb-2 outline-[#008000] ' required />
                 <p className='text-red-500 font-normal text-xs'>{errors.phoneNumber?.message}</p>
               </div>
               <div className='flex flex-col'>
@@ -80,7 +80,7 @@ const index = () => {
               </div>
               <Select_gender />
               <div className='flex flex-col'>
-                <input {...register("datebirth", { pattern: { value: /^[0-9]+[/]+[0-9]+[/]+[0-9]*$/, message: "تاریخ را صحیح وارد کنید" } })} placeholder='تاریخ تولد' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] outline-[#008000] placeholder:pr-2' required />
+                <input {...register("datebirth", { pattern: { value: /^[0-9]+[/]+[0-9]+[/]+[0-9]*$/, message: "تاریخ را صحیح وارد کنید" } })} placeholder='تاریخ تولد' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 mb-2 outline-[#008000]' required />
                 <p className='text-red-500 font-normal text-xs'>{errors.datebirth?.message}</p>
               </div>
               {/* <DevTool control={control} /> */}
@@ -96,7 +96,7 @@ const index = () => {
           <Favorites />
           <Button_info_operation />
 
-
+ 
         </div>
 
       </div>

@@ -70,7 +70,7 @@ const info_teacher = () => {
 
 
                         <div className="flex w-[28%] h-[32vh]">
-                            <label for="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
+                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
                                 <div className="flex flex-col items-center justify-center ">
                                     <Image src="/icon/modares/account/apload_photo.svg" alt='apload' width={70} height={44} className='mb-3' />
                                     <p className="text-[#1F2937] leading-6 tracking-wider mb-1"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>اپلود تصویر خود</p>

@@ -1,7 +1,10 @@
 import Toggle_button_edit from '@/components/button/Toggle_button_edit'
+import dynamic from 'next/dynamic';
 import React from 'react'
 
 const editblog = () => {
+    const Toggle_button_edit = dynamic(() => import("@/components/button/Toggle_button_edit"), { ssr: false });
+
     return (
         <div className=' flex justify-center h-[180vh] mt-28'>
             <div className='flex flex-col justify-between py-8 gap-8  rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[90%] h-[100vh] '>
@@ -16,7 +19,9 @@ const editblog = () => {
                     </div>
 
                     <div className='flex flex-col gap-6'>
-                        <Toggle_button_edit />
+                        <Toggle_button_edit
+            
+                        />
 
 
                         <div className='flex flex-col mx-6'>
