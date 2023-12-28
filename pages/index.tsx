@@ -16,7 +16,10 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
 
 
-
+  const refCourses = useRef(null)
+  const handleScrollCourses = () => {
+    refCourses.current?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const latest_courses = [
     { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
@@ -37,11 +40,9 @@ export default function Home() {
           <div className='flex flex-col mt-[200px] items-center mx-auto gap-[45px] text-[#484848]'>
             <LogoMotion />
 
-            <div  className='flex flex-col items-end gap-16 mr-16 scroll-smooth'>
+            <div className='flex flex-col items-end gap-16 mr-16 '>
               <p className='text-2xl w-[482px]'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
-             <a href='#1' className='scroll-smooth'>
-              <p  className='bg-[#339933] px-4 py-2 rounded-xl text-xl text-white relative right-56'>مشاهده دوره ها</p>
-             </a>
+              <p onClick={handleScrollCourses} className='bg-[#339933] z-10 px-4 py-2 cursor-pointer rounded-xl text-xl text-white relative right-56'>مشاهده دوره ها</p>
             </div>
           </div>
 
@@ -56,8 +57,8 @@ export default function Home() {
 
         <Services />
 
-        <div className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
-        <div  id='1' >
+        <div ref={refCourses} className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
+        <div >
           <Categories />
 
         </div>

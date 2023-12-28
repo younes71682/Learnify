@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
- 
+import { useRef } from 'react'
+
 import courseData from "/components/courseData.json"
 
 import Accordion from '@mui/material/Accordion';
@@ -20,6 +21,25 @@ export const CourseDetail = () => {
         { id: 4, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
     ];
 
+    const refComments = useRef(null)
+    const handleScroll = () => {
+        refComments.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    const refEpisodes = useRef(null)
+    const handleScrollEpisodes = () => {
+        refEpisodes.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    const refEMentor = useRef(null)
+    const handleScrollMentor = () => {
+        refEMentor.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    const refDescription = useRef(null)
+    const handleScrollDescription = () => {
+        refDescription.current?.scrollIntoView({ behavior: 'smooth' })
+    }
 
 
     // console.log(courseData)
@@ -40,12 +60,12 @@ export const CourseDetail = () => {
                     {/* right section div */}
                     <div className='w-[770px]  '>
                         <div className='flex rounded-lg border-[3px] border-[#008000] bg-white p-4 justify-around py-[35px] text-black text-opacity-80 text-center text-lg font-bold leading-4'>
-                            <p>معرفی دوره</p>
-                            <p>درباره استاد</p>
-                            <p>سرفصل های دوره</p>
-                            <p>کامنت ها</p>
+                            <p className='cursor-pointer' onClick={handleScrollDescription}>معرفی دوره</p>
+                            <p className='cursor-pointer' onClick={handleScrollMentor}>درباره استاد</p>
+                            <p className='cursor-pointer' onClick={handleScrollEpisodes}>سرفصل های دوره</p>
+                            <p className='cursor-pointer' onClick={handleScroll}>کامنت ها</p>
                         </div>
-                        <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div ref={refDescription} className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
                             <div className='flex items-center pt-3 pb-5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -66,7 +86,7 @@ export const CourseDetail = () => {
 
                             </p>
                         </div>
-                        <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div ref={refEMentor} className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
                             <div className='flex items-center'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M21.0802 8.58003V15.42C21.0802 16.54 20.4802 17.58 19.5102 18.15L13.5702 21.58C12.6002 22.14 11.4002 22.14 10.4202 21.58L4.48016 18.15C3.51016 17.59 2.91016 16.55 2.91016 15.42V8.58003C2.91016 7.46003 3.51016 6.41999 4.48016 5.84999L10.4202 2.42C11.3902 1.86 12.5902 1.86 13.5702 2.42L19.5102 5.84999C20.4802 6.41999 21.0802 7.45003 21.0802 8.58003Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -84,7 +104,7 @@ export const CourseDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div ref={refEpisodes} className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
                             <div className='flex items-center'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M21.6602 10.4395L20.6802 14.6195C19.8402 18.2295 18.1802 19.6895 15.0602 19.3895C14.5602 19.3495 14.0202 19.2595 13.4402 19.1195L11.7602 18.7195C7.59018 17.7295 6.30018 15.6695 7.28018 11.4895L8.26018 7.29952C8.46018 6.44952 8.70018 5.70952 9.00018 5.09952C10.1702 2.67952 12.1602 2.02952 15.5002 2.81952L17.1702 3.20952C21.3602 4.18952 22.6402 6.25952 21.6602 10.4395Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -127,7 +147,7 @@ export const CourseDetail = () => {
                             })}
 
                         </div>
-                        <div className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
+                        <div ref={refComments} className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
                             <div className='flex justify-between'>
                                 <div className='flex'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

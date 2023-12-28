@@ -13,7 +13,7 @@ import Step3 from '@/components/modares/teachingSteps/step3';
 
 export const Teaching = () => {
 
-    const [activeStep, setActiveStep] = useState(0)
+    const [activeStep, setActiveStep] = useState(3)
 
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
