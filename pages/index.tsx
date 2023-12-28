@@ -18,6 +18,7 @@ export default function Home() {
 
   const refCourses = useRef(null)
   const handleScrollCourses = () => {
+    //@ts-ignore
     refCourses.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -96,7 +97,7 @@ export default function Home() {
             <Image src="/icon/user/home_page/course/left.svg" alt='Left' width={24} height={24} />
           </div>
         </div>
-{/* 
+
         <div className='flex justify-center gap-6'>
           {latest_courses.map((item) => {
             return (
@@ -105,9 +106,8 @@ export default function Home() {
               </div>
             )
           })}
-        </div> */}
-      </div>
-
+        </div>
+ 
 
         <div className='bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl mx-[175px] mb-32 '>
           <div className='flex justify-between relative z-10'>
@@ -148,7 +148,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        {/* <div className='flex justify-center gap-6'>
+        <div className='flex justify-center gap-6'>
           {latest_courses.map((item) => {
             return (
               <div className=''>
@@ -156,7 +156,7 @@ export default function Home() {
               </div>
             )
           })}
-        </div> */}
+        </div>
       </div>
 
 
