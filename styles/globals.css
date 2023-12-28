@@ -61,4 +61,5 @@ body{
   direction: rtl;
   font-family: "YekanBakh-Medium";
   background-color: #FBFBFB;
+  scroll-behavior: smooth;
 }

@@ -59,14 +59,14 @@ const Favorites = () => {
                         <div onClick={() => handleAdd(item.id)} >
                             
                             {add.find(i=>i.id === item.id) ?
-                                (<div className='flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
+                                (<div className='flex items-center cursor-pointer justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
                                     <div>{item.title}</div>
                                     <div className=''><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 52 40" fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M51.1743 4.14173L22.514 39.977L0 21.2131L4.24793 16.1156L21.5582 30.5386L45.9971 0L51.1743 4.14173Z" fill="white" />
                                     </svg></div>
                                 </div>)
 
-                                : (<div className='flex items-center justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2'>
+                                : (<div className='flex items-center cursor-pointer justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2'>
                                     <div>{item.title}</div>
                                     <div>{item.icon}</div>
                                 </div>)}
