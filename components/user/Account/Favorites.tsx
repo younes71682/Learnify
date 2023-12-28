@@ -56,7 +56,7 @@ const Favorites = () => {
                                     </svg></div>
                                 </div>)
 
-                                : (<div className='flex items-center justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2'>
+                                : (<div className='flex items-center cursor-pointer justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2'>
                                     <div>{item.title}</div>
                                     <div>{item.icon}</div>
                                 </div>)}

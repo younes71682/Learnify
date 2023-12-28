@@ -70,10 +70,10 @@ export const Step2 = () => {
                 </div>
                 <div className='mt-[47px] mr-[56px] text-center'>
                     <p className='font-bold text-lg'>اپلود درس</p>
-                    <form action="" onClick={() => document.querySelector('.uploadBtn').click()} className='border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
-                        <input type="file" className='hidden uploadBtn' />
+                    <label className='inline-block w-full border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
+                        <input type="file" className='hidden w-full  uploadBtn' />
                         بارگذاری دوره
-                    </form>
+                    </label>
                 </div>
             </div>
             <div className='flex'>
@@ -121,10 +121,10 @@ export const Step2 = () => {
                 </div>
                 <div className='mt-[47px] mr-[56px] text-center'>
                     <p className='font-bold text-lg'>اپلود درس</p>
-                    <form action="" onClick={() => document.querySelector('.uploadBtn').click()} className='border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
-                        <input type="file" className='hidden uploadBtn' />
+                    <label className='inline-block w-full border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
+                        <input type="file" className='hidden w-full  uploadBtn' />
                         بارگذاری دوره
-                    </form>
+                    </label>
                 </div>
             </div>
             <div className='flex'>
@@ -172,10 +172,10 @@ export const Step2 = () => {
                 </div>
                 <div className='mt-[47px] mr-[56px] text-center'>
                     <p className='font-bold text-lg'>اپلود درس</p>
-                    <form action="" onClick={() => document.querySelector('.uploadBtn').click()} className='border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
-                        <input type="file" className='hidden uploadBtn' />
+                    <label className='inline-block w-full border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
+                        <input type="file" className='hidden w-full  uploadBtn' />
                         بارگذاری دوره
-                    </form>
+                    </label>
                 </div>
             </div>
         </div>
