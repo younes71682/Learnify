@@ -18,8 +18,7 @@ export default function Home() {
 
   const refCourses = useRef(null)
   const handleScrollCourses = () => {
-    //@ts-ignore
-    refCourses.current?.scrollIntoView({ behavior: 'smooth' })
+     refCourses.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const latest_courses = [
@@ -43,7 +42,9 @@ export default function Home() {
 
             <div className='flex flex-col items-end gap-16 mr-16 '>
               <p className='text-2xl w-[482px]'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
-              <p onClick={handleScrollCourses} className='bg-[#339933] z-10 px-4 py-2 cursor-pointer rounded-xl text-xl text-white relative right-56'>مشاهده دوره ها</p>
+              <div className='flex justify-center items-center bg-[#339933] py-2 cursor-pointer rounded-xl'>
+              <p onClick={handleScrollCourses} className='text-xl text-white '>مشاهده دوره ها</p>
+              </div>
             </div>
           </div>
 
@@ -58,12 +59,11 @@ export default function Home() {
 
         <Services />
 
-        <div ref={refCourses} className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
-        <div >
-          <Categories />
+        <div className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
+         
+           <Categories  refCourses={refCourses}/>
 
-        </div>
-
+ 
         <div className='flex flex-col gap-8 mb-24 mt-8'>
           <div className='flex justify-between mx-[175px]'>
             <div className='flex items-center gap-1'>
