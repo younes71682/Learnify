@@ -1,10 +1,12 @@
 import React from 'react'
 
-const Categories = () => {
+const Categories = (props:any) => {
+
+    const { refCourses } = props
 
     const informatin = [
         { id: 1, name: 'طراحی', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className='w-[48px]' /> },
-        { id: 2, name: 'امنیت شبکه', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_Security' className='w-[48px]'/> },
+        { id: 2, name: 'امنیت شبکه', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_Security' className='w-[48px]' /> },
         { id: 3, name: 'برنامه نویسی', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/custom_coding.png' alt='Custom_Coding' className='w-[48px]' /> },
         { id: 4, name: 'فیلم وانیمیشن', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/movie.png' alt='Movie' className='w-[48px]' /> },
         { id: 5, name: 'توسع وب', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/browser.png' alt='Browser' className='w-[48px]' /> },
@@ -15,7 +17,7 @@ const Categories = () => {
 
 
     return (
-        <div className='flex flex-wrap justify-center mx-32'>
+        <div className='flex flex-wrap justify-center mx-32' ref={refCourses}>
             {informatin.map((item) => {
                 return (
 
