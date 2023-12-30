@@ -3,8 +3,8 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   type: 'bar',
   // data: data,
- 
- 
+
+
 
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -24,6 +24,7 @@ const config: Config = {
         YekanBakhHairline: ["YekanBakh-Hairline", 'sans-serif'],
         YekanBakhBold: ["YekanBakh-Bold", 'sans-serif'],
         YekanBakhFat: ["YekanBakh-Fat", 'sans-serif'],
+        Byekan: ["B-yekan", "arial"]
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

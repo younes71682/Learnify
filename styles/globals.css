@@ -32,6 +32,11 @@
   src: url('../public/fonts/YekanBakh-Fat.ttf');
 }
 
+@font-face {
+  font-family: "B-yekan";
+  src: url("../public/fonts/Yekan.ttf");
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

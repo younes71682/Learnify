@@ -24,13 +24,13 @@ const CourseComponent = (props: any) => {
                             <p>فصل</p>
                         </div>
                         <div className=' h-[24px] w-[55px] px-1 py-[5px] border border-[#DEB509] rounded flex justify-around bg-[#FFFDED] font-normal text-xs text-[#DEB509]'>
-                            <p>{duration}</p>
-                            <p>ساعت</p>
+                            <p className='font-Byekan'>{duration}</p>
+                            <p className='font-Byekan'>ساعت</p>
                         </div>
                     </div>
 
                     <div className='flex items-center'>
-                        <p className='font-bold'>{price}</p>
+                        <p className='font-bold text-xl font-Byekan'>{price}</p>
                         <div className='text-[#4F4F4F] mr-1 text-[10px]'>
                             <p className='relative top-[2px]'>تو</p>
                             <p className='relative bottom-[2px]'>مان</p>
