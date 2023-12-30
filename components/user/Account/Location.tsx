@@ -7,18 +7,15 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
-// import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { type } from 'os';
- 
-import Select from 'react-select';
+
  
 
 
 
 const Location = () => {
 
-     const [isSearchable, setIsSearchable] = React.useState(false);
- 
 
     const state = [
         { id: 1, value: "tehran", label: "تهران" },
@@ -26,12 +23,12 @@ const Location = () => {
         { id: 1, value: "esfahan", label: "اصفهان" },
     ]
 
-    const [age, setAge] = React.useState(state);
+    const [age, setAge] = React.useState('');
 
-    const handleChange = (e: SelectChangeEvent) => {
-        setAge(e.target.value);
-        console.log("dd", age)
-    };
+    const handleChange = (event: SelectChangeEvent) => {
+        setAge(event.target.value);
+        console.log("dd",setAge)
+      };
 
     const city = [
         { id: 1, value: "tehran", label: "تهران" },
@@ -53,7 +50,7 @@ const Location = () => {
             <div className='flex flex-col gap-4'>
                 <div className='w-[55%]'>
 
-                    {/* <FormControl sx={{
+                    <FormControl sx={{
                         m: 1, minWidth: 140, margin: 0, padding: 0, color: "008000", colorRendering: "0080000", bgcolor: "#f8f", '&:focus': {
                             ring: '#008000',
                             border: '#008000',
@@ -83,23 +80,7 @@ const Location = () => {
                                 )
                             })}
                         </Select>
-                    </FormControl> */}
-
-                    <Select 
-                    // {...register("state")}
-                        // className="basic-single"
-                        // classNamePrefix="select"
-                        defaultValue={state[0]}
-                         isSearchable={isSearchable}
-                        name="color"
-                        options={state}
-                        value={age}
-                        onChange={handleChange}
-                 
-                      
-                     
-                    />
-
+                    </FormControl>
 
                 </div>
 
@@ -108,7 +89,7 @@ const Location = () => {
                         <option selected>شهر</option>
                         {city.map((i) => {
                             return (
-                                <option >
+                                <option>
                                     {i.label}
                                 </option>
                             )
