@@ -1,4 +1,4 @@
- import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -44,11 +44,11 @@ const Best_sellers = () => {
                                                 <p>تو</p>
                                                 <p>مان</p>
                                             </div>
-                                            <p className='text-[22px] font-normal'>{item.price}</p>
+                                            <p className='text-[22px] font-normal font-Byekan'>{item.price}</p>
                                         </div>
 
-                                        <Link href="/">
-                                            <div className='flex items-center rounded-[5px] p-1 bg-[#212121] text-[#FFCC12]'>
+                                        <Link href={`user/courses/${item.id}`}>
+                                            <div className='flex items-center rounded-[5px] p-1.5 px-2 bg-[#212121] text-[#FFCC12]'>
                                                 <p className='text-sm font-normal'>مشاهده دوره</p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                                     <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='stroke-[#F1C40F]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
@@ -88,11 +88,11 @@ const Best_sellers = () => {
                                                 <p>تو</p>
                                                 <p>مان</p>
                                             </div>
-                                            <p className='text-[22px] font-normal text-[#FBFBFB]'>{item.price}</p>
+                                            <p className='text-[22px] font-normal text-[#FBFBFB] font-Byekan'>{item.price}</p>
                                         </div>
 
-                                        <Link href="/">
-                                            <div className='flex items-center rounded-[5px] p-1 bg-[#764ABD] text-[#FBFBFB]'>
+                                        <Link href={`user/courses/${item.id}`}>
+                                            <div className='flex items-center rounded-[5px] p-1.5 px-2 bg-[#764ABD] text-[#FBFBFB]'>
                                                 <p className='text-sm font-normal'>مشاهده دوره</p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                                     <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='stroke-[#FBFBFB]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
@@ -108,7 +108,7 @@ const Best_sellers = () => {
                     case 2:
                         return (
                             <div className='flex bg-[#E57722] w-[572px] rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.1)] '>
-                                <div className='flex w-[210px] h-[212px] rounded-[10px]'>{item.image}</div>
+                                <div className='flex w-[210px] h-[212px] rounded-[10px] '>{item.image}</div>
                                 <div className='flex flex-col w-[362px] pt-4 px-2'>
                                     <div className='mb-4'>
                                         <div className='flex items-center gap-1 text-[#FBFBFB] text-2xl font-bold'>
@@ -132,11 +132,11 @@ const Best_sellers = () => {
                                                 <p>تو</p>
                                                 <p>مان</p>
                                             </div>
-                                            <p className='text-[22px] font-normal text-[#FBFBFB]'>{item.price}</p>
+                                            <p className='text-[22px] font-normal text-[#FBFBFB] font-Byekan'>{item.price}</p>
                                         </div>
 
-                                        <Link href="/">
-                                            <div className='flex items-center rounded-[5px] p-1 bg-[#FBFBFB] text-[#E57722]'>
+                                        <Link href={`user/courses/${item.id}`}>
+                                            <div className='flex items-center rounded-[5px] p-1.5 px-2 bg-[#FBFBFB] text-[#E57722]'>
                                                 <p className='text-sm font-normal'>مشاهده دوره</p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                                     <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='stroke-[#E57722]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
@@ -176,11 +176,11 @@ const Best_sellers = () => {
                                                 <p>تو</p>
                                                 <p>مان</p>
                                             </div>
-                                            <p className='text-[22px] font-normal text-[#FBFBFB]'>{item.price}</p>
+                                            <p className='text-[22px] font-normal text-[#FBFBFB] font-Byekan'>{item.price}</p>
                                         </div>
 
-                                        <Link href="/">
-                                            <div className='flex items-center rounded-[5px] p-1 bg-[#212121] text-[#FBFBFB]'>
+                                        <Link href={`user/courses/${item.id}`}>
+                                            <div className='flex items-center rounded-[5px] p-1.5 px-2 bg-[#212121] text-[#FBFBFB]'>
                                                 <p className='text-sm font-normal text-[#FBFBFB]'>مشاهده دوره</p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                                     <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='stroke-[#FBFBFB]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />

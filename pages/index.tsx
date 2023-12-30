@@ -18,7 +18,7 @@ export default function Home() {
 
   const refCourses = useRef(null)
   const handleScrollCourses = () => {
-     refCourses.current?.scrollIntoView({ behavior: 'smooth' })
+    refCourses.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const latest_courses = [
@@ -40,10 +40,10 @@ export default function Home() {
           <div className='flex flex-col mt-[200px] items-center mx-auto gap-[45px] text-[#484848]'>
             <LogoMotion />
 
-            <div className='flex flex-col items-end gap-16 mr-16 '>
+            <div className='flex flex-col items-end gap-16 mr-16 bg-red-500 '>
               <p className='text-2xl w-[482px]'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
-              <div className='flex justify-center items-center bg-[#339933] py-2 cursor-pointer rounded-xl'>
-              <p onClick={handleScrollCourses} className='text-xl text-white '>مشاهده دوره ها</p>
+              <div className='flex justify-center items-center  bg-[#339933] py-2 relative px-3 right-56 z-10 cursor-pointer rounded-xl'>
+                <p onClick={handleScrollCourses} className='text-xl text-white '>مشاهده دوره ها</p>
               </div>
             </div>
           </div>
@@ -59,12 +59,14 @@ export default function Home() {
 
         <Services />
 
-        <div className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
-         
-           <Categories  refCourses={refCourses}/>
+        <div ref={refCourses} className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
 
- 
+        <Categories  />
+
+
+
         <div className='flex flex-col gap-8 mb-24 mt-8'>
+
           <div className='flex justify-between mx-[175px]'>
             <div className='flex items-center gap-1'>
               <Image src="/icon/user/home_page/course/thoundar.svg" alt='Thoundar' width={24} height={24} />
@@ -86,28 +88,6 @@ export default function Home() {
             })}
           </div>
         </div>
-      <div className='flex flex-col gap-8 mb-24 mt-8'>
-        <div className='flex justify-between mx-[175px]'>
-          <div className='flex items-center gap-1'>
-            <Image src="/icon/user/home_page/course/thoundar.svg" alt='Thoundar' width={24} height={24} />
-            <h3 className='text-[#484848] text-xl font-bold'>جدیدترین دوره‌ها</h3>
-          </div>
-          <div className='flex items-center'>
-            <h3>مشاده همه دوره ها </h3>
-            <Image src="/icon/user/home_page/course/left.svg" alt='Left' width={24} height={24} />
-          </div>
-        </div>
-
-        <div className='flex justify-center gap-6'>
-          {latest_courses.map((item) => {
-            return (
-              <div className=''>
-                <CourseComponent  {...item} />
-              </div>
-            )
-          })}
-        </div>
- 
 
         <div className='bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl mx-[175px] mb-32 '>
           <div className='flex justify-between relative z-10'>
@@ -148,16 +128,6 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className='flex justify-center gap-6'>
-          {latest_courses.map((item) => {
-            return (
-              <div className=''>
-                <CourseComponent  {...item} />
-              </div>
-            )
-          })}
-        </div>
-      </div>
 
 
         <div className='flex flex-col gap-8 '>

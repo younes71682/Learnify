@@ -1,9 +1,8 @@
 import React from 'react'
 
-const Categories = (props:any) => {
+const Categories = () => {
 
-    const { refCourses } = props
-
+ 
     const informatin = [
         { id: 1, name: 'طراحی', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className='w-[48px]' /> },
         { id: 2, name: 'امنیت شبکه', number: '12 دوره', logo: <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_Security' className='w-[48px]' /> },
@@ -17,7 +16,7 @@ const Categories = (props:any) => {
 
 
     return (
-        <div className='flex flex-wrap justify-center mx-32' ref={refCourses}>
+        <div className='flex flex-wrap justify-center mx-32'>
             {informatin.map((item) => {
                 return (
 
