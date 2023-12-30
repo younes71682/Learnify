@@ -20,13 +20,17 @@ const Navbar_Main = () => {
 
   const [phoneNumber, setPhoneNumber] = useState('')
 
+  const [showSearchInput, setShowSearchInput] = useState(false)
 
   const handleCloseModule = () => {
     setLoginModalOpen(false)
     setCheckPhoneNumber(false)
   }
 
-
+  const handleShowSearch = (e) => {
+    e.stopPropagation()
+    setShowSearchInput(true)
+  }
 
   const handleCheckPhoneNumber = () => {
     setLoginModalOpen(false)
@@ -81,7 +85,7 @@ const Navbar_Main = () => {
 
 
   return (
-    <div className=" flex justify-center  rounded-b-[40px] shadow-lg h-[92px]">
+    <div onClick={() => setShowSearchInput(false)} className=" flex justify-center  rounded-b-[40px] shadow-lg h-[92px]">
       <div className="flex  items-center justify-between  w-[85%] ">
         <div className="flex gap-8">
           <img className="w-[186px] h-[86px] mt-[5px]" src='/images/global/Rectangle.png' />
@@ -95,11 +99,23 @@ const Navbar_Main = () => {
         </div>
         <div className="flex gap-8 mt-3">
           <div className="flex gap-4">
+            {showSearchInput === true ?
+              (<div className='flex relative'>
+                <input type='text' onClick={(e) => e.stopPropagation()} className='rounded-xl flex w-[280px] border-0 focus:ring-[#008000] bg-[#ededed]' placeholder='جستجو کنید'/>
+                <img
+                  className=' w-[24px] absolute top-2  left-2 cursor-pointer'
+                  src="/icon/user/home_page/navbar/search.svg"
+                  alt="Search"
+                /></div>)
+              :
+              (<img
+                className='cursor-pointer'
+                onClick={handleShowSearch}
+                src="/icon/user/home_page/navbar/search.svg"
+                alt="Search"
+              />)}
             <img
-              src="/icon/user/home_page/navbar/search.svg"
-              alt="Search"
-            />
-            <img
+              className='w-[24px]'
               src="/icon/user/home_page/navbar/shopping_cart.svg"
               alt="Shopping_cart Logo"
             />
