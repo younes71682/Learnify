@@ -20,12 +20,12 @@ type FormValue = {
     university: string,
     field_of_study: string,
     educational_stage: string,
-    numbercard:string,
-    numberfinancial:string,
+    numbercard: string,
+    numberfinancial: string,
 
 }
 
-const info_teacher = () => {
+const Infoteacher = () => {
 
 
     const methods = useForm<FormValue>({
@@ -36,8 +36,8 @@ const info_teacher = () => {
             university: "",
             field_of_study: "",
             educational_stage: "",
-            numbercard:"",
-            numberfinancial:"",
+            numbercard: "",
+            numberfinancial: "",
 
         }
     })
@@ -52,11 +52,11 @@ const info_teacher = () => {
 
     return (
         <Layout_User showFooter={false}>
-            <div className='flex justify-center gap-6 h-[150vh] pt-28'>
+            <div className='flex justify-center gap-6 h-[150vh] pt-24'>
                 <Sidebar />
 
-                    <div className='flex flex-col gap-6 w-[64%] h-[112vh]'>
-                <FormProvider {...methods}>
+                <div className='flex flex-col gap-6 w-[64%] h-[112vh]'>
+                    <FormProvider {...methods}>
 
                         <div className='flex items-center gap-6 '>
                             <div className='flex items-center w-[69%] h-[224px]'>
@@ -108,58 +108,14 @@ const info_teacher = () => {
                         </div>
 
                         <Button_info_operation handleSubmit={handleSubmit} onSubmit={onSubmit} />
-                </FormProvider>
-                
-                    </div>
+                    </FormProvider>
+
+                </div>
             </div>
         </Layout_User>
     )
 }
 
-export default info_teacher
+export default Infoteacher
 
 
-// import Button_info_operation from '@/components/button/Button_info_operation';
-// import Financial from '@/components/modares/Account/info_teacher/Financial';
-// import Education from '@/components/user/Account/Education';
-// import React from 'react'
-// import { useForm, FormProvider, useFormContext } from "react-hook-form";
-
-// type formValue = {
-
-// }
-// const info_teacher = () => {
-
-//     const methods = useForm<formValue>({
-//         defaultValues: {
-//             university: "",
-//             field_of_study: "",
-//             educational_stage: "",
-//             numbercard:"",
-//             numberfinincal:""
-//         }
-//     });
-
-//     const {handleSubmit}=methods
-
- 
-//     }
-
-//     return (
-//         <div>
-
-//         <FormProvider {...methods} >
-//             <form onSubmit={methods.handleSubmit(onSubmit)}>
-//                 <div>
-
-//                 <Education />
-//                 <Financial/>
-//                 <Button_info_operation handleSubmit={handleSubmit} onSubmit={onSubmit} />
-//                 </div>
-//              </form>
-//         </FormProvider>
-//         </div>
-//     )
-// }
-
-// export default info_teacher

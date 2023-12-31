@@ -20,7 +20,7 @@ export const Comments = () => {
         <Layout_User showFooter={false}>
             <div className='flex justify-center  gap-6 h-[150px] pt-24 '>
                 <Sidebar />
-                <div className='flex flex-col  gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[65%] h-[100vh] '>
+                <div className='flex flex-col  gap-2 rounded-[15px] w-[65%]  '>
                     <div className='flex  justify-between  px-8 py-5'>
                         <select className='rounded-xl shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-4 px-8 border-0 ' value={value} onChange={(e) => setValue(e.target.value)} id="">
                             <option hidden value="">دوره مورد نظر خود را انتخاب کنید</option>

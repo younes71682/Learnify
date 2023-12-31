@@ -29,14 +29,14 @@ const Chart_sell = () => {
 
 
   return (
-    <div style={{ width: '100%' }} className='flex flex-col gap-5 pt-6 pr-4 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] h-[55vh]'>
+    <div style={{ width: '100%' }} className='flex flex-col gap-5 pt-6 pr-4 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] h-[400px]'>
 
       <h4>نمودار عملکرد فروش بر اساس ماه ها</h4>
 
       <ResponsiveContainer width="100%" height="100%" >
         <LineChart width={300} height={100} data={data}
           margin={{
-            top: 40,
+            top: 35,
             bottom: 20,
             right: 40,
             left: 0,

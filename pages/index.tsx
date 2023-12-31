@@ -40,7 +40,7 @@ export default function Home() {
           <div className='flex flex-col mt-[200px] items-center mx-auto gap-[45px] text-[#484848]'>
             <LogoMotion />
 
-            <div className='flex flex-col items-end gap-16 mr-16 bg-red-500 '>
+            <div className='flex flex-col items-end gap-16 mr-16  '>
               <p className='text-2xl w-[482px]'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
               <div className='flex justify-center items-center  bg-[#339933] py-2 relative px-3 right-56 z-10 cursor-pointer rounded-xl'>
                 <p onClick={handleScrollCourses} className='text-xl text-white '>مشاهده دوره ها</p>

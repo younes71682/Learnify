@@ -13,19 +13,19 @@ const Top_teacher = () => {
     ]
 
     return (
-        <div className='flex flex-col justify-around py-4 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[50%] h-[50vh]'>
-            <div className='font-normal flex justify-center'><p>6  استاد برتر</p></div>
+        <div className='flex flex-col justify-around py-2 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[50%] h-full'>
+            <div className='font-normal flex justify-center font-Byekan'><p>6  استاد برتر</p></div>
             <div className='flex justify-around items-center text-[#030229] text-xs'>
-                <p className='flex justify-center w-[30%]'>نام دوره</p>
+                <p className='flex justify-center w-[32%]'>نام دوره</p>
                 <p className='flex justify-center w-[20%]'>تعداد فروش</p>
                 <p className='flex justify-center w-[20%]'>مجموع فروش</p>
             </div>
             {tteacher.map((item) => {
                 return (
                     <ul className='flex items-center justify-around'>
-                        <li className='flex justify-around items-center w-[32%]'><Avatar src={item.profile} alt='profile' className='flex rounded-full w-[24px] h-[24px] object-cover' /><p className='text-[#484848] text-sm'>{item.name}</p></li>
-                        <li className='flex justify-center w-[20%] text-[#060] text-xs font-bold'>{item.number}</li>
-                        <li className='flex justify-end w-[20%] pl-5  text-[#030229] text-xs font-normal'><p>{item.total}</p></li>
+                        <li className='flex justify-around items-center w-[32%] '><Avatar src={item.profile} alt='profile' className='flex rounded-full w-[24px] h-[24px] object-cover' /><p className='text-[#484848] text-sm'>{item.name}</p></li>
+                        <li className='flex justify-center w-[20%] text-[#060] text-xs font-bold font-Byekan'>{item.number}</li>
+                        <li className='flex justify-end w-[20%] pl-5  text-[#030229] text-xs font-normal font-Byekan'><p>{item.total}</p></li>
                     </ul>
                 )
             })}

@@ -28,9 +28,9 @@ export const CourseStatus = () => {
 
         <div className=''>
 
-            {showCourseConfirmation === false ? (< div className='flex justify-center gap-6 h-[150px] pt-24 ' >
+            {showCourseConfirmation === false ? (< div className='flex justify-center gap-6 h-[180px] pt-28 ' >
                 <Sidebar />
-                <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[60%] h-[60vh] '>
+                <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[65%] h-[60vh] '>
                     <div className='flex  justify-between px-8 py-5'>
                     </div>
                     <p className='px-8 font-bold mb-4'>

@@ -11,7 +11,7 @@ const Status = () => {
     ]
 
     return (
-        <div className='flex justify-between h-[25vh]'>
+        <div className='flex justify-between h-[180px]'>
 
             <div className='flex flex-col justify-center items-center gap-3 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[23%]'>
                 <div className='bg-[rgba(199,255,248,0.43)] rounded-full flex justify-center items-center p-2'>
@@ -19,7 +19,7 @@ const Status = () => {
                 </div>
                 <h3 className='text-[#404040]'>تعداد دانشجو</h3>
                 <div className='flex flex-col items-center'>
-                    <p className='text-[#212121] text-xl font-normal'>1,156</p>
+                    <p className='text-[#212121] text-xl font-normal font-Byekan'>1,156</p>
                     <p className='text-[#A0A0A0] text-sm font-normal'>نفر</p>
                 </div>
             </div>
@@ -30,7 +30,7 @@ const Status = () => {
                 </div>
                 <h3 className='text-[#404040]'>تعداد دوره های فعال</h3>
                 <div className='flex flex-col items-center'>
-                    <p className='text-[#212121] text-xl font-normal'>354</p>
+                    <p className='text-[#212121] text-xl font-normal font-Byekan'>354</p>
                     <p className='text-[#A0A0A0] text-sm font-normal'>دوره</p>
                 </div>
             </div>
@@ -41,7 +41,7 @@ const Status = () => {
                 </div>
                 <h3 className='text-[#404040]'>میزان درامد</h3>
                 <div className='flex flex-col items-center'>
-                    <p className='text-[#212121] text-xl font-normal'>2,048,120</p>
+                    <p className='text-[#212121] text-xl font-normal font-Byekan'>2,048,120</p>
                     <p className='text-[#A0A0A0] text-sm font-normal'>تومان</p>
                 </div>
             </div>
@@ -52,7 +52,7 @@ const Status = () => {
                 </div>
                 <h3 className='text-[#404040]'>تعداد دوره های در انتظار</h3>
                 <div className='flex flex-col items-center'>
-                    <p className='text-[#212121] text-xl font-normal'>5</p>
+                    <p className='text-[#212121] text-xl font-normal font-Byekan'>5</p>
                     <p className='text-[#A0A0A0] text-sm font-normal'>دوره</p>
                 </div>
             </div>

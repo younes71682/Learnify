@@ -5,7 +5,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import Layout_User from '@/components/user/layout_user/Layout_User';
 
 
-const My_training = () => {
+const Mytraining = () => {
 
 
   return (
@@ -83,4 +83,4 @@ const My_training = () => {
   )
 }
 
-export default My_training
+export default Mytraining

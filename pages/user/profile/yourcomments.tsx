@@ -2,7 +2,7 @@ import Sidbar from '@/components/user/Account/Sidbar'
 import Layout_User from '@/components/user/layout_user/Layout_User'
 import React from 'react'
 
-const Your_comments = () => {
+const Yourcomments = () => {
 
   return (
 
@@ -85,6 +85,6 @@ const Your_comments = () => {
   )
 }
 
-export default Your_comments
+export default Yourcomments
 
 

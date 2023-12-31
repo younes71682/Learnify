@@ -23,7 +23,7 @@ const index = () => {
         <Sidebar />
 
 
-        <div className='flex flex-col gap-2 w-[64%] rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[90vh] overflow-y-auto'>
+        <div className='flex flex-col gap-2 w-[64%] rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[640px] overflow-y-auto'>
 
           <div className='flex items-center gap-2  pl-8 pr-4 py-5'>
             <img src='/icon/modares/sidbar/courses.svg' alt='History' />

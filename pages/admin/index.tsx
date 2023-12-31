@@ -15,20 +15,22 @@ const index = () => {
 
             <div className='flex flex-col w-[65%] gap-6 '>
 
-                <div className='flex justify-between '>
+                <div className='flex justify-between'>
                     <div className='flex items-center justify-between w-[8.5%]'>
                         <Image src="/icon/admin/sidbar/overwiew.svg" alt='overview' width={24} height={24} />
                         <p className='text-[#484848] font-bold'>نمای کلی</p>
                     </div>
-                    <div className='flex items-center justify-between w-[23%]'>
+                    <div className='flex items-center justify-between w-[28%]'>
                         <Date />
                         <Date />
                     </div>
                 </div>
+                <div>
 
-                <Status />
+                    <Status />
+                </div>
 
-                <div className='flex items-center gap-7'>
+                <div className='flex items-center gap-7 h-[330px]'>
                     <Selling_course />
                     <Top_teacher />
                 </div>

@@ -7,9 +7,9 @@ export const DepositStatus = () => {
 
 
 
-        <div className='flex gap-6 justify-center h-[140vh] pt-20'>
+        <div className='flex gap-6 justify-center h-[180vh] pt-28'>
             <Sidebar />
-            <div className=' p-4  shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
+            <div className=' p-4  shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px] w-[65%] h-[100vh] overflow-y-auto'>
                 
                 <div className=' flex justify-around'>
                     <div className=' w-fit'>

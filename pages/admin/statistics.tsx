@@ -9,7 +9,7 @@ import Most_visited_course from '@/components/admin/statistics/Most_visited_cour
 
 const statistics = () => {
     return (
-        <div className='flex justify-center gap-6 mt-24 h-[180vh]'>
+        <div className='flex justify-center gap-6 mt-28 h-[180vh]'>
             <Sidebar />
             <div className='flex flex-col w-[65%] gap-6'>
 
@@ -20,10 +20,12 @@ const statistics = () => {
                         <Date />
                     </div>
                 </div>
+                <div>
 
-                <Full_list_courses />
+                    <Full_list_courses />
+                </div>
 
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center justify-between h-[270px]'>
                     <My_sales />
                     <Teacher_sales />
                 </div>

@@ -6,27 +6,27 @@ import {
   XAxis,
   BarChart,
   Bar,
-   
+
 } from 'recharts';
 
 const data = [
-  {name: 'فروردین',pv: 20,},
-  {name: 'اردیبهشت',pv: 25,},
-  {name: 'خرداد',pv: 23,},
-  {name: 'تیر',pv: 18,},
-  {name: 'مرداد',pv: 20,},
-  {name: 'شهریور',pv: 15,},
-  {name: 'مهر',pv: 19,},
-  {name: 'آبان',pv: 21,},
-  {name: 'آذر',pv: 18,},
-  {name: 'دی',pv: 23,},
-  {name: 'بهمن',pv: 22,},
-  {name: 'اسفند',pv: 25,},
+  { name: 'فروردین', pv: 20, },
+  { name: 'اردیبهشت', pv: 25, },
+  { name: 'خرداد', pv: 23, },
+  { name: 'تیر', pv: 18, },
+  { name: 'مرداد', pv: 20, },
+  { name: 'شهریور', pv: 15, },
+  { name: 'مهر', pv: 19, },
+  { name: 'آبان', pv: 21, },
+  { name: 'آذر', pv: 18, },
+  { name: 'دی', pv: 23, },
+  { name: 'بهمن', pv: 22, },
+  { name: 'اسفند', pv: 25, },
 ];
 
 const Most_visited_course = () => {
   return (
-    <div className='flex flex-col gap-6 pt-5 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] h-[50vh]'>
+    <div className='flex flex-col gap-6 pt-5 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] h-[330px]'>
       <div className='flex justify-between items-center px-4 '>
         <h3>سهم فروش برای ما</h3>
         <div className='flex justify-between gap-3'>

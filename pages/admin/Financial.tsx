@@ -20,7 +20,7 @@ const Financial = () => {
         <div className='flex justify-center gap-6 mt-28 h-[180vh]'>
             <Sidebar />
             <div className='flex flex-col gap-2  w-[65%] h-[52vh] '>
-                <div className='flex justify-between px-8 py-5'>
+                <div className='flex justify-between px-6 py-5'>
 
                     <h2 className='text-lg'>تراکنش مالی</h2>
                     <div className='flex gap-4'>

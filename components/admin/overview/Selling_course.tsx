@@ -12,8 +12,8 @@ const Selling_course = () => {
     ]
 
     return (
-        <div className='flex flex-col justify-around py-4 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[50%] h-[50vh]'>
-            <div className='font-normal flex justify-center'><p>6 دوره پرفروش</p></div>
+        <div className='flex flex-col justify-around py-2 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[50%] h-full'>
+            <div className='font-normal flex justify-center font-Byekan'><p>6 دوره پرفروش</p></div>
             <div className='flex justify-around items-center text-[#030229] text-xs'>
                 <p className='flex justify-center w-[20%]'>نام دوره</p>
                 <p className='flex justify-center w-[20%]'>تعداد فروش</p>
@@ -23,8 +23,8 @@ const Selling_course = () => {
                 return (
                     <ul className='flex items-center justify-around'>
                         <li className='flex justify-center w-[20%] text-[#484848] text-sm '>{item.name}</li>
-                        <li className='flex justify-center w-[20%] text-[#060] text-xs font-bold'>{item.number}</li>
-                        <li className='flex justify-end w-[20%] pl-5 text-[#030229] text-xs font-normal'>{item.total}</li>
+                        <li className='flex justify-center w-[20%] text-[#060] text-xs font-bold font-Byekan'>{item.number}</li>
+                        <li className='flex justify-end w-[20%] pl-5 text-[#030229] text-xs font-normal font-Byekan'>{item.total}</li>
                     </ul>
                 )
             })}

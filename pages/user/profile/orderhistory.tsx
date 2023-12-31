@@ -3,7 +3,7 @@ import Date from '@/components/user/date/Date'
 import Layout_User from '@/components/user/layout_user/Layout_User'
 import Image from 'next/image'
 
-const order_history = () => {
+const Orderhistory = () => {
 
 
 
@@ -22,7 +22,7 @@ const order_history = () => {
       <div className='flex gap-6 justify-center h-[140vh] pt-20'>
         <Sidbar />
 
-        <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[65%] h-[100vh] overflow-y-auto'>
+        <div className='flex flex-col gap-2 rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[64%] h-[100vh] overflow-y-auto'>
 
           <div className='flex justify-between pl-8 pr-4 py-5'>
             <div className='flex items-center gap-2'>
@@ -65,4 +65,4 @@ const order_history = () => {
   )
 }
 
-export default order_history
+export default Orderhistory
