@@ -8,7 +8,6 @@ import Condition from './Condition';
 import Training_recording from './Training_recording';
 import Release_period from './Release_period';
 
-
 interface StyledTabsProps {
     children?: React.ReactNode;
     value: string;
@@ -26,19 +25,16 @@ const StyledTabs = styled((props: StyledTabsProps) => (
         justifyContent: 'center',
         backgroundColor: 'transparent',
         borderColor: 'divider'
-
     },
     '& .MuiTabs-indicatorSpan': {
-        // maxWidth: 100,
-
         width: '100%',
         backgroundColor: '#008000',
-
     },
 });
 
 interface StyledTabProps {
     label: string;
+    value: string; // Add this line
 }
 
 const StyledTab = styled((props: StyledTabProps) => (
@@ -50,9 +46,7 @@ const StyledTab = styled((props: StyledTabProps) => (
     fontSize: theme.typography.pxToRem(20),
     marginRight: theme.spacing(12),
     marginLeft: theme.spacing(12),
-
     color: 'rgb(0, 0, 0)',
-
     '&.Mui-selected': {
         color: '#000',
     },
@@ -62,7 +56,6 @@ const StyledTab = styled((props: StyledTabProps) => (
 }));
 
 const Tab_layout = (props: any) => {
-
     const { refstudy } = props
     const [value, setValue] = React.useState("1");
 
@@ -79,13 +72,11 @@ const Tab_layout = (props: any) => {
                             value={value}
                             onChange={handleChange}
                             aria-label="styled tabs example"
-
->
+                        >
                             <StyledTab value="1" label="شرایط لرنیفای" />
                             <StyledTab value="2" label="ظبط آموزش" />
                             <StyledTab value="3" label="انتشار دوره" />
                         </StyledTabs>
-
                     </Box>
                     <TabPanel  value="1"><Condition /></TabPanel>
                     <TabPanel value="2"><Training_recording /></TabPanel>
@@ -96,4 +87,4 @@ const Tab_layout = (props: any) => {
     );
 }
 
-export default Tab_layout
+export default Tab_layout;

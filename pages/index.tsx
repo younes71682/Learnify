@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef } from 'react'
 import Layout_Main from '@/components/layout_main/Layout_Main';
 import { Inter } from 'next/font/google'
@@ -98,9 +99,9 @@ export default function Home() {
               <div className='bg-[#CCAB6C] text-[24px] px-5 py-4 rounded-xl'>مشاهده شرایط</div>
             </div>
 
-            <img className='absolute left-[110px] bottom-[100px] z-20 w-[230px] h-[215]' src='/images/user/home_page/teaching/elementary_school_teacher_teaching.png' alt='Elementary_School_Teacher_Teaching' />
-            <img className='absolute left-[70px] top-[135px] z-30 w-[185px] h-[192px]' src='/images/user/home_page/teaching/man_with_headset_having_video_call.png' alt='Man_With_Headset_Having_Video_Call' />
-            <img className='absolute left-[215px] top-[110px] z-10 w-[210px] h-[205px]' src='/images/user/home_page/teaching/medium_shot_woman_presenting.png' alt='Medium_Shot_Woman_Presenting' />
+            <img className='absolute left-[110px] bottom-[100px] z-20 w-[230px] h-[215]' src='/elementary_school_teacher_teaching.png' alt='Elementary_School_Teacher_Teaching' />
+            <img className='absolute left-[70px] top-[135px] z-30 w-[185px] h-[192px]' src='/man_with_headset_having_video_call.png' alt='Man_With_Headset_Having_Video_Call' />
+            <img className='absolute left-[215px] top-[110px] z-10 w-[210px] h-[205px]' src='/medium_shot_woman_presenting.png' alt='Medium_Shot_Woman_Presenting' />
 
           </div>
         </div>

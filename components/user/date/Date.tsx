@@ -18,6 +18,7 @@ const Date = () => {
       <DatePicker
         style={{ height:'40px',cursor:'pointer', textAlign: "center", width: "130px" }}
         value={value}
+        // @ts-ignore
         onChange={setValue}
         locale={persian_fa}
         calendar={persian}

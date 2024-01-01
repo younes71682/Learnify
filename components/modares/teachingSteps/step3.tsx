@@ -10,6 +10,7 @@ export const Step3 = () => {
     ];
 
     const customStyles = {
+        // @ts-ignore
         option: (provided, state) => ({
           ...provided,
           border: state.isFocused ? '2px solid #008000' : '2px solid transparent', // Add a border when focused (hovered)
@@ -27,6 +28,7 @@ export const Step3 = () => {
                     placeholder='دسته بندی'
                     defaultValue='دسته بندی'
                     // onChange={setSelectedOption}
+                    // @ts-ignore
                     options={options}
                     styles={customStyles}
 

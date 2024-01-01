@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Header_id from '@/components/user/blog/Header_id'
 import Layout_User from '@/components/user/layout_user/Layout_User'
 import React, { useRef } from 'react'

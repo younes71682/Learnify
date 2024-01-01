@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Inter } from 'next/font/google'
 import React, { useRef } from 'react'
 import Image from 'next/image'

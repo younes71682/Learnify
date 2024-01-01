@@ -27,7 +27,7 @@ const Navbar_Main = () => {
     setCheckPhoneNumber(false)
   }
 
-  const handleShowSearch = (e) => {
+  const handleShowSearch = (e:any) => {
     e.stopPropagation()
     setShowSearchInput(true)
   }

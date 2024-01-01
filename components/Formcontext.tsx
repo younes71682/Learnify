@@ -3,7 +3,7 @@ import { useForm, FormProvider, useFormContext } from "react-hook-form";
 
 export default function App() {
     const methods = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data:any) => console.log(data);
 
     return (
         <FormProvider {...methods} > // pass all methods into the context

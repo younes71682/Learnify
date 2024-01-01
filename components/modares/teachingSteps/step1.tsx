@@ -1,13 +1,17 @@
-import React from 'react'
-
+import React from 'react';
 
 export const Step1 = () => {
 
-
+    const handleFileInputClick = () => {
+        const uploadImageInput = document.querySelector('.uploadImage') as HTMLInputElement | null;
+        if (uploadImageInput) {
+            uploadImageInput.click();
+        }
+    };
 
     return (
         <div className='flex justify-center'>
-            <form action='' className='border-[2px] mx-[20px] h-[213px] bg-[#EFF6FF] w-[262px] flex justify-center items-center border-dashed rounded-lg border-[#3B82F6]' onClick={() => document.querySelector('.uploadImage').click()}>
+            <form action='' className='border-[2px] mx-[20px] h-[213px] bg-[#EFF6FF] w-[262px] flex justify-center items-center border-dashed rounded-lg border-[#3B82F6]' onClick={handleFileInputClick}>
                 <input type="file" className='uploadImage  hidden' />
                 <div className='flex flex-col items-center'>
                     <div>
@@ -20,7 +24,7 @@ export const Step1 = () => {
                     <p className='text-[#9CA3AF] mt-2'>Maximum size: 50MB</p>
                 </div>
             </form>
-            <form action='' className='border-[2px] mx-[20px] h-[213px] bg-[#EFF6FF] w-[262px] flex justify-center items-center border-dashed rounded-lg border-[#3B82F6]' onClick={() => document.querySelector('.uploadImage').click()}>
+            <form action='' className='border-[2px] mx-[20px] h-[213px] bg-[#EFF6FF] w-[262px] flex justify-center items-center border-dashed rounded-lg border-[#3B82F6]' onClick={handleFileInputClick}>
                 <input type="file" className='uploadImage hidden' />
                 <div className='flex flex-col items-center'>
                     <div>
@@ -34,7 +38,7 @@ export const Step1 = () => {
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Step1
+export default Step1;

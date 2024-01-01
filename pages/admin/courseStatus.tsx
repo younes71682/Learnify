@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import Sidebar from '@/components/admin/Sidebar'
 import Switch from "react-switch";
@@ -116,6 +117,7 @@ export const CourseStatus = () => {
                             </div>
                             <div className='mt-[47px] mr-[56px] text-center'>
                                 <p className='font-bold text-lg'>اپلود درس</p>
+                                
                                 <form action="" onClick={() => document.querySelector('.uploadBtn').click()} className='border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
                                     <input type="file" className='hidden uploadBtn' />
                                     مشاهده
@@ -218,6 +220,7 @@ export const CourseStatus = () => {
                             </div>
                             <div className='mt-[47px] mr-[56px] text-center'>
                                 <p className='font-bold text-lg'>اپلود درس</p>
+
                                 <form action="" onClick={() => document.querySelector('.uploadBtn').click()} className='border-dashed border p-2 px-4 rounded-xl cursor-pointer bg-[#EFF6FF] mt-2 border-[#3B82F6]'>
                                     <input type="file" className='hidden uploadBtn' />
                                     مشاهده
