@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 
 type FormeValue = {
@@ -27,7 +28,7 @@ const Navbar_Main = () => {
     setCheckPhoneNumber(false)
   }
 
-  const handleShowSearch = (e:any) => {
+  const handleShowSearch = (e: any) => {
     e.stopPropagation()
     setShowSearchInput(true)
   }
@@ -64,10 +65,7 @@ const Navbar_Main = () => {
     setSeconds(10)
   }
 
-  // console.log("phoneNumber", phoneNumber)
 
-
-  //register input
 
 
   const form = useForm<FormeValue>({
@@ -82,6 +80,16 @@ const Navbar_Main = () => {
   const submit = (data: FormeValue) => {
     alert(JSON.stringify(data));
   }
+
+
+  const rout = useRouter()
+  const handlelogin = () => {
+    rout.push("/user")
+  }
+
+
+
+
 
 
   return (
@@ -101,7 +109,7 @@ const Navbar_Main = () => {
           <div className="flex gap-4">
             {showSearchInput === true ?
               (<div className='flex relative'>
-                <input type='text' onClick={(e) => e.stopPropagation()} className='rounded-xl flex w-[280px] border-0 focus:ring-[#008000] bg-[#ededed]' placeholder='جستجو کنید'/>
+                <input type='text' onClick={(e) => e.stopPropagation()} className='rounded-xl flex w-[280px] border-0 focus:ring-[#008000] bg-[#ededed]' placeholder='جستجو کنید' />
                 <img
                   className=' w-[24px] absolute top-2  left-2 cursor-pointer'
                   src="/icon/user/home_page/navbar/search.svg"
@@ -160,13 +168,13 @@ const Navbar_Main = () => {
             </p>
             <div>
               <input maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })}
-                className="rounded-lg flex h-[7vh] text-sm focus:ring-[#008000] focus:border-[#008000]  text-center outline-none " type="text" />
+                className="rounded-lg flex h-[40px] text-sm focus:ring-[#008000] focus:border-[#008000]  text-center outline-none " type="text" />
               <div>
                 <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
                 {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
               </div>
             </div>
-            <div><button className="bg-[#008000] text-white mt-3 rounded-lg h-[40px] w-[179px]" >تایید</button></div>
+            <div onClick={handlelogin} className='flex justify-center items-center bg-[#008000] w-[37%] h-[40px] rounded-lg'><p className=" text-white">تایید</p></div>
             <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
             {seconds != 0 ? (null
             ) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}

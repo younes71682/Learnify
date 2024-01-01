@@ -50,7 +50,7 @@ const Sidebar = () => {
                                             <div className={`${link === item.pathname ? 'border-solid border-2 border-[#008000] rounded-full h-10' : 'border-solid border-2 border-[#FBFBFB] rounded-full h-10'}`} />
                                             <div className='flex items-center gap-2'>
                                                 <div>{link === item.pathname ? <Image src={`${item.icon_selected}`} alt='icon' width={24} height={24} /> : <Image src={`${item.icon}`} alt='icon' width={24} height={24} />}</div>
-                                                <div>{item.title}</div>
+                                                <div className={`${link === item.pathname ? 'text-[#008000]' : 'text-[#212121]'} `}>{item.title}</div>
                                             </div>
                                         </div>
                                     </Link>

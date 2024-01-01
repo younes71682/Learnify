@@ -1,6 +1,5 @@
-import Sidebar from '@/components/modares/Account/Sidebar'
+import Layout_profil_modares from '@/components/layout/Layout_profil_modares';
 import Date from '@/components/user/date/Date'
-import Layout_User from '@/components/user/layout_user/Layout_User'
 
 import {
     LineChart,
@@ -39,10 +38,10 @@ const financial = () => {
 
 
     return (
-        <div className='flex justify-center gap-6 h-[150vh] pt-24 '>
-            <Sidebar />
+        <Layout_profil_modares>
 
-            <div className='flex flex-col gap-6 w-[65%]'>
+
+            <div className='flex flex-col gap-6 w-[64%]'>
 
                 <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[400px]'>
                     <div className='flex justify-between px-8 py-5 sticky top-0'>
@@ -105,7 +104,7 @@ const financial = () => {
                 </div>
             </div>
 
-        </div>
+        </Layout_profil_modares>
 
 
     )

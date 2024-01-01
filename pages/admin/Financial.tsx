@@ -1,4 +1,4 @@
-import Sidebar from '@/components/admin/Sidebar'
+import Layout_admin from '@/components/layout/Layout_admin'
 import Pagination from '@/components/admin/financial/Pagination'
 import Date from '@/components/user/date/Date'
 import React from 'react'
@@ -17,8 +17,9 @@ const Financial = () => {
     ]
 
     return (
-        <div className='flex justify-center gap-6 mt-28 h-[180vh]'>
-            <Sidebar />
+
+        <Layout_admin>
+
             <div className='flex flex-col gap-2  w-[65%] h-[52vh] '>
                 <div className='flex justify-between px-6 py-5'>
 
@@ -58,7 +59,8 @@ const Financial = () => {
                     </div>
                 </div>
             </div>
-        </div>
+
+        </Layout_admin>
     )
 }
 

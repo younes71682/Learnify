@@ -2,7 +2,6 @@ import Button_exit from '@/components/button/Button_exit'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 
@@ -10,11 +9,11 @@ import { useState } from 'react'
 const Sidbar = () => {
 
   const prof = [
-    { id: 1, title: "اطلاعات کاربری", pathname: "/user/profile", icon: "/icon/user/account/info_user/user.svg",icon_selected:"/icon/user/account/info_user/user_green.svg" },
-    { id: 2, title: "آموزش‌های من", pathname: "/user/profile/mytraining", icon: "/icon/user/account/info_user/education.svg",icon_selected:"/icon/user/account/info_user/education_green.svg" },
-    { id: 3, title: "نظرات شما", pathname: "/user/profile/yourcomments", icon: "/icon/user/account/sidebar/comments.svg",icon_selected:"/icon/user/account/sidebar/icon_green/comments.svg" },
-    { id: 4, title: "تاریخچه سفارش‌ها", pathname: "/user/profile/orderhistory", icon: "/icon/user/account/sidebar/history.svg",icon_selected:"/icon/user/account/sidebar/icon_green/history.svg" },
-    { id: 5, title: "اعلان ها", pathname: "/user/profile/notification", icon: "/icon/user/account/sidebar/notification.svg",icon_selected:"/icon/user/account/sidebar/icon_green/notification.svg" },
+    { id: 1, title: "اطلاعات کاربری", pathname: "/user/profile", icon: "/icon/user/account/info_user/user.svg", icon_selected: "/icon/user/account/info_user/user_green.svg" },
+    { id: 2, title: "آموزش‌های من", pathname: "/user/profile/mytraining", icon: "/icon/user/account/info_user/education.svg", icon_selected: "/icon/user/account/info_user/education_green.svg" },
+    { id: 3, title: "نظرات شما", pathname: "/user/profile/yourcomments", icon: "/icon/user/account/sidebar/comments.svg", icon_selected: "/icon/user/account/sidebar/icon_green/comments.svg" },
+    { id: 4, title: "تاریخچه سفارش‌ها", pathname: "/user/profile/orderhistory", icon: "/icon/user/account/sidebar/history.svg", icon_selected: "/icon/user/account/sidebar/icon_green/history.svg" },
+    { id: 5, title: "اعلان ها", pathname: "/user/profile/notification", icon: "/icon/user/account/sidebar/notification.svg", icon_selected: "/icon/user/account/sidebar/icon_green/notification.svg" },
   ]
 
   const [selected, setSelected] = useState(1)
@@ -53,7 +52,7 @@ const Sidbar = () => {
                       <div className={`${link === item.pathname ? 'border-solid border-2 border-[#008000] rounded-full h-10' : 'border-solid border-2 border-[#FBFBFB] rounded-full h-10'}`} />
                       <div className='flex items-center gap-2'>
                         <div>{link === item.pathname ? <Image src={`${item.icon_selected}`} alt='icon' width={24} height={24} /> : <Image src={`${item.icon}`} alt='icon' width={24} height={24} />}</div>
-                        <div>{item.title}</div>
+                        <div className={`${link === item.pathname ? 'text-[#008000]' : 'text-[#212121]'} `}>{item.title}</div>
                       </div>
                     </div>
                   </Link>

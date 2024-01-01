@@ -1,8 +1,6 @@
-import Sidbar from '@/components/user/Account/Sidbar'
 import React from 'react'
-import { Progress } from 'flowbite-react';
 import ProgressBar from "@ramonak/react-progress-bar";
-import Layout_User from '@/components/user/layout_user/Layout_User';
+import Layout_profil_user from '@/components/layout/Layout_profil_user';
 
 
 const Mytraining = () => {
@@ -10,11 +8,9 @@ const Mytraining = () => {
 
   return (
 
-    <Layout_User showFooter={false}>
+    <Layout_profil_user>
 
-      <div className='max-[1144px]:mx-[50px] max-[1144px]:justify-center flex flex-wrap justify-center gap-6 h-[140vh] pt-20'>
-        <Sidbar />
-        <div className='shadow-[0px_0px_20px_rgba(0,0,0,0.05)] p-4 rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
+          <div className='shadow-[0px_0px_20px_rgba(0,0,0,0.05)] p-4 rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
           <div>
             <div className='flex'>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -76,10 +72,9 @@ const Mytraining = () => {
           </div>
         </div>
 
-      </div>
+ 
 
-
-    </Layout_User>
+    </Layout_profil_user>
   )
 }
 

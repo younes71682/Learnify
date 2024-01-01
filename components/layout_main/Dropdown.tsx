@@ -1,7 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from 'react'
 
 const Dropdown = () => {
+
+    const courses = [
+        { id: 1, title: "فیلم و انیمیشن", img: "/images/user/home_page/dropdown/graphic_design.png", alt: "Graphic_Design" },
+        { id: 2, title: "برنامه نویسی", img: "/images/user/home_page/dropdown/browser.png", alt: "Browser" },
+        { id: 3, title: "امنیت شبکه", img: "/images/user/home_page/dropdown/cyber_security.png", alt: "Cyber_Security" },
+        { id: 4, title: "نرم‌افزارهای کاربردی", img: "/images/user/home_page/dropdown/monitor.png", alt: "Monitor" },
+        { id: 5, title: "توسعه موبایل", img: "/images/user/home_page/dropdown/mobile_coding.png", alt: "Mobile_Coding" },
+        { id: 6, title: "نرم افزارهای مهندسی", img: "/images/user/home_page/dropdown/custom_coding.png", alt: "Custom_Coding" },
+        { id: 7, title: "توسعه وب", img: "/images/user/home_page/dropdown/menu.png", alt: "Menu" },
+        { id: 8, title: "طراحی", img: "/images/user/home_page/dropdown/movie.png", alt: "Movie" },
+    ]
+
     return (
         <div>
 
@@ -12,20 +25,20 @@ const Dropdown = () => {
                 </svg>
             </button>
 
-            <div id="dropdownDelay" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-[18rem]">
-                <ul className="flex flex-col p-6 gap-2" aria-labelledby="dropdownDelayButton">
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/graphic_design.png" alt="Graphic_Design" className="w-[24px]" /><Link href="/images">فیلم و انیمیشن</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/browser.png" alt="Browser.png" className="w-[24px]" />          <Link href="/images">برنامه نویسی</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/cyber_security.png" alt="Cyber_Security" className="w-[24px]" /><Link href="/images">امنیت شبکه</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/monitor.png" alt="Monitor.png" className="w-[24px]" />          <Link href="/images">نرم‌افزارهای کاربردی</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/mobile_coding.png" alt="Mobile_Coding" className="w-[24px]" />  <Link href="/images">توسعه موبایل</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/custom_coding.png" alt="Custom_Coding" className="w-[24px]" />  <Link href="/images">نرم افزارهای مهندسی</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/menu.png" alt="Menu" className="w-[24px]" />                    <Link href="/images">توسعه وب</Link></div></li>
-                    <li className="border-solid border-white border-[1px] hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src="/images/user/home_page/dropdown/movie.png" alt="Movie" className="w-[24px]" />                  <Link href="/images">طراحی</Link></div></li>
-                </ul>
-            </div>
+            <div id="dropdownDelay" className="z-10 hidden bg-[#FFF]  py-4  rounded-lg  shadow w-[18rem]">
+                {courses.map((i) => {
+                    return (
+                        <div className="">
+                            <ul className="flex flex-col px-6 py-1.5  " aria-labelledby="dropdownDelayButton">
+                                <li className="border-solid border-white border-[1px]  hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src={i.img} alt={i.alt} className="w-[24px]" /><Link href="/user/courses">{i.title}</Link></div></li>
+                            </ul>
+                        </div>
+                    )
+                })}
 
+            </div>
         </div>
+
     )
 }
 

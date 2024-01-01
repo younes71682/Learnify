@@ -1,11 +1,20 @@
 import Toggle_button_edit from '@/components/button/Toggle_button_edit'
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import React from 'react'
 
 const editblog = () => {
+
+    const router = useRouter()
+    const handleback=()=>{
+        router.back()
+    }
+
     const Toggle_button_edit = dynamic(() => import("@/components/button/Toggle_button_edit"), { ssr: false });
 
+
     return (
+
         <div className=' flex justify-center h-[180vh] mt-28'>
             <div className='flex flex-col justify-between py-8 gap-8  rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-[90%] h-[100vh] '>
 
@@ -37,7 +46,7 @@ const editblog = () => {
                 </div>
 
                 <div className='flex justify-end gap-2 ml-8'>
-                    <div className='text-[#C93636] bg-white border-solid border-[1px] border-[#C93636] rounded-[10px] w-[8%] py-2 flex justify-center items-center'>انصراف</div>
+                    <div onClick={handleback} className='text-[#C93636] bg-white border-solid border-[1px] border-[#C93636] rounded-[10px] w-[8%] py-2 flex justify-center items-center cursor-pointer'>انصراف</div>
                     <div className='text-white bg-[#008000] rounded-[10px] w-[8%] py-2 flex justify-center items-center'>ویرایش</div>
                 </div>
 

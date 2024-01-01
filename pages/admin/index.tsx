@@ -1,4 +1,4 @@
-import Sidebar from '@/components/admin/Sidebar'
+import Layout_admin from '@/components/layout/Layout_admin'
 import Chart_sell from '@/components/admin/overview/Chart_sell'
 import Selling_course from '@/components/admin/overview/Selling_course'
 import Status from '@/components/admin/overview/Status'
@@ -10,8 +10,8 @@ import React from 'react'
 
 const index = () => {
     return (
-        <div className='flex justify-center gap-6 pt-28 h-[180vh]'>
-            <Sidebar />
+
+        <Layout_admin>
 
             <div className='flex flex-col w-[65%] gap-6 '>
 
@@ -37,7 +37,8 @@ const index = () => {
 
                 <Chart_sell />
             </div>
-        </div>
+
+        </Layout_admin >
     )
 }
 

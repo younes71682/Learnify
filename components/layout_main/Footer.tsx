@@ -20,18 +20,9 @@ const Footer = () => {
           <img src='/images/global/Rectangle.png' className='w-[206px] h-[110px]' />
 
           <div className='flex gap-10'>
-            <img
-              src="/icon/footer/instagram.svg"
-              alt='Instagram'
-            />
-            <img
-              src="/icon/footer/twitter.svg"
-              alt='Twitter'
-            />
-            <img
-              src="/icon/footer/linkedin.svg"
-              alt='Linkedin'
-            />
+            <div className='cursor-pointer flex'><img src="/icon/footer/instagram.svg" alt='Instagram' /></div>
+            <div className='cursor-pointer flex'><img src="/icon/footer/twitter.svg" alt='Twitter' /></div>
+            <div className='cursor-pointer flex'><img src="/icon/footer/linkedin.svg" alt='Linkedin' /></div>
           </div>
         </div>
 
@@ -45,32 +36,32 @@ const Footer = () => {
           <div>
             <ul className='flex flex-col gap-[1.5rem]'>
               <h3 className='text-[1.125rem] font-bold'>بخش های سایت</h3>
-              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">تدریس کنید</Link></li>
-              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">درباره ماه</Link></li>
-              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/">بلاگ</Link></li>
+              <li className='flex gap-2 cursor-default'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/modares">تدریس کنید</Link></li>
+              <li className='flex gap-2 cursor-default'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/user/about">درباره ماه</Link></li>
+              <li className='flex gap-2 cursor-default'><img src='/icon/footer/point.svg' alt='Point' /><Link href="/user/blog">بلاگ</Link></li>
             </ul>
           </div>
 
 
-            <div>
-              <ul className='flex flex-col gap-[1.5rem]'>
-                <h3 className='text-[1.125rem] font-bold'>ارتباط با ما </h3>
-                <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>آیدی تلگرام:</p></li>
-                <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>شماره تماس:</p></li>
-              </ul>
-            </div>
+          <div>
+            <ul className='flex flex-col gap-[1.5rem]'>
+              <h3 className='text-[1.125rem] font-bold'>ارتباط با ما </h3>
+              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>آیدی تلگرام:</p></li>
+              <li className='flex gap-2'><img src='/icon/footer/point.svg' alt='Point' /><p>شماره تماس:</p></li>
+            </ul>
+          </div>
 
-            <div>
-              <ul className='flex flex-col items-end justify-end gap-[1.5rem] text-[14px] mt-14'>
-                <li><Link href="/">LEARNIFY_IR@</Link></li>
-                <li><Link href="/">learnify@gmail.com</Link></li>
-              </ul>
-            </div>
-
+          <div>
+            <ul className='flex flex-col items-end justify-end gap-[1.5rem] text-[14px] mt-14'>
+              <li><Link href="/">LEARNIFY_IR@</Link></li>
+              <li><Link href="/">learnify@gmail.com</Link></li>
+            </ul>
           </div>
 
         </div>
+
       </div>
+    </div>
   )
 }
 

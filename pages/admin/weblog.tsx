@@ -1,15 +1,13 @@
 import React from 'react'
-import Sidebar from '@/components/admin/Sidebar'
 import Link from 'next/link'
+import Layout_admin from '@/components/layout/Layout_admin'
 
 
 export const Weblog = () => {
     return (
 
+        <Layout_admin>
 
-
-        <div className='flex gap-6 justify-center h-[180vh] pt-28'>
-            <Sidebar />
             <div className=' p-4  rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
                 <div className='flex justify-between'>
                     <p className='font-medium text-base text-[#000] mr-2'>افزودن بلاگ</p>
@@ -73,7 +71,8 @@ export const Weblog = () => {
 
                 </div>
             </div>
-        </div>
+
+        </Layout_admin>
 
     )
 }

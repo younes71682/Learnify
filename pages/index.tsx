@@ -65,7 +65,6 @@ export default function Home() {
         <Categories  />
 
 
-
         <div className='flex flex-col gap-8 mb-24 mt-8'>
 
           <div className='flex justify-between mx-[175px]'>
@@ -79,7 +78,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='flex justify-center gap-6'>
+          <div className='flex justify-center gap-6 bg-red-800'>
             {latest_courses.map((item) => {
               return (
                 <div className=''>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const CourseComponent = (props: any) => {
-    const { name, title, detail, seasons, duration, price, image } = props
+    const { name, title, detail, seasons, duration, price, image , id } = props
 
     return (
         <div>
@@ -40,7 +40,7 @@ const CourseComponent = (props: any) => {
                 </div>
                 <div className='border-t group  '>
                     <div className='mt-0 h-[56px] flex gap-1 justify-center items-center hover:scale-[1.15] hover:text-[#4e914e] transition duration-150 ease-in-out hover:cursor-pointer text-[#484848] text-sm font-bold'>
-                        <Link href="/">مشاهده اطلاعات دوره</Link>
+                        <Link href={`/user/courses/${id}`}>مشاهده اطلاعات دوره</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M11.57 5.92969L5.5 11.9997L11.57 18.0697" stroke="#000" className='group-hover:stroke-[#4e914e]' strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M19.9999 12H5.66992" stroke="#000" strokeWidth="1.5" strokeMiterlimit="10" className='group-hover:stroke-[#4e914e]' strokeLinecap="round" strokeLinejoin="round" />

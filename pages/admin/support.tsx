@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '@/components/admin/Sidebar'
+import Layout_admin from '@/components/layout/Layout_admin'
 
 export const Support = () => {
 
@@ -10,10 +10,8 @@ export const Support = () => {
 
     return (
 
+<Layout_admin>
 
-
-        <div className='flex gap-6 justify-center h-[180vh] pt-28'>
-            <Sidebar />
             <div className=' p-4 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] rounded-[10px] w-[65%] h-[100vh] overflow-y-auto'>
                 <div className='flex'>
                     <p className='font-medium text-lg text-[#000] mr-2'>لیست گزاریش کاربران</p>
@@ -36,7 +34,8 @@ export const Support = () => {
                     })}
                 </div>
             </div>
-        </div>
+
+        </Layout_admin>
 
     )
 }

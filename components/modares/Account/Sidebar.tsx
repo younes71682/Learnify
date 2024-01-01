@@ -11,11 +11,11 @@ import { usePathname } from 'next/navigation'
 const Sidebar = () => {
 
     const prof = [
-        { id: 1, title: "دوره ها", pathname: "/modares/profile", icon: "/icon/modares/sidbar/courses.svg",icon_selected:"/icon/modares/sidbar/icon_green/courses.svg" },
-        { id: 2, title: "ویرایش دوره", pathname: "/modares/profile/editcourse", icon: "/icon/modares/sidbar/edit.svg",icon_selected:"/icon/modares/sidbar/icon_green/edit.svg" },
-        { id: 3, title: "اطلاعات استاد", pathname: "/modares/profile/infoteacher", icon: "/icon/user/account/info_user/user.svg",icon_selected:"/icon/user/account/info_user/user_green.svg" },
-        { id: 4, title: "امور مالی", pathname: "/modares/profile/financial", icon: "/icon/modares/sidbar/financial.svg",icon_selected:"/icon/modares/sidbar/icon_green/financial.svg" },
-        { id: 5, title: "نظرات", pathname: "/modares/profile/comments", icon: "/icon/modares/sidbar/comments.svg",icon_selected:"/icon/modares/sidbar/icon_green/comments.svg" },
+        { id: 1, title: "دوره ها", pathname: "/modares/profile", icon: "/icon/modares/sidbar/courses.svg", icon_selected: "/icon/modares/sidbar/icon_green/courses.svg" },
+        { id: 2, title: "ویرایش دوره", pathname: "/modares/profile/editcourse", icon: "/icon/modares/sidbar/edit.svg", icon_selected: "/icon/modares/sidbar/icon_green/edit.svg" },
+        { id: 3, title: "اطلاعات استاد", pathname: "/modares/profile/infoteacher", icon: "/icon/user/account/info_user/user.svg", icon_selected: "/icon/user/account/info_user/user_green.svg" },
+        { id: 4, title: "امور مالی", pathname: "/modares/profile/financial", icon: "/icon/modares/sidbar/financial.svg", icon_selected: "/icon/modares/sidbar/icon_green/financial.svg" },
+        { id: 5, title: "نظرات", pathname: "/modares/profile/comments", icon: "/icon/modares/sidbar/comments.svg", icon_selected: "/icon/modares/sidbar/icon_green/comments.svg" },
     ]
 
 
@@ -50,7 +50,7 @@ const Sidebar = () => {
                                             <div className={`${link === item.pathname ? 'border-solid border-2 border-[#008000] rounded-full h-10' : 'border-solid border-2 border-[#FBFBFB] rounded-full h-10'}`} />
                                             <div className='flex items-center gap-2'>
                                                 <div>{link === item.pathname ? <Image src={`${item.icon_selected}`} alt='icon' width={24} height={24} /> : <Image src={`${item.icon}`} alt='icon' width={24} height={24} />}</div>
-                                                <div>{item.title}</div>
+                                                <div className={`${link === item.pathname ? 'text-[#008000]' : 'text-[#212121]'} `}>{item.title}</div>
                                             </div>
                                         </div>
                                     </Link>
