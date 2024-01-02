@@ -60,7 +60,7 @@ const showinfo = () => {
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
-                        <Switch className='mt-5' onColor='#21005D' onChange={switchVisibility} checked={lessonVisible} />
+                        <Switch className='mt-5' onColor='#21005D'  />
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>اپلود درس</p>
@@ -112,7 +112,7 @@ const showinfo = () => {
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
-                        <Switch className='mt-5' onColor='#21005D' onChange={switchVisibility} checked={lessonVisible} />
+                        <Switch className='mt-5' onColor='#21005D' />
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>اپلود درس</p>
@@ -163,7 +163,7 @@ const showinfo = () => {
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
-                        <Switch className='mt-5' onColor='#21005D' onChange={switchVisibility} checked={lessonVisible} />
+                        <Switch className='mt-5' onColor='#21005D'  />
                     </div>
                     <div className='mt-[47px] mr-[56px] text-center'>
                         <p className='font-bold text-lg'>اپلود درس</p>
