@@ -1,4 +1,4 @@
-import Layout_admin from '@/components/layout/Layout_admin'
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
 import Pagination from '@/components/admin/financial/Pagination'
 import Date from '@/components/user/date/Date'
 import React from 'react'

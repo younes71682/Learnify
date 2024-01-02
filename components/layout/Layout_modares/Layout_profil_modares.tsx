@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../modares/layout_login_modares/Navbar'
-import Sidebar from '../modares/Account/Sidebar'
+import Sidebar from '../../modares/Account/Sidebar'
+import Nav_prof from './Nav_prof'
 
 type Propscontainer = {
     children: React.ReactNode
@@ -9,7 +9,7 @@ type Propscontainer = {
 const Layout_profil_modares = ({ children }: Propscontainer) => {
     return (
         <div className='flex flex-col'>
-            <Navbar />
+            <Nav_prof />
             <div className='flex gap-6 h-[150vh] justify-center pt-24'>
                 <Sidebar />
                 {children}

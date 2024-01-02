@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar_User from '../user/layout_user/Navbar_User'
-import Sidebar from '../admin/Sidebar'
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
 
 type Propscontainer = {
 
@@ -10,7 +10,7 @@ type Propscontainer = {
 const Layout_admin = ({ children }: Propscontainer) => {
     return (
         <div className='flex flex-col'>
-            <Navbar_User />
+            <Navbar />
             <div className='flex justify-center gap-6 pt-28 h-[180vh]'>
                 <Sidebar />
                 {children}

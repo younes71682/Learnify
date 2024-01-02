@@ -2,7 +2,7 @@ import { color } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import Button_exit from '../button/Button_exit'
+import Button_exit from '../../button/Button_exit'
 import { usePathname } from 'next/navigation'
 
 

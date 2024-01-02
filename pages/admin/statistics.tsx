@@ -4,7 +4,7 @@ import React from 'react'
 import My_sales from '@/components/admin/statistics/My_sales'
 import Teacher_sales from '@/components/admin/statistics/Teacher_sales'
 import Most_visited_course from '@/components/admin/statistics/Most_visited_course'
-import Layout_admin from '@/components/layout/Layout_admin'
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
 
 const statistics = () => {
     return (

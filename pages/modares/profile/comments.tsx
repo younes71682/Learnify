@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CommentComponent } from '@/components/modares/commentsComponents/commentComponent'
-import Layout_profil_modares from '@/components/layout/Layout_profil_modares'
+import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares'
 
 
 

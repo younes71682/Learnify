@@ -1,100 +1,51 @@
-import CourseDetail from '@/components/user/course/courseDetail'
-import Layout_User from '@/components/user/layout_user/Layout_User'
+import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Layout_user/Navbar';
+import CourseComponent from '@/components/user/course/CourseComponent';
+import Sidebarfilter from '@/components/user/course/Sidebarfilter'
 import React from 'react'
 
 export default function courses() {
 
+    const Courses = [
+        { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 2, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 3, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 4, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 5, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 6, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 7, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+        { id: 8, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
+    ];
 
 
     return (
-        <Layout_User showFooter>
-            <div className='bg-[#FBFBFB] '>
-                <div className='bg-[#FBFBFB] font-YekanBakhRegular px-[136px] mt-[15px] pt-[145px]'>
-                    <div className='text-[#484848] text-[24px] font-bold leading-[27.5px] mb-[2px]'>دوره های آموزشی برنامه نویسی</div>
-                    <div className='text-[#858585] text-[16px] font-medium leading-[27.5px]'>دوره ببین، تمرین کن، پیشرفت کن</div>
-                </div>
-                <div className='px-[136px] bg-[#FBFBFB] pb-[4rem] mt-[24px]  flex justify-between '>
-                    {/* right section */}
-                    <div className=' '>
-                        {/* نوع دوره */}
-                        <div className='  shadow-[0_0px_20px_rgb(0,0,0,0.1)] w-full box-border mt-[] py-[20px] px-[16px]  rounded-[10px]'>
-                            <p className='text-16 font-bold leading-16 tracking-tight text-right text-[#484848]'>نوع دوره </p>
-                            <div className='mb-[14px] justify-between mt-[24px] border flex items-center'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="radio" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>رایگان</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                            <div className='flex justify-between mb-[23px] border'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="radio" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>پولی</p>
-                                </div>
-                                <p className='text-[#858585]'>87</p>
-                            </div>
-                        </div>
-                        {/* مرتب سازی براساس */}
-                        <div className='bg-white shadow-[0_0px_20px_rgb(0,0,0,0.1)] w-[274px] mt-[24px] py-[20px] px-[16px]  rounded-[10px]'>
-                            <p className='text-16 font-bold leading-16 tracking-tight text-right text-[#484848]'>مرتب سازی براساس</p>
-                            <div className='mb-[14px] justify-between mt-[24px] border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>جدیدترین</p>
-                                </div>
-                            </div>
-                            <div className='flex justify-between mb-[23px] border'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>قدیمی ترین</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* دسته دوره */}
-                        <div className='bg-white shadow-[0_0px_20px_rgb(0,0,0,0.1)] w-[274px] mt-[24px] py-[20px] px-[16px]  rounded-[10px]'>
-                            <p className='text-16 font-bold leading-16 tracking-tight text-right text-[#484848]'>دسته دوره</p>
-                            <div className='mb-[14px] mt-[23px] justify-between border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>رایگان</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                            <div className='mb-[14px] justify-between border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>لاراول</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                            <div className='mb-[14px] justify-between border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>کاربردی</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                            <div className='mb-[14px] justify-between border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>php</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                            <div className='mb-[14px] justify-between border flex'>
-                                <div className='flex'>
-                                    <input className='bg-[#E7E7E7] rounded-[5px] w-[22px] h-[22px] checked:bg-green-500 focus:border-none appearance-none' type="checkbox" name='free1' />
-                                    <p className='mx-[7px] text-[#4F4F4F] font-medium'>جاوا</p>
-                                </div>
-                                <p className='text-[#858585]'>17</p>
-                            </div>
-                        </div>
+
+        <div>
+            <Navbar />
+            <div className='flex justify-center gap-6 '>
+
+                <div className='flex flex-col w-[18%] h-[730px] my-20'>
+
+                    <div>
+                        <h3 className='text-[#484848] text-[24px] font-bold leading-[27.5px] '>دوره های آموزشی برنامه نویسی</h3>
+                        <h3 className='text-[#858585] text-[16px] font-medium leading-[27.5px]'>دوره ببین، تمرین کن، پیشرفت کن</h3>
                     </div>
-                    <CourseDetail />
+                    <Sidebarfilter />
                 </div>
 
+                <div className='flex items-end flex-wrap gap-6 w-[64%] my-36'>
+
+                    {Courses.map((item) => (
+                        <div className='w-[274px] h-[469px]  '>
+                            <CourseComponent
+                                {...item}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
 
-        </Layout_User>
+            <Footer />
+        </div>
     )
 }

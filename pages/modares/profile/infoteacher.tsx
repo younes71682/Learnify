@@ -1,5 +1,5 @@
 import Button_info_operation from '@/components/button/Button_info_operation'
-import Layout_profil_modares from '@/components/layout/Layout_profil_modares'
+import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares'
 import Financial from '@/components/modares/Account/info_teacher/Financial'
 import Resume from '@/components/modares/Account/info_teacher/Resume'
 import Education from '@/components/user/Account/Education'

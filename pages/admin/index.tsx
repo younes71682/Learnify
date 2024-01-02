@@ -1,4 +1,4 @@
-import Layout_admin from '@/components/layout/Layout_admin'
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
 import Chart_sell from '@/components/admin/overview/Chart_sell'
 import Selling_course from '@/components/admin/overview/Selling_course'
 import Status from '@/components/admin/overview/Status'

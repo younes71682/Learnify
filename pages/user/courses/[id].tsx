@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CourseComponent from '@/components/user/course/CourseComponent';
 import Layout_User from '@/components/user/layout_user/Layout_User';
+import Navbar from '@/components/layout/Layout_user/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const CourseDetail = () => {
 
@@ -50,9 +52,8 @@ export const CourseDetail = () => {
 
 
     return (
-
-        <Layout_User showFooter>
-
+        <div>
+            <Navbar />
             <div className='pr-[134px] max-[1048px]:px-4 pl-[136px] pb-9 '>
                 <h1 className='pt-[4rem] pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</h1>
 
@@ -229,12 +230,16 @@ export const CourseDetail = () => {
                 </div >
                 <div className='mt-12'>
                     <p className='text-xl mb-6 font-bold'>دوره های دیگر مدرس</p>
-                    <div className='flex flex-wrap  bg-[#FBFBFB]  justify-start gap-6'>
+                </div>
+
+                <div className='flex justify-center '>
+                    <div className='flex justify-between w-full'>
                         {Courses.map((item) => (
-                            <div key={item.id}>
+                            <div className='w-[274px] h-[469px]  '>
                                 <CourseComponent
                                     {...item}
                                 />
+
                             </div>
                         ))}
                     </div>
@@ -242,7 +247,8 @@ export const CourseDetail = () => {
 
             </div>
 
-        </Layout_User>
+            <Footer />
+        </div>
     )
 }
 

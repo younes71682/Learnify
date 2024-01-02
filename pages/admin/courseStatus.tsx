@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import Switch from "react-switch";
-import Layout_admin from '@/components/layout/Layout_admin';
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin';
 import Link from 'next/link';
 
 

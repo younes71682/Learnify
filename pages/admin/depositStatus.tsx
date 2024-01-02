@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout_admin from '@/components/layout/Layout_admin'
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
 
 
 export const DepositStatus = () => {

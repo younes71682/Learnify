@@ -1,4 +1,4 @@
-import Layout_profil_modares from '@/components/layout/Layout_profil_modares';
+import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares';
 import Date from '@/components/user/date/Date'
 
 import {

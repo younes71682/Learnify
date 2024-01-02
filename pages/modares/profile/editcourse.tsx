@@ -1,6 +1,6 @@
 import React from 'react'
 import Date from '@/components/user/date/Date'
-import Layout_profil_modares from '@/components/layout/Layout_profil_modares'
+import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares'
 import Link from 'next/link'
 
 

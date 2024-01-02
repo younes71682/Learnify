@@ -1,4 +1,4 @@
-import Layout_profil_user from '@/components/layout/Layout_profil_user'
+import Layout_profil_user from '@/components/layout/Layout_user/Layout_profil_user'
 import Date from '@/components/user/date/Date'
 import Image from 'next/image'
 

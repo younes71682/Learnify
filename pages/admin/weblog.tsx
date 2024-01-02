@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Layout_admin from '@/components/layout/Layout_admin'
+import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
 
 
 export const Weblog = () => {

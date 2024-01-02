@@ -1,6 +1,5 @@
 // @ts-nocheck
 import React, { useRef } from 'react'
-import Layout_Main from '@/components/layout_main/Layout_Main';
 import { Inter } from 'next/font/google'
 import LogoMotion from '@/components/user/home_page/LogoMotion';
 import Services from '@/components/user/home_page/Services';
@@ -9,6 +8,8 @@ import CourseComponent from '@/components/user/course/CourseComponent';
 import Accordion from '@/components/user/home_page/Accordion';
 import Best_sellers from '@/components/user/home_page/Best_sellers';
 import Image from 'next/image';
+import Navbar from '@/components/layout/Layout_user/Navbar';
+import Footer from '@/components/layout/Footer';
 
 
 
@@ -32,7 +33,8 @@ export default function Home() {
 
 
   return (
-    <Layout_Main showFooter>
+    <div>
+      <Navbar />
 
       <div className='flex flex-col'>
 
@@ -62,7 +64,7 @@ export default function Home() {
 
         <div ref={refCourses} className='flex justify-center mx-auto pb-8 pt-28 tracking-[0.5px]'><h1>از دسته بندی های زیر دوره مورد نظر خود را انتخاب کنید</h1></div>
 
-        <Categories  />
+        <Categories />
 
 
         <div className='flex flex-col gap-8 mb-24 mt-8'>
@@ -78,29 +80,38 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='flex justify-center gap-6 bg-red-800'>
-            {latest_courses.map((item) => {
-              return (
-                <div className=''>
-                  <CourseComponent  {...item} />
-                </div>
-              )
-            })}
+          <div className='flex justify-center '>
+            <div className='flex justify-around w-[80%]'>
+
+              {latest_courses.map((item) => {
+                return (
+                  <div className='w-[22%] h-[469px]  '>
+                    <CourseComponent  {...item} />
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 
-        <div className='bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl mx-[175px] mb-32 '>
-          <div className='flex justify-between relative z-10'>
+        <div className='flex justify-center mb-24'>
+          <div className='flex justify-between bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl w-[78%] h-[289px]'>
 
-            <div className='flex flex-col items-start leading-4 pt-24 pb-14 pr-40 gap-6'>
-              <h2 className='font-YekanBakhBold text-[40px]'>از تدریس به درآمد</h2>
-              <p className='font-YekanBakhBold text-[24px]'> با اشتراک‌گذاری دانشتان در لرنیفای پاداش ببرید.</p>
-              <div className='bg-[#CCAB6C] text-[24px] px-5 py-4 rounded-xl'>مشاهده شرایط</div>
+            <div className='flex justify-end items-center w-[50%]'>
+              <div className='flex flex-col justify-between h-[170px]'>
+                <div>
+                  <h2 className='font-YekanBakhBold text-[40px]'>از تدریس به درآمد</h2>
+                  <p className='font-YekanBakhBold text-[24px]'> با اشتراک‌گذاری دانشتان در لرنیفای پاداش ببرید.</p>
+                </div>
+                <div className='flex justify-center items-center bg-[#CCAB6C] rounded-xl w-[37%] h-[48px]'><p className=' text-[24px]'>مشاهده شرایط</p></div>
+              </div>
             </div>
 
-            <img className='absolute left-[110px] bottom-[100px] z-20 w-[230px] h-[215]' src='/elementary_school_teacher_teaching.png' alt='Elementary_School_Teacher_Teaching' />
-            <img className='absolute left-[70px] top-[135px] z-30 w-[185px] h-[192px]' src='/man_with_headset_having_video_call.png' alt='Man_With_Headset_Having_Video_Call' />
-            <img className='absolute left-[215px] top-[110px] z-10 w-[210px] h-[205px]' src='/medium_shot_woman_presenting.png' alt='Medium_Shot_Woman_Presenting' />
+            <div className='flex flex-1 relative'>
+              <div className='w-[259px] h-[245] absolute left-[110px] bottom-[85px] z-20'><img className='w-full  ' src='/elementary_school_teacher_teaching.png' alt='Elementary_School_Teacher_Teaching' /></div>
+              <div className='w-[218px] h-[221px] absolute left-[70px] top-[155px] z-30'><img className='w-full ' src='/man_with_headset_having_video_call.png' alt='Man_With_Headset_Having_Video_Call' /></div>
+              <div className='w-[241px] h-[236px] absolute left-[245px] top-[130px] z-10'><img className='w-full ' src='/medium_shot_woman_presenting.png' alt='Medium_Shot_Woman_Presenting' /></div>
+            </div>
 
           </div>
         </div>
@@ -118,14 +129,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='flex justify-center gap-6'>
-            {latest_courses.map((item) => {
-              return (
-                <div className=''>
-                  <CourseComponent  {...item} />
-                </div>
-              )
-            })}
+          <div className='flex justify-center'>
+            <div className='flex justify-around w-[80%]'>
+              {latest_courses.map((item) => {
+                return (
+                  <div className='w-[22%] h-[469px]  '>
+                    <CourseComponent  {...item} />
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 
@@ -144,7 +157,9 @@ export default function Home() {
       </div>
 
 
-    </Layout_Main>
+      <Footer />
+
+    </div>
 
   )
 }
