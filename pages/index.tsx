@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='flex justify-center gap-6 bg-red-800'>
+          <div className='flex justify-center gap-6 '>
             {latest_courses.map((item) => {
               return (
                 <div className=''>
