@@ -2,13 +2,13 @@ import React from 'react'
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import Select_gender from '@/components/user/select/Select_gender';
-import Education from '@/components/user/Account/Education';
+ import Education from '@/components/user/Account/Education';
 import Favorites from '@/components/user/Account/Favorites';
 import Location from '@/components/user/Account/Location';
 import Button_info_operation from '@/components/button/Button_info_operation';
 import Image from 'next/image';
 import Layout_profil_user from '@/components/layout/Layout_user/Layout_profil_user';
+import Select_gender from '@/components/select/Select_gender';
 
 
 type FormeValue = {

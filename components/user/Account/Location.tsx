@@ -51,13 +51,13 @@ const Location = () => {
                 <div className='w-[55%]'>
 
                     <FormControl sx={{
-                        m: 1, minWidth: 140, margin: 0, padding: 0, color: "008000", colorRendering: "0080000", bgcolor: "#f8f", '&:focus': {
+                        m: 1, minWidth: 140, margin: 0, padding: 0, color: "008000", colorRendering: "0080000", bgcolor: "", '&:focus': {
                             ring: '#008000',
                             border: '#008000',
                         },
                     }}>
                         <Select sx={{
-                            borderRadius: 3, textAlign: 'left', height: 48, color: '008000', bgcolor: "#ff8", '&:focus': {
+                            borderRadius: 3, textAlign: 'left', height: 48, color: '008000', bgcolor: "", '&:focus': {
                                 ring: '#008000',
                                 border: '#008000',
 
