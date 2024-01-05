@@ -1,16 +1,18 @@
 
 import { useEffect, useState } from 'react';
- import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Dropdown from '@/components/layout/Dropdown';
-
+import axios, { AxiosError } from 'axios';
 
 type FormeValue = {
   phoneNumber: string,
   login: string
 }
+
+
 
 const Navbar = () => {
 
@@ -22,6 +24,65 @@ const Navbar = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
 
   const [showSearchInput, setShowSearchInput] = useState(false)
+
+  const [verificationCode, setVerificationCode] = useState<string>('');
+
+  const serverUrl = 'https://learnify.v1r.ir';
+
+  //  api send code function
+  const handleVerificationCodeRequest = async () => {
+    try {
+      const response = await fetch(`${serverUrl}/api/auth/verification-code-request`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phone_number: phoneNumber, //  phone number from the state
+        }),
+      });
+
+      if (response.ok) {
+        // Request successful, handle the response accordingly
+        console.log('Verification code request successful');
+      } else {
+        // Request failed, handle the error
+        console.error('Verification code request failed');
+      }
+    } catch (error) {
+      console.error('Error sending verification code request:', error);
+    }
+  };
+
+  //api check code for verification
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post<LoginResponse>(
+        `${serverUrl}/api/auth/login/mentor`, // Replace {type} with the actual type parameter
+        {
+          phone_number: phoneNumber,
+          verification_code: verificationCode,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      // Access response data
+      const responseData = response.data;
+
+      // Handle the response data as needed
+      console.log('Login successful', responseData.token);
+    } catch (error) {
+      // Handle errors
+      console.error('Error during login:', error.message);
+    }
+  };
+
+
+  console.log('phone number :', phoneNumber)
 
   const handleCloseModule = () => {
     setLoginModalOpen(false)
@@ -156,7 +217,7 @@ const Navbar = () => {
                 <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
               </div>
 
-              <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+              <button onClick={handleVerificationCodeRequest} className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
                 ادامه
               </button>
             </div>
@@ -184,23 +245,23 @@ const Navbar = () => {
               <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
                 <div className='flex flex-col items-center w-full'>
-                  <input maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
+                  <input value={verificationCode}  maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} onChange={(e) => setVerificationCode(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
                   <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
                   {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
                 </div>
 
-                <div onClick={handlelogin} className='flex justify-center items-center cursor-pointer bg-[#008000] rounded-lg h-[40px] w-[179px]'>
+                <div onClick={handleLogin} className='flex justify-center items-center cursor-pointer bg-[#008000] rounded-lg h-[40px] w-[179px]'>
                   <p className="text-white">تایید</p>
                 </div>
 
               </div>
 
               <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
-              
+
               {seconds != 0 ? (null) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}
-            
+
               <div>{seconds != 0 ? (formatTime(seconds)) : (null)} </div>
-            
+
             </div>
 
           </form>
