@@ -10,7 +10,7 @@ import Best_sellers from '@/components/user/home_page/Best_sellers';
 import Image from 'next/image';
 import Navbar from '@/components/layout/Layout_user/Navbar';
 import Footer from '@/components/layout/Footer';
-
+ 
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,6 +19,7 @@ export default function Home() {
 
 
   const refCourses = useRef(null)
+
   const handleScrollCourses = () => {
     refCourses.current?.scrollIntoView({ behavior: 'smooth' })
   }

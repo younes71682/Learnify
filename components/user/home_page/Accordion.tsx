@@ -12,8 +12,7 @@ const Accordion = () => {
     const handleclick = (id:any) => {
         setSelected(selected === id ? null : id)
     }
-    console.log(selected)
-
+ 
     
 
     return (

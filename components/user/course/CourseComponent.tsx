@@ -25,7 +25,7 @@ const CourseComponent = (props: any) => {
 
             <div className='flex flex-wrap justify-around items-center w-[100%] '>
 
-                <div className='flex items-center justify-between   bg-slate-600'>
+                <div className='flex items-center justify-between w-[38%]'>
                     <div className='h-[24px] w-[42px] bg-[#F6FFF6] border border-[#158212] rounded-[4px] flex justify-center items-center font-normal text-xs text-[#158212]'>
                         <p>{seasons}</p>
                         <p>فصل</p>
