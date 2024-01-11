@@ -8,6 +8,7 @@ import Step2 from '@/components/modares/teachingSteps/step2';
 import Step3 from '@/components/modares/teachingSteps/step3';
 import Navbar from '@/components/layout/Layout_user/Navbar';
 import { FormProvider, useForm } from 'react-hook-form';
+import axios from 'axios';
 
 
 type FormValue = {
@@ -48,7 +49,74 @@ export const Teaching = () => {
 
     console.log("activeStep", activeStep)
 
+
+
+    const handleAddCourse = async (e: any) => {
+        e.preventDefault()
+        const token = "12|srn8boVMMqncm749Pz7wG1rOzWInlzyLRS45zPRFab67ad7a"
+        try {
+            const response = await axios.post('https://learnify.v1r.ir/api/course/create', {
+                Headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                data: {
+                    title: "laravel sail", //required
+                    description: "...", //required
+                    image: "url", //required
+                    teaser: "url",//required
+                    chapters: [
+                        {
+                            "chapter_id": 1,
+                            "lessons": [
+                                {
+                                    "description": "...",
+                                    "time": 60, "See": "true",
+                                    "video_id": "url"
+                                },
+                                {
+                                    "description": "...",
+                                    "time": 60,
+                                    "See": "true",
+                                    "video_id": "url"
+                                }
+                            ]
+                        },
+                        {
+                            "chapter_id": 2,
+                            "lessons": [
+                                {
+                                    "description": "...",
+                                    "time": 60,
+                                    "See": "true",
+                                    "video_id": "url"
+                                },
+                                {
+                                    "description": "...",
+                                    "time": 60,
+                                    "See": "true",
+                                    "video)id": "url"
+                                }
+                            ]
+                        }
+                    ],
+                    category: "laravel", //required
+                    Price: 1500000,//required'
+                    step: 2,//required''{{SERVER}}/api/course/create
+                }
+            })
+        } catch (error) {
+            // Handle errors
+            console.error('Error during login:');
+
+        }
+    }
+
+
+
+
     return (
+
         <div>
             <FormProvider {...methods}>
 
@@ -85,7 +153,16 @@ export const Teaching = () => {
 
                         <div className='text-center mt-16 mb-10'>
                             <button onClick={e => activeStep === 0 ? 0 : setActiveStep(activeStep - 1)} className='mx-2 w-[180px] h-[56px] border-2 rounded-xl text-lg border-[#C93636] text-[#C93636]'>بازگشت</button>
-                            <button onClick={e => activeStep === 4 ? 4 : setActiveStep(activeStep + 1)} className='mx-2 w-[180px] h-[56px]  rounded-xl bg-[#008000] text-lg  text-white'>مرحله بعد</button>
+                            <button onClick={e => {
+                                if (activeStep == 3) {
+                                    handleAddCourse
+
+
+                                } else {
+                                    activeStep === 4 ? 4 : setActiveStep(activeStep + 1)
+                                }
+
+                            }} className='mx-2 w-[180px] h-[56px]  rounded-xl bg-[#008000] text-lg  text-white'>مرحله بعد</button>
                         </div>
                     </div>
                     {activeStep === 3 ? (<div className=' justify-center flex'>

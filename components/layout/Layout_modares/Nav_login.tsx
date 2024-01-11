@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Dropdown from '@/components/layout/Dropdown';
+import axios from 'axios';
 
 
 type FormeValue = {
@@ -19,9 +20,11 @@ const Navbar = () => {
 
     const [checkPhoneNumber, setCheckPhoneNumber] = useState(false)
 
-    const [phoneNumber, setPhoneNumber] = useState('')
+    // const [phoneNumber, setPhoneNumber] = useState('')
 
     const [showSearchInput, setShowSearchInput] = useState(false)
+
+
 
     const handleCloseModule = () => {
         setLoginModalOpen(false)
@@ -37,15 +40,19 @@ const Navbar = () => {
         setLoginModalOpen(false)
         setCheckPhoneNumber(true)
         setSeconds(5)
+        handleVerificationCodeRequest()
 
     }
 
     const [seconds, setSeconds] = useState(0);
 
     useEffect(() => {
+        const test = localStorage?.getItem("tokenModares")
         const interval = setInterval(() => {
             setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
+
         }, 1000);
+
 
         return () => clearInterval(interval);
     }, []);
@@ -75,17 +82,72 @@ const Navbar = () => {
         }
     })
 
-    const { register, formState, handleSubmit, control } = form
+    const { register, formState, handleSubmit, control, watch } = form
     const { errors } = formState
+
     const submit = (data: FormeValue) => {
         alert(JSON.stringify(data));
     }
 
+    const inputvaluephonenumber = watch('phoneNumber')
+    const inputvalueverificationCode = watch('login')
 
-    const rout = useRouter()
-    const handlelogin = () => {
-        rout.push("/user")
+    // const rout = useRouter()
+    // const handlelogin = () => {
+    //     rout.push("/modares/login")
+    // }
+
+
+    const serverURL = 'https://learnify.v1r.ir'
+
+    const handleVerificationCodeRequest = async () => {
+        try {
+            const response = await fetch(`${serverURL}/api/auth/verification-code-request`, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    phone_number: inputvaluephonenumber
+                })
+            })
+
+            if (response.ok) {
+                // Request successful, handle the response accordingly
+                console.log('Verification code request successful');
+            } else {
+                // Request failed, handle the error
+                console.error('Verification code request failed');
+            }
+
+        } catch (error) {
+            console.error('Error sending verification code request:', error);
+        }
     }
+
+    //api check code for verification
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post<LoginResponse>(`${serverURL}/api/auth/login/mentor`, {
+                phoneNumber: inputvaluephonenumber,
+                verification_code: inputvalueverificationCode,
+            },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }
+
+            )
+
+            const ressponseData = response.data
+            console.log(ressponseData.token)
+            localStorage.setItem('tokenModares', ressponseData.token)
+        } catch (error) {
+            console.error('Error during login:',);
+        }
+    }
+
 
 
 
@@ -141,10 +203,13 @@ const Navbar = () => {
 
             {isLoginModalOpen && (
                 < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-                    <form onClick={(e) => {
-                        e.stopPropagation()
-                        console.log('fsf')
-                    }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
+                    <form
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            console.log('fsf')
+                        }}
+                        onSubmit={handleSubmit(handleCheckPhoneNumber)}
+                        className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg"  noValidate>
 
                         <div className='flex flex-col gap-3 items-center'>
                             <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
@@ -155,7 +220,7 @@ const Navbar = () => {
                         <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
                             <div className='flex flex-col items-center w-full '>
-                                <input type="text" maxLength={11} {...register("phoneNumber", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
+                                <input type="text" maxLength={11} {...register("phoneNumber", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
                                 <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
                             </div>
 
@@ -165,22 +230,25 @@ const Navbar = () => {
                         </div>
 
                     </form>
+
                 </div>
             )}
 
 
             {checkPhoneNumber && (
                 < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-                    <form onClick={(e) => {
-                        e.stopPropagation()
-                        console.log('fsf')
-                    }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
+                    <form
+                        onSubmit={handleSubmit(handleLogin)}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            console.log('fsf')
+                        }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
 
                         <div className='flex flex-col items-center w-[179px] h-[230px]'>
 
                             <div className='text-center w-full '>
                                 <p className="text-sm text-[#545454] ">
-                                    کد ارسال شده به شماره موبایل <span className="mx-1"> {phoneNumber}</span>را وارد کنید
+                                    کد ارسال شده به شماره موبایل <span className="mx-1">{inputvaluephonenumber}</span>را وارد کنید
                                 </p>
                             </div>
 
@@ -188,11 +256,11 @@ const Navbar = () => {
 
                                 <div className='flex flex-col items-center w-full'>
                                     <input maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
-                                    <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
-                                    {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
+                                    <p className='text-xs text-red-500 font-normal'>{errors.login?.message}</p>
+                                    {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal '>کد ارسال شده را وارد کنید</p>)}
                                 </div>
 
-                                <div onClick={handlelogin} className='flex justify-center items-center cursor-pointer bg-[#008000] rounded-lg h-[40px] w-[179px]'>
+                                <div onClick={handleLogin} className='flex justify-center items-center cursor-pointer bg-[#008000] rounded-lg h-[40px] w-[179px]'>
                                     <p className="text-white">تایید</p>
                                 </div>
 
