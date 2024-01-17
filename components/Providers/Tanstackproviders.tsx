@@ -8,8 +8,14 @@ type Propscontainer = {
 }
 const Tanstackproviders = ({ children }: Propscontainer) => {
 
-const [queryclient] = useState(()=> new QueryClient())
-
+ const queryclient = new QueryClient({
+    defaultOptions:{
+        queries:{
+            // staleTime:10000,
+            // gcTime:50000
+        }
+    }
+ })
 
     return (
         <div>
