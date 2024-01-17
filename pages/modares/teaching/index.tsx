@@ -32,7 +32,7 @@ export const Teaching = () => {
 
 
 
-    const [activeStep, setActiveStep] = useState(3)
+    const [activeStep, setActiveStep] = useState(2)
 
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
