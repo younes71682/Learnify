@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 import Link from 'next/link';
 import Dropdown from '@/components/layout/Dropdown';
- import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Login_Modares from '@/components/api/modares/Login_Modares';
 
 
@@ -26,7 +26,7 @@ const Navbar_login = () => {
 
     const [isLogin, setIsLogin] = useState(false)
 
-    const { mutate_phone_number, mutate_verification_code } = Login_Modares()
+    const { mutate_phone_number, mutate_verification_code, setLoginRole, } = Login_Modares()
 
 
 
@@ -53,13 +53,7 @@ const Navbar_login = () => {
 
     useEffect(() => {
 
-        let token = localStorage.getItem("token_mentor")
-        console.log(token)
-        if (token) {
-            setIsLogin(true)
-        }else{
-            setIsLogin(false)
-        }
+
 
         const interval = setInterval(() => {
             setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
@@ -100,7 +94,15 @@ const Navbar_login = () => {
 
     const handleLogin = (data: any) => {
         mutate_verification_code({ ...data })
-
+        let token = localStorage.getItem("token_mentor")
+        console.log(token)
+        if (token) {
+            setIsLogin(true)
+            handleCloseModule()
+            alert('مدرس با موقیت وارد شد')
+        } else {
+            setIsLogin(false)
+        }
     }
 
     const router = useRouter()
@@ -156,10 +158,18 @@ const Navbar_login = () => {
                     </div>
                     {isLogin === false ?
                         <>
-                            <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
+                            <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={
+
+                                () => {
+                                    setLoginRole('mentor')
+                                    setLoginModalOpen(true)
+                                }}>
                                 <p className="text-[#008000]">ورود مدرس</p>
                             </div>
-                            <div className="flex justify-center items-center cursor-pointer bg-[#008000] border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
+                            <div className="flex justify-center items-center cursor-pointer bg-[#008000] border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => {
+                                setLoginRole('student')
+                                setLoginModalOpen(true)
+                            }}>
                                 <p className="text-white">ورود کاربر</p>
                             </div>
                         </>
@@ -175,84 +185,88 @@ const Navbar_login = () => {
 
 
 
-            {isLoginModalOpen && (
-                < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-                    <form
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            console.log('fsf')
-                        }}
-                        //@ts-ignore
-                        onSubmit={handleSubmit(handleCheckPhoneNumber)}
-                        className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
+            {
+                isLoginModalOpen && (
+                    < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
+                        <form
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                console.log('fsf')
+                            }}
+                            //@ts-ignore
+                            onSubmit={handleSubmit(handleCheckPhoneNumber)}
+                            className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
 
-                        <div className='flex flex-col gap-3 items-center'>
-                            <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
-                            <p className="text-sm font-normal ">به لرنیفای خوش اومدی!
-                                برای عضویت شماره موبایل خودت را وارد کن</p>
-                        </div>
-
-                        <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
-
-                            <div className='flex flex-col items-center w-full '>
-                                <input type="text" maxLength={11} {...register("phone_number", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
-                                <p className='text-xs text-red-500 font-normal mt-2'>{errors.phone_number?.message}</p>
-                            </div>
-
-                            <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
-                                ادامه
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
-            )}
-
-
-            {checkPhoneNumber && (
-                < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-                    <form
-                        //@ts-ignore
-                        onSubmit={handleSubmit(handleLogin)}
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            console.log('fsf')
-                        }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
-
-                        <div className='flex flex-col items-center w-[179px] h-[230px]'>
-
-                            <div className='text-center w-full '>
-                                <p className="text-sm text-[#545454] ">
-                                    کد ارسال شده به شماره موبایل <span className="mx-1">{inputvaluephonenumber}</span>را وارد کنید
-                                </p>
+                            <div className='flex flex-col gap-3 items-center'>
+                                <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
+                                <p className="text-sm font-normal ">به لرنیفای خوش اومدی!
+                                    برای عضویت شماره موبایل خودت را وارد کن</p>
                             </div>
 
                             <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
-                                <div className='flex flex-col items-center w-full'>
-                                    <input maxLength={6} {...register("verification_code", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
-                                    <p className='text-xs text-red-500 font-normal'>{errors.verification_code?.message}</p>
-                                    {errors.verification_code?.type === 'required' && (<p className='text-xs text-red-500 font-normal '>کد ارسال شده را وارد کنید</p>)}
+                                <div className='flex flex-col items-center w-full '>
+                                    <input type="text" maxLength={11} {...register("phone_number", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
+                                    <p className='text-xs text-red-500 font-normal mt-2'>{errors.phone_number?.message}</p>
                                 </div>
 
-                                <button onClick={handlePageteaching} className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
-                                    تایید
+                                <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+                                    ادامه
                                 </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                )
+            }
+
+
+            {
+                checkPhoneNumber && (
+                    < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
+                        <form
+                            //@ts-ignore
+                            onSubmit={handleSubmit(handleLogin)}
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                console.log('fsf')
+                            }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
+
+                            <div className='flex flex-col items-center w-[179px] h-[230px]'>
+
+                                <div className='text-center w-full '>
+                                    <p className="text-sm text-[#545454] ">
+                                        کد ارسال شده به شماره موبایل <span className="mx-1">{inputvaluephonenumber}</span>را وارد کنید
+                                    </p>
+                                </div>
+
+                                <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
+
+                                    <div className='flex flex-col items-center w-full'>
+                                        <input maxLength={6} {...register("verification_code", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
+                                        <p className='text-xs text-red-500 font-normal'>{errors.verification_code?.message}</p>
+                                        {errors.verification_code?.type === 'required' && (<p className='text-xs text-red-500 font-normal '>کد ارسال شده را وارد کنید</p>)}
+                                    </div>
+
+                                    <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+                                        تایید
+                                    </button>
+
+                                </div>
+
+                                <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
+
+                                {seconds != 0 ? (null) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}
+
+                                <div>{seconds != 0 ? (formatTime(seconds)) : (null)} </div>
 
                             </div>
 
-                            <p onClick={handleChangePhoneNumber} className="text-[#484848] text-sm mt-3 cursor-pointer w-fit mx-auto">تعویض شماره</p>
-
-                            {seconds != 0 ? (null) : (<div onClick={handleResendCode} className="text-[#484848] text-sm mt-2 cursor-pointer w-fit mx-auto">دریافت مجدد کد</div>)}
-
-                            <div>{seconds != 0 ? (formatTime(seconds)) : (null)} </div>
-
-                        </div>
-
-                    </form>
-                </div>
-            )}
+                        </form>
+                    </div>
+                )
+            }
 
         </div >
     );

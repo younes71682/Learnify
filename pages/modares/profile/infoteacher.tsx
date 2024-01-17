@@ -34,46 +34,45 @@ const Infoteacher = () => {
 
 
     const { updute_infoteacher, data, isError, isPending } = Update_Info()
-    console.log('name', data?.data.data.name)
+    // console.log('name', data)
+
+// useEffect(()=>{
+
+// },[])
+
     const methods = useForm<FormValue>({
-        defaultValues: {
+        // defaultValues: {
 
-            name: data?.data.data.name,
-            family: "",
-            phone_number: "",
-            email: "",
-            gender: "",
-            birthday: "",
-            university: "",
-            field_of_study: "",
-            educational_stage: "",
-            numbercard: "",
-            numberfinancial: "",
-            description: ""
-
-
-        }
+        //     name: "",
+        //     family: "",
+        //     phone_number: "",
+        //     email: "",
+        //     gender: "",
+        //     birthday: "",
+        //     university: "",
+        //     field_of_study: "",
+        //     educational_stage: "",
+        //     numbercard: "",
+        //     numberfinancial: "",
+        //     description: ""
+        // }
     })
     const { register, handleSubmit, formState } = methods
 
     const { errors } = formState
 
 
-    if (isError) {
-        <>eror</>
-    }
-
+    
 
 
     const handleUpdateform = (data: void) => {
         console.log(data)
-        updute_infoteacher(data)
+        // updute_infoteacher(data)
     }
 
-    // console.log('data', data)
+ 
 
-
-    {
+    
 
         return (
             <Layout_profil_modares>
@@ -130,7 +129,7 @@ const Infoteacher = () => {
 
                         </div>
 
-                        <div className='flex items-center gap-6 '>
+                        {/* <div className='flex items-center gap-6 '>
                             <Location />
                             <Education />
                         </div>
@@ -138,7 +137,7 @@ const Infoteacher = () => {
                         <div className='flex items-center gap-6 '>
                             <Financial />
                             <Resume />
-                        </div>
+                        </div> */}
 
                         <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
                     </FormProvider>
@@ -148,7 +147,7 @@ const Infoteacher = () => {
             </Layout_profil_modares>
 
         )
-    }
+    
 }
 
 export default Infoteacher

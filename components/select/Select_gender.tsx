@@ -60,6 +60,7 @@ const Select_gender = () => {
           control={control}
           rules={{
             required: true,
+      
           }}
         />
       </div>
