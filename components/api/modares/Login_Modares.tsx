@@ -1,8 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
+import { useState } from 'react'
 
 
 const Login_Modares = () => {
+
+    const [loginRole, setLoginRole] = useState('student')
 
     const { mutate: mutate_phone_number } = useMutation({
         mutationFn: (data) => {
@@ -17,10 +20,10 @@ const Login_Modares = () => {
     })
 
 
-    const { mutate: mutate_verification_code } = useMutation({
+    const { mutate: mutate_verification_code, } = useMutation({
         mutationFn: (data) => {
-            console.log('2', data)
-            return axios.post('https://learnify.v1r.ir/api/auth/login/mentor', data, {
+            console.log('2', loginRole)
+            return axios.post(`https://learnify.v1r.ir/api/auth/login/${loginRole}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -28,7 +31,7 @@ const Login_Modares = () => {
             })
         },
         onSuccess: (res) => {
-            console.log('to', res.data.token)
+            console.log('token', res.data.token)
             localStorage.setItem('token_mentor', res.data.token)
 
         }
@@ -36,7 +39,7 @@ const Login_Modares = () => {
     })
 
 
-    return { mutate_phone_number, mutate_verification_code }
+    return { mutate_phone_number, mutate_verification_code,setLoginRole }
 }
 
 export default Login_Modares

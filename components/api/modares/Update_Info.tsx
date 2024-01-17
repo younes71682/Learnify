@@ -33,8 +33,8 @@ const Update_Info = () => {
             })
         },
         onSuccess: (res) => {
-            // console.log('res', res)
-            client.invalidateQueries({ queryKey: ['info_teacher'] })
+            console.log('res', res)
+            // client.invalidateQueries({ queryKey: ['info_teacher'] })
         },
         onError: (errors) => {
             console.log('x', errors)

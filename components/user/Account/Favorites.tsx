@@ -34,7 +34,6 @@ const Favorites = () => {
     const { register } = useFormContext()
 
 
-
     return (
         <div className='flex flex-col gap-6 pr-4 pt-5 pb-8 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
 

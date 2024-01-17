@@ -81,8 +81,6 @@ export const Step2 = () => {
         setInputLessonValue(course)
     }
 
-    console.log("course:", item)
-
     return (
         <div className='flex justify-center  items-center w-[100%] bg-red-500'>
             <div className='bg-[#F4F4F4] w-[90%]'>
