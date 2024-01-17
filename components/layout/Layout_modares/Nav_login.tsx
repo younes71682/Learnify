@@ -94,12 +94,26 @@ const Navbar_login = () => {
 
     const handleLogin = (data: any) => {
         mutate_verification_code({ ...data })
+        // let token = localStorage.getItem("token_mentor")
+        // console.log(token)
+        // if (token) {
+        //     setIsLogin(true)
+        //     setTimeout(() => {
+        //         handleCloseModule()
+        //     }, 1500);
+        // } else {
+        //     setIsLogin(false)
+        // }
+    }
+
+    const handleCloseMudoleLogin = () => {
         let token = localStorage.getItem("token_mentor")
         console.log(token)
         if (token) {
-            setIsLogin(true)
-            handleCloseModule()
-            alert('مدرس با موقیت وارد شد')
+            setTimeout(() => {
+                handleCloseModule()
+                setIsLogin(true)
+            }, 1500);
         } else {
             setIsLogin(false)
         }
@@ -249,7 +263,7 @@ const Navbar_login = () => {
                                         {errors.verification_code?.type === 'required' && (<p className='text-xs text-red-500 font-normal '>کد ارسال شده را وارد کنید</p>)}
                                     </div>
 
-                                    <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+                                    <button onClick={handleCloseMudoleLogin} className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
                                         تایید
                                     </button>
 

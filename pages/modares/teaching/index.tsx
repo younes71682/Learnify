@@ -9,6 +9,8 @@ import Step3 from '@/components/modares/teachingSteps/step3';
 import Navbar from '@/components/layout/Layout_user/Navbar';
 import { FormProvider, useForm } from 'react-hook-form';
 import axios from 'axios';
+import Link from 'next/link';
+
 
 
 type FormValue = {
@@ -154,14 +156,7 @@ export const Teaching = () => {
                         <div className='text-center mt-16 mb-10'>
                             <button onClick={e => activeStep === 0 ? 0 : setActiveStep(activeStep - 1)} className='mx-2 w-[180px] h-[56px] border-2 rounded-xl text-lg border-[#C93636] text-[#C93636]'>بازگشت</button>
                             <button onClick={e => {
-                                if (activeStep == 3) {
-                                    handleAddCourse
-
-
-                                } else {
-                                    activeStep === 4 ? 4 : setActiveStep(activeStep + 1)
-                                }
-
+                                activeStep === 4 ? 4 : setActiveStep(activeStep + 1)
                             }} className='mx-2 w-[180px] h-[56px]  rounded-xl bg-[#008000] text-lg  text-white'>مرحله بعد</button>
                         </div>
                     </div>
@@ -179,11 +174,13 @@ export const Teaching = () => {
                                         margin: 'auto',
                                         backgroundColor: 'hsl(0, 0%, 100%)',
                                     }}
-                                    src="https://s3-alpha-sig.figma.com/img/252e/81f9/108f022c0c40a33f17ef0f008672f648?Expires=1704067200&amp;Signature=j0LY83RBW-iggBDgRO4MFr3MV58BSAq9qYCw27Ao33eEtXUKsbkXJN6AxAdEek3l48-jbnH5IJ6~f4mojdbjdAqUXflE6OGVNpXdnxidXwX1qsTc8n~LQwQoH2bEInURYhWC-1U7Oa5YodfpzJt7f~NDkAPlRqxiOl9zUXDFk0YQ3SkBGYBC3OOJoB-3B-rj6Vj82w-4ZYr44zTi~5iIX6Q7JbISJb4nQzFoJkcqWIT9ZP0ODKcJoAstjrDRUorvRQQiOXIBHaSoYrDtC~WHJ~dGMiyWt1-ZN-H2M9gn2FpyZZPptwzJYOSPA0LFEtE5p0oRPmu-K43hU-1KGjOCUw__&amp;Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                    src="https://s3-alpha-sig.figma.com/img/252e/81f9/108f022c0c40a33f17ef0f008672f648?Expires=1706486400&amp;Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&amp;Signature=Z9FGv~nRfyVYmkbqHf783PwhV14FROQcQBpmtBp5QThTgh9mHRanam8QC0eXFx2esL46QU5-hP7hFB3a92egeUH~PP4T-DC~vFSecxZHcR6ccxCGlltWWVa~YxO7TFbp8tkGwflphMSU13aiFdiE6Pwz7iWEdNzMi2u1D3MIgaPmvqWk04wTe4KR8GmVRi7fLubm08DhgxLPg0IpS7CVnw1EXe6cDNkzk7NzyzrgVvMLdVFfH~MRfiGl1XtrqvCgS2NCJ56H5mL~4bWGBYON8PLfgQWNzZQqDbudvU7p~m5nQZXvmxiMs8WaHi6HbUp5ev-pgUH~QYyk4YGrRgRPUQ__"
                                 />
                                 <p className='text-2xl font-bold'>دوره شما با موفقیت ثبت شد</p>
                                 <p className='mt-2'>و پس از بررسی ظرف 3روز آینده منتشر میشود</p>
-                                <button className='border-2 p-3 px-6 mt-10 rounded-xl text-[#00D200] text-lg border-[#00D200]'>ورود به پنل کاربری</button>
+                                <Link href='/modares'>
+                                    <button className='border-2 p-3 px-6 mt-10 rounded-xl text-[#00D200] text-lg border-[#00D200]'>ورود به پنل کاربری</button>
+                                </Link>
                                 <div>
                                     <button onClick={handleCloseModule} className="">x</button>
                                 </div>
