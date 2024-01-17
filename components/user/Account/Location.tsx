@@ -1,16 +1,10 @@
 
 import Image from 'next/image'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
+import React from 'react';
+import Select from 'react-select';
 
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { type } from 'os';
 
- 
 
 
 
@@ -23,12 +17,6 @@ const Location = () => {
         { id: 1, value: "esfahan", label: "اصفهان" },
     ]
 
-    const [age, setAge] = React.useState('');
-
-    const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value);
-        console.log("dd",setAge)
-      };
 
     const city = [
         { id: 1, value: "tehran", label: "تهران" },
@@ -36,66 +24,128 @@ const Location = () => {
         { id: 1, value: "varamin", label: "ورامین" },
     ]
 
+    const [isSearchable, setIsSearchable] = React.useState(true);
+    const [isRtl, setIsRtl] = React.useState(true);
 
     const form = useFormContext()
-    const { register } = form
-
+    const { control, formState } = form
+    const { errors } = formState
 
     return (
-        <div className='flex flex-col w-[28%] h-full pt-5 pr-4 pb-8 gap-6 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
+        <div className='flex flex-col w-[28%] h-full pt-4 pb-2 pr-4 gap-3 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
             <div className='flex items-center gap-1 text-lg'>
                 <Image src='/icon/user/account/info_user/location.svg' alt='icon' width={24} height={24} />
                 <h2>محل سکونت</h2>
             </div>
-            <div className='flex flex-col gap-4'>
-                <div className='w-[55%]'>
+            <div className='flex flex-col gap-1 '>
 
-                    <FormControl sx={{
-                        m: 1, minWidth: 140, margin: 0, padding: 0, color: "008000", colorRendering: "0080000", bgcolor: "", '&:focus': {
-                            ring: '#008000',
-                            border: '#008000',
-                        },
-                    }}>
-                        <Select sx={{
-                            borderRadius: 3, textAlign: 'left', height: 48, color: '008000', bgcolor: "", '&:focus': {
-                                ring: '#008000',
-                                border: '#008000',
+                <div className='flex flex-col gap-1 h-[71px]'>
+                    <div>
+                        <Controller
+                            render={({ field }) =>
+                                <Select
+                                    {...field}
 
-                            },
-                        }}
+                                    styles={{
+                                        control: (baseStyles, state) => ({
+                                            ...baseStyles,
+                                            // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
+                                            height: "48px",
+                                            borderRadius: "10px",
+                                        }),
+                                    }}
 
-                        value={age}
-                        onChange={handleChange}
-                        displayEmpty
-                        inputProps={{ 'aria-label': 'Without label' }}
-                            MenuProps={{ sx: { textAlign: 'right', } }} // تنظیم به راست بودن ایتم‌ها
-                        // focus:ring-[#008000] focus:border-[#008000]
-                        >
 
-                            {city.map((i) => {
-                                return (
-                                    <MenuItem sx={{ bgcolor: "#FFF" }} className="hover:text-[#008000] border-solid border-2 border-white hover:border-solid hover:border-2 hover:border-[#008000] font-YekanBakhMedium py-0  hover:bg-white fous:text-[#008000] focus:bg-white">
-                                        {i.label}
-                                    </MenuItem>
-                                )
-                            })}
-                        </Select>
-                    </FormControl>
+                                    className="w-[60%] "
+                                    classNamePrefix="state"
+                                    // defaultValue={state[0]}
+                                    isRtl={isRtl}
+                                    isSearchable={isSearchable}
+                                    name="state"
+                                    options={state}
+                                    placeholder={'استان'}
+
+                                    theme={(theme) => ({
+                                        ...theme,
+                                        borderRadius: 7,
+
+                                        colors: {
+                                            ...theme.colors,
+                                            primary25: '#dcfce7',
+                                            primary: '#008000',
+                                        },
+
+                                    })}
+                                />
+                            }
+                            name="state"
+                            control={control}
+                            rules={{
+                                required: true
+                            }}
+                        />
+                    </div>
+
+                    <div>
+                        {errors.state?.type === "required" && <p className="text-red-500 font-normal text-xs">استان خود را مشخص کنید</p>}
+                    </div>
+                </div>
+
+
+                <div className='flex flex-col gap-1 h-[71px]'>
+
+                    <div>
+                        <Controller
+                            render={({ field }) =>
+
+                                <Select
+                                    {...field}
+                                    styles={{
+                                        control: (baseStyles, state) => ({
+                                            ...baseStyles,
+                                            // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
+                                            height: "48px",
+                                            borderRadius: "10px",
+                                        }),
+                                    }}
+
+
+                                    className="w-[60%] "
+                                    // classNamePrefix="state"
+                                    // defaultValue={state[0]}
+                                    isRtl={isRtl}
+                                    isSearchable={isSearchable}
+                                    name="city"
+                                    options={city}
+                                    placeholder={'شهر'}
+
+                                    theme={(theme) => ({
+                                        ...theme,
+                                        borderRadius: 7,
+
+                                        colors: {
+                                            ...theme.colors,
+                                            primary25: '#dcfce7',
+                                            primary: '#008000',
+                                        },
+
+                                    })}
+                                />
+                            }
+                            name='city'
+                            control={control}
+                            rules={{
+                                required: true
+                            }}
+                        />
+                    </div>
+
+                    <div>
+                        {errors.city?.type === "required" && <p className="text-red-500 font-normal text-xs">شهر خود را مشخص کنید</p>}
+                    </div>
 
                 </div>
 
-                <div className='w-[55%]'>
-                    <select {...register("city", { required: true })} id="countries" className="text-[#292D32] text-sm rounded-[10px] w-full h-[48px] focus:ring-[#008000] focus:border-[#008000] border-[#AAAAAA]">
-                        <option selected>شهر</option>
-                        {city.map((i) => {
-                            return (
-                                <option>
-                                    {i.label}
-                                </option>
-                            )
-                        })}
-                    </select>
-                </div>
 
             </div>
         </div >

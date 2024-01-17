@@ -1,4 +1,4 @@
-import TanstackProviders from '@/Providers/Tanstackproviders';
+import TanstackProviders from '@/components/Providers/Tanstackproviders';
 import '@/styles/globals.css'
 import 'flowbite';
 // import 'smart-webcomponents-react/source/styles/smart.default.css';

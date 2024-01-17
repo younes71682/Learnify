@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidbar from '../../user/Account/Sidbar'
-import Nav_prof from './Nav_prof'
-
+import Navbar from './Navbar'
+ 
 type PropsContainer = {
     children: React.ReactNode
 }
@@ -9,7 +9,7 @@ type PropsContainer = {
 const Layout_profil_user = ({ children }: PropsContainer) => {
     return (
         <div className='flex flex-col'>
-            <Nav_prof />
+            <Navbar />
             <div className='flex gap-6 justify-center h-[140vh] pt-20'>
                 <Sidbar />
                 {children}

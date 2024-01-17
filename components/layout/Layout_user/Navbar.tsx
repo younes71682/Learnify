@@ -26,6 +26,8 @@ const Navbar = () => {
 
   const [verificationCode, setVerificationCode] = useState<string>('');
 
+   const [isLogin ,setIsLogin]=useState(false)
+
   const serverUrl = 'https://learnify.v1r.ir';
 
   //  api send code function
@@ -74,6 +76,9 @@ const Navbar = () => {
 
       // Handle the response data as needed
       console.log('Login successful', responseData.token);
+      if(responseData.token){
+        setIsLogin(true)
+      }
     } catch (error) {
       // Handle errors
       console.error('Error during login:', error.message);
@@ -186,10 +191,13 @@ const Navbar = () => {
 
           </div>
 
-          <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
+          { isLogin === false  ? <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
             <p className="text-[#008000]">ورود | ثبت نام</p>
           </div>
-
+            :
+            <Link href="/user/profile" className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
+              <p className="text-[#008000]">حساب کاربری</p>
+            </Link>}
         </div>
       </div>
 
@@ -244,7 +252,7 @@ const Navbar = () => {
               <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
                 <div className='flex flex-col items-center w-full'>
-                  <input value={verificationCode}  maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} onChange={(e) => setVerificationCode(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
+                  <input value={verificationCode} maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} onChange={(e) => setVerificationCode(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
                   <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
                   {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
                 </div>
