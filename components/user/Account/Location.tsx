@@ -1,7 +1,7 @@
 
 import Image from 'next/image'
 import { Controller, useFormContext } from 'react-hook-form'
-import React from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
 
 
@@ -10,6 +10,10 @@ import Select from 'react-select';
 
 const Location = () => {
 
+    const [isSearchable, setIsSearchable] = React.useState(false);
+    const [isRtl, setIsRtl] = React.useState(true);
+    const [selectstatevalue, setSelectStateValue] = useState<any>(null)
+    const [selectcityvalue, setSelectCityValue] = useState<any>(null)
 
     const state = [
         { id: 1, value: "tehran", label: "تهران" },
@@ -24,8 +28,7 @@ const Location = () => {
         { id: 1, value: "varamin", label: "ورامین" },
     ]
 
-    const [isSearchable, setIsSearchable] = React.useState(true);
-    const [isRtl, setIsRtl] = React.useState(true);
+
 
     const form = useFormContext()
     const { control, formState } = form
@@ -63,6 +66,12 @@ const Location = () => {
                                     isSearchable={isSearchable}
                                     name="state"
                                     options={state}
+                                    onChange={(selectedOption) => {
+                                        field.onChange(selectedOption.value)
+                                        setSelectStateValue(selectedOption)
+                                    }}
+                                    value={selectstatevalue}
+
                                     placeholder={'استان'}
 
                                     theme={(theme) => ({
@@ -117,6 +126,11 @@ const Location = () => {
                                     isSearchable={isSearchable}
                                     name="city"
                                     options={city}
+                                    onChange={(selectedOption) => {
+                                        field.onChange(selectedOption.value)
+                                        setSelectCityValue(selectedOption)
+                                    }}
+                                    value={selectcityvalue}
                                     placeholder={'شهر'}
 
                                     theme={(theme) => ({

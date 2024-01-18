@@ -3,90 +3,33 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Dropdown from '@/components/layout/Dropdown';
-import axios, { AxiosError } from 'axios';
+import Login from '@/components/api/Login';
+
 
 type FormeValue = {
-  phoneNumber: string,
-  login: string
+  phone_number: string,
+  verification_code: string
 }
+
 
 
 const Navbar = () => {
 
 
-  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
 
-  const [checkPhoneNumber, setCheckPhoneNumber] = useState(false)
+  const [checkPhoneNumber, setCheckPhoneNumber] = useState<boolean>(false)
 
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [showSearchInput, setShowSearchInput] = useState<boolean>(false)
 
-  const [showSearchInput, setShowSearchInput] = useState(false)
+  const [seconds, setSeconds] = useState<number>(0);
 
-  const [verificationCode, setVerificationCode] = useState<string>('');
+  const [isLogin, setIsLogin] = useState<boolean>(false)
 
-   const [isLogin ,setIsLogin]=useState(false)
-
-  const serverUrl = 'https://learnify.v1r.ir';
-
-  //  api send code function
-  const handleVerificationCodeRequest = async () => {
-    try {
-      const response = await fetch(`${serverUrl}/api/auth/verification-code-request`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phone_number: phoneNumber, //  phone number from the state
-        }),
-      });
-
-      if (response.ok) {
-        // Request successful, handle the response accordingly
-        console.log('Verification code request successful');
-      } else {
-        // Request failed, handle the error
-        console.error('Verification code request failed');
-      }
-    } catch (error) {
-      console.error('Error sending verification code request:', error);
-    }
-  };
-
-  //api check code for verification
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post<LoginResponse>(
-        `${serverUrl}/api/auth/login/mentor`, // Replace {type} with the actual type parameter
-        {
-          phone_number: phoneNumber,
-          verification_code: verificationCode,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      // Access response data
-      const responseData = response.data;
-
-      // Handle the response data as needed
-      console.log('Login successful', responseData.token);
-      if(responseData.token){
-        setIsLogin(true)
-      }
-    } catch (error) {
-      // Handle errors
-      console.error('Error during login:', error.message);
-    }
-  };
+  const { mutate_phone_number, mutate_verification_code, setLoginRole } = Login()
 
 
-  console.log('phone number :', phoneNumber)
 
   const handleCloseModule = () => {
     setLoginModalOpen(false)
@@ -98,22 +41,26 @@ const Navbar = () => {
     setShowSearchInput(true)
   }
 
-  const handleCheckPhoneNumber = () => {
+  const handleCheckPhoneNumber = (data: any) => {
     setLoginModalOpen(false)
     setCheckPhoneNumber(true)
     setSeconds(5)
-
+    //Fetch phone_number
+    mutate_phone_number(data)
   }
 
-  const [seconds, setSeconds] = useState(0);
+
 
   useEffect(() => {
+
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
+
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
 
   const formatTime = (time: any) => {
     const minutes = Math.floor(time / 60);
@@ -128,33 +75,52 @@ const Navbar = () => {
 
   const handleResendCode = () => {
     setSeconds(10)
+
   }
 
 
+  const form = useForm<FormeValue>()
 
 
-  const form = useForm<FormeValue>({
-    defaultValues: {
-      phoneNumber: "",
-      login: ""
-    }
-  })
-
-  const { register, formState, handleSubmit, control } = form
+  const { register, formState, handleSubmit, control, watch } = form
   const { errors } = formState
-  const submit = (data: FormeValue) => {
-    alert(JSON.stringify(data));
+
+
+
+  const inputvaluephonenumber = watch('phone_number')
+
+  //fetch verification_code
+  const handleLogin = (data: any) => {
+    mutate_verification_code({ ...data })
+    //@ts-ignore
+    // {mutate_verification_code.isLoading ? 'ffffffffffffffffffffffff' : 'ffffffffffffffffffffffffffff'}
+    const token = localStorage.getItem('token')
+    if (token && token === undefined) {
+      handleCloseModule()
+      setIsLogin(true)
+    } else if (token !== undefined) {
+      setIsLogin(false)
+      setLoginModalOpen(true)
+      setCheckPhoneNumber(true)
+    }
+  }
+
+  const handleCloseMudoleLogin = () => {
+    handleCloseModule()
+    // let token = localStorage.getItem('token')
+
+
+
+
   }
 
 
-  const rout = useRouter()
-  const handlelogin = () => {
-    rout.push("/user")
-  }
+
 
 
 
   return (
+
     <div onClick={() => setShowSearchInput(false)} className=" flex justify-center  rounded-b-[40px] shadow-lg h-[92px]">
       <div className="flex  items-center justify-between w-[85%] ">
 
@@ -190,14 +156,22 @@ const Navbar = () => {
             <img className='w-[24px]' src="/icon/user/home_page/navbar/shopping_cart.svg" alt="Shopping_cart Logo" />
 
           </div>
+          {isLogin === false ?
 
-          { isLogin === false  ? <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
-            <p className="text-[#008000]">ورود | ثبت نام</p>
-          </div>
+            <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]"
+              onClick={() => {
+                setLoginRole('student')
+                setLoginModalOpen(true)
+              }}>
+
+              <p className="text-[#008000]">ورود و ثبت نام</p>
+            </div>
+
             :
-            <Link href="/user/profile" className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" onClick={() => setLoginModalOpen(true)}>
+            <Link href="/modares/profile" className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" >
               <p className="text-[#008000]">حساب کاربری</p>
-            </Link>}
+            </Link>
+          }
         </div>
       </div>
 
@@ -206,10 +180,13 @@ const Navbar = () => {
 
       {isLoginModalOpen && (
         < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-          <form onClick={(e) => {
-            e.stopPropagation()
-            console.log('fsf')
-          }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
+          <form
+            onClick={(e) => {
+              e.stopPropagation()
+              console.log('fsf')
+            }}
+            onSubmit={handleSubmit(handleCheckPhoneNumber)}
+            className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
 
             <div className='flex flex-col gap-3 items-center'>
               <p className="text-lg font-bold">به لرنیفای خوش اومدی!</p>
@@ -220,46 +197,52 @@ const Navbar = () => {
             <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
               <div className='flex flex-col items-center w-full '>
-                <input type="text" maxLength={11} {...register("phoneNumber", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
-                <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
+                <input type="text" maxLength={11} {...register("phone_number", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" placeholder="شماره موبایل خود را وارد کنید" />
+                <p className='text-xs text-red-500 font-normal mt-2'>{errors.phone_number?.message}</p>
               </div>
 
-              <button onClick={handleVerificationCodeRequest} className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+              <button className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
                 ادامه
               </button>
+
             </div>
 
           </form>
+
         </div>
       )}
 
 
+
       {checkPhoneNumber && (
         < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
-          <form onClick={(e) => {
-            e.stopPropagation()
-            console.log('fsf')
-          }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" onSubmit={handleSubmit(handleCheckPhoneNumber)} noValidate>
+          <form
+            onSubmit={handleSubmit(handleLogin)}
+            onClick={(e) => {
+              e.stopPropagation()
+              console.log('fsf')
+            }} className="bg-white flex flex-col items-center w-[30%] h-[333px] justify-center rounded-[15px] shadow-lg" noValidate>
 
             <div className='flex flex-col items-center w-[179px] h-[230px]'>
 
               <div className='text-center w-full '>
                 <p className="text-sm text-[#545454] ">
-                  کد ارسال شده به شماره موبایل <span className="mx-1"> {phoneNumber}</span>را وارد کنید
+                  کد ارسال شده به شماره موبایل <span className="mx-1">{inputvaluephonenumber}</span>را وارد کنید
                 </p>
               </div>
 
               <div className='flex flex-col items-center justify-between w-[179px] h-[103px] mt-4   '>
 
                 <div className='flex flex-col items-center w-full'>
-                  <input value={verificationCode} maxLength={6} {...register("login", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} onChange={(e) => setVerificationCode(e.target.value)} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
-                  <p className='text-xs text-red-500 font-normal mt-2'>{errors.login?.message}</p>
-                  {errors.login?.type === 'required' && (<p className='text-xs text-red-500 font-normal mt-2'>کد ارسال شده را وارد کنید</p>)}
+                  <input maxLength={6} {...register("verification_code", { pattern: { value: /^[0-9]*$/i, message: "فرمت کد صحیح نمی باشد" }, required: true, })} className="rounded-lg flex w-full h-[48px] text-sm text-center border focus:ring-[#008000] focus:border-[#008000]" type="text" />
+                  <p className='text-xs text-red-500 font-normal'>{errors.verification_code?.message}</p>
+                  {errors.verification_code?.type === 'required' && (<p className='text-xs text-red-500 font-normal '>کد ارسال شده را وارد کنید</p>)}
                 </div>
 
-                <div onClick={handleLogin} className='flex justify-center items-center cursor-pointer bg-[#008000] rounded-lg h-[40px] w-[179px]'>
-                  <p className="text-white">تایید</p>
-                </div>
+                <button
+                  className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
+                  تایید
+                </button>
 
               </div>
 

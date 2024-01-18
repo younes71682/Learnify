@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import Select from 'react-select';
 
+type Selected = {
+  id: number,
+  value: string,
+  label: string,
+}
 
 const Select_gender = () => {
 
-  const gender = [
+  const gender: Selected[] = [
     { id: 1, value: "Male", label: "مرد" },
     { id: 2, value: "Female", label: "زن" },
     { id: 3, value: "", label: "تمایلی ندارم" },
@@ -13,10 +18,12 @@ const Select_gender = () => {
 
   const [isSearchable, setIsSearchable] = React.useState(false);
   const [isRtl, setIsRtl] = React.useState(true);
+  const [selectedValue, setSelectedValue] = useState<any>(null);
 
   const form = useFormContext();
   const { control, formState } = form;
   const { errors } = formState
+  
   return (
     <div className='flex flex-col gap-1 h-[71px] ml-4'>
       <div>
@@ -32,6 +39,7 @@ const Select_gender = () => {
                   width: "210px",
                   height: "48px",
                   borderRadius: "10px",
+
                 }),
               }}
 
@@ -42,6 +50,15 @@ const Select_gender = () => {
               name="gender"
               options={gender}
               placeholder={'جنسیت'}
+              onChange={(selectedOption) => {
+                setSelectedValue(selectedOption);
+                field.onChange(selectedOption.value);
+              }}
+              value={selectedValue}
+
+
+
+
 
               theme={(theme) => ({
                 ...theme,
@@ -60,7 +77,7 @@ const Select_gender = () => {
           control={control}
           rules={{
             required: true,
-      
+
           }}
         />
       </div>
