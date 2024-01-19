@@ -10,7 +10,7 @@ const Update_Info = () => {
     const { data, isPending, isError } = useQuery({
         queryKey: ['info_teacher'],
         queryFn: async () => {
-            let token = localStorage.getItem('token_mentor')
+            let token = localStorage.getItem('token')
             const result = await axios.get('https://learnify.v1r.ir/api/user/show',{
                 headers:{
                     'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const Update_Info = () => {
 
     const { mutate: updute_infoteacher } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token_mentor')
+            let token = localStorage.getItem('token')
             return axios.put('https://learnify.v1r.ir/api/user/update', data, {
                 headers: {
                     'Content-Type': 'application/json',

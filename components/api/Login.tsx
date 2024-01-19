@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 
-const Login_Modares = () => {
+const Login = () => {
 
     const [loginRole, setLoginRole] = useState('student')
 
@@ -19,27 +19,35 @@ const Login_Modares = () => {
 
     })
 
-
-    const { mutate: mutate_verification_code, } = useMutation({
+//@ts-ignore
+    const { mutate: mutate_verification_code,isLoading } = useMutation({
         mutationFn: (data) => {
-            console.log('2', loginRole)
             return axios.post(`https://learnify.v1r.ir/api/auth/login/${loginRole}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
 
             })
+            
         },
-        onSuccess: (res) => {
-            console.log('token', res.data.token)
-            localStorage.setItem('token_mentor', res.data.token)
+        
+                onSuccess: (res) => {
+            console.log('token', res)
+            
+            localStorage.setItem('token', res.data.token)
 
-        }
+        },
+        
+        // onError:(res)=>{
+        //     localStorage.setItem('error', res.data.message)
+
+        // }
+ 
 
     })
 
 
-    return { mutate_phone_number, mutate_verification_code,setLoginRole }
+    return { mutate_phone_number, mutate_verification_code, setLoginRole,isLoading}
 }
 
-export default Login_Modares
+export default Login

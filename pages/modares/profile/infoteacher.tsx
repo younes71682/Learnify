@@ -1,3 +1,5 @@
+//@ts-nocheck
+import image from '@/components/api/image'
 import Update_Info from '@/components/api/modares/Update_Info'
 import Button_info_operation from '@/components/button/Button_info_operation'
 import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares'
@@ -8,7 +10,7 @@ import Education from '@/components/user/Account/Education'
 import Location from '@/components/user/Account/Location'
 import Birthday from '@/components/user/date/Birthday'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 
@@ -27,127 +29,142 @@ type FormValue = {
     numbercard: string,
     numberfinancial: string,
     description: string
-
+    image: any
 }
 
 const Infoteacher = () => {
 
 
     const { updute_infoteacher, data, isError, isPending } = Update_Info()
+    const { mutate_Uploadimg } = image()
     // console.log('name', data)
 
-// useEffect(()=>{
 
-// },[])
 
     const methods = useForm<FormValue>({
-        // defaultValues: {
 
-        //     name: "",
-        //     family: "",
-        //     phone_number: "",
-        //     email: "",
-        //     gender: "",
-        //     birthday: "",
-        //     university: "",
-        //     field_of_study: "",
-        //     educational_stage: "",
-        //     numbercard: "",
-        //     numberfinancial: "",
-        //     description: ""
+
+        // defaultValues: {
+        //     a: {
+        //         name: "",
+        //         family: "",
+        //         phone_number: "",
+        //         email: "",
+        //         gender: "",
+        //         birthday: "",
+        //         university: "",
+        //         field_of_study: "",
+        //         educational_stage: "",
+        //         numbercard: "",
+        //         numberfinancial: "",
+        //         description: ""
+        //     }
         // }
+
     })
-    const { register, handleSubmit, formState } = methods
+    const { register, handleSubmit, formState, watch } = methods
 
     const { errors } = formState
 
 
-    
 
 
-    const handleUpdateform = (data: void) => {
+    const handleUpdateform = (data: any) => {
         console.log(data)
         // updute_infoteacher(data)
     }
 
- 
 
-    
 
-        return (
-            <Layout_profil_modares>
+    const handleSubmitImage = (event) => {
+        console.log('img', (event.target as HTMLInputElement).files[0].name)
+        const formData = new FormData()
+        const files = (event.target as HTMLInputElement).files[0].name
+        Object.values(files as ArrayLike<File>).forEach((files) => {
+            formData.append("file", files)
+        })
+        // const file = event.target.value
+        // mutate_image(file)
+        // ارسال فایل به سرور یا انجام عملیات دیگر
 
-                <div className='flex flex-col gap-6 w-[64%] h-[112vh]'>
-                    <FormProvider {...methods}>
+    }
 
-                        <div className='flex items-center gap-6  '>
-                            <div className='flex w-[65%] rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] pr-4 pt-4'>
-                                <div className='flex flex-col gap-4  '>
-                                    <div className='flex items-center gap-1 text-lg'>
-                                        <Image src='/icon/user/account/info_user/user.svg' alt='icon' width={24} height={24} />
-                                        <h2>اطلاعات کاربری</h2>
-                                    </div>
-                                    <form className='flex flex-wrap' noValidate>
-                                        <div className='flex flex-col gap-1 h-[71px] ml-4 '>
-                                            <input {...register("name", { required: { value: true, message: "نام خود را وارد کنید" } })} placeholder='*نام' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]  ' />
-                                            <p className='text-red-500 font-normal text-xs'>{errors.name?.message}</p>
-                                        </div>
-                                        <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                            <input {...register("family", { required: { value: true, message: "نام خانوادگی خود را وارد کنید" } })} placeholder='*نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 outline-[#008000]  ' />
-                                            <p className='text-red-500 font-normal text-xs'>{errors.family?.message}</p>
-                                        </div>
 
-                                        <Select_gender />
+    return (
+        <Layout_profil_modares>
 
-                                        <Birthday />
+            <div className='flex flex-col gap-6 w-[64%] h-[112vh]'>
+                <FormProvider {...methods}>
 
-                                        <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                            <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />
-                                            {errors.phone_number?.type === "required" && <p className='text-red-500 font-normal text-xs'>شماره تلفن خود را وارد کنید</p>}
-                                            {errors.phone_number?.type === "maxLength" && <p className='text-red-500 font-normal text-xs font-Byekan'>شماره تلفن نمیتواند بیشتر از 11 رقم باشد</p>}
-                                            {errors.phone_number?.type === "pattern" && <p className='text-red-500 font-normal text-xs '>شماره تلفن نامعتبر</p>}
-                                        </div>
-                                        <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                            <input type='email' {...register("email", { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, required: true, validate: { notAdmin: (fieldValue) => { return (fieldValue !== "admin@example.com" || "ایمیل دیگری وارد کنید") }, notBlackListed: (fieldValue) => { return (!fieldValue.endsWith("baddomain.com") || "This domin ids not supoort") } } })} placeholder='*ایمیل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] focus:ring-[#008000] focus:border-[#008000] ' />
-                                            {errors.email?.type === "required" && <p className='text-red-500 font-normal text-xs'>ایمیل خود را وارد کنید</p>}
-                                            {errors.email?.type === "pattern" && <p className='text-red-500 font-normal text-xs'>ایمیل نامعتبر</p>}
-                                        </div>
-                                    </form>
+                    <div className='flex items-center gap-6  '>
+                        <div className='flex w-[65%] rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] pr-4 pt-4'>
+                            <div className='flex flex-col gap-4  '>
+                                <div className='flex items-center gap-1 text-lg'>
+                                    <Image src='/icon/user/account/info_user/user.svg' alt='icon' width={24} height={24} />
+                                    <h2>اطلاعات کاربری</h2>
                                 </div>
-                            </div>
-
-                            <div className="flex w-[35%] h-full">
-                                <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
-                                    <div className="flex flex-col items-center justify-center ">
-                                        <Image src="/icon/modares/account/apload_photo.svg" alt='apload' width={70} height={44} className='mb-3' />
-                                        <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>اپلود تصویر خود</p>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
+                                <form className='flex flex-wrap' noValidate>
+                                    <div className='flex flex-col gap-1 h-[71px] ml-4 '>
+                                        <input {...register("name", { required: { value: true, message: "نام خود را وارد کنید" } })} placeholder='*نام' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]  ' />
+                                        <p className='text-red-500 font-normal text-xs'>{errors.name?.message}</p>
                                     </div>
-                                    <input id="dropzone-file" type="file" className="hidden" />
-                                </label>
+                                    <div className='flex flex-col gap-1 h-[71px] ml-4'>
+                                        <input {...register("family", { required: { value: true, message: "نام خانوادگی خود را وارد کنید" } })} placeholder='*نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 outline-[#008000]  ' />
+                                        <p className='text-red-500 font-normal text-xs'>{errors.family?.message}</p>
+                                    </div>
+
+                                    <Select_gender />
+
+                                    <Birthday />
+
+                                    <div className='flex flex-col gap-1 h-[71px] ml-4'>
+                                        <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />
+                                        {errors.phone_number?.type === "required" && <p className='text-red-500 font-normal text-xs'>شماره تلفن خود را وارد کنید</p>}
+                                        {errors.phone_number?.type === "maxLength" && <p className='text-red-500 font-normal text-xs font-Byekan'>شماره تلفن نمیتواند بیشتر از 11 رقم باشد</p>}
+                                        {errors.phone_number?.type === "pattern" && <p className='text-red-500 font-normal text-xs '>شماره تلفن نامعتبر</p>}
+                                    </div>
+                                    <div className='flex flex-col gap-1 h-[71px] ml-4'>
+                                        <input type='email' {...register("email", { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, required: true, validate: { notAdmin: (fieldValue) => { return (fieldValue !== "admin@example.com" || "ایمیل دیگری وارد کنید") }, notBlackListed: (fieldValue) => { return (!fieldValue.endsWith("baddomain.com") || "This domin ids not supoort") } } })} placeholder='*ایمیل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] focus:ring-[#008000] focus:border-[#008000] ' />
+                                        {errors.email?.type === "required" && <p className='text-red-500 font-normal text-xs'>ایمیل خود را وارد کنید</p>}
+                                        {errors.email?.type === "pattern" && <p className='text-red-500 font-normal text-xs'>ایمیل نامعتبر</p>}
+                                    </div>
+                                </form>
                             </div>
-
                         </div>
 
-                        {/* <div className='flex items-center gap-6 '>
-                            <Location />
-                            <Education />
+                        <div className="flex w-[35%] h-full">
+                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
+                                <div className="flex flex-col items-center justify-center ">
+                                    <Image src="/icon/modares/account/apload_photo.svg" alt='apload' width={70} height={44} className='mb-3' />
+                                    <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>اپلود تصویر خود</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
+                                </div>
+                                <input multiple onChange={handleSubmitImage} id="dropzone-file" type="file" className="hidden" />
+                                {errors.image?.type === "required" && <p className='text-red-500 font-normal text-xs'>پروفایل خود را مشخص کنید</p>}
+                            </label>
                         </div>
 
-                        <div className='flex items-center gap-6 '>
-                            <Financial />
-                            <Resume />
-                        </div> */}
+                    </div>
+                    {/* 
+                    <div className='flex items-center gap-6 '>
+                        <Location />
+                        <Education />
+                    </div>
 
-                        <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
-                    </FormProvider>
+                    <div className='flex items-center gap-6 '>
+                        <Financial />
+                        <Resume />
+                    </div> */}
 
-                </div>
+                    <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
+                </FormProvider>
 
-            </Layout_profil_modares>
+            </div>
 
-        )
-    
+        </Layout_profil_modares>
+
+    )
+
 }
 
 export default Infoteacher
