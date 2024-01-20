@@ -1,5 +1,5 @@
 //@ts-nocheck
-import image from '@/components/api/image'
+import ImageUploader from '@/components/api/ImageUploader'
 import Update_Info from '@/components/api/modares/Update_Info'
 import Button_info_operation from '@/components/button/Button_info_operation'
 import Layout_profil_modares from '@/components/layout/Layout_modares/Layout_profil_modares'
@@ -36,58 +36,48 @@ const Infoteacher = () => {
 
 
     const { updute_infoteacher, data, isError, isPending } = Update_Info()
-    const { mutate_Uploadimg } = image()
+    const { mutate_Uploadimg } = ImageUploader()
     // console.log('name', data)
 
 
 
-    const methods = useForm<FormValue>({
+    const methods = useForm<FormValue>()
 
 
-        // defaultValues: {
-        //     a: {
-        //         name: "",
-        //         family: "",
-        //         phone_number: "",
-        //         email: "",
-        //         gender: "",
-        //         birthday: "",
-        //         university: "",
-        //         field_of_study: "",
-        //         educational_stage: "",
-        //         numbercard: "",
-        //         numberfinancial: "",
-        //         description: ""
-        //     }
-        // }
-
-    })
-    const { register, handleSubmit, formState, watch } = methods
+    const { register, handleSubmit, formState, watch, reset } = methods
 
     const { errors } = formState
 
 
 
-
     const handleUpdateform = (data: any) => {
         console.log(data)
-        // updute_infoteacher(data)
+        let image_id = localStorage.getItem('mentorProfilePectureId')
+        updute_infoteacher({ data, image_id })
+        // reset({
+        //     name: "",
+        //     family: "",
+        //     phone_number: "",
+        //     email: "",
+        //     gender: "",
+        //     birthday: "",
+        //     university: "",
+        //     field_of_study: "",
+        //     educational_stage: "",
+        //     numbercard: "",
+        //     numberfinancial: "",
+        //     description: ""
+        // })
     }
 
 
 
     const handleSubmitImage = (event) => {
-        console.log('img', (event.target as HTMLInputElement).files[0].name)
-        const formData = new FormData()
-        const files = (event.target as HTMLInputElement).files[0].name
-        Object.values(files as ArrayLike<File>).forEach((files) => {
-            formData.append("file", files)
-        })
-        // const file = event.target.value
-        // mutate_image(file)
-        // ارسال فایل به سرور یا انجام عملیات دیگر
+        const files = event.target.files[0]
+        mutate_Uploadimg({ image: files })
 
     }
+
 
 
     return (
@@ -131,7 +121,6 @@ const Infoteacher = () => {
                                 </form>
                             </div>
                         </div>
-
                         <div className="flex w-[35%] h-full">
                             <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
                                 <div className="flex flex-col items-center justify-center ">
@@ -145,8 +134,8 @@ const Infoteacher = () => {
                         </div>
 
                     </div>
-                    {/* 
-                    <div className='flex items-center gap-6 '>
+
+                    {/* <div className='flex items-center gap-6 '>
                         <Location />
                         <Education />
                     </div>

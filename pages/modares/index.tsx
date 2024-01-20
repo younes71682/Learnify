@@ -4,6 +4,7 @@ import Services from '@/components/modares/home_page/Services'
 import Tab_layout from '@/components/modares/home_page/tab/Tab_layout'
 import Start_teaching from '@/components/modares/link/Start_teaching'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const index = () => {
@@ -18,7 +19,9 @@ const index = () => {
           </div>
           <div className='flex items-center w-[55%] justify-between'>
             <div className='flex justify-center items-center w-[49%] h-[44px] border-solid border-[0.5px] border-[#FF725E] rounded-[12px]'><p className='text-xl text-[#FF725E]'>مطالعه شرایط</p></div>
-            <div className='flex justify-center items-center w-[49%] h-[44px] bg-[#FF725E] rounded-[12px]'><p className='text-xl text-[#FFF]'>شروع تدریس</p></div>
+            <Link href='modares/teaching' className='w-[166px]'>
+              <div className='flex justify-center items-center w-[100%] h-[44px] bg-[#FF725E] rounded-[12px]'><p className='text-xl text-[#FFF]'>شروع تدریس</p></div>
+            </Link>
           </div>
         </div>
         <div>

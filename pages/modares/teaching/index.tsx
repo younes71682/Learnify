@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+//@ts-nocheck
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -21,6 +22,17 @@ type FormValue = {
 
 export const Teaching = () => {
 
+    const [token, setToken] = useState([]);
+
+    useEffect(() => {
+        const items = localStorage.getItem('token');
+        if (token) {
+            setToken(items);
+        }
+    }, []);
+
+    console.log('token course:', token)
+
     const methods = useForm({
         defaultValues: {
             titlecourse: "",
@@ -34,9 +46,8 @@ export const Teaching = () => {
 
 
 
-    const [activeStep, setActiveStep] = useState(2)
+    const [activeStep, setActiveStep] = useState(0)
 
-    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
     const handleCloseModule = () => {
         setActiveStep(3)
@@ -51,70 +62,7 @@ export const Teaching = () => {
 
     console.log("activeStep", activeStep)
 
-
-
-    const handleAddCourse = async (e: any) => {
-        e.preventDefault()
-        const token = "12|srn8boVMMqncm749Pz7wG1rOzWInlzyLRS45zPRFab67ad7a"
-        try {
-            const response = await axios.post('https://learnify.v1r.ir/api/course/create', {
-                Headers: {
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                data: {
-                    title: "laravel sail", //required
-                    description: "...", //required
-                    image: "url", //required
-                    teaser: "url",//required
-                    chapters: [
-                        {
-                            "chapter_id": 1,
-                            "lessons": [
-                                {
-                                    "description": "...",
-                                    "time": 60, "See": "true",
-                                    "video_id": "url"
-                                },
-                                {
-                                    "description": "...",
-                                    "time": 60,
-                                    "See": "true",
-                                    "video_id": "url"
-                                }
-                            ]
-                        },
-                        {
-                            "chapter_id": 2,
-                            "lessons": [
-                                {
-                                    "description": "...",
-                                    "time": 60,
-                                    "See": "true",
-                                    "video_id": "url"
-                                },
-                                {
-                                    "description": "...",
-                                    "time": 60,
-                                    "See": "true",
-                                    "video)id": "url"
-                                }
-                            ]
-                        }
-                    ],
-                    category: "laravel", //required
-                    Price: 1500000,//required'
-                    step: 2,//required''{{SERVER}}/api/course/create
-                }
-            })
-        } catch (error) {
-            // Handle errors
-            console.error('Error during login:');
-
-        }
-    }
-
-
+    
 
 
     return (

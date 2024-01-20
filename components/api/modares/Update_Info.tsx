@@ -11,8 +11,8 @@ const Update_Info = () => {
         queryKey: ['info_teacher'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
-            const result = await axios.get('https://learnify.v1r.ir/api/user/show',{
-                headers:{
+            const result = await axios.get('https://learnify.v1r.ir/api/user/show', {
+                headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
@@ -23,14 +23,17 @@ const Update_Info = () => {
 
 
     const { mutate: updute_infoteacher } = useMutation({
-        mutationFn: (data) => {
+        mutationFn: async (data) => {
+            console.log('data rdrdr', data)
             let token = localStorage.getItem('token')
-            return axios.put('https://learnify.v1r.ir/api/user/update', data, {
+            const response = await axios.put('https://learnify.v1r.ir/api/user/update', data, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
             })
+            return response
+            console.log('res',response)
         },
         onSuccess: (res) => {
             console.log('res', res)
@@ -41,7 +44,7 @@ const Update_Info = () => {
         }
     })
 
-    return { updute_infoteacher,data, isPending, isError }
+    return { updute_infoteacher, data, isPending, isError }
 }
 
 export default Update_Info

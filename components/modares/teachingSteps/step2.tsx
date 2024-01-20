@@ -20,24 +20,13 @@ type Item = {
 
 export const Step2 = () => {
 
-    const [lessonVisible, setLessonVisible] = useState(false)
-    const [video, setVideo] = useState('')
-    
-    const handletrue = (id) => {
-        setLessonVisible(!lessonVisible)
-    }
-    
-    const switchVisibility = () => {
-        setLessonVisible(!lessonVisible)
-    }
-    
 
     const [item, setItem] = useState<Item[]>([{
-        id: Math.floor(Math.random() * 100),
+        id: 1,
         season: '',
         lesson: [
             {
-                id: Math.floor(Math.random() * 100),
+                id: Math.floor(Math.random() * 10000),
                 see: true,
                 time: '',
             }
@@ -46,18 +35,13 @@ export const Step2 = () => {
     }])
     const [inputseasonvalue, setInputSeasonValue] = useState<string>("")
 
-    const [inputlessonvalue, setInputLessonValue] = useState<[]>([
-        {
-            id: Math.floor(Math.random() * 100),
-            time: '',
-        }
-    ])
+   
     const [inputtimevalue, setInputTimeValue] = useState<string>("")
 
-
+    console.log('lessonIdCreate:', item[0].lesson.length)
     const handleADDChapter = () => {
         const add = {
-            id: Math.floor(Math.random() * 100),
+            id: Math.floor(Math.random() * 10000),
             season: '',
             see: true,
             lesson: [{
@@ -97,7 +81,7 @@ export const Step2 = () => {
         const lessonList = course[index]["lesson"]
         lessonList.push({
             autoId: course[index]["id"],
-            id: Math.floor(Math.random() * 100),
+            id: Math.floor(Math.random() * 100000),
             see: true,
             time: '',
         })
@@ -122,10 +106,7 @@ export const Step2 = () => {
         });
     };
 
-    const handleImg = (e) => {
-        console.log('img', e.target.files)
-        setVideo(e.target.files[0])
-    }
+
 
     console.log('Course:', item)
 
@@ -155,7 +136,7 @@ export const Step2 = () => {
                                                             handleADDLesson(ind, index)
                                                         }} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
                                                     </div>
-                                                    <div><input value='' onChange={setInputLessonValue} placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                    <div><input value=''  placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col  w-[206px]'>
                                                     <div className='flex mb-3 justify-between'>
