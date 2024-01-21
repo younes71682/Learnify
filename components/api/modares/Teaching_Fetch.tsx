@@ -19,10 +19,10 @@ export const Teaching_Fetch = () => {
             })
         },
         onSuccess: (res) => {
-            console.log('res',res)
+            console.log('res', res)
         },
         onError: (error) => {
-            console.log('error',error)
+            console.log('error', error)
         }
     })
 
@@ -38,7 +38,7 @@ export const Teaching_Fetch = () => {
         },
         onSuccess: (res) => {
             console.log('upladedImageId:', res)
-            // localStorage.setItem('UploadPhotoCourse',)
+            localStorage.setItem('UploadPhotoCourseId', res.data.id)
         },
         onError: (err) => {
             console.log("err:", err)
@@ -57,7 +57,7 @@ export const Teaching_Fetch = () => {
         },
         onSuccess: (res) => {
             console.log('upladedVideoId:', res)
-            // localStorage.setItem('UploadTeaserCourse',)
+            localStorage.setItem('UploadTeaserCourseId', res.data.id)
         },
         onError: (err) => {
             console.log("err:", err)

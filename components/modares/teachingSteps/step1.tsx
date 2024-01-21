@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 import Image from 'next/image';
 import React from 'react';
@@ -14,14 +15,14 @@ export const Step1 = () => {
     const handleSubmitTisear = (event: any) => {
         const fileTeasser = event.target.files[0]
         console.log('fileTeasser', fileTeasser)
-        mutate_UploadTeaserCourse(fileTeasser)
+        mutate_UploadTeaserCourse({ video: fileTeasser })
     }
 
 
     const handleSubmitImage = (event: any) => {
         const fileIMage = event.target.files[0]
         console.log('fileIMage', fileIMage)
-        mutate_UploadPhotoCourse(fileIMage)
+        mutate_UploadPhotoCourse({ image: fileIMage })
     }
 
 
