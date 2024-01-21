@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Teaching = () => {
 
@@ -18,7 +18,7 @@ export const Teaching = () => {
             })
         }
     })
-
+    const [younes, setYounes] = useState()
     const { mutate: mutate_Step1Photo } = useMutation({
         mutationFn: (data) => {
             return axios.post(`${server}/api/media/image`, data, {
