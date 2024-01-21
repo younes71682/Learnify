@@ -8,9 +8,9 @@ import CourseComponent from '@/components/user/course/CourseComponent';
 import Accordion from '@/components/user/home_page/Accordion';
 import Best_sellers from '@/components/user/home_page/Best_sellers';
 import Image from 'next/image';
-import Navbar from '@/components/layout/Layout_user/Navbar';
 import Footer from '@/components/layout/Footer';
- 
+import Navbar from '@/components/layout/Navbar';
+
 
 
 const inter = Inter({ subsets: ['latin'] })
