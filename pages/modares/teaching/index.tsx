@@ -9,36 +9,23 @@ import Step2 from '@/components/modares/teachingSteps/step2';
 import Step3 from '@/components/modares/teachingSteps/step3';
 import Navbar from '@/components/layout/Layout_user/Navbar';
 import { FormProvider, useForm } from 'react-hook-form';
-import axios from 'axios';
 import Link from 'next/link';
+import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 
 
 
 type FormValue = {
-    titlecourse: string
-    introductioncourse: string
+    title: string
+    description: string
 }
 
 
 export const Teaching = () => {
 
-    const [token, setToken] = useState([]);
 
-    useEffect(() => {
-        const items = localStorage.getItem('token');
-        if (token) {
-            setToken(items);
-        }
-    }, []);
+    const { mutate_CreateCourse, mutate_UploadMediaIdCourse } = Teaching_Fetch()
 
-    console.log('token course:', token)
-
-    const methods = useForm({
-        defaultValues: {
-            titlecourse: "",
-            introductioncourse: ""
-        }
-    })
+    const methods = useForm<FormValue>()
 
     const { register, formState, handleSubmit } = methods
 
@@ -47,6 +34,7 @@ export const Teaching = () => {
 
 
     const [activeStep, setActiveStep] = useState(0)
+    console.log("activeStep", activeStep)
 
 
     const handleCloseModule = () => {
@@ -60,9 +48,31 @@ export const Teaching = () => {
         ' 4 ',
     ];
 
-    console.log("activeStep", activeStep)
+    const handleFetchNextStep = (data: void) => {
+        if (activeStep === 0) {
+            setActiveStep(activeStep + 1)
+            console.log('data', data)
+            mutate_CreateCourse(data)
+        }
+        else if (activeStep === 1) {
+            setActiveStep(activeStep + 1)
+            // const image_id = localStorage.getItem()
+             // const teaser_id = localStorage.getItem()
+            // mutate_UploadMediaIdCourse()
+        } 
+        else if (activeStep === 2){
+            setActiveStep(activeStep + 1)
 
-    
+        }
+        else if (activeStep === 3){
+            setActiveStep(activeStep + 1)
+
+        }
+
+    }
+
+
+
 
 
     return (
@@ -71,8 +81,9 @@ export const Teaching = () => {
             <FormProvider {...methods}>
 
                 <Navbar />
+
                 <div className='mx-[136px]'>
-                    <div dir='ltr' className=' mt-16 flex justify-center'>
+                    <div dir='ltr' className='flex justify-center items-center h-48'>
                         <Box sx={{ width: '20%' }}>
                             <Stepper activeStep={activeStep} alternativeLabel>
                                 {steps.map((label) => (
@@ -83,30 +94,32 @@ export const Teaching = () => {
                             </Stepper>
                         </Box>
                     </div>
-                    {activeStep === 0 ? (
-                        <form onSubmit={handleSubmit(handleCloseModule)} noValidate>
-                            <div className='flex flex-col'>
-                                <input {...register("titlecourse", { required: { value: true, message: "عنوان دوره را وارد کنید" } })} type="text" className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px]  shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 focus:ring-[#008000] focus:border-[#008000] w-[20%] ' placeholder='*عنوان دوره' />
-                                <p className='text-red-500 font-normal text-xs'>{errors.titlecourse?.message}</p>
 
+
+                    {activeStep === 0 && (
+                        <form className='flex flex-col' noValidate>
+                            <div className='flex flex-col gap-1 h-[85px]'>
+                                <input {...register("title", { required: true })} type="text" className='border-solid border-[#FFF] rounded-[10px]  shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 pl-8 py-5 focus:ring-[#008000] focus:border-[#008000] w-[20%] h-[65px] ' placeholder='*عنوان دوره' />
+                                {errors.title?.type === 'required' && <p className='text-red-500 font-normal text-xs'>عنوان دوره را وارد کنید</p>}
                             </div>
-                            <div className='mt-4'>
-                                <textarea {...register("introductioncourse")} className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[216px] focus:ring-[#008000] focus:border-[#008000]  pl-4 py-5 resize-none' placeholder='*معرفی دوره' />
+
+                            <div className='flex flex-col gap-1 h-[210px] '>
+                                <textarea {...register("description", { required: true })} className='rounded-[10px] border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] text-lg pr-4 w-full h-[190px] focus:ring-[#008000] focus:border-[#008000]  pl-4 py-5 resize-none' placeholder='*معرفی دوره' />
+                                {errors.description?.type === 'required' && <p className='text-red-500 font-normal text-xs'>مشخصات دوره را وارد کنید</p>}
                             </div>
                         </form>
-                    ) : (null)}
+                    )}
 
-                    <div className='mt-32'>
+                    <div className=''>
                         {activeStep === 1 ? (<Step1 />) : (null)}
                         {activeStep === 2 ? (<Step2 />) : (null)}
                         {activeStep === 3 ? (<Step3 />) : (null)}
 
-                        <div className='text-center mt-16 mb-10'>
-                            <button onClick={e => activeStep === 0 ? 0 : setActiveStep(activeStep - 1)} className='mx-2 w-[180px] h-[56px] border-2 rounded-xl text-lg border-[#C93636] text-[#C93636]'>بازگشت</button>
-                            <button onClick={e => {
-                                activeStep === 4 ? 4 : setActiveStep(activeStep + 1)
-                            }} className='mx-2 w-[180px] h-[56px]  rounded-xl bg-[#008000] text-lg  text-white'>مرحله بعد</button>
+                        <div className='flex justify-center gap-3 items-center h-28'>
+                            <div onClick={(e) => { activeStep === 0 ? 0 : setActiveStep(activeStep - 1) }} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl border-solid border-2 border-[#C93636] bg-white hover:opacity-[0.8]'><p className='text-lg text-[#C93636]'>بازگشت</p></div>
+                            <div onClick={handleSubmit(handleFetchNextStep)} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl bg-[#008000] hover:opacity-[0.9]'><p className='text-lg text-white'>مرحله بعد</p></div>
                         </div>
+
                     </div>
                     {activeStep === 3 ? (<div className=' justify-center flex'>
                         <p className='w-[380px] text-sm '>پرداخت و ثبت سفارش، به منزله مطالعه و پذیرفتن قوانین و مقررات استفاده از خدمات لرنیفای است .</p>
