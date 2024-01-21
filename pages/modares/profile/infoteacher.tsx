@@ -135,7 +135,7 @@ const Infoteacher = () => {
 
                     </div>
 
-                    {/* <div className='flex items-center gap-6 '>
+                    <div className='flex items-center gap-6 '>
                         <Location />
                         <Education />
                     </div>
@@ -143,7 +143,7 @@ const Infoteacher = () => {
                     <div className='flex items-center gap-6 '>
                         <Financial />
                         <Resume />
-                    </div> */}
+                    </div>
 
                     <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
                 </FormProvider>
