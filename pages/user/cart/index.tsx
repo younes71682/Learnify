@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import CartItems from '@/components/user/cart/CartItems'
-import Navbar from '@/components/layout/Layout_user/Navbar'
 import Footer from '@/components/layout/Footer'
+import Navbar from '@/components/layout/Navbar'
 
 
 const index = () => {

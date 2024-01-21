@@ -1,6 +1,6 @@
 import React from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
-import Layout_profil_user from '@/components/layout/Layout_user/Layout_profil_user';
+import Layout_profil_user from '@/components/layout/Layout_profil_user';
 
 
 const Mytraining = () => {

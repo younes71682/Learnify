@@ -1,7 +1,7 @@
 import React from 'react'
-import Sidbar from '../../user/Account/Sidbar'
+import Sidbar from '../user/Account/Sidbar'
 import Navbar from './Navbar'
- 
+
 type PropsContainer = {
     children: React.ReactNode
 }

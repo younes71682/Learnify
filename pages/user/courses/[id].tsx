@@ -11,8 +11,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CourseComponent from '@/components/user/course/CourseComponent';
-import Layout_User from '@/components/user/layout_user/Layout_User';
-import Navbar from '@/components/layout/Layout_user/Navbar';
+import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export const CourseDetail = () => {

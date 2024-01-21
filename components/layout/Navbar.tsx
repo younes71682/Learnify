@@ -12,7 +12,7 @@ type FormeValue = {
     verification_code: string
 }
 
-const Navbar_login = () => {
+const Navbar = () => {
 
 
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -258,4 +258,4 @@ const Navbar_login = () => {
     );
 };
 
-export default Navbar_login;
+export default Navbar;

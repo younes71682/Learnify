@@ -7,10 +7,10 @@ import StepLabel from '@mui/material/StepLabel';
 import Step1 from '@/components/modares/teachingSteps/step1';
 import Step2 from '@/components/modares/teachingSteps/step2';
 import Step3 from '@/components/modares/teachingSteps/step3';
-import Navbar from '@/components/layout/Layout_user/Navbar';
 import { FormProvider, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
+import Navbar from '@/components/layout/Navbar';
 
 
 
@@ -57,14 +57,14 @@ export const Teaching = () => {
         else if (activeStep === 1) {
             setActiveStep(activeStep + 1)
             // const image_id = localStorage.getItem()
-             // const teaser_id = localStorage.getItem()
+            // const teaser_id = localStorage.getItem()
             // mutate_UploadMediaIdCourse()
-        } 
-        else if (activeStep === 2){
+        }
+        else if (activeStep === 2) {
             setActiveStep(activeStep + 1)
 
         }
-        else if (activeStep === 3){
+        else if (activeStep === 3) {
             setActiveStep(activeStep + 1)
 
         }

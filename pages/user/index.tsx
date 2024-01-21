@@ -8,14 +8,11 @@ import Services from '@/components/user/home_page/Services'
 import Categories from '@/components/user/home_page/Categories'
 import Accordion from '@/components/user/home_page/Accordion'
 
-
-
 import { url } from 'inspector'
 import CourseComponent from '@/components/user/course/CourseComponent'
 import Best_sellers from '@/components/user/home_page/Best_sellers'
-import Layout_User from '@/components/user/layout_user/Layout_User'
-import Nav_prof from '@/components/layout/Layout_user/Nav_prof'
 import Footer from '@/components/layout/Footer'
+import Navbar from '@/components/layout/Navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -37,7 +34,7 @@ export default function Home() {
 
     <div>
 
-      <Nav_prof />
+      <Navbar />
 
       <div className='flex justify-between'>
 

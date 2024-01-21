@@ -12,7 +12,7 @@ type FormeValue = {
   login: string
 }
 
-const Navbar_Main = () => {
+const Navbar_admin = () => {
 
 
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -211,4 +211,4 @@ const Navbar_Main = () => {
   );
 };
 
-export default Navbar_Main;
+export default Navbar_admin;

@@ -1,5 +1,5 @@
 import Footer from '@/components/layout/Footer'
-import Navbar from '@/components/layout/Layout_user/Navbar'
+import Navbar from '@/components/layout/Navbar'
 import Header from '@/components/user/blog/Header'
 import Link from 'next/link'
 import React from 'react'

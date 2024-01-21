@@ -1,6 +1,6 @@
 // @ts-nocheck
 import Footer from '@/components/layout/Footer';
-import Navbar from '@/components/layout/Layout_user/Navbar';
+import Navbar from '@/components/layout/Navbar';
 import Header_id from '@/components/user/blog/Header_id'
 import React, { useRef } from 'react'
 

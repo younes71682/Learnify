@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 import Services from '@/components/modares/home_page/Services'
 import Start_teaching from '../../components/modares/link/Start_teaching'
 import Footer from '@/components/layout/Footer'
-import Navbar from '@/components/layout/Layout_user/Navbar'
+import Navbar from '@/components/layout/Navbar'
 
 const index = () => {
     const refstudy = useRef(null)

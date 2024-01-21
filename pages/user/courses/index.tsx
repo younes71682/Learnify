@@ -1,5 +1,5 @@
 import Footer from '@/components/layout/Footer';
-import Navbar from '@/components/layout/Layout_user/Navbar';
+import Navbar from '@/components/layout/Navbar';
 import CourseComponent from '@/components/user/course/CourseComponent';
 import Sidebarfilter from '@/components/user/course/Sidebarfilter'
 import React from 'react'

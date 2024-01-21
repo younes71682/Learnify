@@ -1,5 +1,5 @@
 import Footer from '@/components/layout/Footer'
-import Nav_login from '@/components/layout/Layout_modares/Nav_login'
+import Navbar from '@/components/layout/Navbar'
 import Services from '@/components/modares/home_page/Services'
 import Tab_layout from '@/components/modares/home_page/tab/Tab_layout'
 import Start_teaching from '@/components/modares/link/Start_teaching'
@@ -10,7 +10,7 @@ import React from 'react'
 const index = () => {
   return (
     <div>
-      <Nav_login />
+      <Navbar />
 
       <div className='bg-[#F5F5F5] w-[100%] h-[400px] flex justify-center pt-16 relative '>
         <div className='flex flex-col gap-2 pt-10'>
