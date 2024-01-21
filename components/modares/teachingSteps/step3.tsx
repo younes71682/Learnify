@@ -1,3 +1,4 @@
+import Teaching from '@/pages/modares/teaching';
 import React, { useState } from 'react'
 import Select from 'react-select';
 
@@ -19,11 +20,16 @@ export const Step3 = () => {
         }),
     };
 
+    // const { mutate_Step1Photo } = Teaching()
+    // const func = () => {
+
+    // }
 
     return (
         <div className='flex flex-col items-center gap-4'>
             <div>
                 <Select
+                   
                     className='w-[200px] shadow-[0_0_20px_rgba(0,0,0,0.05)] '
                     placeholder='دسته بندی'
                     defaultValue='دسته بندی'

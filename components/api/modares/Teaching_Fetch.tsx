@@ -26,7 +26,6 @@ export const Teaching_Fetch = () => {
         }
     })
 
-    const [younes, setYounes] = useState()
     const { mutate: mutate_UploadPhotoCourse } = useMutation({
         mutationFn: (data) => {
             let token = localStorage.getItem('token')
@@ -46,10 +45,7 @@ export const Teaching_Fetch = () => {
         }
     })
 
-
-    const [javid, setJavid] = useState('')
     const { mutate: mutate_UploadTeaserCourse } = useMutation({
-
         mutationFn: (data) => {
             let token = localStorage.getItem('token')
             return axios.post(`${server}/api/media/video`, data, {
