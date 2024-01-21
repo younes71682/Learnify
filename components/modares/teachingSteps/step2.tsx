@@ -35,7 +35,8 @@ export const Step2 = () => {
     }])
     const [inputseasonvalue, setInputSeasonValue] = useState<string>("")
 
-   
+    const [inputlessonvalue, setInputLessonValue] = useState([])
+
     const [inputtimevalue, setInputTimeValue] = useState<string>("")
 
     console.log('lessonIdCreate:', item[0].lesson.length)
@@ -136,13 +137,13 @@ export const Step2 = () => {
                                                             handleADDLesson(ind, index)
                                                         }} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
                                                     </div>
-                                                    <div><input value=''  placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                    <div><input value='' placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col  w-[206px]'>
                                                     <div className='flex mb-3 justify-between'>
                                                         <p className='text-lg font-bold'>زمان</p>
                                                     </div>
-                                                    <div><input value={inputtimevalue} onChange={setInputTimeValue} placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                    <div><input  onChange={setInputTimeValue} placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col items-center justify-between h-[66px]'>
                                                     <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
