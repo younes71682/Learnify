@@ -35,7 +35,7 @@ export const Teaching = () => {
             console.log("err:", err)
         }
     })
-
+    const [javid, setJavid] = useState('')
     const { mutate: mutate_Step1Video } = useMutation({
         mutationFn: (data) => {
             return axios.post(`${server}/api/media/video`, data, {
