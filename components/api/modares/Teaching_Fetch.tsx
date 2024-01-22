@@ -96,7 +96,7 @@ export const Teaching_Fetch = () => {
             })
         },
         onSuccess: (res) => {
-            console.log('upladedVideoId:', res.data.id)
+            console.log('UploadVideoCourseId:', res.data.id)
             localStorage.setItem('UploadVideoCourseId', res.data.id)
         },
         onError: (err) => {

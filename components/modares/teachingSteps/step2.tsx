@@ -46,7 +46,7 @@ export const Step2 = () => {
                 title: "",
                 time: "",
                 visibility: "true",
-                video_id: 4
+                video_id: ''
             }
         ],
     }])
@@ -63,7 +63,7 @@ export const Step2 = () => {
                 title: "",
                 time: "",
                 visibility: "true",
-                video_id: 4
+                video_id: ''
             }],
         }
         setItem([...item, add])
@@ -79,7 +79,7 @@ export const Step2 = () => {
             title: "",
             time: "",
             visibility: "",
-            video_id: 4
+            video_id: ''
         })
         setItemLesson(course)
     }
@@ -165,15 +165,30 @@ export const Step2 = () => {
 
 
     //اپلود فیلم دوره
-    const handleUploadVideolesson = (event) => {
+    const handleUploadVideolesson = (event, chapterId, lessonId) => {
         const fileVideoCourse = event.target.files[0]
-        console.log(fileVideoCourse)
         mutate_UploadVideoCourse({ video: fileVideoCourse })
+        const newLessonVideo = localStorage.getItem('UploadVideoCourseId')
+        console.log('newLessonVideo',newLessonVideo)    
+        setItem((prevItems) => {
+            const updatedItems = prevItems.map((chapter) => {
+                if (chapter.id === chapterId) {
+                    const updatedLessons = chapter.lesson.map((lesson) => {
+                        if (lesson.id === lessonId) {
+                            return { ...lesson, video_id: newLessonVideo };
+                        }
+                        return lesson;
+                    });
+                    return { ...chapter, lesson: updatedLessons };
+                }
+                return chapter;
+            });
+            return updatedItems;
+        });
     }
 
 
 
-    
 
 
 
@@ -233,7 +248,9 @@ export const Step2 = () => {
                                                     <p className='font-bold  text-lg'>آپلود درس</p>
 
                                                     <label className='flex mb-0 relative top-2 justify-center items-center w-[130px] border-dashed border h-[40px] rounded-xl cursor-pointer bg-[#EFF6FF]  border-[#3B82F6]'>
-                                                        <input type="file" onChange={handleUploadVideolesson} className='hidden w-full uploadBtn' />
+                                                        <input type="file" onChange={(event) => {
+                                                            handleUploadVideolesson(event, chapter.id, lesson.id)
+                                                        }} className='hidden w-full uploadBtn' />
                                                         بارگذاری دوره
                                                     </label>
                                                 </div>
