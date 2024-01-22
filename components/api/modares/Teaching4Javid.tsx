@@ -2,7 +2,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 
-function useTeachingCategory() {
+function Teaching4Javid() {
 
     let server = 'https://learnify.v1r.ir'
 
@@ -10,7 +10,7 @@ function useTeachingCategory() {
     // let selectedCategory = localStorage.getItem('selectedCategory')
     // let coursePrice = localStorage.getItem('coursePrice')
 
-   
+
     const { data, isLoading } = useQuery({
         queryKey: ['Category'],
         queryFn: async () => {
@@ -24,20 +24,19 @@ function useTeachingCategory() {
             return result
         },
     })
-    return { data, isLoading }
 
     const { mutate: mutate_CourseCategoty } = useMutation({
 
-        mutationFn: () => {
-            return axios.post(`${server}/api/course/update/1/3`, {
-                "category_id": selectedCategory,
-                "price": coursePrice
-            }, {
+        mutationFn: (data) => {
+            console.log('data',data)
+            let token = localStorage.getItem('token')
+            return axios.put(`https://learnify.v1r.ir/api/course/update/1/3`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
             })
+            
         },
         onSuccess: (res) => {
             console.log('res', res)
@@ -47,9 +46,9 @@ function useTeachingCategory() {
         }
     })
 
-    return { mutate_CourseCategoty }
 
+    return { data, isLoading, mutate_CourseCategoty }
 }
 
 
-export default useTeachingCategory
+export default Teaching4Javid

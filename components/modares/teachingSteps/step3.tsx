@@ -1,6 +1,6 @@
 //@ts-nocheck
-import useTeachingCategory from '@/components/api/modares/Teaching4Javid';
-import Teaching from '@/pages/modares/teaching';
+import Teaching4Javid from '@/components/api/modares/Teaching4Javid';
+
 import React, { useState } from 'react'
 import Select from 'react-select';
 
@@ -10,7 +10,7 @@ export const Step3 = () => {
     const [coursePrice, setCoursePrice] = useState('')
 
     //@ts-ignore
-    const { data } = useTeachingCategory()
+    const { data } = Teaching4Javid()
     console.log('category data:', data?.data.categories)
 
     const options = [
@@ -54,7 +54,7 @@ export const Step3 = () => {
             </div>
             <div>
                 <input value={coursePrice} onChange={e => {
-                    localStorage.setItem('coursePrice', coursePrice)
+                    localStorage.setItem('coursePrice', e.target.value)
                     setCoursePrice(e.target.value)
                 }} type="text" className='w-[200px] border-0 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.05)]' placeholder='قیمت دوره' />
             </div>

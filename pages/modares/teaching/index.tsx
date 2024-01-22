@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 import Navbar from '@/components/layout/Navbar';
 import axios from 'axios';
+import Teaching4Javid from '@/components/api/modares/Teaching4Javid';
 
 
 
@@ -31,8 +32,9 @@ export const Teaching = () => {
     const { register, formState, handleSubmit } = methods
 
     const { errors } = formState
-
-
+    
+    
+    const { mutate_CourseCategoty } = Teaching4Javid()
     const [activeStep, setActiveStep] = useState(3)
     console.log("activeStep", activeStep)
 
@@ -65,8 +67,13 @@ export const Teaching = () => {
 
         }
         else if (activeStep === 3) {
+            // fetchLastStep()
+            let category_id = Number(localStorage.getItem('selectedCategory'))
+            let price = localStorage.getItem('coursePrice')
+            const dataLastSStep = { category_id, price }
+            console.log('javid:',dataLastSStep)
+            mutate_CourseCategoty(dataLastSStep)
             setActiveStep(activeStep + 1)
-            fetchLastStep()
 
         } else if (activeStep === 4) {
             return
@@ -75,10 +82,8 @@ export const Teaching = () => {
     }
 
 
-    // let categoryId = localStorage.getItem('selectedCategory')
-    // let coursePrice = localStorage.getItem('coursePrice').toString()
-    // console.log("CI", categoryId)
-    // console.log("CP", typeof (coursePrice))
+ 
+
 
     const fetchLastStep = async () => {
         let categoryId = localStorage.getItem('selectedCategory')
