@@ -32,8 +32,8 @@ export const Teaching = () => {
     const { register, formState, handleSubmit } = methods
 
     const { errors } = formState
-    
-    
+
+
     const { mutate_CourseCategoty } = Teaching4Javid()
     const [activeStep, setActiveStep] = useState(3)
     console.log("activeStep", activeStep)
@@ -57,10 +57,12 @@ export const Teaching = () => {
             mutate_CreateCourse(data)
         }
         else if (activeStep === 1) {
-            setActiveStep(activeStep + 1)
-            // const image_id = localStorage.getItem()
-            // const teaser_id = localStorage.getItem()
-            // mutate_UploadMediaIdCourse()
+             setActiveStep(activeStep + 1)
+            const image_id = Number(localStorage.getItem('UploadPhotoCourseId'))
+            const teaser_id = Number(localStorage.getItem('UploadTeaserCourseId'))
+            const dataStep2 = { image_id, teaser_id }
+            console.log('dataStep2', dataStep2)
+            mutate_UploadMediaIdCourse(dataStep2)
         }
         else if (activeStep === 2) {
             setActiveStep(activeStep + 1)
@@ -71,7 +73,7 @@ export const Teaching = () => {
             let category_id = Number(localStorage.getItem('selectedCategory'))
             let price = localStorage.getItem('coursePrice')
             const dataLastSStep = { category_id, price }
-            console.log('javid:',dataLastSStep)
+            console.log('javid:', dataLastSStep)
             mutate_CourseCategoty(dataLastSStep)
             setActiveStep(activeStep + 1)
 
@@ -82,7 +84,7 @@ export const Teaching = () => {
     }
 
 
- 
+
 
 
     const fetchLastStep = async () => {
