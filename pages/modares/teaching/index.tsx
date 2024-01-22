@@ -33,7 +33,7 @@ export const Teaching = () => {
     const { errors } = formState
 
 
-    const [activeStep, setActiveStep] = useState(0)
+    const [activeStep, setActiveStep] = useState(3)
     console.log("activeStep", activeStep)
 
 
@@ -83,6 +83,7 @@ export const Teaching = () => {
     const fetchLastStep = async () => {
         let categoryId = localStorage.getItem('selectedCategory')
         let coursePrice = localStorage.getItem('coursePrice')
+        console.log('logId:', categoryId)
         try {
             let token = localStorage.getItem('token');
             if (!token) {
@@ -94,7 +95,7 @@ export const Teaching = () => {
                 'https://learnify.v1r.ir/api/course/update/1/3',
                 {
                     category_id: categoryId,
-                     price: coursePrice
+                    price: coursePrice
                 },
                 {
                     headers: {

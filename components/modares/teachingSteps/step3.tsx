@@ -1,3 +1,4 @@
+//@ts-nocheck
 import useTeachingCategory from '@/components/api/modares/Teaching4Javid';
 import Teaching from '@/pages/modares/teaching';
 import React, { useState } from 'react'
@@ -8,9 +9,7 @@ export const Step3 = () => {
     const [selectedCategory, setSelectedCategory] = useState('')
     const [coursePrice, setCoursePrice] = useState('')
 
-    localStorage.setItem('selectedCategory', selectedCategory)
-    localStorage.setItem('coursePrice', coursePrice)
-//@ts-ignore
+    //@ts-ignore
     const { data } = useTeachingCategory()
     console.log('category data:', data?.data.categories)
 
@@ -47,11 +46,17 @@ export const Step3 = () => {
                     styles={customStyles}
                     value={selectedCategory}
                     //@ts-ignore
-                    onChange={(value) => setSelectedCategory(value.id)}
+                    onChange={(value) => {
+                        localStorage.setItem('selectedCategory', value.id),
+                            setSelectedCategory(value)
+                    }}
                 />
             </div>
             <div>
-                <input value={coursePrice} onChange={e => setCoursePrice(e.target.value)} type="text" className='w-[200px] border-0 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.05)]' placeholder='قیمت دوره' />
+                <input value={coursePrice} onChange={e => {
+                    localStorage.setItem('coursePrice', coursePrice)
+                    setCoursePrice(e.target.value)
+                }} type="text" className='w-[200px] border-0 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.05)]' placeholder='قیمت دوره' />
             </div>
         </div>
     )

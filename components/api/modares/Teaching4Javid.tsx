@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 
@@ -5,13 +6,15 @@ function useTeachingCategory() {
 
     let server = 'https://learnify.v1r.ir'
 
-    let token = localStorage.getItem('token')
-    let selectedCategory = localStorage.getItem('selectedCategory')
-    let coursePrice = localStorage.getItem('coursePrice')
 
+    // let selectedCategory = localStorage.getItem('selectedCategory')
+    // let coursePrice = localStorage.getItem('coursePrice')
+
+   
     const { data, isLoading } = useQuery({
         queryKey: ['Category'],
         queryFn: async () => {
+            let token = localStorage.getItem('token')
             const result = await axios.get(`${server}/api/category/index`, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,6 +50,6 @@ function useTeachingCategory() {
     return { mutate_CourseCategoty }
 
 }
-    
+
 
 export default useTeachingCategory
