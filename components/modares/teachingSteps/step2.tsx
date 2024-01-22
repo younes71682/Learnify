@@ -143,7 +143,7 @@ export const Step2 = () => {
 
 
     //مقدار اینپوت زمان
-    const handleLessonTime = (lessonId, chapterId, newLessonTime) => {
+    const handleLessonTime = (chapterId, lessonId, newLessonTime) => {
         setItem((prevItems) => {
             const updatedItems = prevItems.map((chapter) => {
                 if (chapter.id === chapterId) {
@@ -160,6 +160,8 @@ export const Step2 = () => {
             return updatedItems;
         });
     };
+
+
 
     //اپلود فیلم دوره
 
@@ -208,8 +210,8 @@ export const Step2 = () => {
                                                         onChange={(e) => {
                                                             setLessonTime(e.target.value);
                                                             handleLessonTime(chapter.id, lesson.id, e.target.value);
-
-                                                        }} placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                        }}
+                                                        placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col items-center justify-between h-[66px]'>
                                                     <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
