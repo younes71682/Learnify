@@ -5,8 +5,12 @@ import Select from 'react-select';
 
 export const Step3 = () => {
 
+    const [selectedCategory, setSelectedCategory] = useState('')
+    const [coursePrice, setCoursePrice] = useState('')
 
-
+    localStorage.setItem('selectedCategory', selectedCategory)
+    localStorage.setItem('coursePrice', coursePrice)
+//@ts-ignore
     const { data } = useTeachingCategory()
     console.log('category data:', data?.data.categories)
 
@@ -26,10 +30,8 @@ export const Step3 = () => {
         }),
     };
 
-    // const { mutate_Step1Photo } = Teaching()
-    // const func = () => {
+    console.log("selectedCategory", selectedCategory)
 
-    // }
 
     return (
         <div className='flex flex-col items-center gap-4'>
@@ -41,13 +43,15 @@ export const Step3 = () => {
                     defaultValue='دسته بندی'
                     // onChange={setSelectedOption}
                     // @ts-ignore
-                    options={data?.data.categories.map(category => ({ value: category.category, label: category.category }))}
+                    options={data?.data.categories.map(category => ({ id: category.category_id, value: category.category, label: category.category }))}
                     styles={customStyles}
-
+                    value={selectedCategory}
+                    //@ts-ignore
+                    onChange={(value) => setSelectedCategory(value.id)}
                 />
             </div>
             <div>
-                <input type="text" className='w-[200px] border-0 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.05)]' placeholder='قیمت دوره' />
+                <input value={coursePrice} onChange={e => setCoursePrice(e.target.value)} type="text" className='w-[200px] border-0 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.05)]' placeholder='قیمت دوره' />
             </div>
         </div>
     )

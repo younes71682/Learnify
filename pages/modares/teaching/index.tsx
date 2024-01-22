@@ -11,6 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 import Navbar from '@/components/layout/Navbar';
+import axios from 'axios';
 
 
 
@@ -30,7 +31,6 @@ export const Teaching = () => {
     const { register, formState, handleSubmit } = methods
 
     const { errors } = formState
-
 
 
     const [activeStep, setActiveStep] = useState(0)
@@ -66,13 +66,49 @@ export const Teaching = () => {
         }
         else if (activeStep === 3) {
             setActiveStep(activeStep + 1)
+            fetchLastStep()
 
+        } else if (activeStep === 4) {
+            return
         }
 
     }
 
 
+    // let categoryId = localStorage.getItem('selectedCategory')
+    // let coursePrice = localStorage.getItem('coursePrice').toString()
+    // console.log("CI", categoryId)
+    // console.log("CP", typeof (coursePrice))
 
+    const fetchLastStep = async () => {
+        let categoryId = localStorage.getItem('selectedCategory')
+        let coursePrice = localStorage.getItem('coursePrice')
+        try {
+            let token = localStorage.getItem('token');
+            if (!token) {
+                console.error('Token not found in localStorage');
+                return;
+            }
+
+            const response = await axios.put(
+                'https://learnify.v1r.ir/api/course/update/1/3',
+                {
+                    category_id: categoryId,
+                     price: coursePrice
+                },
+                {
+                    headers: {
+                        "Content-Type": 'application/json', // Change content type if necessary
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            console.log('Response:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
 
     return (
