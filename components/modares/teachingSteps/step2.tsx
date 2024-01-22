@@ -20,6 +20,17 @@ type Item = {
 
 export const Step2 = () => {
 
+    // console.log('lessonIdCreate:', item[0].lesson.length)
+    // const [inputseasonvalue, setInputSeasonValue] = useState<string>("")
+
+    const [inputtimevalue, setInputTimeValue] = useState<string>("")
+
+    const [chapterTitle, setChapterTitle] = useState('')
+
+    const [lessontitle, setlessonTitle] = useState('')
+    const [lessontime, setLessonTime] = useState('')
+
+    const [itemlesson, setItemLesson] = useState([])
 
     const [item, setItem] = useState<Item[]>([{
         id: 1,
@@ -29,22 +40,15 @@ export const Step2 = () => {
             {
                 id: 1,
                 chapter_id: 1,
-                title: "nkl",
-                time: 12,
+                title: "",
+                time: "",
                 visibility: "true",
                 video_id: 4
             }
         ],
     }])
-    const [inputseasonvalue, setInputSeasonValue] = useState<string>("")
 
-    const [inputlessonvalue, setInputLessonValue] = useState([])
-
-    const [inputtimevalue, setInputTimeValue] = useState<string>("")
-
-    const [chapterTitle, setChapterTitle] = useState('')
-
-    // console.log('lessonIdCreate:', item[0].lesson.length)
+    //ساخت فصل جدید
     const handleADDChapter = () => {
         const add = {
             id: item.length + 1,
@@ -53,8 +57,8 @@ export const Step2 = () => {
             lesson: [{
                 id: 1,
                 chapter_id: 1,
-                title: "nkl",
-                time: 12,
+                title: "",
+                time: "",
                 visibility: "true",
                 video_id: 4
             }],
@@ -62,22 +66,23 @@ export const Step2 = () => {
         setItem([...item, add])
     }
 
-
-
+    // ساخت درس جدید
     const handleADDLesson = (chapterIndex, lessonIndex) => {
         const course = [...item]
         const lessonList = course[chapterIndex]["lesson"]
         lessonList.push({
             id: lessonList.length + 1,
             chapter_id: 1,
-            title: "nkl",
-            time: 12,
-            visibility: "true",
+            title: "",
+            time: "",
+            visibility: "",
             video_id: 4
         })
-        setInputLessonValue(course)
+        setItemLesson(course)
     }
 
+
+    //فعال یا غیرفعال بودن نمایش دوره
     const handleSeeLesson = (lessonId, chapterId) => {
         setItem((prevItems) => {
             const updatedItems = prevItems.map((chapter) => {
@@ -96,6 +101,28 @@ export const Step2 = () => {
         });
     };
 
+    //مقدار ایپوت درس
+    const handleLessonTiltle = (lessonId, chapterId, newlessontitle) => {
+        setItem((prevItems) => {
+            const updatedItems = prevItems.map((chapter) => {
+                if (chapter.id === chapterId) {
+                    const updatedLessons = chapter.lesson.map((lesson) => {
+                        if (lesson.id === lessonId) {
+                            return { ...lesson, title: newlessontitle };
+                        }
+                        return lesson;
+                    });
+                    return { ...chapter, lesson: updatedLessons };
+                }
+                return chapter;
+            });
+            return updatedItems;
+        });
+    };
+
+
+
+    //مقدار اینپوت فصل
     const handleChapterTitle = (newTitle, chapterId) => {
         setItem((prevItem) => {
             const updatedItem = prevItem.map((chapter) => {
@@ -110,24 +137,55 @@ export const Step2 = () => {
 
     console.log('Course:', item)
 
+
+
+
+
+
+    //مقدار اینپوت زمان
+    const handleLessonTime = (lessonId, chapterId, newLessonTime) => {
+        setItem((prevItems) => {
+            const updatedItems = prevItems.map((chapter) => {
+                if (chapter.id === chapterId) {
+                    const updatedLessons = chapter.lesson.map((lesson) => {
+                        if (lesson.id === lessonId) {
+                            return { ...lesson, time: newLessonTime };
+                        }
+                        return lesson;
+                    });
+                    return { ...chapter, lesson: updatedLessons };
+                }
+                return chapter;
+            });
+            return updatedItems;
+        });
+    };
+
+    //اپلود فیلم دوره
+
+
     return (
         <div className='flex justify-center  items-center w-[100%] '>
             <div className='bg-[#F4F4F4] rounded-2xl shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-10 px-20 w-[100%]'>
                 <div className='font-bold mb-7 text-xl'>سرفصل ها</div>
+
                 {item.map((chapter, chapterIndex) => {
                     return (
                         <div key={chapter.id} className='  my-4  flex gap-2 '>
                             <div className='flex flex-col w-[250px]'>
+
                                 <div className='flex mb-3 justify-between'>
                                     <p className='text-lg font-bold'>فصل {chapterIndex + 1} </p>
                                     {chapterIndex === 0 && (<Image onClick={handleADDChapter} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
                                 </div>
+
                                 <div><input value={chapter.title} onChange={(e) => {
                                     setChapterTitle(e.target.value);
                                     handleChapterTitle(e.target.value, chapter.id);
                                 }} placeholder='عنوان فصل' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                             </div>
                             <div className='w-full'>
+
                                 {chapter.lesson.map((lesson, lessonIndex) => {
                                     return (
                                         <div key={lesson.id}>
@@ -135,17 +193,23 @@ export const Step2 = () => {
                                                 <div className='flex flex-col  w-[204px]'>
                                                     <div className='flex mb-3 justify-between'>
                                                         <p className='text-lg font-bold'>عنوان درس {lessonIndex + 1}</p>
-                                                        {lessonIndex === 0 && (<Image onClick={() => {
-                                                            handleADDLesson(chapterIndex, lessonIndex)
-                                                        }} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
+                                                        {lessonIndex === 0 && (<Image onClick={() => { handleADDLesson(chapterIndex, lessonIndex) }} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
                                                     </div>
-                                                    <div><input value='' placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                    <div><input value={lesson.title} onChange={(e) => {
+                                                        setlessonTitle(e.target.value)
+                                                        handleLessonTiltle(lesson.id, chapter.id, e.target.value)
+                                                    }} placeholder='عنوان درس' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col  w-[206px]'>
                                                     <div className='flex mb-3 justify-between'>
                                                         <p className='text-lg font-bold'>زمان</p>
                                                     </div>
-                                                    <div><input onChange={setInputTimeValue} placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
+                                                    <div><input value={lesson.time}
+                                                        onChange={(e) => {
+                                                            setLessonTime(e.target.value);
+                                                            handleLessonTime(chapter.id, lesson.id, e.target.value);
+
+                                                        }} placeholder='47 دقیقه' className='w-[206px] px-2 border-solid border-2 border-[#AAAAA] rounded-[10px] h-[56px]' /></div>
                                                 </div>
                                                 <div className='flex flex-col items-center justify-between h-[66px]'>
                                                     <p className='font-bold text-lg'>مشاهده قبل از خرید</p>
@@ -164,10 +228,12 @@ export const Step2 = () => {
                                         </div>
                                     )
                                 })}
+
                             </div>
                         </div>
                     )
                 })}
+
             </div>
         </div>
     )
