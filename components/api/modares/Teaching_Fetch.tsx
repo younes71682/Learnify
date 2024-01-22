@@ -67,7 +67,7 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadMediaIdCourse } = useMutation({
         mutationFn: (data) => {
-            console.log('MediaIdCourssssse:::',data)
+            console.log('MediaIdCourssssse:::', data)
             let token = localStorage.getItem('token')
 
             return axios.put(`${server}/api/course/update/1/1`, data, {
@@ -79,6 +79,25 @@ export const Teaching_Fetch = () => {
         },
         onSuccess: (res) => {
             console.log('courseData:', res)
+        },
+        onError: (err) => {
+            console.log("err:", err)
+        }
+    })
+
+    const { mutate: mutate_UploadVideoCourse } = useMutation({
+        mutationFn: (data) => {
+            let token = localStorage.getItem('token')
+            return axios.post(`${server}/api/media/video`, data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+        },
+        onSuccess: (res) => {
+            console.log('upladedVideoId:', res.data.id)
+            localStorage.setItem('UploadVideoCourseId', res.data.id)
         },
         onError: (err) => {
             console.log("err:", err)
@@ -105,6 +124,6 @@ export const Teaching_Fetch = () => {
     })
 
 
-    return { mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse }
+    return { mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse,mutate_UploadVideoCourse }
 }
 

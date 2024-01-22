@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 import Image from 'next/image';
 import { list } from 'postcss';
 import React, { useState } from 'react'
@@ -22,6 +23,8 @@ export const Step2 = () => {
 
     // console.log('lessonIdCreate:', item[0].lesson.length)
     // const [inputseasonvalue, setInputSeasonValue] = useState<string>("")
+
+    const { mutate_UploadVideoCourse } = Teaching_Fetch()
 
     const [inputtimevalue, setInputTimeValue] = useState<string>("")
 
@@ -139,9 +142,6 @@ export const Step2 = () => {
 
 
 
-
-
-
     //مقدار اینپوت زمان
     const handleLessonTime = (chapterId, lessonId, newLessonTime) => {
         setItem((prevItems) => {
@@ -163,7 +163,18 @@ export const Step2 = () => {
 
 
 
+
     //اپلود فیلم دوره
+    const handleUploadVideolesson = (event) => {
+        const fileVideoCourse = event.target.files[0]
+        console.log(fileVideoCourse)
+        mutate_UploadVideoCourse({ video: fileVideoCourse })
+    }
+
+
+
+    
+
 
 
     return (
@@ -222,7 +233,7 @@ export const Step2 = () => {
                                                     <p className='font-bold  text-lg'>آپلود درس</p>
 
                                                     <label className='flex mb-0 relative top-2 justify-center items-center w-[130px] border-dashed border h-[40px] rounded-xl cursor-pointer bg-[#EFF6FF]  border-[#3B82F6]'>
-                                                        <input type="file" className='hidden w-full uploadBtn' />
+                                                        <input type="file" onChange={handleUploadVideolesson} className='hidden w-full uploadBtn' />
                                                         بارگذاری دوره
                                                     </label>
                                                 </div>
