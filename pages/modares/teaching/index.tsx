@@ -35,7 +35,7 @@ export const Teaching = () => {
 
 
     const { mutate_CourseCategoty } = Teaching4Javid()
-    const [activeStep, setActiveStep] = useState(2)
+    const [activeStep, setActiveStep] = useState(0)
     console.log("activeStep", activeStep)
 
 

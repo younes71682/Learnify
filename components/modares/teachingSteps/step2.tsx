@@ -165,27 +165,35 @@ export const Step2 = () => {
 
 
     //اپلود فیلم دوره
-    const handleUploadVideolesson = (event, chapterId, lessonId) => {
-        const fileVideoCourse = event.target.files[0]
-        mutate_UploadVideoCourse({ video: fileVideoCourse })
-        const newLessonVideo = localStorage.getItem('UploadVideoCourseId')
-        console.log('newLessonVideo',newLessonVideo)    
-        setItem((prevItems) => {
-            const updatedItems = prevItems.map((chapter) => {
-                if (chapter.id === chapterId) {
-                    const updatedLessons = chapter.lesson.map((lesson) => {
-                        if (lesson.id === lessonId) {
-                            return { ...lesson, video_id: newLessonVideo };
-                        }
-                        return lesson;
-                    });
-                    return { ...chapter, lesson: updatedLessons };
-                }
-                return chapter;
+    const handleUploadVideolesson = async (event, chapterId, lessonId) => {
+        try {
+            const fileVideoCourse = event.target.files[0];
+            await mutate_UploadVideoCourse({ video: fileVideoCourse });
+    
+            const newLessonVideo = localStorage.getItem('UploadVideoCourseId');
+            console.log('newLessonVideo', newLessonVideo);
+    
+            setItem((prevItems) => {
+                const updatedItems = prevItems.map((chapter) => {
+                    if (chapter.id === chapterId) {
+                        const updatedLessons = chapter.lesson.map((lesson) => {
+                            if (lesson.id === lessonId) {
+                                return { ...lesson, video_id: newLessonVideo };
+                            }
+                            return lesson;
+                        });
+                        return { ...chapter, lesson: updatedLessons };
+                    }
+                    return chapter;
+                });
+                return updatedItems;
             });
-            return updatedItems;
-        });
-    }
+        } catch (error) {
+            // Handle error if mutate_UploadVideoCourse fails
+            console.error('Error uploading video:', error);
+        }
+    };
+    
 
 
 

@@ -85,24 +85,25 @@ export const Teaching_Fetch = () => {
         }
     })
 
-    const { mutate: mutate_UploadVideoCourse } = useMutation({
-        mutationFn: (data) => {
-            let token = localStorage.getItem('token')
-            return axios.post(`${server}/api/media/video`, data, {
+    const mutate_UploadVideoCourse = async (data) => {
+        try {
+            let token = localStorage.getItem('token');
+            const response = await axios.post(`${server}/api/media/video`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,
                 }
-            })
-        },
-        onSuccess: (res) => {
-            console.log('UploadVideoCourseId:', res.data.id)
-            localStorage.setItem('UploadVideoCourseId', res.data.id)
-        },
-        onError: (err) => {
-            console.log("err:", err)
+            });
+
+            console.log('UploadVideoCourseId:', response.data.id);
+            localStorage.setItem('UploadVideoCourseId', response.data.id);
+
+            return response.data; // Return the data or modify as needed
+        } catch (error) {
+            console.error('Error uploading video:', error);
+            throw error; // Re-throw the error for the calling function to handle
         }
-    })
+    };
 
     const { mutate: mutate_ } = useMutation({
         mutationFn: (data) => {
