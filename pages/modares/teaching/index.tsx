@@ -128,9 +128,9 @@ export const Teaching = () => {
                     )}
 
                     <div className=''>
-                        {activeStep === 1 && success_CreateCourse === true ? (<Step1 />) : null}
-                        {activeStep === 2 && success_UploadMediaIdCourse === true ? (<Step2 />) : null}
-                        {activeStep === 3 && success_UploadCourse === true ? (<Step3 />) : null}
+                        {activeStep === 1 ? (<Step1 />) : null}
+                        {activeStep === 2 ? (<Step2 />) : null}
+                        {activeStep === 3 ? (<Step3 />) : null}
 
                         <div className='flex justify-center gap-3 items-center h-28'>
                             <div onClick={(e) => { activeStep === 0 ? 0 : setActiveStep(activeStep - 1) }} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl border-solid border-2 border-[#C93636] bg-white hover:opacity-[0.8]'><p className='text-lg text-[#C93636]'>بازگشت</p></div>
