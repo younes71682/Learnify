@@ -13,6 +13,7 @@ import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch';
 import Navbar from '@/components/layout/Navbar';
 import axios from 'axios';
 import Teaching4Javid from '@/components/api/modares/Teaching4Javid';
+import { BeatLoader } from 'react-spinners';
 
 
 
@@ -25,7 +26,7 @@ type FormValue = {
 export const Teaching = () => {
 
 
-    const { mutate_CreateCourse, mutate_UploadMediaIdCourse, mutate_UploadCourse } = Teaching_Fetch()
+    const { mutate_CreateCourse, pending_CreateCourse, success_CreateCourse, mutate_UploadMediaIdCourse, pending_UploadMediaIdCourse, success_UploadMediaIdCourse, mutate_UploadCourse, pending_UploadCourse, success_UploadCourse, mutate_CourseCategory, pending_CourseCategoty } = Teaching_Fetch()
 
     const methods = useForm<FormValue>()
 
@@ -34,7 +35,6 @@ export const Teaching = () => {
     const { errors } = formState
 
 
-    const { mutate_CourseCategoty } = Teaching4Javid()
     const [activeStep, setActiveStep] = useState(2)
     console.log("activeStep", activeStep)
 
@@ -56,6 +56,7 @@ export const Teaching = () => {
             console.log('data', data)
             mutate_CreateCourse(data)
         }
+
         else if (activeStep === 1) {
             setActiveStep(activeStep + 1)
             const image_id = Number(localStorage.getItem('UploadPhotoCourseId'))
@@ -64,22 +65,26 @@ export const Teaching = () => {
             console.log('dataStep2', dataStep2)
             mutate_UploadMediaIdCourse(dataStep2)
         }
+
         else if (activeStep === 2) {
             setActiveStep(activeStep + 1)
             const data = localStorage.getItem('itemcourse')
             const Arryitem = JSON.parse(data)
-            console.log('Arryitem',{chapters:Arryitem})
-            mutate_UploadCourse({chapters:Arryitem})
+            console.log('Arryitem', { chapters: Arryitem })
+            mutate_UploadCourse({ chapters: Arryitem })
         }
+
         else if (activeStep === 3) {
+            setActiveStep(activeStep + 1)
             let category_id = Number(localStorage.getItem('selectedCategory'))
             let price = localStorage.getItem('coursePrice')
             const dataLastSStep = { category_id, price }
             console.log('javid:', dataLastSStep)
-            mutate_CourseCategoty(dataLastSStep)
-            setActiveStep(activeStep + 1)
+            mutate_CourseCategory(dataLastSStep)
 
-        } else if (activeStep === 4) {
+        }
+
+        else if (activeStep === 4) {
             return
         }
 
@@ -123,13 +128,13 @@ export const Teaching = () => {
                     )}
 
                     <div className=''>
-                        {activeStep === 1 ? (<Step1 />) : (null)}
-                        {activeStep === 2 ? (<Step2 />) : (null)}
-                        {activeStep === 3 ? (<Step3 />) : (null)}
+                        {activeStep === 1 && success_CreateCourse === true ? (<Step1 />) : null}
+                        {activeStep === 2 && success_UploadMediaIdCourse === true ? (<Step2 />) : null}
+                        {activeStep === 3 && success_UploadCourse === true ? (<Step3 />) : null}
 
                         <div className='flex justify-center gap-3 items-center h-28'>
                             <div onClick={(e) => { activeStep === 0 ? 0 : setActiveStep(activeStep - 1) }} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl border-solid border-2 border-[#C93636] bg-white hover:opacity-[0.8]'><p className='text-lg text-[#C93636]'>بازگشت</p></div>
-                            <div onClick={handleSubmit(handleFetchNextStep)} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl bg-[#008000] hover:opacity-[0.9]'><p className='text-lg text-white'>مرحله بعد</p></div>
+                            <div onClick={handleSubmit(handleFetchNextStep)} className='flex justify-center items-center w-[180px] h-[56px] rounded-xl bg-[#008000] hover:opacity-[0.9]'>{pending_CreateCourse || pending_UploadMediaIdCourse || pending_UploadCourse ? <BeatLoader color="#36d7b7" /> : <p className='text-lg text-white'>مرحله بعد</p>} </div>
                         </div>
 
                     </div>
