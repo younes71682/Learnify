@@ -45,7 +45,7 @@ export const Teaching_Fetch = () => {
         }
     })
 
-    const { mutate: mutate_UploadTeaserCourse } = useMutation({
+    const { mutate: mutate_UploadTeaserCourse,isPending:teaserPending} = useMutation({
         mutationFn: (data) => {
             let token = localStorage.getItem('token')
             return axios.post(`${server}/api/media/video`, data, {
@@ -124,6 +124,6 @@ export const Teaching_Fetch = () => {
     })
 
 
-    return { mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse, mutate_UploadVideoCourse, mutate_UploadCourse }
+    return { teaserPending,mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse, mutate_UploadVideoCourse, mutate_UploadCourse }
 }
 

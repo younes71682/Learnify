@@ -39,7 +39,7 @@ export const Step2 = () => {
         id: 1,
         course_id: 1,
         title: '',
-        lesson: [
+        lessons: [
             {
                 id: 1,
                 chapter_id: 1,
@@ -57,7 +57,7 @@ export const Step2 = () => {
             id: item.length + 1,
             course_id: 1,
             title: '',
-            lesson: [{
+            lessons: [{
                 id: 1,
                 chapter_id: 1,
                 title: "",
@@ -72,7 +72,7 @@ export const Step2 = () => {
     // ساخت درس جدید
     const handleADDLesson = (chapterIndex, lessonIndex) => {
         const course = [...item]
-        const lessonList = course[chapterIndex]["lesson"]
+        const lessonList = course[chapterIndex]["lessons"]
         lessonList.push({
             id: lessonList.length + 1,
             chapter_id: 1,
@@ -90,13 +90,13 @@ export const Step2 = () => {
         setItem((prevItems) => {
             const updatedItems = prevItems.map((chapter) => {
                 if (chapter.id === chapterId) {
-                    const updatedLessons = chapter.lesson.map((lesson) => {
+                    const updatedLessons = chapter.lessons.map((lesson) => {
                         if (lesson.id === lessonId) {
                             return { ...lesson, visibility: !lesson.visibility };
                         }
                         return lesson;
                     });
-                    return { ...chapter, lesson: updatedLessons };
+                    return { ...chapter, lessons: updatedLessons };
                 }
                 return chapter;
             });
@@ -109,13 +109,13 @@ export const Step2 = () => {
         setItem((prevItems) => {
             const updatedItems = prevItems.map((chapter) => {
                 if (chapter.id === chapterId) {
-                    const updatedLessons = chapter.lesson.map((lesson) => {
+                    const updatedLessons = chapter.lessons.map((lesson) => {
                         if (lesson.id === lessonId) {
                             return { ...lesson, title: newlessontitle };
                         }
                         return lesson;
                     });
-                    return { ...chapter, lesson: updatedLessons };
+                    return { ...chapter, lessons: updatedLessons };
                 }
                 return chapter;
             });
@@ -147,13 +147,13 @@ export const Step2 = () => {
         setItem((prevItems) => {
             const updatedItems = prevItems.map((chapter) => {
                 if (chapter.id === chapterId) {
-                    const updatedLessons = chapter.lesson.map((lesson) => {
+                    const updatedLessons = chapter.lessons.map((lesson) => {
                         if (lesson.id === lessonId) {
                             return { ...lesson, time: newLessonTime };
                         }
                         return lesson;
                     });
-                    return { ...chapter, lesson: updatedLessons };
+                    return { ...chapter, lessons: updatedLessons };
                 }
                 return chapter;
             });
@@ -176,20 +176,18 @@ export const Step2 = () => {
             setItem((prevItems) => {
                 const updatedItems = prevItems.map((chapter) => {
                     if (chapter.id === chapterId) {
-                        const updatedLessons = chapter.lesson.map((lesson) => {
+                        const updatedLessons = chapter.lessons.map((lesson) => {
                             if (lesson.id === lessonId) {
                                 return { ...lesson, video_id: newLessonVideo };
                             }
                             return lesson;
                         });
-                        return { ...chapter, lesson: updatedLessons };
+                        return { ...chapter, lessons: updatedLessons };
                     }
                     return chapter;
                 });
                 return updatedItems;
             });
-            const stringitem = JSON.stringify(item)
-            localStorage.setItem('itemcourse',JSON.stringify(item))
         } catch (error) {
             // Handle error if mutate_UploadVideoCourse fails
             console.error('Error uploading video:', error);
@@ -197,7 +195,9 @@ export const Step2 = () => {
     };
 
 
-
+    const handleLocal =  () => {
+        localStorage.setItem('itemcourse', JSON.stringify(item))
+    }
 
 
 
@@ -205,13 +205,13 @@ export const Step2 = () => {
     return (
         <div className='flex justify-center  items-center w-[100%] '>
             <div className='bg-[#F4F4F4] rounded-2xl shadow-[0px_0px_20px_rgba(0,0,0,0.05)] py-10 px-20 w-[100%]'>
+                <button onClick={handleLocal} className='bg-red-500'>save course</button>
                 <div className='font-bold mb-7 text-xl'>سرفصل ها</div>
 
                 {item.map((chapter, chapterIndex) => {
                     return (
                         <div key={chapter.id} className='  my-4  flex gap-2 '>
                             <div className='flex flex-col w-[250px]'>
-
                                 <div className='flex mb-3 justify-between'>
                                     <p className='text-lg font-bold'>فصل {chapterIndex + 1} </p>
                                     {chapterIndex === 0 && (<Image onClick={handleADDChapter} src="/icon/modares/AddChapter.svg" alt='addchapter' width={24} height={24} />)}
@@ -224,7 +224,7 @@ export const Step2 = () => {
                             </div>
                             <div className='w-full'>
 
-                                {chapter.lesson.map((lesson, lessonIndex) => {
+                                {chapter.lessons.map((lesson, lessonIndex) => {
                                     return (
                                         <div key={lesson.id}>
                                             <div className=' mb-5 mr-12  flex justify-between '>

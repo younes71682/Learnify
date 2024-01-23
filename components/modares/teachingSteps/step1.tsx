@@ -10,7 +10,7 @@ export const Step1 = () => {
     const form = useForm()
     const { register, handleSubmit, formState } = form
     const { errors } = formState
-    const { mutate_UploadTeaserCourse, mutate_UploadPhotoCourse } = Teaching_Fetch()
+    const { mutate_UploadTeaserCourse, mutate_UploadPhotoCourse, teaserPending } = Teaching_Fetch()
 
     const handleSubmitTisear = (event: any) => {
         const fileTeasser = event.target.files[0]
@@ -30,7 +30,7 @@ export const Step1 = () => {
 
         <div className='flex justify-center h-[295px]'>
             <div className='flex justify-between w-[580px]'>
-
+                {teaserPending && (<div>loading ...</div>)}
                 <div className="flex w-[262px] h-[213px]">
                     <label htmlFor="dropzone-file-teasser" className="flex flex-col items-center justify-center rounded-[15px] border-dashed border-2 border-[#3B82F6] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
                         <div className="flex flex-col items-center justify-center ">

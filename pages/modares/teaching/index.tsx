@@ -68,8 +68,8 @@ export const Teaching = () => {
             setActiveStep(activeStep + 1)
             const data = localStorage.getItem('itemcourse')
             const Arryitem = JSON.parse(data)
-            console.log('Arryitem',Arryitem)
-            mutate_UploadCourse(Arryitem)
+            console.log('Arryitem',{chapters:Arryitem})
+            mutate_UploadCourse({chapters:Arryitem})
         }
         else if (activeStep === 3) {
             let category_id = Number(localStorage.getItem('selectedCategory'))
