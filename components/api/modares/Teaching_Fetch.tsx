@@ -105,19 +105,18 @@ export const Teaching_Fetch = () => {
         }
     };
 
-    const { mutate: mutate_ } = useMutation({
+    const { mutate: mutate_UploadCourse } = useMutation({
         mutationFn: (data) => {
             let token = localStorage.getItem('token')
-
-            return axios.put(`${server}/api/course/update/1/3`, data, {
+            return axios.put(`${server}/api/course/update/1/2`, data, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
             })
         },
         onSuccess: (res) => {
-            console.log(':', res)
+            console.log('res::', res)
         },
         onError: (err) => {
             console.log("err:", err)
@@ -125,6 +124,6 @@ export const Teaching_Fetch = () => {
     })
 
 
-    return { mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse,mutate_UploadVideoCourse }
+    return { mutate_CreateCourse, mutate_UploadPhotoCourse, mutate_UploadTeaserCourse, mutate_UploadMediaIdCourse, mutate_UploadVideoCourse, mutate_UploadCourse }
 }
 

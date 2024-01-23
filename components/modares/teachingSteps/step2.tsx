@@ -169,10 +169,10 @@ export const Step2 = () => {
         try {
             const fileVideoCourse = event.target.files[0];
             await mutate_UploadVideoCourse({ video: fileVideoCourse });
-    
+
             const newLessonVideo = localStorage.getItem('UploadVideoCourseId');
             console.log('newLessonVideo', newLessonVideo);
-    
+
             setItem((prevItems) => {
                 const updatedItems = prevItems.map((chapter) => {
                     if (chapter.id === chapterId) {
@@ -188,12 +188,14 @@ export const Step2 = () => {
                 });
                 return updatedItems;
             });
+            const stringitem = JSON.stringify(item)
+            localStorage.setItem('itemcourse',JSON.stringify(item))
         } catch (error) {
             // Handle error if mutate_UploadVideoCourse fails
             console.error('Error uploading video:', error);
         }
     };
-    
+
 
 
 

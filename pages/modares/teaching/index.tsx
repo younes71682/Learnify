@@ -25,7 +25,7 @@ type FormValue = {
 export const Teaching = () => {
 
 
-    const { mutate_CreateCourse, mutate_UploadMediaIdCourse } = Teaching_Fetch()
+    const { mutate_CreateCourse, mutate_UploadMediaIdCourse, mutate_UploadCourse } = Teaching_Fetch()
 
     const methods = useForm<FormValue>()
 
@@ -35,7 +35,7 @@ export const Teaching = () => {
 
 
     const { mutate_CourseCategoty } = Teaching4Javid()
-    const [activeStep, setActiveStep] = useState(0)
+    const [activeStep, setActiveStep] = useState(2)
     console.log("activeStep", activeStep)
 
 
@@ -57,7 +57,7 @@ export const Teaching = () => {
             mutate_CreateCourse(data)
         }
         else if (activeStep === 1) {
-             setActiveStep(activeStep + 1)
+            setActiveStep(activeStep + 1)
             const image_id = Number(localStorage.getItem('UploadPhotoCourseId'))
             const teaser_id = Number(localStorage.getItem('UploadTeaserCourseId'))
             const dataStep2 = { image_id, teaser_id }
@@ -66,10 +66,12 @@ export const Teaching = () => {
         }
         else if (activeStep === 2) {
             setActiveStep(activeStep + 1)
-
+            const data = localStorage.getItem('itemcourse')
+            const Arryitem = JSON.parse(data)
+            console.log('Arryitem',Arryitem)
+            mutate_UploadCourse(Arryitem)
         }
         else if (activeStep === 3) {
-            // fetchLastStep()
             let category_id = Number(localStorage.getItem('selectedCategory'))
             let price = localStorage.getItem('coursePrice')
             const dataLastSStep = { category_id, price }
@@ -83,40 +85,6 @@ export const Teaching = () => {
 
     }
 
-
-
-
-
-    const fetchLastStep = async () => {
-        let categoryId = localStorage.getItem('selectedCategory')
-        let coursePrice = localStorage.getItem('coursePrice')
-        console.log('logId:', categoryId)
-        try {
-            let token = localStorage.getItem('token');
-            if (!token) {
-                console.error('Token not found in localStorage');
-                return;
-            }
-
-            const response = await axios.put(
-                'https://learnify.v1r.ir/api/course/update/1/3',
-                {
-                    category_id: categoryId,
-                    price: coursePrice
-                },
-                {
-                    headers: {
-                        "Content-Type": 'application/json', // Change content type if necessary
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-
-            console.log('Response:', response.data);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
 
 
     return (
