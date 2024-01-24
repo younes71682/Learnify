@@ -81,7 +81,7 @@ export const Step2 = () => {
             visibility: "",
             video_id: ''
         })
-        // setItemLesson(course)
+        setItemLesson(course)
     }
 
 
