@@ -32,6 +32,8 @@ export const Step2 = () => {
 
     const [lessontitle, setlessonTitle] = useState('')
     const [lessontime, setLessonTime] = useState('')
+    const [loadingStateLesson, setLoadingStateLesson] = useState('')
+    const [loadingStateCourse, setLoadingStateCourse] = useState('')
 
     const [itemlesson, setItemLesson] = useState([])
 
@@ -266,8 +268,11 @@ export const Step2 = () => {
                                             <div className='flex flex-col items-center justify-between h-[130px] w-[17%]'>
                                                 <p className='font-bold text-lg'>آپلود درس</p>
                                                 <div className='flex flex-col gap-1 w-[99%] h-[80px]'>
-                                                    <label className='flex justify-center items-center w-full border-dashed border h-[40px] rounded-xl cursor-pointer bg-[#EFF6FF]  border-[#3B82F6]'>
-                                                        {pending_UploadVideoCourse ? <BeatLoader color="#36d7b7" /> :
+                                                    <label onClick={(e) => {
+                                                        setLoadingStateLesson(lesson.id)
+                                                        setLoadingStateCourse(chapter.id)
+                                                    }} className='flex justify-center items-center w-full border-dashed border h-[40px] rounded-xl cursor-pointer bg-[#EFF6FF]  border-[#3B82F6]'>
+                                                        {pending_UploadVideoCourse === true && lesson.id === loadingStateLesson && chapter.id === loadingStateCourse ? <BeatLoader color="#36d7b7" /> :
                                                             <>
                                                                 <input type="file" onChange={(event) => {
                                                                     handleUploadVideolesson(event, chapter.id, lesson.id)
@@ -276,8 +281,8 @@ export const Step2 = () => {
                                                             </>
                                                         }
                                                     </label>
-                                                    {success_UploadVideoCourse && <p className='text-green-500 font-normal text-xs'>آپلود درس با موفقیت انجام شد.</p>}
-                                                    {error_UploadVideoCourse && <p className='text-red-500 font-normal text-xs'>آپلود درس با مشکل مواجه شد،مجددا آپلود کنید.</p>}
+                                                    {lesson.video_id && success_UploadVideoCourse=== true  ? <p className='text-green-500 font-normal text-xs'>آپلود درس با موفقیت انجام شد.</p> : null}
+                                                    {error_UploadVideoCourse && lesson.id === loadingStateLesson && chapter.id === loadingStateCourse && lesson.video_id ? <p className='text-red-500 font-normal text-xs'>آپلود درس با مشکل مواجه شد،مجددا آپلود کنید.</p> : (null)}
                                                 </div>
                                             </div>
                                         </div>

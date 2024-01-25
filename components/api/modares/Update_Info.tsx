@@ -7,7 +7,7 @@ const Update_Info = () => {
     const client = useQueryClient()
 
 
-    const { data, isPending, isError } = useQuery({
+    const { data:dataShowTeacher, isPending, isError } = useQuery({
         queryKey: ['info_teacher'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
