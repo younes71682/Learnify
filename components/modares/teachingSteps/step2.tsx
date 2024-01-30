@@ -164,8 +164,6 @@ export const Step2 = () => {
     };
 
 
-
-
     //اپلود فیلم دوره
     const handleUploadVideolesson = (event, chapterId, lessonId) => {
         const fileVideoCourse = event.target.files[0];
@@ -196,10 +194,7 @@ export const Step2 = () => {
 
     const handleLocal = () => {
         localStorage.setItem('itemcourse', JSON.stringify(item))
-
     }
-
-
 
 
     return (
@@ -281,7 +276,7 @@ export const Step2 = () => {
                                                             </>
                                                         }
                                                     </label>
-                                                    {lesson.video_id && success_UploadVideoCourse=== true  ? <p className='text-green-500 font-normal text-xs'>آپلود درس با موفقیت انجام شد.</p> : null}
+                                                    {lesson.video_id && success_UploadVideoCourse === true ? <p className='text-green-500 font-normal text-xs'>آپلود درس با موفقیت انجام شد.</p> : null}
                                                     {error_UploadVideoCourse && lesson.id === loadingStateLesson && chapter.id === loadingStateCourse && lesson.video_id ? <p className='text-red-500 font-normal text-xs'>آپلود درس با مشکل مواجه شد،مجددا آپلود کنید.</p> : (null)}
                                                 </div>
                                             </div>

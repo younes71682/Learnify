@@ -71,7 +71,7 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadMediaIdCourse, isPending: pending_UploadMediaIdCourse, isSuccess: success_UploadMediaIdCourse } = useMutation({
         mutationFn: (data) => {
-            console.log('MediaIdCourssssse:::', data)
+            console.log('MediaIdCourssssse:', data)
             let token = localStorage.getItem('token')
             let CreatedCourseId = localStorage.getItem('CreatedCourseId')
             return axios.put(`${server}/api/course/update/${CreatedCourseId}/1`, data, {
@@ -79,6 +79,7 @@ export const Teaching_Fetch = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
+            
             })
         },
         onSuccess: (res) => {

@@ -1,75 +1,112 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Layout_admin from '@/components/layout/layout_admin/Layout_admin'
+import { useForm } from 'react-hook-form'
+import Image from 'next/image'
+import Blog_Fetch from '@/components/api/admin/Blog_Fetch'
 
+type FormValue = {
+    title: string
+    description: string
+    image_id: string
+}
 
-export const Weblog = () => {
+const Weblog = () => {
+
+    const { mutate_add_image_blog, mutate_add_blog, data_show_listblog } = Blog_Fetch()
+
+    const uploadImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const fileImage: File | undefined = e.target.files?.[0];
+        mutate_add_image_blog({ image: fileImage });
+
+    };
+
+    const form = useForm<FormValue>()
+
+    const { register, handleSubmit, formState, watch } = form
+    const { errors } = formState
+
+    const addBlog = (data: void) => {
+        console.log(data)
+        data.image_id = localStorage.getItem("image_id_blog")
+        mutate_add_blog(data)
+    }
+
+    console.log(data_show_listblog?.data.blogs)
+    const listBlog = data_show_listblog?.data.blogs.data
+
+    // const listBlog = [
+    //     { id: 1, title: "نقشه سایت یا سایت مپ چیست؟", status: "درحال انتشار", deleteIcon: "/icon/admin/delete.svg", image: "/images/user/blog/1.png" },
+    //     { id: 2, title: "نقشه سایت یا سایت مپ چیست؟", status: "درحال انتشار", deleteIcon: "/icon/admin/delete.svg", image: "/images/user/blog/2.png" },
+    //     { id: 3, title: "نقشه سایت یا سایت مپ چیست؟", status: "درحال انتشار", deleteIcon: "/icon/admin/delete.svg", image: "/images/user/blog/3.png" },
+    // ]
+
+    
+
     return (
 
         <Layout_admin>
 
-            <div className=' p-4  rounded-[10px] w-[64%] h-[100vh] overflow-y-auto'>
-                <div className='flex justify-between'>
-                    <p className='font-medium text-base text-[#000] mr-2'>افزودن بلاگ</p>
-                    <div className='flex'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 12H18" stroke="#008000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12 18V6" stroke="#008000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <p className='font-medium text-lg text-[#008000] ml-10 mr-2'>افزودن </p>
-                    </div>
-                </div>
-                <div className='flex flex-wrap  justify-around mt-6'>
-                    <input type="text" placeholder='عنوان بلاگ' className='border-0 h-[51px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full rounded-[10px]' />
-                </div>
-                <div className='justify-between  flex'>
-                    <input type="text" placeholder='توضیحات' className='border-0 h-[128px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[75%] rounded-[10px] mt-5' />
-                    <input type="" placeholder='افزودن عکس' className='border-0 h-[128px] items-center pr-12 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-[20%] rounded-[10px] mt-5' />
-                </div>
-                <p className='font-medium text-base text-[#000] mt-5 mr-2'>ویرایش بلاگ</p>
-                <div className='flex justify-betweennpm'>
-                    <div className='w-[400px] flex p-3 rounded-[10px] mt-5 shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
-                        <img src="/images/user/courses/iconS.png" alt="" />
-                        <div className='w-full' >
-                            <p className='mr-4 mt-3 '>نقشه سایت یا سایت مپ چیست؟</p>
-                            <div className='flex  justify-end mt-8  items-center '>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <g id="vuesax/linear/trash">
-                                        <g id="trash">
-                                            <path id="Vector" d="M21 5.98047C17.67 5.65047 14.32 5.48047 10.98 5.48047C9 5.48047 7.02 5.58047 5.04 5.78047L3 5.98047" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_2" d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_3" d="M18.8504 9.13965L18.2004 19.2096C18.0904 20.7796 18.0004 21.9996 15.2104 21.9996H8.79039C6.00039 21.9996 5.91039 20.7796 5.80039 19.2096L5.15039 9.13965" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_4" d="M10.3301 16.5H13.6601" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_5" d="M9.5 12.5H14.5" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </g>
-                                    </g>
-                                </svg>
-                                <Link href="/admin/editblog" className='flex justify-center items-center border rounded-md border-[#008000] w-[30%] h-8'><p className='text-[#008000]'>ویرایش</p></Link>
-                            </div>
+            <div className='flex flex-col w-[65%] gap-6'>
+                <form className=''>
+                    <div onClick={handleSubmit(addBlog)} className='flex items-start justify-between h-[48px]'>
+                        <p className='font-medium text-base text-[#000]'>افزودن بلاگ</p>
+                        <div className='flex items-start cursor-pointer'>
+                            <Image src="/icon/admin/greenplus.svg" alt="add" width={24} height={24} />
+                            <p className='font-medium text-lg text-[#008000] '>افزودن</p>
                         </div>
                     </div>
-                    <div className='w-[400px] flex p-3 rounded-[10px] mt-5 shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
-                        <img src="/images/user/courses/iconS.png" alt="" />
-                        <div className='w-full' >
-                            <p className='mr-4 mt-3 '>نقشه سایت یا سایت مپ چیست؟</p>
-                            <div className='flex  justify-end mt-8  items-center '>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <g id="vuesax/linear/trash">
-                                        <g id="trash">
-                                            <path id="Vector" d="M21 5.98047C17.67 5.65047 14.32 5.48047 10.98 5.48047C9 5.48047 7.02 5.58047 5.04 5.78047L3 5.98047" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_2" d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_3" d="M18.8504 9.13965L18.2004 19.2096C18.0904 20.7796 18.0004 21.9996 15.2104 21.9996H8.79039C6.00039 21.9996 5.91039 20.7796 5.80039 19.2096L5.15039 9.13965" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_4" d="M10.3301 16.5H13.6601" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path id="Vector_5" d="M9.5 12.5H14.5" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </g>
-                                    </g>
-                                </svg>
-                                <Link href="/admin/editblog" className='flex justify-center items-center border rounded-md border-[#008000] w-[30%] h-8'><p className='text-[#008000]'>ویرایش</p></Link>
-                            </div>
+                    <div className='flex flex-col gap-1 h-[71px]'>
+                        <input {...register("title", { required: true })} type="text" placeholder='عنوان بلاگ' className='border-0 h-[51px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full rounded-[10px] focus:ring-[#008000] focus:border-[#008000]' />
+                        {errors.title?.type === "required" && <p className='text-red-500 font-normal text-xs'>عنوان بلاگ را مشخص کنید</p>}
+                    </div>
+                    <div className='justify-between flex h-[150px]'>
+                        <div className='flex flex-col gap-1 h-full w-[73%]'>
+                            <input {...register("description", { required: true })} type="text" placeholder='توضیحات' className='border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full h-[128px] rounded-[10px] focus:ring-[#008000] focus:border-[#008000]' />
+                            {errors.description?.type === "required" && <p className='text-red-500 font-normal text-xs'>توضیحات بلاگ را مشخص کنید</p>}
                         </div>
+                        <div className='flex flex-col gap-1 h-full w-[22%]'>
+                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-[128px] cursor-pointer hover:bg-gray-100">
+                                <div className="flex flex-col items-center justify-center ">
+                                    <p className="text-xs rounded-[10px] dark:text-gray-400">آپلود عکس</p>
+                                </div>
+                                <input {...register("image_id", { required: true })} onChange={uploadImage} multiple id="dropzone-file" type="file" className="hidden" />
+                            </label>
+                            {errors.image_id?.type === "required" && <p className='text-red-500 font-normal text-xs'>عکس بلاگ را مشخص کنید</p>}
+                        </div>
+                    </div>
+                </form>
+
+
+                <div>
+                    <div className='h-[48px]'>
+                        <p className='font-medium text-lg text-[#404040]'>ویرایش بلاگ</p>
                     </div>
 
+                    <div className='flex flex-wrap justify-between gap-6'>
+                        {listBlog?.map((i) => {
+                            return (
+                                <div key={i.id} className='flex justify-between w-[42%] h-[128px] p-3 rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
+                                    <div className='flex w-[96px] h-[106px]'>
+                                        <img src={i.image} alt="image" className='rounded-[10px]' />
+                                    </div>
+                                    <div className='flex flex-col justify-between w-[290px]'>
+                                        <div className='flex justify-between items-start'>
+                                            <p className='font-normal'>{i.title}</p>
+                                            <p className='text-lg font-normal text-[#008000]'>درست کن</p>
+                                        </div>
+                                        <div className='flex justify-end items-center gap-2'>
+                                            <Image src="/icon/admin/delete.svg" alt='Delet' width={24} height={24} className='cursor-pointer' />
+                                            <Link href="/admin/editblog" className='flex justify-center items-center border rounded-md border-[#008000] w-[83px] h-8'><p className='text-[#008000]'>ویرایش</p></Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+
+                    </div>
                 </div>
+
             </div>
 
         </Layout_admin>

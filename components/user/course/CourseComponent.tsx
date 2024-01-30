@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const CourseComponent = (props: any) => {
-    const { name, title, detail, seasons, duration, price, image, id } = props
+    const { name, title, description, seasons, duration, price, image, id,user_id, } = props
 
     return (
         <div className='flex flex-col items-center justify-between bg-white shadow-[0_0px_20px_rgb(0,0,0,0.1)] rounded-[10px] w-full h-full'>
@@ -20,7 +20,7 @@ const CourseComponent = (props: any) => {
             </div>
 
             <div className='w-[88%] flex'>
-                <p className=' text-[#4F4F4F] text-sm font-normal leading-6 w-full  '>{detail}</p>
+                <p className=' text-[#4F4F4F] text-sm font-normal leading-6 w-full  '>{description}</p>
             </div>
 
             <div className='flex flex-wrap justify-around items-center w-[100%] '>

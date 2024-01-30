@@ -1,19 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from 'react'
+import { Teaching_Fetch } from "../api/modares/Teaching_Fetch";
 
 const Dropdown = () => {
 
-    const courses = [
-        { id: 1, title: "فیلم و انیمیشن", img: "/images/user/home_page/dropdown/graphic_design.png", alt: "Graphic_Design" },
-        { id: 2, title: "برنامه نویسی", img: "/images/user/home_page/dropdown/browser.png", alt: "Browser" },
-        { id: 3, title: "امنیت شبکه", img: "/images/user/home_page/dropdown/cyber_security.png", alt: "Cyber_Security" },
-        { id: 4, title: "نرم‌افزارهای کاربردی", img: "/images/user/home_page/dropdown/monitor.png", alt: "Monitor" },
-        { id: 5, title: "توسعه موبایل", img: "/images/user/home_page/dropdown/mobile_coding.png", alt: "Mobile_Coding" },
-        { id: 6, title: "نرم افزارهای مهندسی", img: "/images/user/home_page/dropdown/custom_coding.png", alt: "Custom_Coding" },
-        { id: 7, title: "توسعه وب", img: "/images/user/home_page/dropdown/menu.png", alt: "Menu" },
-        { id: 8, title: "طراحی", img: "/images/user/home_page/dropdown/movie.png", alt: "Movie" },
-    ]
+    // const courses = [
+    //     { id: 2, title: "برنامه نویسی", img: "/images/user/home_page/dropdown/browser.png", alt: "Browser" },
+    //     { id: 3, title: "امنیت شبکه", img: "/images/user/home_page/dropdown/cyber_security.png", alt: "Cyber_Security" },
+    //   
+    // ]
+
+    const { dataCategort } = Teaching_Fetch()
+    console.log('ss', dataCategort?.data.categories)
+    const courses = dataCategort?.data.categories
+
+
 
     return (
         <div>
@@ -26,11 +28,23 @@ const Dropdown = () => {
             </button>
 
             <div id="dropdownDelay" className="z-10 hidden bg-[#FFF]  py-4  rounded-lg  shadow w-[18rem]">
-                {courses.map((i) => {
+                {courses?.map((i, ind) => {
                     return (
-                        <div className="">
+                        <div key={i.category_id} className="">
                             <ul className="flex flex-col px-6 py-1.5  " aria-labelledby="dropdownDelayButton">
-                                <li className="border-solid border-white border-[1px]  hover:border-[#008000] rounded-[10px] hover:text-[#008000]"><div className="flex items-center gap-[6px] text-[1.125rem] p-3"><img src={i.img} alt={i.alt} className="w-[24px]" /><Link href="/user/courses">{i.title}</Link></div></li>
+                                <li className="border-solid border-white border-[1px]  hover:border-[#008000] rounded-[10px] hover:text-[#008000]">
+                                    <div className="flex items-center gap-[6px] text-[1.125rem] p-3">
+                                        {ind === 0 && <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className="w-[24px]" />}
+                                        {ind === 1 && <img src='/images/user/home_page/dropdown/browser.png' alt='Browser' className="w-[24px]" />}
+                                        {ind === 2 && <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_SSecurity' className="w-[24px]" />}
+                                        {ind === 3 && <img src='/images/user/home_page/dropdown/monitor.png' alt='Monitor' className="w-[24px]" />}
+                                        {ind === 4 && <img src='/images/user/home_page/dropdown/mobile_coding.png' alt='Mobile_Coding' className="w-[24px]" />}
+                                        {ind === 5 && <img src='/images/user/home_page/dropdown/custom_coding.png' alt='Custom_Coding' className="w-[24px]" />}
+                                        {ind === 6 && <img src='/images/user/home_page/dropdown/menu.png' alt='Meno' className="w-[24px]" />}
+                                        {ind === 7 && <img src='/images/user/home_page/dropdown/movie.png' alt='Movie' className="w-[24px]" />}
+                                        <Link href="/user/courses">{i.category}</Link>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     )

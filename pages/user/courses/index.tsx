@@ -1,8 +1,10 @@
+//@ts-nocheck
+import Pagination from '@/components/api/Pagination';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import CourseComponent from '@/components/user/course/CourseComponent';
 import Sidebarfilter from '@/components/user/course/Sidebarfilter'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function courses() {
 
@@ -17,7 +19,15 @@ export default function courses() {
         { id: 8, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
     ];
 
+    const [pageparams, setPageParams] = useState({
+        page: 1
+    })
 
+    console.log(pageparams)
+
+    const { data, totalItem } = Pagination(pageparams)
+
+    console.log('data', data)
     return (
 
         <div>
@@ -34,18 +44,31 @@ export default function courses() {
                 </div>
 
                 <div className='flex items-end flex-wrap gap-6 w-[64%] my-36'>
-
-                    {Courses.map((item) => (
-                        <div className='w-[274px] h-[469px]  '>
+                    <span>to:{data?.data.to}</span>
+                    <button onClick={() => setPageParams({ page: pageparams.page + 1 })}>gg</button>
+                    {data?.data?.data.map((item) => (
+                        <div className='w-[274px] h-[469px]'>
                             <CourseComponent
                                 {...item}
                             />
                         </div>
+
                     ))}
                 </div>
+
+                {/* {data?.map((i) => {
+                    return (
+                        <div>
+                            v
+                            {i.title}
+                        </div>
+                    )
+                })} */}
+
             </div>
 
             <Footer />
-        </div>
+        </div >
     )
+
 }
