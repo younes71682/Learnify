@@ -2,18 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React from 'react'
 import { Teaching_Fetch } from "../api/modares/Teaching_Fetch";
+type Category = {
+    category_id: number,
+    category: string,
+    course_count: number
+}
+
 
 const Dropdown = () => {
 
-    // const courses = [
-    //     { id: 2, title: "برنامه نویسی", img: "/images/user/home_page/dropdown/browser.png", alt: "Browser" },
-    //     { id: 3, title: "امنیت شبکه", img: "/images/user/home_page/dropdown/cyber_security.png", alt: "Cyber_Security" },
-    //   
-    // ]
 
-    const { dataCategort } = Teaching_Fetch()
-    console.log('ss', dataCategort?.data.categories)
-    const courses = dataCategort?.data.categories
+
+    const { dataCategory } = Teaching_Fetch()
+    console.log('ss', dataCategory?.data.categories)
+    const courses = dataCategory?.data.categories
 
 
 
@@ -28,7 +30,7 @@ const Dropdown = () => {
             </button>
 
             <div id="dropdownDelay" className="z-10 hidden bg-[#FFF]  py-4  rounded-lg  shadow w-[18rem]">
-                {courses?.map((i, ind) => {
+                {courses?.map((i: Category, ind: number) => {
                     return (
                         <div key={i.category_id} className="">
                             <ul className="flex flex-col px-6 py-1.5  " aria-labelledby="dropdownDelayButton">

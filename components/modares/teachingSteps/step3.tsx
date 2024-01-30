@@ -7,7 +7,7 @@ import Select from 'react-select';
 
 export const Step3 = () => {
 
-    const { dataCategort } = Teaching_Fetch()
+    const { dataCategory } = Teaching_Fetch()
 
     const [selectedCategory, setSelectedCategory] = useState('')
     const [coursePrice, setCoursePrice] = useState('')
@@ -15,7 +15,7 @@ export const Step3 = () => {
 
 
     //@ts-ignore
-    console.log('category data:', dataCategort?.data.categories)
+    console.log('category data:', dataCategory?.data.categories)
 
 
     const customStyles = {
@@ -40,7 +40,7 @@ export const Step3 = () => {
                     placeholder='دسته بندی'
                     defaultValue='دسته بندی'
                     // @ts-ignore
-                    options={dataCategort?.data.categories.map(category => ({ id: category.category_id, value: category.category, label: category.category }))}
+                    options={dataCategory?.data.categories.map(category => ({ id: category.category_id, value: category.category, label: category.category }))}
                     styles={customStyles}
                     isSearchable={isSearchable}
                     value={selectedCategory}

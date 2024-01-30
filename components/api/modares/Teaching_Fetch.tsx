@@ -127,7 +127,7 @@ export const Teaching_Fetch = () => {
         }
     })
 
-    const { data: dataCategort } = useQuery({
+    const { data: dataCategory } = useQuery({
         queryKey: ['Category'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
@@ -202,7 +202,7 @@ export const Teaching_Fetch = () => {
         mutate_UploadCourse,
         pending_UploadCourse,
         success_UploadCourse,
-        dataCategort,
+        dataCategory,
         mutate_CourseCategory,
         pending_CourseCategoty,
         dataShowCourse
