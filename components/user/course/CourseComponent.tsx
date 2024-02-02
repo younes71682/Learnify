@@ -3,18 +3,20 @@ import Link from 'next/link'
 import React from 'react'
 
 const CourseComponent = (props: any) => {
-    const { name, title, description, seasons, duration, price, image, id,user_id, } = props
+    const { name, title, description, seasons, duration, price, imageURL, id, user_id, } = props
+
+    console.log('courseImageURL:',imageURL)
 
     return (
         <div className='flex flex-col items-center justify-between bg-white shadow-[0_0px_20px_rgb(0,0,0,0.1)] rounded-[10px] w-full h-full'>
 
-            <div className='flex justify-center w-full h-[144px] rounded-[15px] pt-3'>{image}</div>
+            <div className='flex justify-center w-full h-[144px] rounded-[15px] pt-3'>{/* {image} */}</div>
 
             <div className='flex flex-col  gap-1 w-[88%]'>
                 <h3 className='text-[#212121] font-bold'>{title}</h3>
 
                 <div className='flex items-cente gap-1'>
-                    <Image src="/icon/user/account/info_user/user.svg" alt='User' width={16} height={16} />
+                    <Image src={imageURL} alt='User' width={16} height={16} />
                     <p className='text-xs'>{name}</p>
                 </div>
             </div>
