@@ -7,7 +7,7 @@ const Update_Info = () => {
     const client = useQueryClient()
 
 
-    const { data:dataShowTeacher, isPending, isError } = useQuery({
+    const { data:data_ShowTeacher, isPending:pending_data_ShowTeacher, isError:error_data_ShowTeacher } = useQuery({
         queryKey: ['info_teacher'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
@@ -44,7 +44,7 @@ const Update_Info = () => {
         }
     })
 
-    return { updute_infoteacher, data, isPending, isError }
+    return { updute_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher }
 }
 
 export default Update_Info

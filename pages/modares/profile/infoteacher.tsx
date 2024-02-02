@@ -35,7 +35,7 @@ type FormValue = {
 const Infoteacher = () => {
 
 
-    const { updute_infoteacher, data, isError, isPending } = Update_Info()
+    const { updute_infoteacher, data_ShowTeacher,pending_data_ShowTeacher, error_data_ShowTeacher, } = Update_Info()
     const { mutate_Uploadimg } = ImageUploader()
     // console.log('name', data)
 

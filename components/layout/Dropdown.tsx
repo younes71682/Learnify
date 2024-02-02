@@ -14,7 +14,6 @@ const Dropdown = () => {
 
 
     const { dataCategory } = Teaching_Fetch()
-    console.log('ss', dataCategory?.data.categories)
     const courses = dataCategory?.data.categories
 
 

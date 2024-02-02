@@ -1,13 +1,17 @@
 import React from 'react'
 
-const Header_id = () => {
+const Header_id = (props) => {
+    const { title, description } = props
+    const shortText = description?.substring(0, 100); // نمایش اولین 100 کاراکتر
+    const firstHeadingIndex = description?.indexOf("<h1>"); // یافتن اولین تگ <h1>
+
+    // console.log('ti',title)
     return (
         <div className='flex justify-center items-end bg-[#D58787] h-[300px]'>
             <div className='flex flex-col w-[45%] mb-[51px] pr-16 text-white'>
-                <h2 className=' text-2xl font-bold'>نقشه سایت یا سایت مپ Sitemap چیست؟</h2>
+                <h2 className=' text-2xl font-bold'>{title}</h2>
                 <p>
-                    نقشه سایت یا سایت مپ Sitemap یک فایل متنی حاوی تمام آدرسهای موجود در سایت است که به موتورهای جستجو
-                    کمک می کند تا سایت را بهتر شناسایی نماید.
+                    {firstHeadingIndex}
                 </p>
             </div>
         </div>
