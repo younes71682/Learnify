@@ -21,10 +21,9 @@ const index = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
   const [blogId, setBlogId] = React.useState<number>();
 
-  const { data_show_listblog, pending_show_listblog } = Blog_Fetch(currentPage,blogId)
+  const { data_show_listblog, pending_show_listblog } = Blog_Fetch(currentPage, blogId)
 
 
-  console.log(data_show_listblog)
   //index show listBlog
   const listBlog = data_show_listblog?.data.blogs.data
 

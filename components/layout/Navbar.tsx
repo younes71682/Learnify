@@ -176,7 +176,7 @@ const Navbar = () => {
 
 
             {isLoginModalOpen && (
-                < div onClick={handleCloseModule} className="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50">
+                < div onClick={handleCloseModule} className="fixed inset-0 flex z-40 items-center justify-center bg-gray-800 bg-opacity-50">
                     <form
                         onClick={(e) => {
                             e.stopPropagation()

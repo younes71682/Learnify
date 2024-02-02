@@ -1,63 +1,82 @@
 //@ts-nocheck
-import Pagination from '@/components/api/Pagination';
+import * as React from 'react';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import CourseComponent from '@/components/user/course/CourseComponent';
 import Sidebarfilter from '@/components/user/course/Sidebarfilter'
-import React, { useState } from 'react';
+import Course_Fetch from '@/components/api/user/Course_Fetch';
+import Pagination from '@mui/material/Pagination';
+import { CircleLoader } from 'react-spinners';
+
+
 
 export default function Courses() {
-  const [pageparams, setPageParams] = useState({
-    page: 1,
-  });
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-  const { data, totalItem } = Pagination(pageparams);
+  const { data_show_listCourse, pending_show_listCourse } = Course_Fetch(currentPage);
 
-  const handleNextPage = () => {
-    if (data?.next_page_url) {
-      const nextPage = data?.current_page + 1;
-      setPageParams({ page: nextPage });
-    }
-  };
+  const listCourse = data_show_listCourse?.data.data.data
 
-  const handlePrevPage = () => {
-    if (data?.prev_page_url) {
-      const prevPage = data?.current_page - 1;
-      setPageParams({ page: prevPage });
-    }
-  };
+  //index last_page
+  const last_page = data_show_listCourse?.data.data.last_page
+
+  const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
+    setCurrentPage(value)
+    console.log(currentPage)
+  }
+
+
 
   return (
     <div>
       <Navbar />
-      <div className='flex justify-center gap-6 '>
-        <div className='flex flex-col w-[18%] h-[730px] my-20'>
-          <div>
-            <h3 className='text-[#484848] text-[24px] font-bold leading-[27.5px] '>دوره های آموزشی برنامه نویسی</h3>
-            <h3 className='text-[#858585] text-[16px] font-medium leading-[27.5px]'>دوره ببین، تمرین کن، پیشرفت کن</h3>
+
+      <div>
+        {pending_show_listCourse === true ?
+          < div className='flex justify-center '>
+            <CircleLoader color="#36d7b7" />
           </div>
-          <Sidebarfilter />
-        </div>
-        <div className='flex items-end flex-wrap gap-6 w-[64%] my-36'>
-          {data?.data?.data?.map((item) => (
-            <div className='w-[274px] h-[469px]' key={item.id}>
-              <CourseComponent
-                {...item}
-                imageURL={item.image?.media?.[0]?.original_url || ''}
+          :
+          <div className='flex flex-col'>
+
+            <div className='flex flex-col justify-end mx-32 h-40 pb-3 '>
+              <h3 className='text-[#484848] text-[24px] font-bold leading-[27.5px] '>دوره های آموزشی برنامه نویسی</h3>
+              <h3 className='text-[#858585] text-[16px] font-medium leading-[27.5px]'>دوره ببین، تمرین کن، پیشرفت کن</h3>
+            </div>
+
+            <div className='flex justify-center gap-6 '>
+
+              <div className='w-[18%] h-[720px]'>
+                <Sidebarfilter />
+              </div>
+
+              <div className='flex items-end flex-wrap gap-6 w-[64%]'>
+                {listCourse?.map((i) => {
+                  return (
+                    <div className='w-[274px] h-[469px]' key={i.id}>
+                      <CourseComponent
+                        {...i}
+                        imageURL={i.image?.media?.[0]?.original_url || ''}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className='flex justify-center h-20'>
+              <Pagination
+                style={{ direction: 'ltr' }}
+                page={currentPage}
+                count={last_page}
+                onChange={handleChangePage}
+                variant="outlined" color="primary"
               />
             </div>
-          ))}
-        </div>
-        </div>
-        <div className='flex justify-center gap-2'>
-          <button onClick={handlePrevPage} disabled={!data?.prev_page_url}>
-            Previous
-          </button>
-          <button onClick={handleNextPage} disabled={!data?.next_page_url}>
-            Next
-          </button>
+          </div>
+        }
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }

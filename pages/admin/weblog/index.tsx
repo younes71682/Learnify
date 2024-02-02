@@ -69,9 +69,7 @@ const index = () => {
         console.log('currentPage', currentPage)
         setCurrentPage(value)
     }
-
-    console.log(listBlog)
-
+ 
 
 
     const deleteBlog = (id: number & null) => {
