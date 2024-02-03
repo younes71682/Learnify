@@ -96,7 +96,6 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
         queryKey: ['ShowBlogId', blogId],
         queryFn: async ({ queryKey }) => {
             let id = queryKey[1]
-            console.log('idi', id)
             let token = localStorage.getItem('token')
             const response = await axios.get(`https://learnify.v1r.ir/api/blogs/${id}`, {
                 headers: {
@@ -110,7 +109,9 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
     })
 
     const { mutate: mutateEditBlog, isPending: isPendingEditBlog, isSuccess: isSuccessEditBlog } = useMutation({
-        mutationFn: (data) => {
+         mutationFn: (data) => {
+            const id = blogId
+            console.log('id',id)
             let token = localStorage.getItem('token')
             return axios.put(` https://learnify.v1r.ir/api/blogs/${id}`, data, {
                 headers: {

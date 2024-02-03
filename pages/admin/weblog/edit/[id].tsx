@@ -10,35 +10,39 @@ const ReactQuill = dynamic(() => import('react-quill'), {
     loading: () => <p>Loading...</p>, // Add loading indicator if needed
 });
 
+type editBlog = {
+    title: string,
+    description: string
+}
+
 const EditBlog = () => {
+
     const [isClient, setIsClient] = useState(false); // Track if the code is running on the client side
+
+
     const router = useRouter();
     const { id } = router.query;
     const blogId = id;
 
-    const { data_show_BlogId } = Blog_Fetch(null, blogId);
+    const { data_show_BlogId, mutateEditBlog } = Blog_Fetch(null, blogId);
 
 
     const data = data_show_BlogId?.data;
     const title = data_show_BlogId?.data.blog?.title;
     const description = data_show_BlogId?.data.blog?.description;
     const [value, setValue] = useState(description);
-    console.log('text:', value)
-
-    const newData = {
-        title: "New Blog Title",
-        content: value,
-    };
-    const { mutateEditBlog } = Blog_Fetch(newData, id)
 
 
     const submitBlogEdit = () => {
+        const newData: editBlog = { title: title, description: value }
         mutateEditBlog(newData);
-    }
+    };
+
 
     const handleBack = () => {
         router.back();
     };
+
 
     useEffect(() => {
         setIsClient(true); // Set isClient to true after component mounts on the client side
