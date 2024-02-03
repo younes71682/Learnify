@@ -109,10 +109,27 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
 
     })
 
-
+    const { mutate: mutateEditBlog, isPending: isPendingEditBlog, isSuccess: isSuccessEditBlog } = useMutation({
+        mutationFn: (data) => {
+            let token = localStorage.getItem('token')
+            return axios.put(` https://learnify.v1r.ir/api/blogs/${id}`, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+        },
+        onSuccess: (res) => {
+            console.log('res::', res)
+        },
+        onError: (err) => {
+            console.log("err:", err)
+        }
+    })
 
 
     return {
+        mutateEditBlog,
         mutate_add_image_blog,
         pending_add_image_blog,
         success__add_image_blog,
