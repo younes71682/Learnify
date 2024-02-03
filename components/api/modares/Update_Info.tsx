@@ -1,13 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
-import React, { useEffect } from 'react'
 
 const Update_Info = () => {
 
     const client = useQueryClient()
 
 
-    const { data:data_ShowTeacher, isPending:pending_data_ShowTeacher, isError:error_data_ShowTeacher } = useQuery({
+    const { data: data_ShowTeacher, isPending: pending_data_ShowTeacher, isError: error_data_ShowTeacher, } = useQuery({
         queryKey: ['info_teacher'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
@@ -22,6 +21,28 @@ const Update_Info = () => {
     })
 
 
+
+    const { mutate: mutate_uploadProfile, isPending: pending_uploadProfile, isSuccess: success_uploadProfile, isError: error_uploadProfile } = useMutation({
+        mutationFn: (data) => {
+            let token = localStorage.getItem('token')
+            return axios.post('https://learnify.v1r.ir/api/media/image', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+        },
+        onSuccess: (res) => {
+            console.log('image', res.data.id)
+            localStorage.setItem('mentorProfilePectureId', res.data.id)
+        },
+        onError: (error) => {
+            console.log('errorimage', error)
+        }
+
+    })
+
+
     const { mutate: updute_infoteacher } = useMutation({
         mutationFn: async (data) => {
             console.log('data rdrdr', data)
@@ -33,7 +54,7 @@ const Update_Info = () => {
                 }
             })
             return response
-            console.log('res',response)
+            console.log('res', response)
         },
         onSuccess: (res) => {
             console.log('res', res)
@@ -44,10 +65,20 @@ const Update_Info = () => {
         }
     })
 
-    return { updute_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher }
+
+
+    return {
+        updute_infoteacher,
+        data_ShowTeacher,
+        pending_data_ShowTeacher,
+        error_data_ShowTeacher,
+        mutate_uploadProfile,
+        pending_uploadProfile,
+        success_uploadProfile,
+        error_uploadProfile
+    }
 }
 
 export default Update_Info
-
 
 

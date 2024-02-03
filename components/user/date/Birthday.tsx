@@ -14,8 +14,12 @@ const Birthday = () => {
     const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
     const [value, setValue] = useState(new DateObject());
 
-    const date = value.convert(gregorian, gregorian_en);
-    console.log(date.format("YYYY-MM-DD"));
+    const  date  = value.convert(gregorian, gregorian_en);
+    const dataFormat = date.format('YYYY-MM-DD')
+    
+    // console.log('v',value);
+    // console.log(date);
+    console.log(dataFormat);
 
     const formdata = useFormContext()
     const { control, formState } = formdata
@@ -45,7 +49,8 @@ const Birthday = () => {
                     rules={{
                         required: true
                     }}
-                    defaultValue={date.format('YYYY-MM-DD')}
+                    
+                defaultValue={dataFormat}
                 />
             </div>
 
