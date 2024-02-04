@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 export const Teaching_Fetch = () => {
 
     let server = 'https://learnify.v1r.ir'
-
     const [CreatedCourseId, setCreatedCouseId] = useState('')
 
 
@@ -22,7 +21,6 @@ export const Teaching_Fetch = () => {
         },
         onSuccess: (res) => {
             console.log('res', res)
-            // localStorage.setItem('CreatedCourseId', res.data.data.id)
             setCreatedCouseId(res.data.data.id)
         },
         onError: (error) => {
@@ -71,15 +69,13 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadMediaIdCourse, isPending: pending_UploadMediaIdCourse, isSuccess: success_UploadMediaIdCourse } = useMutation({
         mutationFn: (data) => {
-            console.log('MediaIdCourssssse:', data)
             let token = localStorage.getItem('token')
-            let CreatedCourseId = localStorage.getItem('CreatedCourseId')
             return axios.put(`${server}/api/course/update/${CreatedCourseId}/1`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 }
-            
+
             })
         },
         onSuccess: (res) => {
@@ -111,7 +107,6 @@ export const Teaching_Fetch = () => {
     const { mutate: mutate_UploadCourse, isPending: pending_UploadCourse, isSuccess: success_UploadCourse } = useMutation({
         mutationFn: (data) => {
             let token = localStorage.getItem('token')
-            let CreatedCourseId = localStorage.getItem('CreatedCourseId')
             return axios.put(`${server}/api/course/update/${CreatedCourseId}/2`, data, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -146,7 +141,6 @@ export const Teaching_Fetch = () => {
         mutationFn: (data) => {
             console.log('data', data)
             let token = localStorage.getItem('token')
-            let CreatedCourseId = localStorage.getItem('CreatedCourseId')
             return axios.put(`https://learnify.v1r.ir/api/course/update/${CreatedCourseId}/3`, data, {
                 headers: {
                     'Content-Type': 'application/json',

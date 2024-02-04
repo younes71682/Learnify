@@ -8,22 +8,29 @@ type Selected = {
   label: string,
 }
 
-const Select_gender = () => {
+type Props = {
+  gender: string
+}
 
-  const gender: Selected[] = [
-    { id: 1, value: "Male", label: "مرد" },
-    { id: 2, value: "Female", label: "زن" },
-    { id: 3, value: "", label: "تمایلی ندارم" },
+const Select_gender = (props: Props) => {
+
+  const { gender } = props
+  console.log(gender)
+
+  const gendery: Selected[] = [
+    { id: 1, value: gender, label: "مرد" },
+    { id: 2, value: gender, label: "زن" },
+    { id: 3, value: gender, label: "تمایلی ندارم" },
   ]
 
   const [isSearchable, setIsSearchable] = React.useState(false);
   const [isRtl, setIsRtl] = React.useState(true);
-  const [selectedValue, setSelectedValue] = useState<any>(null);
+  const [selectedValue, setSelectedValue] = useState<any>();
 
   const form = useFormContext();
   const { control, formState } = form;
   const { errors } = formState
-  
+
   return (
     <div className='flex flex-col gap-1 h-[71px] ml-4'>
       <div>
@@ -44,11 +51,11 @@ const Select_gender = () => {
               }}
 
               className=""
-              // defaultValue={state[0]}
+              defaultValue={gendery}
               isRtl={isRtl}
               isSearchable={isSearchable}
-              name="gender"
-              options={gender}
+              name="gendery"
+              options={gendery}
               placeholder={'جنسیت'}
               onChange={(selectedOption) => {
                 setSelectedValue(selectedOption);

@@ -40,10 +40,10 @@ export const Step1 = () => {
                                     <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>بارگذاری تیزر دوره</p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
                                 </div>
-                                <input multiple onChange={handleSubmitTisear} id='dropzone-file-teasser' type="file" className="hidden" />
+                                <input {...register('teaser_id', { required: true })} multiple onChange={handleSubmitTisear} id='dropzone-file-teasser' type="file" className="hidden" />
                             </>
                         }
-                        {errors.image?.type === "required" && <p className='text-red-500 font-normal text-xs'>تیزر دوره مورد نظر را انتخاب کنید</p>}
+                        {errors.image?.type === "teaser_id" && <p className='text-red-500 font-normal text-xs'>تیزر دوره را مشخص کنید</p>}
                     </label>
                     {success_UploadTeaserCourse && <p className='text-green-500 font-normal text-xs'>آپلود تیزر با موفقیت انجام شد.</p>}
                     {error_UploadTeaserCourse && <p className='text-red-500 font-normal text-xs'>آپلود تیزر با مشکل مواجه شد،مجددا آپلود کنید.</p>}
@@ -58,10 +58,10 @@ export const Step1 = () => {
                                     <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>بارگذاری عکس دوره</p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
                                 </div>
-                                <input multiple onChange={handleSubmitImage} id='dropzone-file-image' type="file" className="hidden" />
+                                <input {...register('image_id', { required: true })} multiple onChange={handleSubmitImage} id='dropzone-file-image' type="file" className="hidden" />
                             </>
                         }
-                        {errors.image?.type === "required" && <p className='text-red-500 font-normal text-xs'>عکس دوره مورد نظر را انتخاب کنید</p>}
+                        {errors.image_id?.type === "required" && <p className='text-red-500 font-normal text-xs'>عکس دوره مورد نظر را انتخاب کنید</p>}
                     </label>
                     {success_UploadPhotoCourse && <p className='text-green-500 font-normal text-xs'>آپلود عکس با موفقیت انجام شد.</p>}
                     {error_UploadPhotoCourse && <p className='text-red-500 font-normal text-xs'>آپلود عکس با مشکل مواجه شد،مجددا آپلود کنید.</p>}

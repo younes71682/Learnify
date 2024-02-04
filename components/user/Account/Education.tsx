@@ -2,9 +2,15 @@ import Image from 'next/image'
 import React from 'react'
 import { useForm, useFormContext } from 'react-hook-form'
 
+type Props ={
+    university:string,
+    field_of_study:string,
+    educational_stage:string
+}
 
+const Education = (props:Props) => {
 
-const Education = () => {
+    const {university,field_of_study,educational_stage} = props
 
     const form = useFormContext()
 
@@ -18,9 +24,9 @@ const Education = () => {
                 <h2>تحصیلات</h2>
             </div>
             <form className='flex flex-wrap gap-6  w-[95%] '>
-                <input {...register("university",)} placeholder='نام موسسه/دانشگاه' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
-                <input {...register("field_of_study",)} placeholder='رشته تحصیلی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
-                <input {...register("educational_stage",)} placeholder='مقطع تحصیلی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
+                <input {...register("university",)} defaultValue={university} placeholder='نام موسسه/دانشگاه' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
+                <input {...register("field_of_study",)} defaultValue={field_of_study} placeholder='رشته تحصیلی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
+                <input {...register("educational_stage",)} defaultValue={educational_stage} placeholder='مقطع تحصیلی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]' />
             </form>
         </div>
     )
