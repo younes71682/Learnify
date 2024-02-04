@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import Select from 'react-select';
 
@@ -13,30 +13,28 @@ type Props = {
 }
 
 const Select_gender = (props: Props) => {
-
-  const { gender } = props
-  console.log(gender)
+  const { gender } = props;
+  console.log('gender:', gender);
 
   const gendery: Selected[] = [
-    { id: 1, value: gender, label: "مرد" },
-    { id: 2, value: gender, label: "زن" },
-    { id: 3, value: gender, label: "تمایلی ندارم" },
+    { id: 1, value: 'male', label: "مرد" },
+    { id: 2, value: 'female', label: "زن" },
+    { id: 3, value: 'dont prefer', label: "تمایلی ندارم" },
   ]
 
   const [isSearchable, setIsSearchable] = React.useState(false);
   const [isRtl, setIsRtl] = React.useState(true);
-  const [selectedValue, setSelectedValue] = useState<any>();
+  const [selectedValue, setSelectedValue] = useState<any>(gendery.find(item => item.value === gender) || null);
 
   const form = useFormContext();
   const { control, formState } = form;
-  const { errors } = formState
+  const { errors } = formState;
 
   return (
     <div className='flex flex-col gap-1 h-[71px] ml-4'>
       <div>
         <Controller
-          render={({ field }) =>
-
+          render={({ field }) => (
             <Select
               {...field}
               styles={{
@@ -46,12 +44,9 @@ const Select_gender = (props: Props) => {
                   width: "210px",
                   height: "48px",
                   borderRadius: "10px",
-
                 }),
               }}
-
               className=""
-              defaultValue={gendery}
               isRtl={isRtl}
               isSearchable={isSearchable}
               name="gendery"
@@ -62,29 +57,21 @@ const Select_gender = (props: Props) => {
                 field.onChange(selectedOption.value);
               }}
               value={selectedValue}
-
-
-
-
-
               theme={(theme) => ({
                 ...theme,
                 borderRadius: 7,
-
                 colors: {
                   ...theme.colors,
                   primary25: '#dcfce7',
                   primary: '#008000',
                 },
-
               })}
             />
-          }
+          )}
           name='gender'
           control={control}
           rules={{
             required: true,
-
           }}
         />
       </div>
@@ -92,7 +79,6 @@ const Select_gender = (props: Props) => {
       <div>
         {errors.gender && <p className='text-red-500 font-normal text-xs'>جنسیت خود را مشخص کنید</p>}
       </div>
-
     </div>
   );
 };
