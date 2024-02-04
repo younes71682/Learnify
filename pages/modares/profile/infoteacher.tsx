@@ -42,22 +42,22 @@ const Infoteacher = () => {
     const { updute_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher, mutate_uploadProfile, pending_uploadProfile, success_uploadProfile, error_uploadProfile } = Update_Info()
 
 
+    const info = data_ShowTeacher?.data.data
+    console.log('info', info)
+    const name = info?.name
+    const family = info?.family
+    const phone_number = info?.phone_number
+    const email = info?.email
+    const gender = info?.gender
+    const birthday = info?.birthday
+    const state = info?.state
+    const city = info?.city
+    const university = info?.university
+    const field_of_study = info?.field_of_study
+    const educational_stage = info?.educational_stage
+    const resume = info?.resume.description
 
-    const methods = useForm<FormValue>({
-        defaultValues: async (data) => {
-            const info =  data_ShowTeacher?.data.data
-            console.log(info)
-            
-            return {
-                name: info?.name,
-                family: info?.family,
-                gender: info?.gender,
-                birthday: info?.birthday,
-                phone_number: info?.phone_number,
-                email: info?.email,
-            }
-        }
-    })
+    const methods = useForm<FormValue>()
 
     const { register, handleSubmit, formState, } = methods
 
@@ -80,8 +80,7 @@ const Infoteacher = () => {
 
 
 
-
-
+    // if(!data_ShowTeacher) return null
 
     return (
         <div>
@@ -104,33 +103,33 @@ const Infoteacher = () => {
                                         </div>
                                         <form className='flex flex-wrap' noValidate>
                                             <div className='flex flex-col gap-1 h-[71px] ml-4 '>
-                                                <input {...register("name", { required: { value: true, message: "نام خود را وارد کنید" } })} placeholder='*نام' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]  ' />
+                                                <input  {...register("name", { required: { value: true, message: "نام خود را وارد کنید" } })} defaultValue={name} placeholder='*نام' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2  outline-[#008000]  ' />
                                                 <p className='text-red-500 font-normal text-xs'>{errors.name?.message}</p>
                                             </div>
                                             <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                                <input {...register("family", { required: { value: true, message: "نام خانوادگی خود را وارد کنید" } })} placeholder='*نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 outline-[#008000]  ' />
+                                                <input {...register("family", { required: { value: true, message: "نام خانوادگی خود را وارد کنید" } })} defaultValue={family} placeholder='*نام خانوادگی' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 outline-[#008000]  ' />
                                                 <p className='text-red-500 font-normal text-xs'>{errors.family?.message}</p>
                                             </div>
 
-                                            <Select_gender />
+                                            <Select_gender gender={gender} />
 
                                             <Birthday />
 
                                             <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                                <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />
+                                                <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} defaultValue={phone_number} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />
                                                 {errors.phone_number?.type === "required" && <p className='text-red-500 font-normal text-xs'>شماره تلفن خود را وارد کنید</p>}
                                                 {errors.phone_number?.type === "maxLength" && <p className='text-red-500 font-normal text-xs font-Byekan'>شماره تلفن نمیتواند بیشتر از 11 رقم باشد</p>}
                                                 {errors.phone_number?.type === "pattern" && <p className='text-red-500 font-normal text-xs '>شماره تلفن نامعتبر</p>}
                                             </div>
                                             <div className='flex flex-col gap-1 h-[71px] ml-4'>
-                                                <input type='email' dir='ltr' {...register("email", { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, required: true, validate: { notAdmin: (fieldValue) => { return (fieldValue !== "admin@example.com" || "ایمیل دیگری وارد کنید") }, notBlackListed: (fieldValue) => { return (!fieldValue.endsWith("baddomain.com") || "This domin ids not supoort") } } })} placeholder='*ایمیل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] placeholder:text-right focus:ring-[#008000] focus:border-[#008000]' />
+                                                <input type='email' dir='ltr' defaultValue={email} {...register("email", { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, required: true, validate: { notAdmin: (fieldValue) => { return (fieldValue !== "admin@example.com" || "ایمیل دیگری وارد کنید") }, notBlackListed: (fieldValue) => { return (!fieldValue.endsWith("baddomain.com") || "This domin ids not supoort") } } })} placeholder='*ایمیل' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] placeholder:text-right focus:ring-[#008000] focus:border-[#008000]' />
                                                 {errors.email?.type === "required" && <p className='text-red-500 font-normal text-xs'>ایمیل خود را وارد کنید</p>}
                                                 {errors.email?.type === "pattern" && <p className='text-red-500 font-normal text-xs'>ایمیل نامعتبر</p>}
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-                                {/* <div className="flex w-[35%] h-full">
+                                <div className="flex w-[35%] h-full">
                             <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
                                 <input {...register('image_id', { required: true })} multiple onChange={handleSubmitImage} id="dropzone-file" type="file" className="hidden" />
                                 {pending_uploadProfile === true ?
@@ -145,19 +144,19 @@ const Infoteacher = () => {
                                 {success_uploadProfile === true && <p className='text-green-500 font-normal text-xs'>آپلود عکس با موفقیت انجام شد</p>}
                                 {error_uploadProfile === true && <p className='text-red-500 font-normal text-xs'>آپلود عکس با مشکل مواجه شده،مجددا تلاش کنید</p>}
                             </label>
-                        </div> */}
+                        </div>
 
                             </div>
 
-                            {/* <div className='flex items-center gap-6 '>
-                        <Location />
-                        <Education />
-                    </div>
+                            <div className='flex items-center gap-6 '>
+                                <Location state={state} city={city} />
+                                {/* <Education university={university} field_of_study={field_of_study} educational_stage={educational_stage} /> */}
+                            </div>
 
-                    <div className='flex items-center gap-6 '>
-                        <Financial />
-                        <Resume />
-                    </div> */}
+                            {/* <div className='flex items-center gap-6 '>
+                                <Financial />
+                                <Resume resume={resume} />
+                            </div> */}
 
                             <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
                         </FormProvider>

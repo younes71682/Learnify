@@ -1,8 +1,15 @@
 import Image from 'next/image'
+import { type } from 'os'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-const Resume = () => {
+type Props = {
+    resume: string
+}
+
+const Resume = (props: Props) => {
+
+    const { resume } = props
 
     const form = useFormContext()
     const { register, formState } = form
@@ -15,7 +22,7 @@ const Resume = () => {
                 <p>توضیح رزومه</p>
             </div>
             <div className='flex flex-col gap-1 h-[90%]'>
-                <textarea {...register("description", { required: true })} className='w-full h-full rounded-[10px] border-solid border-[0.5px] border-[#AAA] resize-none focus:border-[#008000] focus:ring-[#008000]' />
+                <textarea {...register("description", { required: true })} defaultValue={resume} className='w-full h-full rounded-[10px] border-solid border-[0.5px] border-[#AAA] resize-none focus:border-[#008000] focus:ring-[#008000]' />
                 {errors.description?.type === "required" && <p className='text-red-500 font-normal text-xs'>رزومه خود را مشخص کنید</p>}
             </div>
         </div>

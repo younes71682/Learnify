@@ -5,10 +5,15 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 
 
+type Props = {
+    state: string,
+    city: string
+}
 
 
+const Location = (props: Props) => {
 
-const Location = () => {
+    // const { state, city } = props
 
     const [isSearchable, setIsSearchable] = React.useState(false);
     const [isRtl, setIsRtl] = React.useState(true);
