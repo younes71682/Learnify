@@ -20,8 +20,9 @@ export const CourseDetail = () => {
     const router = useRouter()
     const { id } = router.query
     const courseId = id
-    const { data_show_CourseId } = Course_Fetch('',courseId)
-    console.log('ss',data_show_CourseId)
+    const { data_show_CourseId } = Course_Fetch('', courseId)
+    console.log('course:', data_show_CourseId)
+    console.log('courseTitle:', data_show_CourseId?.data.data.course.title)
 
     const Courses = [
         { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
@@ -61,7 +62,7 @@ export const CourseDetail = () => {
         <div>
             <Navbar />
             <div className='pr-[134px] max-[1048px]:px-4 pl-[136px] pb-9 '>
-                <h1 className='pt-[4rem] pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</h1>
+                <h1 className='pt-[4rem] pb-[3.5rem] text-right  text-2xl font-bold leading-4'>{data_show_CourseId?.data.data.course.title}</h1>
 
                 {/* CourseDetail div */}
                 <div className='flex justify-between flex-wrap gap-1 max-[1418px]:justify-center'>
@@ -82,9 +83,8 @@ export const CourseDetail = () => {
                                 </svg>
                                 <p className='text-lg font-bold leading-4 text-[#484848] pr-1 '>معرفی دوره </p>
                             </div>
-                            <p className=''>در دوره پیشرفته می‌خواهیم نیرو های حرفه ای وردپرس کاری آماده کنیم که بتوانند هر سایت وردپرسی با هر چالشی را طراحی کنند.
-                                دوره آموزش پیشرفته وردپرس قدم دوم از مسیریادگیری آموزش وردپرس  است که اگر شما قصد یادگیری وردپرس را دارید نیاز است که این قدم را ، به شکل کامل و دقیق مشاهده کنید</p>
-                            <p className='text-sm font-bold mt-8'>چرا به دوره پیشرفته وردپرس نیاز داریم؟</p>
+                            <p className=''>{data_show_CourseId?.data.data.course.description}</p>
+                            {/* <p className='text-sm font-bold mt-8'>چرا به دوره پیشرفته وردپرس نیاز داریم؟</p>
                             <p className='my-2'>در دوره پیشرفته می‌خواهیم نیرو های حرفه ای وردپرس کاری آماده کنیم که بتوانند هر سایت وردپرسی با هر چالشی را طراحی کنند.
                                 دوره آموزش پیشرفته وردپرس قدم دوم از مسیریادگیری آموزش وردپرس  است که اگر شما قصد یادگیری وردپرس را دارید نیاز است که این قدم را ، به شکل کامل و دقیق مشاهده کنید.
 
@@ -92,7 +92,7 @@ export const CourseDetail = () => {
                                 وردپرس یک سیستم مدیریت محتوای حرفه‌ای‌ست که برای مدت طولانی در مارکت‌های داخلی و خارجی انتخاب مشتریان و طراحان سایت بوده است. قالب ها و پلاگین های جذاب و توسعه دهندگان حرفه‌ای در سراسر جهان این سیستم مدیریت محتوا را محبوب‌تر از همیشه کرده‌اند.
                                 مسئله‌ای که هر طراح سایت وردپرسی باید بداند این است
 
-                            </p>
+                            </p> */}
                         </div>
                         <div ref={refEMentor} className='my-4 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] p-4'>
                             <div className='flex items-center'>
@@ -205,12 +205,12 @@ export const CourseDetail = () => {
                     </div>
                     {/* left section div */}
                     <div className='w-[374px] '>
-                        <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] border-blue-500'>
+                        <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] '>
                             <div>
                                 <img className='w-[fit]' src="/images/videoSample.png" alt="" />
                             </div>
                             <div className='px-4 font-bold text-sm'>
-                                <p className='pt-[2rem]  pb-[3.5rem] text-right  text-2xl font-bold leading-4'>آموزش {courseData.course.title}</p>
+                                <p className='pt-[2rem]  pb-[3.5rem] text-right  text-2xl font-bold leading-4'>{data_show_CourseId?.data.data.course.title}</p>
                                 <div className='flex my-4  justify-between'>
                                     <div>تعداد فصل</div>
                                     <div className='font-normal text-[#494949]'>5</div>
