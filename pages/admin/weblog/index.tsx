@@ -100,7 +100,7 @@ const index = () => {
                     </div>
                     <div className='justify-between flex h-[150px]'>
                         <div className='flex flex-col gap-1 h-full w-[73%]'>
-                            <input {...register("description", { required: true })} type="text" placeholder='توضیحات' className='border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full h-[128px] rounded-[10px] focus:ring-[#008000] focus:border-[#008000]' />
+                            <textarea {...register("description", { required: true })} placeholder='توضیحات' className='border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full h-[128px] rounded-[10px] focus:ring-[#008000] focus:border-[#008000] resize-none placeholder:pt-10 ' />
                             {errors.description?.type === "required" && <p className='text-red-500 font-normal text-xs'>توضیحات بلاگ را مشخص کنید</p>}
                         </div>
                         <div className='flex flex-col gap-1 h-full w-[22%]'>
