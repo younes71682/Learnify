@@ -12,7 +12,7 @@ import Birthday from '@/components/user/date/Birthday'
 import Image from 'next/image'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { CircleLoader } from 'react-spinners'
+import { CircleLoader, FadeLoader } from 'react-spinners'
 
 
 type FormValue = {
@@ -39,11 +39,11 @@ const Infoteacher = () => {
 
 
 
-    const { updute_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher, mutate_uploadProfile, pending_uploadProfile, success_uploadProfile, error_uploadProfile } = Update_Info()
+    const { updute_infoteacher, pending_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher, mutate_uploadProfile, pending_uploadProfile, success_uploadProfile, error_uploadProfile } = Update_Info()
 
 
     const info = data_ShowTeacher?.data.data
-    console.log('info', info)
+    // console.log('info', info)
     const name = info?.name
     const family = info?.family
     const phone_number = info?.phone_number
@@ -73,9 +73,9 @@ const Infoteacher = () => {
 
 
     const handleUpdateform = (data: any) => {
-        console.log('f', data)
+        console.log('daatadata', data)
         data.image_id = localStorage.getItem('mentorProfilePectureId')
-        // updute_infoteacher({ data})
+        // updute_infoteacher({ data })
     }
 
 
@@ -84,7 +84,7 @@ const Infoteacher = () => {
 
     return (
         <div>
-            {pending_data_ShowTeacher === true ?
+            {pending_data_ShowTeacher || pending_infoteacher === true ?
                 <div className='flex justify-center items-center h-[100vh]'>
                     <CircleLoader color="#36d7b7" size={65} />
                 </div>
@@ -113,7 +113,7 @@ const Infoteacher = () => {
 
                                             <Select_gender gender={gender} />
 
-                                            <Birthday />
+                                            <Birthday birthday={birthday}/>
 
                                             <div className='flex flex-col gap-1 h-[71px] ml-4'>
                                                 <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} defaultValue={phone_number} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />
@@ -130,33 +130,33 @@ const Infoteacher = () => {
                                     </div>
                                 </div>
                                 <div className="flex w-[35%] h-full">
-                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
-                                <input {...register('image_id', { required: true })} multiple onChange={handleSubmitImage} id="dropzone-file" type="file" className="hidden" />
-                                {pending_uploadProfile === true ?
-                                    <FadeLoader color="#36d7b7" />
-                                    :
-                                    <div className="flex flex-col items-center justify-center ">
-                                        <Image src="/icon/modares/account/apload_photo.svg" alt='apload' width={70} height={44} className='mb-3' />
-                                        <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>اپلود تصویر خود</p>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
-                                    </div>}
-                                {errors.image_id?.type === "required" && <p className='text-red-500 font-normal text-xs'>پروفایل خود را مشخص کنید</p>}
-                                {success_uploadProfile === true && <p className='text-green-500 font-normal text-xs'>آپلود عکس با موفقیت انجام شد</p>}
-                                {error_uploadProfile === true && <p className='text-red-500 font-normal text-xs'>آپلود عکس با مشکل مواجه شده،مجددا تلاش کنید</p>}
-                            </label>
-                        </div>
+                                    <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-full cursor-pointer hover:bg-gray-100">
+                                        <input {...register('image_id')} multiple onChange={handleSubmitImage} id="dropzone-file" type="file" className="hidden" />
+                                        {pending_uploadProfile === true ?
+                                            <FadeLoader color="#36d7b7" />
+                                            :
+                                            <div className="flex flex-col items-center justify-center ">
+                                                <Image src="/icon/modares/account/apload_photo.svg" alt='apload' width={70} height={44} className='mb-3' />
+                                                <p className="text-[#1F2937] leading-6 tracking-wider"><span className="text-[#3B82F6] font-semibold ml-1">browse</span>اپلود تصویر خود</p>
+                                                <p className="text-xs text-gray-500 dark:text-gray-400">Maximum size: 5MB</p>
+                                            </div>}
+                                        {errors.image_id?.type === "required" && <p className='text-red-500 font-normal text-xs'>پروفایل خود را مشخص کنید</p>}
+                                        {success_uploadProfile === true && <p className='text-green-500 font-normal text-xs'>آپلود عکس با موفقیت انجام شد</p>}
+                                        {error_uploadProfile === true && <p className='text-red-500 font-normal text-xs'>آپلود عکس با مشکل مواجه شده،مجددا تلاش کنید</p>}
+                                    </label>
+                                </div>
 
                             </div>
 
                             <div className='flex items-center gap-6 '>
                                 <Location state={state} city={city} />
-                                {/* <Education university={university} field_of_study={field_of_study} educational_stage={educational_stage} /> */}
+                                <Education university={university} field_of_study={field_of_study} educational_stage={educational_stage} />
                             </div>
 
-                            {/* <div className='flex items-center gap-6 '>
+                            <div className='flex items-center gap-6 '>
                                 <Financial />
                                 <Resume resume={resume} />
-                            </div> */}
+                            </div>
 
                             <Button_info_operation handleSubmit={handleSubmit} onSubmit={handleUpdateform} />
                         </FormProvider>

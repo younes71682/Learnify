@@ -43,9 +43,8 @@ const Update_Info = () => {
     })
 
 
-    const { mutate: updute_infoteacher } = useMutation({
+    const { mutate: updute_infoteacher , isPending:pending_infoteacher } = useMutation({
         mutationFn: async (data) => {
-            console.log('data rdrdr', data)
             let token = localStorage.getItem('token')
             const response = await axios.put('https://learnify.v1r.ir/api/user/update', data, {
                 headers: {
@@ -54,14 +53,13 @@ const Update_Info = () => {
                 }
             })
             return response
-            console.log('res', response)
         },
         onSuccess: (res) => {
-            console.log('res', res)
+            console.log('success', res)
             // client.invalidateQueries({ queryKey: ['info_teacher'] })
         },
         onError: (errors) => {
-            console.log('x', errors)
+            console.log('error', errors)
         }
     })
 
@@ -69,6 +67,7 @@ const Update_Info = () => {
 
     return {
         updute_infoteacher,
+        pending_infoteacher,
         data_ShowTeacher,
         pending_data_ShowTeacher,
         error_data_ShowTeacher,

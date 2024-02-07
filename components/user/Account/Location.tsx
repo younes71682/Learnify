@@ -10,30 +10,39 @@ type Props = {
     city: string
 }
 
+type Selected = {
+    id: number,
+    value: string,
+    label: string,
+}
+
 
 const Location = (props: Props) => {
 
-    // const { state, city } = props
+    const { state, city } = props
+
+
+    const array_state: Selected[] = [
+        { id: 1, value: "tehran", label: "تهران" },
+        { id: 2, value: "mashhad", label: "مشهد" },
+        { id: 3, value: "esfahan", label: "اصفهان" },
+        { id: 4, value: "iran", label: "ایران" },
+    ]
+
+
+    const array_city: Selected[] = [
+        { id: 1, value: "tehran", label: "تهران" },
+        { id: 2, value: "shahriar", label: "شهریار" },
+        { id: 3, value: "varamin", label: "ورامین" },
+        { id: 4, value: "parand", label: "پرند" },
+        { id: 5, value: "gharchak", label: "قرچک" },
+    ]
+
 
     const [isSearchable, setIsSearchable] = React.useState(false);
     const [isRtl, setIsRtl] = React.useState(true);
-    const [selectstatevalue, setSelectStateValue] = useState<any>(null)
-    const [selectcityvalue, setSelectCityValue] = useState<any>(null)
-
-    const state = [
-        { id: 1, value: "tehran", label: "تهران" },
-        { id: 1, value: "mashhad", label: "مشهد" },
-        { id: 1, value: "esfahan", label: "اصفهان" },
-    ]
-
-
-    const city = [
-        { id: 1, value: "tehran", label: "تهران" },
-        { id: 1, value: "shahriar", label: "شهریار" },
-        { id: 1, value: "varamin", label: "ورامین" },
-    ]
-
-
+    const [selectstatevalue, setSelectStateValue] = useState<any>(array_state.find((i) => i.value === state) || null)
+    const [selectcityvalue, setSelectCityValue] = useState<any>(array_city.find((i) => i.value === city) || null)
 
     const form = useFormContext()
     const { control, formState } = form
@@ -70,10 +79,10 @@ const Location = (props: Props) => {
                                     isRtl={isRtl}
                                     isSearchable={isSearchable}
                                     name="state"
-                                    options={state}
+                                    options={array_state}
                                     onChange={(selectedOption) => {
-                                        field.onChange(selectedOption.value)
                                         setSelectStateValue(selectedOption)
+                                        field.onChange(selectedOption.value)
                                     }}
                                     value={selectstatevalue}
 
@@ -97,6 +106,7 @@ const Location = (props: Props) => {
                             rules={{
                                 required: true
                             }}
+                            defaultValue={selectstatevalue.value}
                         />
                     </div>
 
@@ -130,10 +140,10 @@ const Location = (props: Props) => {
                                     isRtl={isRtl}
                                     isSearchable={isSearchable}
                                     name="city"
-                                    options={city}
+                                    options={array_city}
                                     onChange={(selectedOption) => {
-                                        field.onChange(selectedOption.value)
                                         setSelectCityValue(selectedOption)
+                                        field.onChange(selectedOption.value)
                                     }}
                                     value={selectcityvalue}
                                     placeholder={'شهر'}
@@ -156,6 +166,7 @@ const Location = (props: Props) => {
                             rules={{
                                 required: true
                             }}
+                            defaultValue={selectcityvalue.value}
                         />
                     </div>
 

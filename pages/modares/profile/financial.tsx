@@ -32,6 +32,8 @@ const financial = () => {
         { id: 1, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
         { id: 2, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "در انتظار پرداخت..." },
         { id: 3, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
+        { id: 3, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
+        { id: 3, name: "اموزش nnode js", date: " 16 مهر1402", price: "1,267,000", status: "واریز شد" },
 
 
     ]
@@ -44,7 +46,7 @@ const financial = () => {
             <div className='flex flex-col gap-6 w-[64%]'>
 
                 <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[400px]'>
-                    <div className='flex justify-between px-8 py-5 sticky top-0'>
+                    <div className='flex justify-between px-8 py-5'>
 
                         <h2 className='text-lg'>لیست کامل دوره ها</h2>
                         <div className='flex gap-4'>
@@ -53,7 +55,7 @@ const financial = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col px-8 static top-2 overflow-y-auto'>
+                    <div className='flex flex-col px-8 static top-2 overflow-y-auto '>
 
                         <div className='flex flex-1 justify-around rounded-[5px_5px_0_0] border-solid border-[0.3px] border-[#E6F2E6] py-5 '>
                             <p className='text-sm font-bold flex justify-start translate-x-3 w-[10%]'>#</p>
@@ -65,7 +67,7 @@ const financial = () => {
 
                         {his.map((item, i) => {
                             return (
-                                <div className='flex justify-around rounded-[5px] shadow-[0_0_20px_rgba(0,0,0,0.09)] mb-1  py-5 '>
+                                <div className='flex justify-around rounded-[5px] shadow-[0_0_20px_rgba(0,0,0,0.09)] mb-1  py-5  '>
                                     <p className='text-sm flex justify-start w-[12%]'>{i + 1}</p>
                                     <p className='text-sm flex justify-start w-[12%]'>{item.name}</p>
                                     <p className='text-sm flex justify-start w-[12%] font-Byekan'>{item.date}</p>
