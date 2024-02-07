@@ -22,7 +22,7 @@ export const CourseDetail = () => {
     const courseId = id
     const { data_show_CourseId } = Course_Fetch('', courseId)
     console.log('course:', data_show_CourseId)
-    console.log('courseTitle:', data_show_CourseId?.data.data.course.title)
+    console.log('courseSeasons:', data_show_CourseId?.data.data.chapter_count)
 
     const Courses = [
         { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
@@ -106,7 +106,7 @@ export const CourseDetail = () => {
                             <div className=' sm:flex mb-4 pt-6'>
                                 <img src="/images/mentor.png" alt="" />
                                 <div className='mr-2'>
-                                    <p className='font-bold text-base'>سمیه مهاجری نسب پاریزی</p>
+                                    <p className='font-bold text-base'>{data_show_CourseId?.data.data.mentor.name}{data_show_CourseId?.data.data.mentor.family}</p>
                                     <p className='font-normal text-sm mt-[5px]'>مدرس طراحی گرافیکی</p>
                                     <p className='mt-[15px] font-medium text-sm'>از سال ۱۳۸۳ در تمامی مقاطع طراحی گرافیکی سابقه تدریس داشته و کارت رسمی مربیگری و مدیریت آموزشی خود را از سازمان فنی و حرفه‌ای کشور دریافت کرده‌اند. همچنین ایشان، مولف کتب و جزوات آموزشی، طراح گرافیک و پادکستر نیز هستند.</p>
                                 </div>
@@ -122,12 +122,12 @@ export const CourseDetail = () => {
                                 </svg>
                                 <p className='font-bold text-xl text-[#484848] mr-1 '>سر فصل های دوره</p>
                             </div>
-                            {courseData.course.chapters.map((item, i) => {
+                            {data_show_CourseId?.data.data.course.chapters.map((item, i) => {
                                 return (
                                     <Accordion className='my-4 border-0 rounded-lg p-2 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] '>
 
                                         <AccordionSummary
-                                            expandIcon={<ExpandMoreIcon />}
+                                            expandIcon={<ExpandMoreIcon />} 
                                             aria-controls="panel1a-content"
                                             id="panel1a-header"
                                         >
@@ -213,11 +213,11 @@ export const CourseDetail = () => {
                                 <p className='pt-[2rem]  pb-[3.5rem] text-right  text-2xl font-bold leading-4'>{data_show_CourseId?.data.data.course.title}</p>
                                 <div className='flex my-4  justify-between'>
                                     <div>تعداد فصل</div>
-                                    <div className='font-normal text-[#494949]'>5</div>
+                                    <div className='font-normal text-[#494949]'>{data_show_CourseId?.data.data.chapter_count}</div>
                                 </div>
                                 <div className='flex my-4 justify-between'>
                                     <div>تعداد درس</div>
-                                    <div className='font-normal text-[#494949]'>3</div>
+                                    <div className='font-normal text-[#494949]'>{data_show_CourseId?.data.data.lesson_count}</div>
                                 </div>
                                 <div className='flex my-4 justify-between'>
                                     <div>مدت زمان ویدیو آموزشی</div>
