@@ -34,7 +34,7 @@ const index = () => {
 
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     const [blogId, setBlogId] = React.useState<number>();
-    const { mutate_add_image_blog, pending_add_image_blog, success__add_image_blog, error_add_image_blog, data_show_listblog, pending_show_listblog, mutate_add_blog, pending_add_blog, mutate_delete_blog, pending_delete_blog} = Blog_Fetch(currentPage, blogId)
+    const { mutate_add_image_blog, pending_add_image_blog, success__add_image_blog, error_add_image_blog, data_show_listblog, pending_show_listblog, mutate_add_blog, pending_add_blog, mutate_delete_blog, pending_delete_blog } = Blog_Fetch(currentPage, blogId)
     const [imageUrl, setImageUrl] = React.useState<null>(null)
     const [idClickDeliet, setIdClickDeliet] = useState(null)
 
@@ -53,12 +53,15 @@ const index = () => {
     const { register, handleSubmit, formState, watch } = form
     const { errors } = formState
 
-    const addBlog = (data: void) => {
+    const addBlog = (data: void & FormValue) => {
         data.image_id = localStorage.getItem("image_id_blog")
-        mutate_add_blog(data)
+        console.log(data)
+        // mutate_add_blog(data)
         setImageUrl(null)
     }
 
+    const matn = watch('description')
+    console.log(matn)
 
     //index show listBlog
     const listBlog = data_show_listblog?.data.blogs.data
@@ -69,7 +72,7 @@ const index = () => {
         console.log('currentPage', currentPage)
         setCurrentPage(value)
     }
- 
+
 
 
     const deleteBlog = (id: number & null) => {
