@@ -1,4 +1,3 @@
-//@ts-nocheck
 import ImageUploader from '@/components/api/ImageUploader'
 import Update_Info from '@/components/api/modares/Update_Info'
 import Button_info_operation from '@/components/button/Button_info_operation'
@@ -35,15 +34,10 @@ type FormValue = {
 
 const Infoteacher = () => {
 
+    const { updute_infoteacher, pending_infoteacher, data_Show_Information, pending_data_Show_Information, error_data_Show_Information, mutate_uploadProfile, pending_uploadProfile, success_uploadProfile, error_uploadProfile } = Update_Info()
 
 
-
-
-    const { updute_infoteacher, pending_infoteacher, data_ShowTeacher, pending_data_ShowTeacher, error_data_ShowTeacher, mutate_uploadProfile, pending_uploadProfile, success_uploadProfile, error_uploadProfile } = Update_Info()
-
-
-    const info = data_ShowTeacher?.data.data
-    // console.log('info', info)
+    const info = data_Show_Information?.data.data
     const name = info?.name
     const family = info?.family
     const phone_number = info?.phone_number
@@ -55,7 +49,7 @@ const Infoteacher = () => {
     const university = info?.university
     const field_of_study = info?.field_of_study
     const educational_stage = info?.educational_stage
-    const resume = info?.resume.description
+    const resume = info?.resume?.description
 
     const methods = useForm<FormValue>()
 
@@ -67,24 +61,21 @@ const Infoteacher = () => {
 
 
     const handleSubmitImage = (event) => {
-        const files = event.target.files[0]
-        mutate_uploadProfile({ image: files })
+        const file = event.target.files[0]
+        mutate_uploadProfile({ image: file })
     }
-
 
     const handleUpdateform = (data: any) => {
-        console.log('daatadata', data)
-        data.image_id = localStorage.getItem('mentorProfilePectureId')
-        // updute_infoteacher({ data })
+        console.log('data', data)
+        data.image_id = localStorage.getItem('ProfilePectureId')
+        updute_infoteacher({ data })
     }
-
-
 
     // if(!data_ShowTeacher) return null
 
     return (
         <div>
-            {pending_data_ShowTeacher || pending_infoteacher === true ?
+            {pending_data_Show_Information || pending_infoteacher === true ?
                 <div className='flex justify-center items-center h-[100vh]'>
                     <CircleLoader color="#36d7b7" size={65} />
                 </div>
@@ -113,7 +104,7 @@ const Infoteacher = () => {
 
                                             <Select_gender gender={gender} />
 
-                                            <Birthday birthday={birthday}/>
+                                            <Birthday birthday={birthday} />
 
                                             <div className='flex flex-col gap-1 h-[71px] ml-4'>
                                                 <input type='tel' {...register("phone_number", { required: true, maxLength: 11, pattern: /((0?9)|(\+?989))\d{9}/g })} defaultValue={phone_number} placeholder='شماره موبایل*' className='border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[210px] h-[48px] pr-2 focus:ring-[#008000] focus:border-[#008000] placeholder:text-right ' />

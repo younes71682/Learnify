@@ -106,7 +106,7 @@ const Location = (props: Props) => {
                             rules={{
                                 required: true
                             }}
-                            defaultValue={selectstatevalue.value}
+                            defaultValue={selectstatevalue?.value}
                         />
                     </div>
 
@@ -166,7 +166,7 @@ const Location = (props: Props) => {
                             rules={{
                                 required: true
                             }}
-                            defaultValue={selectcityvalue.value}
+                            defaultValue={selectcityvalue?.value}
                         />
                     </div>
 

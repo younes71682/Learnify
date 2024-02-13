@@ -56,7 +56,7 @@ const index = () => {
     const addBlog = (data: void & FormValue) => {
         data.image_id = localStorage.getItem("image_id_blog")
         console.log(data)
-        // mutate_add_blog(data)
+        mutate_add_blog(data)
         setImageUrl(null)
     }
 
@@ -140,11 +140,11 @@ const index = () => {
                             </div>
                             :
                             <div className='flex flex-col items-center'>
-                                <div className='flex flex-wrap justify-between gap-6'>
+                                <div className='flex flex-wrap justify-between gap-20'>
                                     {listBlog?.map((i: listBlog) => {
 
                                         return (
-                                            <div key={i.id} className='flex justify-between w-[42%] h-[128px] p-3 rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
+                                            <div key={i.id} className='flex justify-between w-[450px] h-[128px] p-3 rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
                                                 <div className='flex w-[96px] h-[106px]'>
 
                                                     {i.image?.media?.map((item: Media) => {

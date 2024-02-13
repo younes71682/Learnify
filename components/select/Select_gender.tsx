@@ -24,8 +24,7 @@ const Select_gender = (props: Props) => {
   const [isSearchable, setIsSearchable] = React.useState(false);
   const [isRtl, setIsRtl] = React.useState(true);
   const [selectedValue, setSelectedValue] = useState<any>(array_gendery.find(item => item.value === gender) || null);
-  // console.log('selectedValue', selectedValue)
-  const form = useFormContext();
+   const form = useFormContext();
   const { control, formState } = form;
   const { errors } = formState;
 
@@ -72,7 +71,7 @@ const Select_gender = (props: Props) => {
           rules={{
             required: true,
           }}
-          defaultValue={selectedValue.value}
+          defaultValue={selectedValue?.value}
         />
       </div>
       <div>

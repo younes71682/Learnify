@@ -1,14 +1,29 @@
+import Update_Info from '@/components/api/modares/Update_Info'
 import Button_exit from '@/components/button/Button_exit'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
+type SIDEBAR = {
+  id: number
+  title: string
+  pathname: string
+  icon: string
+  icon_selected: string
+}
 
 
 const Sidbar = () => {
 
-  const prof = [
+  const { data_Show_Information } = Update_Info()
+
+  const info = data_Show_Information?.data.data
+  const name = info?.name
+  const phone_number = info?.phone_number
+
+
+  const prof: SIDEBAR[] = [
     { id: 1, title: "اطلاعات کاربری", pathname: "/user/profile", icon: "/icon/user/account/info_user/user.svg", icon_selected: "/icon/user/account/info_user/user_green.svg" },
     { id: 2, title: "آموزش‌های من", pathname: "/user/profile/mytraining", icon: "/icon/user/account/info_user/education.svg", icon_selected: "/icon/user/account/info_user/education_green.svg" },
     { id: 3, title: "نظرات شما", pathname: "/user/profile/yourcomments", icon: "/icon/user/account/sidebar/comments.svg", icon_selected: "/icon/user/account/sidebar/icon_green/comments.svg" },
@@ -16,14 +31,8 @@ const Sidbar = () => {
     { id: 5, title: "اعلان ها", pathname: "/user/profile/notification", icon: "/icon/user/account/sidebar/notification.svg", icon_selected: "/icon/user/account/sidebar/icon_green/notification.svg" },
   ]
 
-  const [selected, setSelected] = useState(1)
-
-  const showStyle = (id: any) => {
-    setSelected(!selected === id ? null : id)
-  }
-
   const link = usePathname()
-  console.log(link)
+
 
   return (
 
@@ -34,8 +43,8 @@ const Sidbar = () => {
           <img src='/images/sidebar/prof.png' alt='Prof' />
         </div>
         <div className='mb-10'>
-          <p className='font-bold'>محمد نصیری</p>
-          <p className='text-sm font-normal'>09374143663</p>
+          <p className='font-bold'>{name}</p>
+          <p className='text-sm font-normal'>{phone_number}</p>
         </div>
       </div>
 

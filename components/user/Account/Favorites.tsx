@@ -1,40 +1,38 @@
+import { Teaching_Fetch } from '@/components/api/modares/Teaching_Fetch'
+import Image from 'next/image'
 import React, { useState } from 'react'
-import { set, useFormContext } from 'react-hook-form'
 type Add = {
     id: number
 }
+
+type Category = {
+    category_id: number,
+    category: string,
+    course_count: number,
+}
+
 const Favorites = () => {
 
-    const favorites = [
-        { id: 1, title: "توسعه وب", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 2, title: "توسعه وب", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 3, title: "امنیت و شبکه", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 4, title: "طراحی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 5, title: "فیلم و انیمیشن", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 6, title: "نرم افزارهای کاربردی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 7, title: "نرم افزارهای مهندسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-        { id: 8, title: "برنامه نویسی", icon: <img src='/icon/user/account/info_user/add.svg' /> },
-    ]
+
+    const { dataCategory } = Teaching_Fetch()
+
+    const favorites = dataCategory?.data.categories
 
     const [add, setAdd] = useState<Add[]>([])
 
-
-    const handleAdd = (id: number) => {
-        const existingItem = !add.find((item) => item.id === id)
-        if (existingItem) {
-            setAdd(prev => [...prev, { id: id }])
-
+    const handleAdd = (id: number, category: string) => {
+        const existingItem = add.find(i => i.id === id)
+        if (!existingItem) {
+            setAdd(prve => [...prve, { id: id, title: category }])
         } else {
-            const newItems = add.filter(item => item.id !== id)
-            setAdd(newItems)
+            const newItem = add.filter(i => i.id !== id)
+            setAdd(newItem)
         }
-
     }
-
-    const { register } = useFormContext()
 
 
     return (
+
         <div className='flex flex-col gap-6 pr-4 pt-5 pb-8 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
 
             <div className='flex items-center gap-1 text-lg'>
@@ -43,22 +41,14 @@ const Favorites = () => {
             </div>
 
             <div className='flex flex-wrap gap-6 w-[90%]'>
-                {favorites.map((item, i) => {
+                {favorites?.map((item: Category) => {
                     return (
-                        <div className='cursor-pointer' onClick={() => handleAdd(item.id)} >
+                        <div key={item.category_id} className='cursor-pointer' onClick={() => handleAdd(item.category_id, item.category)}>
+                            <div className={add.find(i => i.id === item.category_id) ? `flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2` : `flex items-center cursor-pointer justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2`}>
+                                <div>{item.category}</div>
+                                <div>{add.find(i => i.id === item.category_id) ? <Image src='/icon/user/account/info_user/tick.svg' alt='tick' width={24} height={24} /> : <Image src='/icon/user/account/info_user/add.svg' alt='plus' width={24} height={24} />}</div>
+                            </div>
 
-                            {add.find(i => i.id === item.id) ?
-                                (<div className='flex items-center justify-between bg-[#008000] text-[#fbfbfb] border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] px-2'>
-                                    <div>{item.title}</div>
-                                    <div className=''><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 52 40" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M51.1743 4.14173L22.514 39.977L0 21.2131L4.24793 16.1156L21.5582 30.5386L45.9971 0L51.1743 4.14173Z" fill="white" />
-                                    </svg></div>
-                                </div>)
-
-                                : (<div className='flex items-center cursor-pointer justify-between border-solid border-[0.5px] border-[#AAAAAA] rounded-[10px] w-[183px] h-[48px] pr-2'>
-                                    <div>{item.title}</div>
-                                    <div>{item.icon}</div>
-                                </div>)}
                         </div>
                     )
                 })}
@@ -68,3 +58,4 @@ const Favorites = () => {
 }
 
 export default Favorites
+
