@@ -8,7 +8,7 @@ type Current_Page = {
 
 type BlogId = {
     id: number
-}
+} 
 
 const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
 
@@ -96,6 +96,7 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
         queryKey: ['ShowBlogId', blogId],
         queryFn: async ({ queryKey }) => {
             let id = queryKey[1]
+            console.log('if',id)
             let token = localStorage.getItem('token')
             const response = await axios.get(`https://learnify.v1r.ir/api/blogs/${id}`, {
                 headers: {

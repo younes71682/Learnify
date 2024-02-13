@@ -23,10 +23,9 @@ const index = () => {
 
   const { data_show_listblog, pending_show_listblog } = Blog_Fetch(currentPage, blogId)
 
-
   //index show listBlog
   const listBlog = data_show_listblog?.data.blogs.data
-
+  console.log(listBlog)
   //index last_page
   const last_page = data_show_listblog?.data.blogs.last_page
   //change_Page
@@ -40,7 +39,6 @@ const index = () => {
 
       <Navbar />
       <Header />
-
 
       {pending_show_listblog === true ?
         <div className='flex justify-center h-32'>
@@ -62,9 +60,9 @@ const index = () => {
                       )
                     })}
 
-                    <div className='flex flex-col items-start flex-1 px-6 '>
+                    <div className='flex flex-col items-start justify-around flex-1 px-6 h-full'>
                       <h3 className='text-base font-bold'>{item.title}</h3>
-                      <p className='text-xs font-normal leading-6 pt-[5px]'>{item.description}</p>
+                      <p className='text-xs font-normal leading-6 pt-[5px]'>{item.description.slice(0, 200)}</p>
                       <div className='flex items-center gap-[3px] pt-4 text-[#008000] text-xs font-bold hover:scale-105'>
                         <Link href={`/user/blog/${item.id}`}>مشاهده مطلب</Link>
                         <Image src='/icon/blog/left.svg' alt='Left' width={16} height={16} />

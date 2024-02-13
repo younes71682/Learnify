@@ -1,12 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 const Update_Info = () => {
 
-    const client = useQueryClient()
+ 
 
-
-    const { data: data_ShowTeacher, isPending: pending_data_ShowTeacher, isError: error_data_ShowTeacher, } = useQuery({
+    const { data: data_Show_Information, isPending: pending_data_Show_Information, isError: error_data_Show_Information, } = useQuery({
         queryKey: ['info_teacher'],
         queryFn: async () => {
             let token = localStorage.getItem('token')
@@ -34,7 +33,7 @@ const Update_Info = () => {
         },
         onSuccess: (res) => {
             console.log('image', res.data.id)
-            localStorage.setItem('mentorProfilePectureId', res.data.id)
+            localStorage.setItem('ProfilePectureId', res.data.id)
         },
         onError: (error) => {
             console.log('errorimage', error)
@@ -56,21 +55,18 @@ const Update_Info = () => {
         },
         onSuccess: (res) => {
             console.log('success', res)
-            // client.invalidateQueries({ queryKey: ['info_teacher'] })
-        },
+         },
         onError: (errors) => {
             console.log('error', errors)
         }
     })
 
-
-
     return {
         updute_infoteacher,
         pending_infoteacher,
-        data_ShowTeacher,
-        pending_data_ShowTeacher,
-        error_data_ShowTeacher,
+        data_Show_Information,
+        pending_data_Show_Information,
+        error_data_Show_Information,
         mutate_uploadProfile,
         pending_uploadProfile,
         success_uploadProfile,
