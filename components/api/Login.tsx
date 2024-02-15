@@ -9,7 +9,6 @@ const Login = () => {
 
     const { mutate: mutate_phone_number } = useMutation({
         mutationFn: (data) => {
-            console.log('1', data)
             return axios.post("https://learnify.v1r.ir/api/auth/verification-code-request", data, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -19,8 +18,7 @@ const Login = () => {
 
     })
 
-//@ts-ignore
-    const { mutate: mutate_verification_code,isLoading } = useMutation({
+    const { mutate: mutate_verification_code, isPending:pending_verification_code , isSuccess:success_verification_code  } = useMutation({
         mutationFn: (data) => {
             return axios.post(`https://learnify.v1r.ir/api/auth/login/${loginRole}`, data, {
                 headers: {
@@ -28,26 +26,19 @@ const Login = () => {
                 }
 
             })
-            
+
         },
-        
-                onSuccess: (res) => {
+
+        onSuccess: (res) => {
             console.log('token', res)
-            
+
             localStorage.setItem('token', res.data.token)
 
         },
-        
-        // onError:(res)=>{
-        //     localStorage.setItem('error', res.data.message)
-
-        // }
- 
-
     })
 
 
-    return { mutate_phone_number, mutate_verification_code, setLoginRole,isLoading}
+    return { mutate_phone_number, mutate_verification_code, setLoginRole,pending_verification_code,success_verification_code }
 }
 
 export default Login
