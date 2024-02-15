@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Link from 'next/link';
 import Dropdown from '@/components/layout/Dropdown';
 import Login from '@/components/api/Login';
+import { BeatLoader } from 'react-spinners';
 
 
 type FormeValue = {
@@ -23,9 +24,9 @@ const Navbar = () => {
 
     const [seconds, setSeconds] = useState(0);
 
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState()
 
-    const { mutate_phone_number, mutate_verification_code, setLoginRole, } = Login()
+    const { mutate_phone_number, mutate_verification_code, setLoginRole, pending_verification_code, success_verification_code } = Login()
 
 
 
@@ -50,6 +51,9 @@ const Navbar = () => {
 
 
     useEffect(() => {
+        //@ts-ignore
+        setIsLogin(localStorage.getItem('token'))
+
 
         const interval = setInterval(() => {
             setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
@@ -94,17 +98,9 @@ const Navbar = () => {
     }
 
     const handleCloseMudoleLogin = () => {
-        let token = localStorage.getItem("token")
-        console.log(token)
-        if (token) {
-            setTimeout(() => {
-                handleCloseModule()
-                setIsLogin(true)
-            }, 1500);
-        } else {
-            setIsLogin(false)
-        }
+
     }
+
 
 
     return (
@@ -143,7 +139,12 @@ const Navbar = () => {
 
                         <img className='w-[24px]' src="/icon/user/home_page/navbar/shopping_cart.svg" alt="Shopping_cart Logo" />
                     </div>
-                    {isLogin === false ?
+                    {isLogin ?
+                        <Link href="/modares/profile" className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" >
+                            <p className="text-[#008000]">حساب کاربری</p>
+                        </Link>
+
+                        :
                         <>
                             <div className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]"
                                 onClick={() => {
@@ -158,15 +159,11 @@ const Navbar = () => {
                                 onClick={() => {
                                     setLoginRole('student')
                                     setLoginModalOpen(true)
-                                }}>
 
+                                }}>
                                 <p className="text-white">ورود کاربر</p>
                             </div>
                         </>
-                        :
-                        <Link href="/modares/profile" className=" flex justify-center items-center cursor-pointer border-solid border-[1px] border-[#008000] rounded-[12px] w-[109px] h-[40px]" >
-                            <p className="text-[#008000]">حساب کاربری</p>
-                        </Link>
                     }
                 </div>
             </div>
@@ -236,7 +233,7 @@ const Navbar = () => {
                                 </div>
 
                                 <button onClick={handleCloseMudoleLogin} className='flex justify-center items-center cursor-pointer bg-[#008000] text-white rounded-lg h-[40px] w-[179px]'>
-                                    تایید
+                                    {pending_verification_code ? <BeatLoader color="#36d7b7" /> : <p>'تایید'</p>}
                                 </button>
 
                             </div>
