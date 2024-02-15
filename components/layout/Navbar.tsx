@@ -113,12 +113,12 @@ const Navbar = () => {
             <div className="flex  items-center justify-between w-[85%] ">
 
                 <div className="flex w-[50%] gap-8">
-                    <div className='w-[186px] h-[86px] mt-[5px]'>
+                    <div className='w-[186px] h-[86px] max-sm:w-[120px]  flex items-center'>
                         <img className="w-full" src='/images/global/Rectangle.png' />
                     </div>
 
-                    <div className='flex items-center w-[228px] pt-6'>
-                        <ul className="flex justify-between w-full">
+                    <div className='flex max-lg:hidden items-center w-[228px] pt-6'>
+                        <ul className="flex  justify-between w-full">
                             <li><Dropdown /></li>
                             <li><Link href="/modares">تدریس کنید</Link></li>
                             <li><Link href="/user/blog">وبلاگ</Link></li>
@@ -129,11 +129,11 @@ const Navbar = () => {
 
                 <div className='flex items-center justify-end gap-3 w-[50%] h-full'>
 
-                    <div className="flex justify-end gap-2 items-center w-[50%] h-[40px] ">
+                    <div className="flex justify-end gap-2 max-sm:hidden items-center w-[50%] h-[40px] ">
 
                         {showSearchInput === true ?
                             (<div className='flex relative'>
-                                <input type='text' onClick={(e) => e.stopPropagation()} className='rounded-xl flex w-[280px] border-0 focus:ring-[#008000]  bg-[#ededed]' placeholder='جستجو کنید...' />
+                                <input type='text' onClick={(e) => e.stopPropagation()} className='rounded-xl flex  w-[150px] xl:w-[280px] border-0 focus:ring-[#008000]  bg-[#ededed]' placeholder='جستجو کنید...' />
                                 <img className=' w-[24px] absolute top-2  left-2 cursor-pointer' src="/icon/user/home_page/navbar/search.svg" alt="Search" />
                             </div>)
                             :
@@ -142,7 +142,6 @@ const Navbar = () => {
                             />)}
 
                         <img className='w-[24px]' src="/icon/user/home_page/navbar/shopping_cart.svg" alt="Shopping_cart Logo" />
-
                     </div>
                     {isLogin === false ?
                         <>
