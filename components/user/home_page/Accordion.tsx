@@ -17,10 +17,13 @@ const Accordion = () => {
 
     return (
 
-        <div className='flex flex-col items-center gap-4 mb-[51px]'>
+        <div className='flex justify-center my-12'>
+        <div className='flex flex-col items-center justify-center gap-4 w-[850px]'>
+        <div className='mt-16 mb-8 flex justify-center'><h2 className='text-2xl font-bold'>پاسخ به پرسش‌های متداول</h2></div>
+
             {question.map((item, index) => {
                 return (
-                    <div onClick={() => handleclick(item.id)} key={index} className='shadow-[0_0_20px_rgba(0,0,0,0.05)] rounded-[20px] px-4 flex flex-col w-[745px] text-[#484848]'>
+                    <div onClick={() => handleclick(item.id)} key={index} className='shadow-[0_0_20px_rgba(0,0,0,0.05)] rounded-[20px] px-4 flex flex-col w-[80%] text-[#484848]'>
                          <div className='flex justify-between h-[82px] items-center text-[1.125rem] font-YekanBakhBold'>
                             {selected === item.id ? (<h2 className='text-[#339933]'>{item.Question}</h2>) : (<h2>{item.Question}</h2>)}
                             {selected === item.id ? (<img src="/icon/user/home_page/according/up.svg" alt='Up'/>) : <img src="/icon/user/home_page/according/down.svg" alt='Down'/>}
@@ -32,6 +35,7 @@ const Accordion = () => {
 
                 )
             })}
+        </div >
         </div >
     )
 }
