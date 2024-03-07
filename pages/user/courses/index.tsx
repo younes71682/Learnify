@@ -29,14 +29,14 @@ export default function Courses() {
 
   return (
     <div>
-      <Navbar />
+      {pending_show_listCourse ?
+        < div className='flex justify-center items-center h-[100vh]'>
+          <CircleLoader color="#36d7b7" />
+        </div>
+        :
+        <div>
+          <Navbar />
 
-      <div>
-        {pending_show_listCourse === true ?
-          < div className='flex justify-center '>
-            <CircleLoader color="#36d7b7" />
-          </div>
-          :
           <div className='flex flex-col'>
 
             <div className='flex flex-col justify-end mx-32 h-40 pb-3 '>
@@ -50,7 +50,7 @@ export default function Courses() {
                 <Sidebarfilter />
               </div>
 
-              <div className='flex items-end flex-wrap gap-6 w-[64%]'>
+              <div className='flex flex-wrap gap-6 w-[64%]'>
                 {listCourse?.map((i) => {
                   return (
                     <div className='w-[274px] h-[469px]' key={i.id}>
@@ -74,9 +74,10 @@ export default function Courses() {
               />
             </div>
           </div>
-        }
-      </div>
-      <Footer />
+
+          <Footer />
+        </div>
+      }
     </div >
   );
 }

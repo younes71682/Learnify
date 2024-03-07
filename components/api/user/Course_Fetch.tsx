@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const Course_Fetch = (currentPage: number,courseId:number) => {
+const Course_Fetch = (currentPage: number, courseId: number) => {
 
 
     const { data: data_show_listCourse, isPending: pending_show_listCourse } = useQuery({
@@ -27,11 +27,11 @@ const Course_Fetch = (currentPage: number,courseId:number) => {
 
     })
 
-    const { data: data_show_CourseId } = useQuery({
-        queryKey: ['courseId'],
-        queryFn: async () => {
+    const { data: data_show_CourseId, isPending: pending_show_CourseId } = useQuery({
+        queryKey: ['courseId', courseId],
+        queryFn: async ({ queryKey }) => {
             let token = localStorage.getItem('token')
-            let id = courseId
+            let id = queryKey[1]
             const response = await axios.get(`https://learnify.v1r.ir/api/course/show/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,6 +46,7 @@ const Course_Fetch = (currentPage: number,courseId:number) => {
         data_show_listCourse,
         pending_show_listCourse,
         data_show_CourseId,
+        pending_show_CourseId,
     }
 }
 

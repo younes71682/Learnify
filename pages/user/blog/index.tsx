@@ -25,13 +25,15 @@ const index = () => {
 
   //index show listBlog
   const listBlog = data_show_listblog?.data.blogs.data
-  console.log(listBlog)
+
   //index last_page
   const last_page = data_show_listblog?.data.blogs.last_page
   //change_Page
   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value)
   }
+
+
 
   return (
 
@@ -41,16 +43,18 @@ const index = () => {
       <Header />
 
       {pending_show_listblog === true ?
+
         <div className='flex justify-center h-32'>
           <CircleLoader color="#36d7b7" />
         </div>
         :
-        <div className='flex flex-col items-center'>
-          <div className='flex flex-wrap justify-center gap-6 mx-[136px]'>
+
+        <div className='flex flex-col items-center '>
+          <div className='flex flex-wrap justify-center gap-6 mx-[136px] w-[92%]'>
             {listBlog?.map((item: ListBlog, index) => {
               if (index === 4 || index === 5) {
                 return (
-                  <div className='flex items-center w-[572px] h-[212px] rounded-[0px_15px_15px_20px] shadow-[0_0_20px_rgba(0,0,0,0.15)]'>
+                  <div className='flex items-center w-[572px] h-[212px] rounded-[0px_15px_15px_20px] shadow-[0_0_20px_rgba(0,0,0,0.15)] [@media(max-width:580px)]:flex-col [@media(max-width:1269px)]:h-[266px]  [@media(max-width:580px)]:h-[400px] [@media(max-width:580px)]:w-[274px] '>
 
                     {item.image?.media.map((i) => {
                       return (
@@ -60,10 +64,10 @@ const index = () => {
                       )
                     })}
 
-                    <div className='flex flex-col items-start justify-around flex-1 px-6 h-full'>
-                      <h3 className='text-base font-bold'>{item.title}</h3>
-                      <p className='text-xs font-normal leading-6 pt-[5px]'>{item.description.slice(0, 200)}</p>
-                      <div className='flex items-center gap-[3px] pt-4 text-[#008000] text-xs font-bold hover:scale-105'>
+                    <div className='flex flex-col items-start flex-1 px-6 h-full'>
+                      <h3 className='text-lg font-bold pt-5'>{item.title}</h3>
+                      <p className='text-xs font-normal leading-6 pt-3 h-[140px] [@media(max-width:1269px)]:h-[190px] [@media(max-width:580px)]:h-[140px] '>{item.description.slice(0, 200)}</p>
+                      <div className='flex items-center gap-[3px] [@media(max-width:580px)]: text-[#008000] text-xs font-bold hover:scale-105'>
                         <Link href={`/user/blog/${item.id}`}>مشاهده مطلب</Link>
                         <Image src='/icon/blog/left.svg' alt='Left' width={16} height={16} />
                       </div>
@@ -83,17 +87,19 @@ const index = () => {
                     })}
 
                     <Link href={`/user/blog/${item.id}`} className='flex items-center flex-1 hover:scale-110 hover:text-[#008000]'>
-                      <p className=''>{item.title}</p>
+                      <p className='text-lg font-bold'>{item.title}</p>
                     </Link>
                   </div>
                 )
               }
             })}
           </div>
-          <div className='flex justify-center items-center h-24'>
+
+
+          <div className='flex justify-center items-center h-32 mt-4' >
             <Pagination
               style={{ direction: 'ltr' }}
-              count={last_page}
+              // count={last_page}
               page={currentPage}
               onChange={handleChangePage}
               variant="outlined"

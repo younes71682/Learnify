@@ -26,7 +26,6 @@ const A = () => {
   });
 
 
-
   const longtext = description?.split('\n').map((str) => <p>{str}</p>)
 
   return (

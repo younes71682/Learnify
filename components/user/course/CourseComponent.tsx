@@ -32,7 +32,6 @@ const CourseComponent = (props: any) => {
                     </div>
                 </div>
 
-
                 <div className='flex flex-col justify-between h-[95px] w-full '>
 
                     <div className='flex flex-wrap justify-around items-center'>

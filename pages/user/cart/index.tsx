@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import CartItems from '@/components/user/cart/CartItems'
 import Navbar from '@/components/layout/Navbar'
+import { useSelector } from 'react-redux'
 
 
 const index = () => {
@@ -10,6 +11,10 @@ const index = () => {
         { id: 1, name: "Redux", price: "790,000", teacher: "امیرحسام میرصادقی", img: <img src='/images/user/cart/redux.png' alt='redux' /> },
         { id: 2, name: "Redux", price: "790,000", teacher: "امیرحسام میرصادقی", img: <img src='/images/user/cart/redux.png' alt='redux' /> },
     ]
+
+    //@ts-ignore
+    const Cart = useSelector(state => state.SHOPPING.Cart)
+    console.log('indexCart', Cart)
 
     return (
 
@@ -25,15 +30,14 @@ const index = () => {
 
                 <div className='flex flex-col w-[49%] gap-4'>
 
-                    {products.map((item) => {
+                    {Cart?.map((item) => {
                         return (
                             <CartItems {...item} />
                         )
                     })}
                 </div>
 
-
-                <div className='flex flex-col rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.1)] px-4 py-6 w-[24.5%] sticky top-5'>
+                <div className='rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.1)] px-4 py-6 w-[24.5%] sticky top-5 '>
 
                     <h3 className='text-xl font-bold mb-4'>پیش فاکتور</h3>
 
@@ -41,7 +45,7 @@ const index = () => {
                         <p className='text-lg'>تعداد</p>
                         <div className='flex items-center gap-1'>
                             <p className='text-[10px] font-normal'>دوره</p>
-                            <p className='text-base font-normal'>2</p>
+                            <p className='text-base font-normal'>{}</p>
                         </div>
                     </div>
 

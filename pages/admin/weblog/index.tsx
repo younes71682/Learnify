@@ -39,7 +39,6 @@ const index = () => {
     const [idClickDeliet, setIdClickDeliet] = useState(null)
 
 
-
     const uploadImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const fileImage: File | undefined = e.target.files?.[0];
         setImageUrl(URL.createObjectURL(fileImage))
@@ -50,7 +49,7 @@ const index = () => {
 
     const form = useForm()
 
-    const { register, handleSubmit, formState, watch } = form
+    const { register, handleSubmit, formState, watch, reset } = form
     const { errors } = formState
 
     const addBlog = (data: void & FormValue) => {
@@ -58,6 +57,7 @@ const index = () => {
         console.log(data)
         mutate_add_blog(data)
         setImageUrl(null)
+        reset()
     }
 
     const matn = watch('description')
@@ -65,6 +65,7 @@ const index = () => {
 
     //index show listBlog
     const listBlog = data_show_listblog?.data.blogs.data
+    console.log(listBlog)
     //index last_page
     const last_page = data_show_listblog?.data.blogs.last_page
     //change_Page
@@ -103,12 +104,12 @@ const index = () => {
                     </div>
                     <div className='justify-between flex h-[150px]'>
                         <div className='flex flex-col gap-1 h-full w-[73%]'>
-                            <textarea {...register("description", { required: true })} placeholder='توضیحات' className='border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full h-[128px] rounded-[10px] focus:ring-[#008000] focus:border-[#008000] resize-none placeholder:pt-10 ' />
+                            <textarea {...register("description", { required: true })} defaultValue='' placeholder='توضیحات' className='border-0 shadow-[0px_0px_20px_rgba(0,0,0,0.05)] w-full h-[128px] rounded-[10px] focus:ring-[#008000] focus:border-[#008000] resize-none placeholder:pt-10 ' />
                             {errors.description?.type === "required" && <p className='text-red-500 font-normal text-xs'>توضیحات بلاگ را مشخص کنید</p>}
                         </div>
                         <div className='flex flex-col gap-1 h-full w-[22%]'>
                             <label htmlFor="dropzone-file" className="flex flex-col relative items-center justify-center rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)] w-full h-[128px] cursor-pointer hover:bg-gray-100">
-                                <input {...register("image_id", { required: true })} onChange={uploadImage} multiple id="dropzone-file" type="file" className="hidden" />
+                                <input {...register("image_id", { required: true })} defaultValue='' onChange={uploadImage} multiple id="dropzone-file" type="file" className="hidden" />
                                 {pending_add_image_blog === true ?
                                     <FadeLoader color="#36d7b7" />
                                     :
@@ -146,13 +147,7 @@ const index = () => {
                                         return (
                                             <div key={i.id} className='flex justify-between w-[450px] h-[128px] p-3 rounded-[10px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)]'>
                                                 <div className='flex w-[96px] h-[106px]'>
-
-                                                    {i.image?.media?.map((item: Media) => {
-                                                        return (
-                                                            <img src={item.original_url} alt="image" className='rounded-[10px]' />
-                                                        )
-                                                    })}
-
+                                                    <img src={i.image?.media?.[0]?.original_url || ''} alt="image" className='rounded-[10px]' />
                                                 </div>
                                                 <div className='flex flex-col justify-between w-[290px]'>
                                                     <div className='flex justify-between items-start'>

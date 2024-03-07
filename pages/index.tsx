@@ -47,31 +47,30 @@ const index = () => {
 
   console.log('data', dataShowCourse)
 
-
   return (
     <div>
       <Navbar />
 
       <div className='flex flex-col'>
-        
-        <div className='flex'>
 
-          <div className='flex flex-col gap-12 [@media(max-width:500px)]:gap-6 pt-48 [@media(max-width:1277px)]:pt-24  text-[#484848] '>
+        <div className='flex '>
+
+          <div className='flex flex-1 flex-col gap-12 pt-48 text-[#484848] max-xl:pt-20 max-md:pt-12 [@media(max-width:910px)]:items-center max-md:gap-8 max-sm:gap-4 '>
 
             <LogoMotion />
 
-            <div className='flex flex-col items-end [@media(max-width:925px)]:items-center gap-16 max-md:gap-8'>
+            <div className='flex flex-col items-end gap-12 max-xl:items-center max-md:gap-8 max-sm:gap-4  '>
               <div className='flex justify-center max-md:text-center'>
-                <p className='text-2xl max-md:text-xl [@media(max-width:500px)]:text-base w-[68%]'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
+                <p className='text-2xl w-[68%] max-md:text-xl max-sm:text-base [@media(max-width:375px)]:text-sm'>با لرنیفای به صورت نامحدود و با منابع بی پایان یاد بگیرید وبه توسعه شخصی و حرفه ای خود ادامه دهید.</p>
               </div>
-              <div className='flex justify-center items-center bg-[#339933] py-2 cursor-pointer rounded-xl w-[150px] max-md:w-[130px] [@media(max-width:400px)]:w-[110px]'>
-                <p onClick={handleScrollCourses} className='text-xl max-md:text-base [@media(max-width:500px)]:text-sm  text-white'>مشاهده دوره ها</p>
+              <div className='flex justify-center items-center bg-[#339933] py-2 cursor-pointer rounded-xl w-[150px] max-sm:w-[130px] [@media(max-width:460px)]:w-[110px]'>
+                <p onClick={handleScrollCourses} className='text-xl max-sm:text-base [@media(max-width:460px)]:text-sm text-white'>مشاهده دوره ها</p>
               </div>
             </div>
           </div>
 
-          <div className='flex relative [@media(max-width:1366px)]:hidden'>
-            <div className='pt-8'>
+          <div className='flex flex-1 relative max-xl:hidden'>
+            <div className='w-full h-full pt-8'>
               <img src='/images/user/home_page/header/header.png' alt='Header' />
             </div>
             <div className='absolute -z-10 top-[100px] left-0'>
@@ -114,13 +113,13 @@ const index = () => {
         <div className='flex justify-center mb-24'>
           <div className='flex justify-between max-2xl:justify-center bg-gradient-to-r to-[#0E9B0E] from-[#D1FF97] text-white rounded-3xl w-[78%] h-[289px]'>
 
-            <div className='flex justify-end items-center pr-24 max-lg:pr-0'>
+            <div className='flex justify-end items-center pr-24 mx-2  max-lg:pr-0'>
               <div className='flex flex-col justify-between h-[170px]w-full max-md:gap-3'>
-                <div>
+                <div className='mx-2'>
                   <h2 className='font-YekanBakhBold text-[40px] max-md:text-[34px] [@media(max-width:480px)]:text-[24px]'>از تدریس به درآمد</h2>
-                  <p className='font-YekanBakhBold text-[24px]  max-md:text-[18px] [@media(max-width:480px)]:text-[14px]'> با اشتراک‌گذاری دانش تان در لرنیفای پاداش ببرید.</p>
+                  <p className='font-YekanBakhBold text-[24px]   max-md:text-[18px] [@media(max-width:480px)]:text-[14px] [@media(max-width:350px)]:text-center'> با اشتراک‌گذاری دانش تان در لرنیفای پاداش ببرید.</p>
                 </div>
-                <div className='flex justify-center items-center bg-[#CCAB6C] rounded-xl w-[37%] h-12'>
+                <div className='flex justify-center items-center mt-3 [@media(max-width:360px)]:mt-0 bg-[#CCAB6C] rounded-xl w-[37%] h-12'>
                   <p className='text-[24px] max-lg:text-[18px] [@media(max-width:480px)]:text-[14px]'>مشاهده شرایط</p>
                 </div>
               </div>
