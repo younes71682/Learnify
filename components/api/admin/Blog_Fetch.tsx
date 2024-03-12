@@ -1,6 +1,7 @@
 import React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 type Current_Page = {
     currentPage: number
@@ -8,19 +9,19 @@ type Current_Page = {
 
 type BlogId = {
     id: number
-} 
+}
 
 const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
 
+    const Token = useSelector((state: any) => state.TOKEN.Token)
     const client = useQueryClient()
 
     const { mutate: mutate_add_image_blog, isPending: pending_add_image_blog, isSuccess: success__add_image_blog, isError: error_add_image_blog } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.post('https://learnify.v1r.ir/api/media/image', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -39,12 +40,11 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
         queryFn: async ({ queryKey }) => {
             const page = queryKey[1] as Current_Page
             let queryParams = { page: page }
-            let token = localStorage.getItem('token')
             const response = await axios.get('https://learnify.v1r.ir/api/blogs', {
                 params: queryParams,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 },
             })
             return response
@@ -54,11 +54,10 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
 
     const { mutate: mutate_add_blog, isPending: pending_add_blog } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.post('https://learnify.v1r.ir/api/blogs', data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -73,13 +72,12 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
 
     const { mutate: mutate_delete_blog, isPending: pending_delete_blog } = useMutation({
         mutationFn: () => {
-            let token = localStorage.getItem('token')
             let id = localStorage.getItem('delete_id_blog')
             console.log('id', id)
             return axios.delete(`https://learnify.v1r.ir/api/blogs/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -96,12 +94,11 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
         queryKey: ['ShowBlogId', blogId],
         queryFn: async ({ queryKey }) => {
             let id = queryKey[1]
-            console.log('if',id)
-            let token = localStorage.getItem('token')
+            console.log('if', id)
             const response = await axios.get(`https://learnify.v1r.ir/api/blogs/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 },
             })
             return response
@@ -110,14 +107,13 @@ const Blog_Fetch = (currentPage: Current_Page, blogId: BlogId,) => {
     })
 
     const { mutate: mutateEditBlog, isPending: isPendingEditBlog, isSuccess: isSuccessEditBlog } = useMutation({
-         mutationFn: (data) => {
+        mutationFn: (data) => {
             const id = blogId
-            console.log('id',id)
-            let token = localStorage.getItem('token')
+            console.log('id', id)
             return axios.put(` https://learnify.v1r.ir/api/blogs/${id}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },

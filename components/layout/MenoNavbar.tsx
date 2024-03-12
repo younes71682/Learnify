@@ -1,18 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { styled, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Teaching_Fetch } from '../api/modares/Teaching_Fetch';
@@ -71,8 +66,8 @@ const MenoNavbar = () => {
 
         <Box sx={{ width: 250 }} role="presentation" >
 
-            <List className='flex justify-center pb-0' >
-                <div className='flex justify-between items-center w-[95%] '>
+            <List className='flex justify-center pb-0 '>
+                <div className='flex justify-between items-center w-[95%] bg-red-500 '>
 
                     <div className='flex w-[186px] h-[86px]'>
                         <img className="w-full " src='/images/global/Rectangle.png' />
@@ -84,10 +79,10 @@ const MenoNavbar = () => {
                 </div>
             </List>
 
-            <Divider className='bg-[#008000] flex justify-center w-[85%] mr-4 ' />
+            <Divider sx={{ width: '80%', marginRight: '25px', bgcolor: '#008000' }} />
 
 
-            <List className="flex justify-center pt-8">
+            <List className="flex justify-center" sx={{ marginTop: '12px' }}>
                 <div className='flex relative w-[80%]'>
                     <input type='text' onClick={(e) => e.stopPropagation()} className='w-full rounded-xl flex border-0 focus:ring-[#008000]  bg-[#F5F5F5]' placeholder='جستجو کنید...' />
                     <img className='w-[22px] absolute top-2  left-2 cursor-pointer' src="/icon/user/home_page/navbar/search.svg" alt="Search" />
@@ -96,7 +91,7 @@ const MenoNavbar = () => {
 
 
             <List disablePadding>
-                <Accordion expanded={expanded} onChange={handleAccordionClick} className='shadow-none ' defaultExpanded>
+                <Accordion expanded={expanded} onChange={handleAccordionClick} sx={{ boxShadow: 'none' }} defaultExpanded>
                     <AccordionSummary
 
                         expandIcon={<ExpandMoreIcon />}
@@ -122,34 +117,36 @@ const MenoNavbar = () => {
 
 
             <List disablePadding>
-                <ListItem className='flex flex-col items-start py-0'>
-                    <ListItemText className='hover:text-[#008000]' primary={<Link href='/user/blog'>تدریس کنید</Link>} />
-                    <ListItemText className='hover:text-[#008000]' primary={<Link href='/user/blog'>وبلاگ</Link>} />
+                <ListItem >
+                    <ListItemText>
+                        <ul>
+                            <li className='w-max hover:bg-[#008000]'><Link href='/user/blog'>وبلاگ</Link></li>
+                            <li className='w-max hover:bg-[#008000]'><Link href='/user/blog'>تدریس کنید</Link></li>
+                        </ul>
+                    </ListItemText>
                 </ListItem>
             </List>
-
-
 
         </Box>
     );
 
     return (
         <ThemeProvider theme={theme}>
-                <div>
-                    <IconButton
-                        // color="inherit"
-                        aria-label="open drawer"
-                        edge="end"
-                        onClick={toggleDrawer(true)}
-                        sx={{ color: "#484848" }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Drawer anchor='right' open={open} onClose={toggleDrawer(false)}>
-                        {DrawerList}
-                    </Drawer>
-                </div>
-            
+            <div>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="end"
+                    onClick={toggleDrawer(true)}
+                    sx={{ color: "#484848" }}
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Drawer anchor='right' open={open} onClose={toggleDrawer(false)}>
+                    {DrawerList}
+                </Drawer>
+            </div>
+
         </ThemeProvider>
     );
 }
@@ -161,18 +158,7 @@ export default MenoNavbar
 
 
 
-// <ListItemIcon>
-// <div className="flex items-center gap-[6px] text-[1.125rem] p-3">
-// {index === 0 && <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className="w-[24px]" />}
-// {index === 1 && <img src='/images/user/home_page/dropdown/browser.png' alt='Browser' className="w-[24px]" />}
-// {index === 2 && <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_SSecurity' className="w-[24px]" />}
-// {index === 3 && <img src='/images/user/home_page/dropdown/monitor.png' alt='Monitor' className="w-[24px]" />}
-// {index === 4 && <img src='/images/user/home_page/dropdown/mobile_coding.png' alt='Mobile_Coding' className="w-[24px]" />}
-// {index === 5 && <img src='/images/user/home_page/dropdown/custom_coding.png' alt='Custom_Coding' className="w-[24px]" />}
-// {index === 6 && <img src='/images/user/home_page/dropdown/menu.png' alt='Meno' className="w-[24px]" />}
-// {index === 7 && <img src='/images/user/home_page/dropdown/movie.png' alt='Movie' className="w-[24px]" />}
-// </div>
-//  </ListItemIcon>
+
 
 
 

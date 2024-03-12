@@ -49,134 +49,137 @@ const Location = (props: Props) => {
     const { errors } = formState
 
     return (
-        <div className='flex flex-col w-[28%] h-full pt-4 pb-2 pr-4 gap-3 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
-            <div className='flex items-center gap-1 text-lg'>
-                <Image src='/icon/user/account/info_user/location.svg' alt='icon' width={24} height={24} />
-                <h2>محل سکونت</h2>
-            </div>
-            <div className='flex flex-col gap-1 '>
-
-                <div className='flex flex-col gap-1 h-[71px]'>
-                    <div>
-                        <Controller
-                            render={({ field }) =>
-                                <Select
-                                    {...field}
-
-                                    styles={{
-                                        control: (baseStyles, state) => ({
-                                            ...baseStyles,
-                                            // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
-                                            height: "48px",
-                                            borderRadius: "10px",
-                                        }),
-                                    }}
-
-
-                                    className="w-[60%] "
-                                    classNamePrefix="state"
-                                    // defaultValue={state[0]}
-                                    isRtl={isRtl}
-                                    isSearchable={isSearchable}
-                                    name="state"
-                                    options={array_state}
-                                    onChange={(selectedOption) => {
-                                        setSelectStateValue(selectedOption)
-                                        field.onChange(selectedOption.value)
-                                    }}
-                                    value={selectstatevalue}
-
-                                    placeholder={'استان'}
-
-                                    theme={(theme) => ({
-                                        ...theme,
-                                        borderRadius: 7,
-
-                                        colors: {
-                                            ...theme.colors,
-                                            primary25: '#dcfce7',
-                                            primary: '#008000',
-                                        },
-
-                                    })}
-                                />
-                            }
-                            name="state"
-                            control={control}
-                            rules={{
-                                required: true
-                            }}
-                            defaultValue={selectstatevalue?.value}
-                        />
-                    </div>
-
-                    <div>
-                        {errors.state?.type === "required" && <p className="text-red-500 font-normal text-xs">استان خود را مشخص کنید</p>}
-                    </div>
+        <div>
+            <div className='flex flex-col w-[280px] h-full pt-4 pb-2 px-4 gap-3 rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.05)]'>
+              
+                <div className='flex items-center gap-1 text-lg'>
+                    <Image src='/icon/user/account/info_user/location.svg' alt='icon' width={24} height={24} />
+                    <h2>محل سکونت</h2>
                 </div>
 
+                <div className='flex flex-col gap-1 '>
 
-                <div className='flex flex-col gap-1 h-[71px]'>
+                    <div className='flex flex-col gap-1 h-[71px]'>
+                        <div>
+                            <Controller
+                                render={({ field }) =>
+                                    <Select
+                                        {...field}
 
-                    <div>
-                        <Controller
-                            render={({ field }) =>
-
-                                <Select
-                                    {...field}
-                                    styles={{
-                                        control: (baseStyles, state) => ({
-                                            ...baseStyles,
-                                            // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
-                                            height: "48px",
-                                            borderRadius: "10px",
-                                        }),
-                                    }}
+                                        styles={{
+                                            control: (baseStyles, state) => ({
+                                                ...baseStyles,
+                                                // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
+                                                height: "48px",
+                                                borderRadius: "10px",
+                                            }),
+                                        }}
 
 
-                                    className="w-[60%] "
-                                    // classNamePrefix="state"
-                                    // defaultValue={state[0]}
-                                    isRtl={isRtl}
-                                    isSearchable={isSearchable}
-                                    name="city"
-                                    options={array_city}
-                                    onChange={(selectedOption) => {
-                                        setSelectCityValue(selectedOption)
-                                        field.onChange(selectedOption.value)
-                                    }}
-                                    value={selectcityvalue}
-                                    placeholder={'شهر'}
+                                        className="w-[155px]"
+                                        classNamePrefix="state"
+                                        // defaultValue={state[0]}
+                                        isRtl={isRtl}
+                                        isSearchable={isSearchable}
+                                        name="state"
+                                        options={array_state}
+                                        onChange={(selectedOption) => {
+                                            setSelectStateValue(selectedOption)
+                                            field.onChange(selectedOption.value)
+                                        }}
+                                        value={selectstatevalue}
 
-                                    theme={(theme) => ({
-                                        ...theme,
-                                        borderRadius: 7,
+                                        placeholder={'استان'}
 
-                                        colors: {
-                                            ...theme.colors,
-                                            primary25: '#dcfce7',
-                                            primary: '#008000',
-                                        },
+                                        theme={(theme) => ({
+                                            ...theme,
+                                            borderRadius: 7,
 
-                                    })}
-                                />
-                            }
-                            name='city'
-                            control={control}
-                            rules={{
-                                required: true
-                            }}
-                            defaultValue={selectcityvalue?.value}
-                        />
+                                            colors: {
+                                                ...theme.colors,
+                                                primary25: '#dcfce7',
+                                                primary: '#008000',
+                                            },
+
+                                        })}
+                                    />
+                                }
+                                name="state"
+                                control={control}
+                                rules={{
+                                    required: true
+                                }}
+                                defaultValue={selectstatevalue?.value}
+                            />
+                        </div>
+
+                        <div>
+                            {errors.state?.type === "required" && <p className="text-red-500 font-normal text-xs">استان خود را مشخص کنید</p>}
+                        </div>
                     </div>
 
-                    <div>
-                        {errors.city?.type === "required" && <p className="text-red-500 font-normal text-xs">شهر خود را مشخص کنید</p>}
+
+                    <div className='flex flex-col gap-1 h-[71px]'>
+                        <div>
+                            <Controller
+                                render={({ field }) =>
+
+                                    <Select
+                                        {...field}
+                                        styles={{
+                                            control: (baseStyles, state) => ({
+                                                ...baseStyles,
+                                                // borderColor: state.isFocused ? '#008000' : '#AAAAAA',
+                                                height: "48px",
+                                                borderRadius: "10px",
+                                            }),
+                                        }}
+
+
+                                        className="w-[155px] "
+                                        // classNamePrefix="state"
+                                        // defaultValue={state[0]}
+                                        isRtl={isRtl}
+                                        isSearchable={isSearchable}
+                                        name="city"
+                                        options={array_city}
+                                        onChange={(selectedOption) => {
+                                            setSelectCityValue(selectedOption)
+                                            field.onChange(selectedOption.value)
+                                        }}
+                                        value={selectcityvalue}
+                                        placeholder={'شهر'}
+
+                                        theme={(theme) => ({
+                                            ...theme,
+                                            borderRadius: 7,
+
+                                            colors: {
+                                                ...theme.colors,
+                                                primary25: '#dcfce7',
+                                                primary: '#008000',
+                                            },
+
+                                        })}
+                                    />
+                                }
+                                name='city'
+                                control={control}
+                                rules={{
+                                    required: true
+                                }}
+                                defaultValue={selectcityvalue?.value}
+                            />
+                        </div>
+
+                        <div>
+                            {errors.city?.type === "required" && <p className="text-red-500 font-normal text-xs">شهر خود را مشخص کنید</p>}
+                        </div>
+
                     </div>
+
 
                 </div>
-
-
             </div>
         </div >
     )

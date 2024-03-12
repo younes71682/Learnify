@@ -1,21 +1,22 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useState } from 'react'
+ 
+import { useSelector } from 'react-redux'
 
 export const Teaching_Fetch = () => {
 
+    const Token = useSelector((state: any) => state.TOKEN.Token)
     let server = 'https://learnify.v1r.ir'
     const [CreatedCourseId, setCreatedCouseId] = useState('')
 
 
     const { mutate: mutate_CreateCourse, isPending: pending_CreateCourse, isSuccess: success_CreateCourse } = useMutation({
-
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.post(`${server}/api/course/create`, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -30,11 +31,10 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadPhotoCourse, isPending: pending_UploadPhotoCourse, isSuccess: success_UploadPhotoCourse, isError: error_UploadPhotoCourse } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.post(`${server}/api/media/image`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -49,11 +49,10 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadTeaserCourse, isPending: pending_UploadTeaserCourse, isSuccess: success_UploadTeaserCourse, isError: error_UploadTeaserCourse } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.post(`${server}/api/media/video`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -69,11 +68,10 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadMediaIdCourse, isPending: pending_UploadMediaIdCourse, isSuccess: success_UploadMediaIdCourse } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.put(`${server}/api/course/update/${CreatedCourseId}/1`, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
 
             })
@@ -88,11 +86,10 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadVideoCourse, isPending: pending_UploadVideoCourse, isSuccess: success_UploadVideoCourse, isError: error_UploadVideoCourse } = useMutation({
         mutationFn: async (data) => {
-            let token = localStorage.getItem('token');
             const response = await axios.post(`${server}/api/media/video`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
             return response
@@ -106,11 +103,10 @@ export const Teaching_Fetch = () => {
 
     const { mutate: mutate_UploadCourse, isPending: pending_UploadCourse, isSuccess: success_UploadCourse } = useMutation({
         mutationFn: (data) => {
-            let token = localStorage.getItem('token')
             return axios.put(`${server}/api/course/update/${CreatedCourseId}/2`, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
         },
@@ -122,16 +118,17 @@ export const Teaching_Fetch = () => {
         }
     })
 
+
     const { data: dataCategory } = useQuery({
         queryKey: ['Category'],
         queryFn: async () => {
-            let token = localStorage.getItem('token')
             const result = await axios.get(`${server}/api/category/index`, {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
+            console.log('def', dataCategory)
             return result
         },
     })
@@ -140,11 +137,10 @@ export const Teaching_Fetch = () => {
 
         mutationFn: (data) => {
             console.log('data', data)
-            let token = localStorage.getItem('token')
             return axios.put(`https://learnify.v1r.ir/api/course/update/${CreatedCourseId}/3`, data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
 
@@ -162,11 +158,10 @@ export const Teaching_Fetch = () => {
     const { data: dataShowCourse } = useQuery({
         queryKey: ['showCourse'],
         queryFn: async () => {
-            let token = localStorage.getItem('token')
             const response = await axios.get(`${server}/api/course/show/1`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
             return response

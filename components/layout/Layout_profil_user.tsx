@@ -13,7 +13,7 @@ const Layout_profil_user = ({ children }: PropsContainer) => {
     return (
         <div className='flex flex-col'>
             <Navbar />
-            <div className='flex gap-6 justify-center h-[140vh] pt-20'>
+            <div className='flex gap-6 justify-centerz h-[140vh] pt-20'>
                 <Sidbar />
                 {children}
             </div>

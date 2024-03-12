@@ -24,7 +24,7 @@ const Sidebar = () => {
     const link = usePathname()
 
     return (
-        <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] w-[18%] py-8 justify-between'>
+        <div className='flex flex-col rounded-[15px] shadow-[0px_0px_20px_rgba(0,0,0,0.05)] h-[782px] w-[270px] py-8 justify-between'>
 
             <div>
                 <div className='flex items-center gap-5 pr-4'>

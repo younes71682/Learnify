@@ -1,16 +1,18 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 
 
 const Course_Fetch = (currentPage: number, courseId: number) => {
 
+    const Token = useSelector((state: any) => state.TOKEN.Token)
+
 
     const { data: data_show_listCourse, isPending: pending_show_listCourse } = useQuery({
         queryKey: ['listCourses', currentPage],
         queryFn: async ({ queryKey }) => {
-            let token = localStorage.getItem('token')
             const page = queryKey[1]
             let queryparams = { page: page }
             console.log('queryparams', queryparams)
@@ -18,7 +20,7 @@ const Course_Fetch = (currentPage: number, courseId: number) => {
                 params: queryparams,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
 
             })
@@ -30,12 +32,11 @@ const Course_Fetch = (currentPage: number, courseId: number) => {
     const { data: data_show_CourseId, isPending: pending_show_CourseId } = useQuery({
         queryKey: ['courseId', courseId],
         queryFn: async ({ queryKey }) => {
-            let token = localStorage.getItem('token')
             let id = queryKey[1]
             const response = await axios.get(`https://learnify.v1r.ir/api/course/show/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${Token}`,
                 }
             })
             return response

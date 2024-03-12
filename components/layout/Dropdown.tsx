@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from 'react'
 import { Teaching_Fetch } from "../api/modares/Teaching_Fetch";
@@ -21,18 +20,18 @@ const Dropdown = () => {
     return (
         <div>
 
-            <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="300" data-dropdown-trigger="hover" className="inline-flex items-center outline-0" type="button">
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" className="inline-flex items-center outline-0" type="button">
                 <p>دوره ها</p>
                 <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                 </svg>
             </button>
 
-            <div id="dropdownDelay" className="z-10 hidden bg-[#FFF]  py-4  rounded-lg  shadow w-[18rem]">
+            <div id="dropdownHover" className="z-10 hidden bg-[#FFF] py-4 rounded-lg  shadow w-[18rem]">
                 {courses?.map((i: Category, ind: number) => {
                     return (
                         <div key={i.category_id} className="">
-                            <ul className="flex flex-col px-6 py-1.5  " aria-labelledby="dropdownDelayButton">
+                            <ul className="flex flex-col px-6 py-1.5  " aria-labelledby="dropdownHoverButton">
                                 <li className="border-solid border-white border-[1px]  hover:border-[#008000] rounded-[10px] hover:text-[#008000]">
                                     <div className="flex items-center gap-[6px] text-[1.125rem] p-3">
                                         {ind === 0 && <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className="w-[24px]" />}
