@@ -9,12 +9,15 @@ const CartItems = (props: any) => {
     const { id, title, price, mentorName, mentorfamily, image } = props
     const dispatch = useDispatch()
     const handelDelete = (id) => {
-        dispatch(DELETE(props))
+        dispatch(DELETE({id}))
     }
+    console.log('im',typeof(id))
     return (
         <div className='rounded-[15px] shadow-[0_0_20px_rgba(0,0,0,0.1)] py-4 px-4 w-full'>
             <div className='flex justify-between '>
-                <div className='w-[137.689px] h-[139px] rounded-[10px] flex '>{image}</div>
+                <div className='flex w-[137.689px] h-[139px]'>
+                    <img src={image} alt={`image${title}`} className='w-full h-full rounded-[10px]' />
+                </div>
                 <div className='flex flex-1 mr-6 justify-between [@media(max-width:800px)]:flex-col'>
                     <div className='flex items-center gap-6'>
                         <div className='flex flex-col gap-4 max-sm:gap-1'>
@@ -28,7 +31,7 @@ const CartItems = (props: any) => {
 
                     <div className='flex items-center gap-4 [@media(max-width:930px)]:flex-col [@media(max-width:930px)]:justify-center [@media(max-width:930px)]:gap-1'>
                         <div className='flex items-center gap-1 '>
-                            <p className='text-2xl font-normal'>{price}</p>
+                            <p className='text-2xl font-normal font-Byekan'>{price}</p>
                             <div className='flex flex-col text-[#4F4F4F] text-[10px] font-normal'>
                                 <p>تو</p>
                                 <p>مان</p>

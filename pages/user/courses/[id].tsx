@@ -22,7 +22,9 @@ export const CourseDetail = () => {
     const router = useRouter()
     const { id } = router.query
     const courseId = id
+
     const { data_show_CourseId, pending_show_CourseId } = Course_Fetch('', courseId)
+
     console.log('course:', data_show_CourseId)
     const chapter_count = data_show_CourseId?.data.data.chapter_count
     const lesson_count = data_show_CourseId?.data.data.lesson_count
@@ -32,13 +34,13 @@ export const CourseDetail = () => {
     const price = data_show_CourseId?.data.data.course.price
     const mentorName = data_show_CourseId?.data.data.mentor.name
     const mentorfamily = data_show_CourseId?.data.data.mentor.family
+    const image = data_show_CourseId?.data.data.course.image.media[0].original_url
 
-    const dataCart = { courseId, title, price, mentorName, mentorfamily, description }
+    const dataCart = { courseId, title, price, mentorName, mentorfamily, description, image }
 
 
 
     const text_description = description?.split(('\n').localeCompare((srt) => <p>{srt}</p>))
-
 
     const Courses = [
         { id: 1, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
@@ -47,8 +49,7 @@ export const CourseDetail = () => {
         { id: 4, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
     ];
 
-    const [refstyle, setRefStyle] = React.useState({ color: 'black', opacity: "80%" })
-
+ 
     const titleHeader = [
         { title: 'معرفی دوره' },
         { title: 'درباره استاد' },
@@ -65,9 +66,7 @@ export const CourseDetail = () => {
     }
 
     const dispatch = useDispatch()
-
     const handelAdd = (dataCart) => {
-        // localStorage.setItem('dataCart', JSON.stringify(dataCart))
         dispatch(ADD(dataCart))
     }
 
@@ -217,10 +216,10 @@ export const CourseDetail = () => {
                                     <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] max-xl:flex justify-between max-md:flex-col'>
 
                                         <div className='flex'>
-                                            <img className='w-full' src="/images/videoSample.png" alt="" />
+                                            <video className='w-full' src="/images/videoSample.png" alt="" />
                                         </div>
 
-                                        <div className=' bg-red-500 flex flex-col flex-1 gap-8'>
+                                        <div className='flex flex-col flex-1 gap-8'>
 
                                             <div className='flex flex-col px-4 font-bold text-sm gap-4'>
 
@@ -245,11 +244,11 @@ export const CourseDetail = () => {
 
                                                 <div className='flex justify-between pt-6'>
                                                     <h2 className='text-base'>هزینه آموزش</h2>
-                                                    <p className='font-bold text-xl text-[#393] '>2,690,000 تومان</p>
+                                                    <p className='font-bold text-xl text-[#393] font-Byekan '>{price}</p>
                                                 </div>
                                             </div>
-                                            <div onClick={() => handelAdd(dataCart)} className='flex justify-center border-t text-center bg-black text-[#393] text-xl font-bold py-3 cursor-pointer'>
-                                                <Link href={'/user/cart'}>افزودن به سبد خرید</Link>
+                                            <div onClick={() => handelAdd(dataCart)} className='flex justify-center border-t text-center text-[#393] text-xl font-bold py-3 cursor-pointer'>
+                                                <Link href='/user/cart'>افزودن به سبد خرید</Link>
                                             </div>
                                         </div>
                                     </div>

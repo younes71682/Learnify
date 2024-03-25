@@ -6,7 +6,7 @@ import { ADD_TOKEN } from '../Redux/TokenSlise'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = (loginRole: string, ) => {
+const Login = (loginRole: string,) => {
 
     const dispatch = useDispatch()
 
@@ -19,7 +19,11 @@ const Login = (loginRole: string, ) => {
             })
         },
         onSuccess: () => {
-            toast.success("کد تایید به شماره موبایل وارد شده ارسال شد", {
+            toast.success(
+                <div className='text-right'>
+                    <p className='text-[#484848] font-YekanBakhBold'>موفق!</p>
+                    <p className='text-[#484848]'>کد تایید به شماره موبایل وارد شده ارسال گردید</p>
+                </div>, {
                 position: "bottom-left"
             });
 
@@ -34,19 +38,18 @@ const Login = (loginRole: string, ) => {
                     'Content-Type': 'application/json',
                 }
             })
-
         },
 
         onSuccess: (res) => {
             console.log('token', res)
             dispatch(ADD_TOKEN(res.data.token))
             if (res.data.token) {
-                toast.success("خوش آمدید!", {
+                toast.success(<p className='text-[#484848] text-right'>خوش آمدید!</p>, {
                     position: "bottom-left"
                 });
-                setLoginModalOpen(false)
+
             } else {
-                toast.error("کد وارد شده اشتباه است", {
+                toast.error(<p className='text-[#484848] text-right'>کد وارد شده اشتباه است</p>, {
                     position: "top-left"
                 });
             }
@@ -54,7 +57,7 @@ const Login = (loginRole: string, ) => {
     })
 
 
-    return { mutate_phone_number, mutate_verification_code, pending_verification_code, success_verification_code}
+    return { mutate_phone_number, mutate_verification_code, pending_verification_code, success_verification_code }
 }
 
 export default Login

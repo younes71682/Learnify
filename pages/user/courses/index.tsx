@@ -16,6 +16,7 @@ export default function Courses() {
   const { data_show_listCourse, pending_show_listCourse } = Course_Fetch(currentPage);
 
   const listCourse = data_show_listCourse?.data.data.data
+  console.log('ffdds',listCourse)
 
   //index last_page
   const last_page = data_show_listCourse?.data.data.last_page
@@ -26,7 +27,7 @@ export default function Courses() {
   }
 
 
-
+  
   return (
     <div>
       {pending_show_listCourse ?
@@ -56,7 +57,6 @@ export default function Courses() {
                     <div className='w-[274px] h-[469px]' key={i.id}>
                       <CourseComponent
                         {...i}
-                        imageURL={i.image?.media?.[0]?.original_url || ''}
                       />
                     </div>
                   )

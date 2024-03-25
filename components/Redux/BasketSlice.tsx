@@ -1,16 +1,40 @@
-//@ts-nocheck
 import { createSlice } from "@reduxjs/toolkit"
 
+type Course = {
+    id: number,
+    title: string,
+    mentorName: string,
+    mentorfamily: string,
+    price: string,
+    image: string,
+}
+
+type BacketState = {
+    Cart: Course[]
+}
+
+type AddActionPayload = {
+    courseId: number,
+    title: string,
+    mentorName: string,
+    mentorfamily: string,
+    price: string,
+    image: string,
+}
+
+type DeleteActionPayload = {
+    id: number;
+};
 
 export const BacketSlice = createSlice({
     name: "SHOPPING",
     initialState: {
         Cart: [],
-    },
+    } as BacketState,
 
     reducers: {
         ADD: (state, action) => {
-            const { courseId, title, mentorName, mentorfamily, price } = action.payload
+            const { courseId, title, mentorName, mentorfamily, price, image }:AddActionPayload = action.payload 
             if (!state.Cart?.find(item => item.id === courseId)) {
                 state.Cart?.push({
                     ...state,
@@ -21,7 +45,7 @@ export const BacketSlice = createSlice({
                             mentorName: mentorName,
                             mentorfamily: mentorfamily,
                             price: price,
-                            // image: action.payload?.image 
+                            image: image,
                         }
                     ]
 

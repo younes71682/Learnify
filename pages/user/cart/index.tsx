@@ -5,17 +5,23 @@ import Navbar from '@/components/layout/Navbar'
 import { useSelector } from 'react-redux'
 import Empty_Cart from '@/components/user/cart/Empty_Cart'
 
+interface PRICE {
+    price: string
+}
 
 const index = () => {
-
-    const products = [
-        { id: 1, name: "Redux", price: "790,000", teacher: "امیرحسام میرصادقی", img: <img src='/images/user/cart/redux.png' alt='redux' /> },
-        { id: 2, name: "Redux", price: "790,000", teacher: "امیرحسام میرصادقی", img: <img src='/images/user/cart/redux.png' alt='redux' /> },
-    ]
 
     //@ts-ignore
     const Cart = useSelector(state => state.SHOPPING.Cart)
     console.log('indexCart', Cart)
+
+
+    const total = Cart?.reduce((acc: number, item: PRICE) => {
+        console.log('total', item.price)
+        const pri = Number(item.price)
+        return acc + pri
+    }, 0)
+
 
     return (
 
@@ -52,7 +58,7 @@ const index = () => {
                                 <p className='text-lg'>تعداد</p>
                                 <div className='flex items-center gap-1'>
                                     <p className='text-[10px] font-normal'>دوره</p>
-                                    <p className='text-base font-normal'>{ }</p>
+                                    <p className='text-base font-normal font-Byekan'>{Cart.length}</p>
                                 </div>
                             </div>
 
@@ -63,7 +69,8 @@ const index = () => {
                                         <p>تو</p>
                                         <p>مان</p>
                                     </div>
-                                    <p className='text-base font-normal'>790,000</p>
+                                    <p className='text-base font-normal font-Byekan'>{total}
+                                    </p>
                                 </div>
                             </div>
 
@@ -72,7 +79,7 @@ const index = () => {
                             <div className='flex justify-between my-5 '>
                                 <h3 className='text-lg font-bold'>مبلغ قابل پرداخت</h3>
                                 <div className='flex items-center'>
-                                    <h3 className='text-[#008000] text-lg font-normal'>790,000</h3>
+                                    <h3 className='text-[#008000] text-lg font-normal font-Byekan'>{total}</h3>
                                     <div className='flex flex-col items-center text-[10px] font-normal'>
                                         <p>تو</p>
                                         <p>مان</p>
@@ -84,7 +91,7 @@ const index = () => {
                                 <p className='text-[#FBFBFB] text-xl font-semibold'>تکمیل فرایند خرید</p>
                             </div>
 
-                            <div className=''>
+                            <div>
                                 <p className='text-xs font-normal'>پرداخت و ثبت سفارش، به منزله مطالعه و پذیرفتن <Link href="/" className='text-[#00359B]'>قوانین و مقررات</Link> استفاده از خدمات لرنیفای است .</p>
                             </div>
                         </div>
