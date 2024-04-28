@@ -2,7 +2,7 @@ import React from 'react'
 
 const Condition = () => {
   return (
-    <div className='flex flex-col gap-8 h-[25rem]'>
+    <div className='flex flex-col gap-8 pt-4 pb-10'>
 
       <div>
         <h2 className='font-bold'>همکاری با لرنیفای چگونه است؟</h2>

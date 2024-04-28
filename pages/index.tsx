@@ -92,7 +92,7 @@ const index = () => {
               <Image src="/icon/user/home_page/course/thoundar.svg" alt='Thoundar' width={24} height={24} />
               <h3 className='text-[#484848] text-xl font-bold'>جدیدترین دوره‌ها</h3>
             </div>
-            <Link href="/user/courses" className='flex items-center [@media(max-width:504px)]:justify-end [@media(max-width:504px)]:mb-4'>
+            <Link href={{ pathname: '/user/courses', query: { param1: 'جدیدترین' } }} className='flex items-center [@media(max-width:504px)]:justify-end [@media(max-width:504px)]:mb-4'>
               <h3>مشاده همه دوره ها </h3>
               <Image src="/icon/user/home_page/course/left.svg" alt='Left' width={24} height={24} />
             </Link>
@@ -142,7 +142,7 @@ const index = () => {
               <Image src="/icon/user/home_page/course/free.svg" alt='Free' width={24} height={24} />
               <h3 className='text-[#212121] text-xl font-bold [@media(max-width:504px)]:text-base'>آموزش‌های پرمخاطب رایگان</h3>
             </div>
-            <Link href="/user/courses" className='flex items-center [@media(max-width:504px)]:mb-4 [@media(max-width:504px)]:text-sm  [@media(max-width:504px)]:justify-end '>
+            <Link href={{ pathname: '/user/courses', query: { param1: 'رایگان' } }} className='flex items-center [@media(max-width:504px)]:mb-4 [@media(max-width:504px)]:text-sm  [@media(max-width:504px)]:justify-end '>
               <h3>مشاده همه دوره ها </h3>
               <Image src="/icon/user/home_page/course/left.svg" alt='Left' width={24} height={24} />
             </Link>

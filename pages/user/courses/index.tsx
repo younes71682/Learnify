@@ -7,6 +7,7 @@ import Sidebarfilter from '@/components/user/course/Sidebarfilter'
 import Course_Fetch from '@/components/api/user/Course_Fetch';
 import Pagination from '@mui/material/Pagination';
 import { CircleLoader } from 'react-spinners';
+import { useRouter } from 'next/router';
 
 
 
@@ -16,18 +17,20 @@ export default function Courses() {
   const { data_show_listCourse, pending_show_listCourse } = Course_Fetch(currentPage);
 
   const listCourse = data_show_listCourse?.data.data.data
-  console.log('ffdds',listCourse)
+  console.log('ffdds', data_show_listCourse?.data)
 
   //index last_page
   const last_page = data_show_listCourse?.data.data.last_page
 
   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value)
-    console.log(currentPage)
+    // console.log(currentPage)
   }
 
+  const router = useRouter()
+  console.log('router', router.query.param1)
+  const queryParamsCourse = router.query.param1
 
-  
   return (
     <div>
       {pending_show_listCourse ?
@@ -48,7 +51,7 @@ export default function Courses() {
             <div className='flex justify-center gap-6 '>
 
               <div className='w-[18%] h-[720px]'>
-                <Sidebarfilter />
+                <Sidebarfilter queryParamsCourse={queryParamsCourse} />
               </div>
 
               <div className='flex flex-wrap gap-6 w-[64%]'>

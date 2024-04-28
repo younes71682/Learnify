@@ -17,19 +17,27 @@ interface StyledTabsProps {
 const StyledTabs = styled((props: StyledTabsProps) => (
     <Tabs
         {...props}
-        TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-    />
+        TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }} />
+
 ))({
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '70%',
+    '@media (max-width: 600px)': {
+        width: '100%',
+    },
     '& .MuiTabs-indicator': {
         display: 'flex',
         justifyContent: 'center',
         backgroundColor: 'transparent',
-        borderColor: 'divider'
+        borderColor: 'divider',
+
     },
     '& .MuiTabs-indicatorSpan': {
-        width: '100%',
+        width: '200px',
         backgroundColor: '#008000',
     },
+
 });
 
 interface StyledTabProps {
@@ -42,18 +50,22 @@ const StyledTab = styled((props: StyledTabProps) => (
 ))(({ theme }) => ({
     textTransform: 'none',
     fontWeight: theme.typography.fontWeightBold,
-    fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.pxToRem(20),
-    marginRight: theme.spacing(12),
-    marginLeft: theme.spacing(12),
-    color: 'rgb(0, 0, 0)',
+    fontFamily: 'YekanBakh-Medium',
+    fontSize: '23px',
+    color: '#000',
+    width: '33%',
+    '@media (max-width: 600px)': {
+        fontSize: '18px',
+    },
     '&.Mui-selected': {
         color: '#000',
     },
     '&.Mui-focusVisible': {
         backgroundColor: 'rgba(100, 95, 828, 0.32)',
     },
+
 }));
+
 
 const Tab_layout = (props: any) => {
     const { refstudy } = props
@@ -64,25 +76,23 @@ const Tab_layout = (props: any) => {
     };
 
     return (
-        <div className='flex justify-center me-auto'>
-            <Box ref={refstudy} sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <TabContext value={value} >
-                    <Box sx={{ bgcolor: '#FBFBFB', borderColor: 'divider', }}>
-                        <StyledTabs
-                            value={value}
-                            onChange={handleChange}
-                            aria-label="styled tabs example"
-                        >
-                            <StyledTab value="1" label="شرایط لرنیفای" />
-                            <StyledTab value="2" label="ظبط آموزش" />
-                            <StyledTab value="3" label="انتشار دوره" />
-                        </StyledTabs>
-                    </Box>
-                    <TabPanel  value="1"><Condition /></TabPanel>
-                    <TabPanel value="2"><Training_recording /></TabPanel>
-                    <TabPanel value="3"><Release_period /></TabPanel>
-                </TabContext>
-            </Box>
+        <div>
+            <div className='flex justify-center mx-auto'>
+                <Box ref={refstudy} sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <TabContext value={value} >
+                        <Box display='flex' justifyContent='center' sx={{ bgcolor: '#FBFBFB', borderColor: 'divider' }}>
+                            <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example">
+                                <StyledTab value="1" label="شرایط لرنیفای" />
+                                <StyledTab value="2" label="ظبط آموزش" />
+                                <StyledTab value="3" label="انتشار دوره" />
+                            </StyledTabs>
+                        </Box>
+                        <TabPanel value="1"><Condition /></TabPanel>
+                        <TabPanel value="2"><Training_recording /></TabPanel>
+                        <TabPanel value="3"><Release_period /></TabPanel>
+                    </TabContext>
+                </Box>
+            </div>
         </div>
     );
 }

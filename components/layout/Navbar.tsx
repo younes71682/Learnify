@@ -37,9 +37,9 @@ const Navbar = () => {
                     <MenoNavbar />
                 </div>
 
-                <div className='w-[186px] h-[86px] flex max-sm:hidden'>
+                <Link href='/' className='w-[186px] h-[86px] flex max-sm:hidden'>
                     <img className="w-full " src='/images/global/Rectangle.png' />
-                </div>
+                </Link>
 
                 <div className='flex items-center w-[228px] pt-6  max-lg:hidden'>
                     <ul className="flex justify-between flex-1 ">

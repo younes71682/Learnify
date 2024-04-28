@@ -15,9 +15,9 @@ const CourseComponent = (props: any) => {
                 <img className='w-full bg-contain rounded-[15px]' src={img} alt='Medium_Shot_Woman_Presenting' />
             </div>
 
-            <div className='flex flex-col items-center justify-between w-full h-[300px]'>
+            <div className='flex flex-col justify-between w-full h-[300px]'>
 
-                <div className='flex flex-col items-center  gap-4'>
+                <div className='flex flex-col items-center gap-4'>
                     <div className='flex flex-col gap-1 w-[88%]'>
                         <h3 className='text-[#212121] font-bold'>{title}</h3>
 
