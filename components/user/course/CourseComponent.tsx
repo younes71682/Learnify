@@ -5,7 +5,7 @@ import React from 'react'
 const CourseComponent = (props: any) => {
     const { name, title, description, seasons, duration, price, image, id, } = props
 
-    const img = image.media?.[0].original_url
+    const img = image?.media?.[0].original_url
 
     return (
         <div className='flex flex-col items-center justify-between bg-white shadow-[0_0px_20px_rgb(0,0,0,0.1)] rounded-[10px] w-full h-full'>

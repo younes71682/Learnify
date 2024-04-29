@@ -67,11 +67,11 @@ export const Teaching = () => {
         }
 
         else if (activeStep === 2) {
-            // setActiveStep(activeStep + 1)
-            // const data = localStorage.getItem('itemcourse')
-            // const Arryitem = JSON.parse(data)
-            // console.log('Arryitem', { chapters: Arryitem })
-            // mutate_UploadCourse({ chapters: Arryitem })
+            setActiveStep(activeStep + 1)
+            const data = localStorage.getItem('itemcourse')
+            const Arryitem = JSON.parse(data)
+            console.log('Arryitem', { chapters: Arryitem })
+            mutate_UploadCourse({ chapters: Arryitem })
         }
 
         else if (activeStep === 3) {
