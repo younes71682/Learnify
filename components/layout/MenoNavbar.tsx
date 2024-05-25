@@ -67,7 +67,7 @@ const MenoNavbar = () => {
         <Box sx={{ width: 250 }} role="presentation" >
 
             <List className='flex justify-center pb-0 '>
-                <div className='flex justify-between items-center w-[95%] bg-red-500 '>
+                <div className='flex justify-between items-center w-[95%] '>
 
                     <div className='flex w-[186px] h-[86px]'>
                         <img className="w-full " src='/images/global/Rectangle.png' />
