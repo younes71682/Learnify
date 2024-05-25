@@ -34,7 +34,7 @@ export const CourseDetail = () => {
     const price = data_show_CourseId?.data.data.course.price
     const mentorName = data_show_CourseId?.data.data.mentor.name
     const mentorfamily = data_show_CourseId?.data.data.mentor.family
-    const image = data_show_CourseId?.data.data.course.image.media[0].original_url
+    const image = data_show_CourseId?.data.data.course.image?.media[0].original_url
 
     const dataCart = { courseId, title, price, mentorName, mentorfamily, description, image }
 
@@ -49,7 +49,7 @@ export const CourseDetail = () => {
         { id: 4, title: "یافتن و انتخاب ایده کسب و کار", name: "سلمان طاهری", detail: "در این دوره آموزشی ایرانی، راه یافتن ایده مناسب را یادمی‌گیریم و با چند ابزار کاربردی در این مسیر آشنا می‌شویم.", duration: "47", seasons: "7", price: "790,000", image: <img src='/images/user/courses/monitor.png' alt='' /> },
     ];
 
- 
+
     const titleHeader = [
         { title: 'معرفی دوره' },
         { title: 'درباره استاد' },
@@ -69,6 +69,11 @@ export const CourseDetail = () => {
     const handelAdd = (dataCart) => {
         dispatch(ADD(dataCart))
     }
+
+    const openVideo = (url) => {
+        window.open(url, '_blank'); // Open the video URL in a new tab/window
+    };
+
 
     return (
         <div>
@@ -152,10 +157,17 @@ export const CourseDetail = () => {
                                                     <AccordionDetails>
                                                         {item.lessons.map((item, i) => {
                                                             return (
-                                                                <Typography className='my-2  font-YekanBakhRegular shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  font-bold text-sm w-[92%] flex items-center h-[65px] mx-auto'>
-                                                                    <div className='flex '>
+                                                                <Typography sx={{ my: '10px' }} className='   font-YekanBakhRegular shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  font-bold text-sm w-[92%] flex items-center h-[65px] mx-auto'>
+                                                                    <div className='flex justify-between  w-full my-2 px-2'>
                                                                         <div className='mx-6'>{i + 1}</div>
-                                                                        <div>{item.title}</div>
+                                                                        <p className='font-YekanBakhRegular font-bold'>{item.title}</p>
+                                                                        <div onClick={() => openVideo(item.video.media[0].original_url)} className='flex cursor-pointer justify-between items-center gap-1'>
+                                                                            <p className='font-YekanBakhRegular text-[#008000] font-bold'>مشاهده</p>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                                <path d="M10.3866 7.99995C10.3866 9.31995 9.31995 10.3866 7.99995 10.3866C6.67995 10.3866 5.61328 9.31995 5.61328 7.99995C5.61328 6.67995 6.67995 5.61328 7.99995 5.61328C9.31995 5.61328 10.3866 6.67995 10.3866 7.99995Z" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" />
+                                                                                <path d="M7.9999 13.5138C10.3532 13.5138 12.5466 12.1271 14.0732 9.72714C14.6732 8.78714 14.6732 7.20714 14.0732 6.26714C12.5466 3.86714 10.3532 2.48047 7.9999 2.48047C5.64656 2.48047 3.45323 3.86714 1.92656 6.26714C1.32656 7.20714 1.32656 8.78714 1.92656 9.72714C3.45323 12.1271 5.64656 13.5138 7.9999 13.5138Z" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </svg>
+                                                                        </div>
                                                                     </div>
                                                                 </Typography>
                                                             )
@@ -216,7 +228,7 @@ export const CourseDetail = () => {
                                     <div className='border shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[10px] max-xl:flex justify-between max-md:flex-col'>
 
                                         <div className='flex'>
-                                            <video className='w-full' src="/images/videoSample.png" alt="" />
+                                            <video controls className='w-full rounded-xl' src="https://www.learnify.v1r.ir/public/storage/5/testCourse.mp4" alt="" />
                                         </div>
 
                                         <div className='flex flex-col flex-1 gap-8'>
