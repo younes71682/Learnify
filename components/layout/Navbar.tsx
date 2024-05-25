@@ -41,7 +41,7 @@ const Navbar = () => {
                     <img className="w-full " src='/images/global/Rectangle.png' />
                 </Link>
 
-                <div className='flex items-center w-[228px] pt-6  max-lg:hidden'>
+                <div className='flex items-center bg-red-500 w-[228px] pt-6 max-lg:hidden'>
                     <ul className="flex justify-between flex-1 ">
                         <li><Dropdown /></li>
                         <li><Link href="/modares">تدریس کنید</Link></li>

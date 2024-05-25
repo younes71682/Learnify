@@ -2,31 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-  
+
 @font-face {
   font-family: "YekanBakh-Regular";
   src: url('../public/fonts/YekanBakh-Regular.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Medium";
   src: url('../public/fonts/YekanBakh-Medium.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Light";
   src: url('../public/fonts/YekanBakh-Light.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Heavy";
   src: url('../public/fonts/YekanBakh-Heavy.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Hairline";
   src: url('../public/fonts/YekanBakh-Hairline.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Bold";
   src: url('../public/fonts/YekanBakh-Bold.ttf');
 }
+
 @font-face {
   font-family: "YekanBakh-Fat";
   src: url('../public/fonts/YekanBakh-Fat.ttf');
@@ -62,9 +68,26 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-body{
+body {
   direction: rtl;
   font-family: "YekanBakh-Medium";
   background-color: #FBFBFB;
   scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #FBFBFB;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #008000;
+  border-radius: 12px;
 }

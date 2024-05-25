@@ -45,7 +45,7 @@ const StyledMenu = styled((props: MenuProps) => (
             '& .MuiSvgIcon-root': {
                 fontSize: 18,
                 color: theme.palette.text.secondary,
-                marginRight: theme.spacing(1),
+                marginRight: theme.spacing(2),
             },
         },
     },
@@ -55,8 +55,9 @@ const ButtonCourses = styled(Button)({
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 15,
-    padding: '1px 1px',
-    lineHeight: 1.5,
+    // width:'px',
+    padding: '2px 0px',
+    lineHeight: 0.5,
     fontFamily: 'YekanBakh-Medium',
     direction: 'rtl',
     gap: '6px',
@@ -72,6 +73,7 @@ const ButtonCourses = styled(Button)({
         boxShadow: 'none',
         backgroundColor: 'transparent',
     },
+
 });
 
 const Item = styled(MenuItem)({
@@ -125,14 +127,14 @@ const Dropdown = () => {
             </ButtonCourses>
 
             <StyledMenu
+                onMouseMove={handleClose}
                 id="demo-customized-menu"
                 MenuListProps={{
                     'aria-labelledby': 'demo-customized-button',
                 }}
                 anchorEl={anchorEl}
                 open={open}
-
-                onClose={handleClose}
+                // onClose={handleClose}
             >
 
                 {courses?.map((i: Category, ind: number) => {
@@ -163,112 +165,3 @@ export default Dropdown
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Link from "next/link";
-// import React from 'react'
-// import { Teaching_Fetch } from "../api/modares/Teaching_Fetch";
-// type Category = {
-//     category_id: number,
-//     category: string,
-//     course_count: number
-// }
-
-
-// const Dropdown = () => {
-
-
-
-//     const { dataCategory } = Teaching_Fetch()
-//     const courses = dataCategory?.data.categories
-
-//     console.log('g', courses)
-
-//     return (
-//         <div>
-
-//             <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" className="inline-flex items-center outline-0" type="button">
-//                 <p>دوره ها</p>
-//                 <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-//                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-//                 </svg>
-//             </button>
-
-//             <div id="dropdownHover" className="z-10 hidden bg-[#FFF] py-4 rounded-lg  shadow w-[18rem]">
-//                 {courses?.map((i: Category, ind: number) => {
-//                     return (
-//                         <div key={i.category_id} className="">
-//                             <ul className="flex flex-col px-6 py-1.5" aria-labelledby="dropdownHoverButton">
-//                                 <li className="border-solid border-white border-[1px]  hover:border-[#008000] rounded-[10px] hover:text-[#008000]">
-//                                     <Link href={{ pathname: '/user/courses', query: `${i.category}` }} className="flex items-center gap-[6px] text-[1.125rem] p-3">
-//                                         {ind === 0 && <img src='/images/user/home_page/dropdown/graphic_design.png' alt='Graphic_Design' className="w-[24px]" />}
-//                                         {ind === 1 && <img src='/images/user/home_page/dropdown/browser.png' alt='Browser' className="w-[24px]" />}
-//                                         {ind === 2 && <img src='/images/user/home_page/dropdown/cyber_security.png' alt='Cyber_SSecurity' className="w-[24px]" />}
-//                                         {ind === 3 && <img src='/images/user/home_page/dropdown/monitor.png' alt='Monitor' className="w-[24px]" />}
-//                                         {ind === 4 && <img src='/images/user/home_page/dropdown/mobile_coding.png' alt='Mobile_Coding' className="w-[24px]" />}
-//                                         {ind === 5 && <img src='/images/user/home_page/dropdown/custom_coding.png' alt='Custom_Coding' className="w-[24px]" />}
-//                                         {ind === 6 && <img src='/images/user/home_page/dropdown/menu.png' alt='Meno' className="w-[24px]" />}
-//                                         {ind === 7 && <img src='/images/user/home_page/dropdown/movie.png' alt='Movie' className="w-[24px]" />}
-//                                         <p>{i.category}</p>
-//                                     </Link>
-//                                 </li>
-//                             </ul>
-//                         </div>
-//                     )
-//                 })}
-
-//             </div>
-//         </div>
-
-//     )
-// }
-
-// export default Dropdown

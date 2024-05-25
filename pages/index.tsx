@@ -20,6 +20,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Course_Fetch from '@/components/api/user/Course_Fetch';
 
 
 
@@ -44,6 +45,9 @@ const index = () => {
   ];
 
   const { dataShowCourse } = Teaching_Fetch()
+  const { data_show_listCourse, pending_show_listCourse } = Course_Fetch();
+
+  const listCourse = data_show_listCourse?.data.data.data.slice(0,4)
 
   console.log('data', dataShowCourse)
 
@@ -100,7 +104,7 @@ const index = () => {
 
           <div className='flex flex-wrap gap-6 justify-center w-[95%] '>
 
-            {latest_courses.map((item) => {
+            {listCourse?.map((item) => {
               return (
                 <div className='w-[270px] h-[469px]'>
                   <CourseComponent  {...item} />
@@ -150,7 +154,7 @@ const index = () => {
 
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay,]}
-            className='w-[80%] flex h-[469px] justify-center'
+            className='w-[80%] flex h-[469px] justify-center bg-none rounded-[12px] shadow-[0_0px_-20px_rgb(0,0,0,0.8)]'
             spaceBetween={24}
             slidesPerView={1}
             breakpoints={{
@@ -169,9 +173,9 @@ const index = () => {
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
           >
-            {latest_courses.map((item) => {
+            {listCourse?.map((item) => {
               return (
-                <SwiperSlide className='w-[270px] '>
+                <SwiperSlide className='w-[200px]'>
                   <CourseComponent  {...item} />
                 </SwiperSlide>
               )
